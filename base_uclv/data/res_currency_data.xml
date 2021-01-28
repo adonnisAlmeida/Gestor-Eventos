@@ -1,0 +1,24 @@
+<odoo>
+    <data noupdate="1">
+        <record id="base.CUP" model="res.currency">
+            <field name="active" eval="True"/>
+            <field name="position">after</field>
+            <field name="symbol">CUP</field>
+        </record>
+        <record id="CUC" model="res.currency">
+            <field name="name">CUC</field>
+            <field name="active" eval="True"/>
+            <field name="position">after</field>
+            <field name="symbol">CUC</field>
+            <field name="currency_unit_label">Peso Convertible</field>
+            <field name="currency_subunit_label">Centavos</field>
+        </record>
+        
+        <record id="base.USD" model="res.currency">
+            <field name="active" eval="False"/>
+        </record>
+        <record id="base.EUR" model="res.currency">
+            <field name="active" eval="False"/>
+        </record>
+    </data>
+</odoo>

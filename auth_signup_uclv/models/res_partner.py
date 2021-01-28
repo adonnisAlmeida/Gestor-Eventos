@@ -17,5 +17,6 @@ class ResPartner(models.Model):
     institution = fields.Char('Institution')
     gender = fields.Selection([('m','Male'),('f','Female'), ('u', 'Undefined')], 'Gender', default='u')
     full_name = fields.Char('Full name', store=True, compute="get_full_name")
+    reviewer = fields.Boolean("User wants to be reviewer", default=False)
 
     
