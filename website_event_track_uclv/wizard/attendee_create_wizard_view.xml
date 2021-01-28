@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="tevent_registration_create_wizard_view" model="ir.ui.view">
+                <field name="name">event.registration.create.wizard.form</field>
+                <field name="model">event.registration.create.wizard</field>
+                <field name="arch" type="xml">
+                    <form string="Crear participantes">
+                        <h5 states="select">
+                            Genere los participantes para los ponentes de estos trabajos
+                        </h5>
+                        <h5 states="select">
+                            Los participantes generados estarán en estado 'Sin confirmar' y usarán el primer ticket disponible según su país.
+                        </h5>
+                        <h5 states="select">
+                            Los participantes que no tengan país definido se considerarán cubanos.
+                        </h5>
+                        <h5 states="done">
+                            Participantes creados.
+                        </h5>
+                        <h5 states="error">
+                            Se produjeron errores.
+                        </h5>
+                        <group states="error">
+                            <field name="errors" />
+                        </group>
+                        <field name="state" invisible="1"/>
+                        
+                        <footer>
+                            <button string="Generar" class="btn-primary" name="action_create" type="object" states="select"/>
+                            <button string="Cancelar" class="btn-default" special="cancel" states="select"/>
+                            <button string="Cerrar" class="btn-primary" special="cancel" states="done,error"/>
+                        </footer>
+                    </form>
+                </field>
+            </record>
+
+            <act_window id="action_event_registration_create_wizard"
+                multi="True"
+                key2="client_action_multi" name="Crear participantes"
+                res_model="event.registration.create.wizard" src_model="event.track"
+                view_mode="form" target="new" view_type="form" />
+    </data>
+</odoo>
