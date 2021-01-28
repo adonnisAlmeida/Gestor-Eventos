@@ -102,7 +102,7 @@
                             <div class="row" t-if="track.author_ids" style="padding:10px !important;">
                                 <label class="col-xs-12 col-md-2">Authors:</label>
                                 <t t-foreach="track.author_ids" t-as="author">
-                                    <span class="col-xs-12 col-md-10" t-field="author.with_context({'lang': 'es_ES'}).name" />
+                                    <span class="col-xs-12 col-md-10" t-field="author.res_partner_id.with_context({'lang': 'es_ES'}).name" />
                                 </t>
                             </div>
                             <div class="row" t-if="track.date" style="padding:10px !important;">
