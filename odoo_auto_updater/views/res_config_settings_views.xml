@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.updater</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="70"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Actualizaciones" data-key="odoo_auto_updater">
+                    <h2>Actualizaciones</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">                                
+                                <div class="row">
+                                    <div class="text-muted col-md-8">
+                                        Seleccione esta opción si desea que Odoo busque e instale actualizaciones automáticas
+                                    </div>
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="updates_auto" />
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="text-muted col-md-8">
+                                        Defina cada cuantas horas Odoo debe buscar nuevas actualizaciones
+                                    </div>
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="updates_frequency_hours" class="o_light_label" />
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="text-muted col-md-8">
+                                        Defina la URL donde buscar las actualizaciones
+                                    </div>
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="updates_dir_url" class="o_light_label" />
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="text-muted col-md-8">
+                                        Actualización instalada
+                                    </div>
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="installed_version" class="o_light_label" />
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                
+                                <div class="text-muted">
+                                    Actualiza manualmente a través de un archivo
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <button name="%(odoo_auto_updater.action_manual_updater_wizard)d" string="Actualizar" type="action" class="oe_link" icon="fa-arrow-right"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    
+    </data>
+</odoo>

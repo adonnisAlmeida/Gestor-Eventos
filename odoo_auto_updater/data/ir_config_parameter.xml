@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+        <record id="updates_auto" model="ir.config_parameter">
+            <field name="key">updates_auto</field>
+            <field name="value">True</field>
+        </record>
+    	<record id="updates_dir_url" model="ir.config_parameter">
+            <field name="key">updates_dir_url</field>
+            <field name="value">http://</field>
+        </record>
+        <record id="updates_check_frequency" model="ir.config_parameter">
+            <field name="key">updates_check_frequency_hours</field>
+            <field name="value">6</field>
+        </record>
+    </data>
+</openerp>

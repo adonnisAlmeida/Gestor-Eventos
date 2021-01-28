@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="manual_updater_wizard_view" model="ir.ui.view">
+                <field name="name">manual.updater.wizard.form</field>
+                <field name="model">res.updater</field>
+                <field name="arch" type="xml">
+                    <form string="Actualización manual">
+                        <field name="state" invisible="1"/>
+                        <h5 states="upload">
+                            Seleccione el archivo de actualización
+                        </h5>
+                        <group states="upload">
+                            <field name="update_file" states="upload"/>
+                        </group>
+                        <div class="alert alert-success info_icon " role="alert" states="done">
+                            <div class="row">
+                                <div class="col-xs-1"><span class="fa fa-3x fa-check fa-lg"/></div>
+                                <div class="col-xs-11">Sistema actualizado correctamente.</div>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger info_icon" role="alert" states="restart">
+                            <div class="row">
+                                <div class="col-xs-1"><span class="fa fa-3x fa-warning fa-lg"/></div>
+                                <div class="col-xs-11"><h4>Es necesario reiniciar el servicio para terminar la actualización.</h4></div>
+                            </div>
+                        </div>
+                        <group colspan="4" states="restart">
+                            <h6>Presione el botón REINICIAR, espere a que Odoo se actualice luego presione F5 para recargar la página</h6>
+                        </group>
+                        <footer>
+                            <button string="Actualizar" class="btn-primary" name="case_file_update" type="object" states="upload"/>
+                            <button string="Cancelar" class="btn-default" special="cancel" states="upload"/>
+                            <button string="Cerrar" class="btn-primary" special="cancel" states="done"/>
+                            <button string="Reiniciar" class="btn-primary" states="restart" name="case_restart" type="object"/>
+                        </footer>
+                    </form>
+                </field>
+            </record>
+
+           
+            <record id="action_manual_updater_wizard" model="ir.actions.act_window">
+                <field name="name">Actualización manual</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">res.updater</field>
+                <field name="view_id" ref="manual_updater_wizard_view"/>
+                <field name="view_mode">form</field>
+                <field name="target">new</field>
+            </record>
+    </data>
+</odoo>
