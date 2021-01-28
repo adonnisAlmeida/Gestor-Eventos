@@ -1,0 +1,1785 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* event_sale
+#	* event_sale_uclv
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0-20171116\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-22 04:51+0000\n"
+"PO-Revision-Date: 2019-05-22 04:51+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_6
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_6_product_template
+msgid "<span class=\"fa fa-briefcase fa-hw text-info\"></span> You must bring your own stand and materials"
+msgstr "<span class=\"fa fa-briefcase fa-hw text-info\"></span> Debe traer su propio stand y materiales"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_13
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_15
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_9
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_13_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_15_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_9_product_template
+msgid "<span class=\"fa fa-bus fa-hw text-info\"></span> Includes bus travel from Santa Clara on June 25th at 6:00 am"
+msgstr "<span class=\"fa fa-bus fa-hw text-info\"></span> Incluye transporte en ónmibus desde Santa Clara el 25 de junio a las 6:00 am"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_10
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_13
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_16
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_10_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_13_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_16_product_template
+msgid "<span class=\"fa fa-bus fa-hw text-info\"></span> Includes bus travel from Santa Clara on June 26th at 6:00 am"
+msgstr "<span class=\"fa fa-bus fa-hw text-info\"></span> Incluye transporte en ónmibus desde Santa Clara el 26 de junio a las 6:00 am"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_13
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_15
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_9
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_13_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_15_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_9_product_template
+msgid "<span class=\"fa fa-bus fa-hw text-info\"></span> Includes bus travel to Santa Clara on June 25th at 5:00 pm"
+msgstr "<span class=\"fa fa-bus fa-hw text-info\"></span> Incluye transporte en ónmibus hasta Santa Clara el 25 de junio a las 5:00 pm"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_10
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_13
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_16
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_10_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_13_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_16_product_template
+msgid "<span class=\"fa fa-bus fa-hw text-info\"></span> Includes bus travel to Santa Clara on June 26th at 5:00 pm"
+msgstr "<span class=\"fa fa-bus fa-hw text-info\"></span> Incluye transporte en ónmibus hasta Santa Clara el 26 de junio a las 5:00 pm"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_11
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_12
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_11_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_12_product_template
+msgid "<span class=\"fa fa-bus fa-hw\"></span> Does NOT include transportation"
+msgstr "<span class=\"fa fa-bus fa-hw\"></span> NO incluye transportación"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_16
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_16_product_template
+msgid "<span class=\"fa fa-bus fa-hw\"></span> Does NOT include transportation on June 25th"
+msgstr "<span class=\"fa fa-bus fa-hw\"></span> NO incluye transportación el 25 de junio"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_15
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_15_product_template
+msgid "<span class=\"fa fa-bus fa-hw\"></span> Does NOT include transportation on June 26th"
+msgstr "<span class=\"fa fa-bus fa-hw\"></span> NO incluye transportación el 26 de junio"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_14
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_14_product_template
+msgid "<span class=\"fa fa-bus fa-hw\"></span> Does NOT include transportation on any day"
+msgstr "<span class=\"fa fa-bus fa-hw\"></span> NO incluye transportación en ambos días"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_1
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_10
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_11
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_12
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_13
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_14
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_15
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_16
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_1_2101
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_3
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_4
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_6
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_7
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_8
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_9
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_10_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_11_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_12_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_13_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_14_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_15_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_16_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_1_0201_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_1_2101_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_1_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_3_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_4_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_6_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_7_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_8_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_9_product_template
+msgid "<span class=\"fa fa-certificate fa-hw text-info\"></span> Includes participation certificate"
+msgstr "<span class=\"fa fa-certificate fa-hw text-info\"></span> Incluye certificado de participación"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_2
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_2_0201
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_2_2101
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_2_0201_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_2_2101_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_2_product_template
+msgid "<span class=\"fa fa-certificate fa-hw\"></span> Does NOT include participation certificate"
+msgstr "<span class=\"fa fa-certificate fa-hw\"></span> NO incluye certificado de participación"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_1
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_2
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_3
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_4
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_1_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_2_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_3_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_4_product_template
+msgid "<span class=\"fa fa-flag-o fa-hw text-info\"></span> Access to opening and closing ceremonies"
+msgstr "<span class=\"fa fa-flag-o fa-hw text-info\"></span> Acceso a las ceremonias de apertura y clausura"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_11
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_13
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_15
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_16
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_9
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_11_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_13_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_15_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_16_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_9_product_template
+msgid "<span class=\"fa fa-glass fa-hw text-info\"></span> Includes a day pass in hotel areas on June 25th"
+msgstr "<span class=\"fa fa-glass fa-hw text-info\"></span> Incluye un pasadía en áreas del hotel el 25 de junio"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_14
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_14_product_template
+msgid "<span class=\"fa fa-glass fa-hw text-info\"></span> Includes a day pass in hotel areas on June 25th &amp; June 26th"
+msgstr "<span class=\"fa fa-glass fa-hw text-info\"></span> Incluye un pasadía en áreas del hotel los días 25 y 26 de junio"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_10
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_12
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_13
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_16
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_10_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_12_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_13_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_16_product_template
+msgid "<span class=\"fa fa-glass fa-hw text-info\"></span> Includes a day pass in hotel areas on June 26th"
+msgstr "<span class=\"fa fa-glass fa-hw text-info\"></span> Incluye un pasadía en áreas del hotel el 26 de junio"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_15
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_15_product_template
+msgid "<span class=\"fa fa-glass fa-hw text-info\"></span>Includes a day pass in hotel areas on June 26th"
+msgstr "<span class=\"fa fa-glass fa-hw text-info\"></span>Includes a day pass in hotel areas on June 26th"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_6
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_6_product_template
+msgid "<span class=\"fa fa-group fa-hw text-info\"></span> Access to associated expo"
+msgstr "<span class=\"fa fa-group fa-hw text-info\"></span> Acceso a la exposición asociada"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_8
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_8_product_template
+msgid "<span class=\"fa fa-hotel fa-hw text-info\"></span> Includes double (shared) hotel room"
+msgstr "<span class=\"fa fa-hotel fa-hw text-info\"></span> Incluye habitación doble (compartida)"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_7
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_7_product_template
+msgid "<span class=\"fa fa-hotel fa-hw text-info\"></span> Includes single hotel room"
+msgstr "<span class=\"fa fa-hotel fa-hw text-info\"></span> Incluye habitación sencilla"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_1
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_2
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_3
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_4
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_5
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_6
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_1_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_2_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_3_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_4_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_5_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_6_product_template
+msgid "<span class=\"fa fa-hotel fa-hw\"></span> Does NOT include hotel"
+msgstr "<span class=\"fa fa-hotel fa-hw\"></span> No incluye hospedaje"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_6
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_6_product_template
+msgid "<span class=\"fa fa-map-marker fa-hw text-info\"></span> Includes a location to present a product or service"
+msgstr "<span class=\"fa fa-map-marker fa-hw text-info\"></span> Incluye un espacio para presentar su producto o servicio"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_5
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_5_product_template
+msgid "<span class=\"fa fa-send fa-hw text-info\"></span> Includes participation certificate by email"
+msgstr "<span class=\"fa fa-send fa-hw text-info\"></span> Incluye certificado de participación via email"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_2
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_2_product_template
+msgid "<span class=\"fa fa-shopping-cart fa-hw text-info\"></span> Access to associated expo"
+msgstr "<span class=\"fa fa-shopping-cart fa-hw text-info\"></span> Acceso a la exposición asociada"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_1
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_10
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_11
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_12
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_13
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_14
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_15
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_16
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_3
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_4
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_7
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_8
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_9
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_10_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_11_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_12_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_13_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_14_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_15_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_16_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_1_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_3_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_4_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_7_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_8_product_template
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_9_product_template
+msgid "<span class=\"fa fa-slideshare fa-hw text-info\"></span> Access to work sessions"
+msgstr "<span class=\"fa fa-slideshare fa-hw text-info\"></span> Acceso a las sesiones de trabajo"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_5
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_5_product_template
+msgid "<span class=\"fa fa-user fa-hw text-info\"></span> Another person you choose may act as speaker of your track"
+msgstr "<span class=\"fa fa-user fa-hw text-info\"></span> Otra persona de su elección puede actuar como ponente de su trabajo"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_3
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_3_product_template
+msgid "<span class=\"fa fa-warning fa-hw text-warning\"></span> In order to buy this ticket you need to probe you are a graduate student by presenting an accreditation from your universitary institution. If you can not demonstrate you are a graduate student, you must pay the difference with DELEGATE ticket in cash at the moment of accreditation"
+msgstr "<span class=\"fa fa-warning fa-hw text-warning\"></span> Para comprar este ticket Ud. debe probar que es un estudiante de posgrado con la presentación de un documento emitido por su institución universitaria. Si no puede demostrar que es un estudiante de posgrado, debe pagar la diferencia con el ticket DELEGADO en efectivo durante su acreditación"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_4
+#: model:product.template,description_sale:event_sale_uclv.product_product_event_4_product_template
+msgid "<span class=\"fa fa-warning fa-hw text-warning\"></span> In order to buy this ticket you need to probe you are an undergraduate student by presenting an accreditation from your universitary institution. If you can not demonstrate you are an undergraduate student, you must pay the difference with DELEGATE ticket in cash at the moment of accreditation"
+msgstr "<span class=\"fa fa-warning fa-hw text-warning\"></span> Para comprar este ticket Ud. debe probar que es un estudiante de pregrado con la presentación de un documento emitido por su institución universitaria. Si no puede demostrar que es un estudiante de pregrado, debe pagar la diferencia con el ticket DELEGADO en efectivo durante su acreditación"
+
+#. module: event_sale_uclv
+#: model:product.product,description_sale:event_sale_uclv.product_product_event_1_0201
+msgid "<span><span class=\"fa fa-certificate fa-hw text-info\"></span> Includes participation certificate</span>"
+msgstr "<span><span class=\"fa fa-certificate fa-hw text-info\"></span> Incluye certificado de participación</span>"
+
+#. module: event_sale_uclv
+#: model:ir.model.fields,field_description:event_sale_uclv.field_event_event_ticket_allowed_pricelist_ids
+msgid "Allowed Pricelists"
+msgstr "Tarifas permitidas"
+
+#. module: event_sale
+#: model:ir.ui.view,arch_db:event_sale.view_event_registration_editor_form
+msgid "Apply"
+msgstr "Aplicar"
+
+#. modules: event_sale, event_sale_uclv
+#: model:ir.model,name:event_sale.model_event_registration
+#: model:ir.model,name:event_sale_uclv.model_event_registration
+msgid "Attendee"
+msgstr "Participante"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_seats_availability
+msgid "Available Seat"
+msgstr "Plaza disponible"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_seats_available
+msgid "Available Seats"
+msgstr "Plazas disponibles"
+
+#. module: event_sale
+#: model:ir.ui.view,arch_db:event_sale.view_event_registration_editor_form
+msgid "Before confirming"
+msgstr "Antes de confirmar"
+
+#. module: event_sale
+#: model:ir.model.fields,help:event_sale.field_sale_order_line_event_id
+msgid "Choose an event and it will automatically create a registration for this event."
+msgstr "Escoja un evento y cree automáticamente un registro para este evento."
+
+#. module: event_sale
+#: model:ir.model.fields,help:event_sale.field_sale_order_line_event_ticket_id
+msgid "Choose an event ticket and it will automatically create a registration for this event ticket."
+msgstr "Escoja un ticket de evento y se creará automáticamente un registro para el mismo."
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_6
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_6
+#: model:product.product,name:event_sale_uclv.product_product_event_6
+#: model:product.product,name:event_sale_uclv.product_product_event_6_2101
+#: model:product.template,name:event_sale_uclv.product_product_event_6_2101_product_template
+#: model:product.template,name:event_sale_uclv.product_product_event_6_product_template
+msgid "Commercial expositor"
+msgstr "Expositor comercial"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_2
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_2
+#: model:product.product,name:event_sale_uclv.product_product_event_2
+#: model:product.product,name:event_sale_uclv.product_product_event_2_0201
+#: model:product.product,name:event_sale_uclv.product_product_event_2_2101
+#: model:product.template,name:event_sale_uclv.product_product_event_2_0201_product_template
+#: model:product.template,name:event_sale_uclv.product_product_event_2_2101_product_template
+#: model:product.template,name:event_sale_uclv.product_product_event_2_product_template
+msgid "Companion"
+msgstr "Acompañante"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_create_uid
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_create_uid
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_create_date
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_create_date
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: event_sale_uclv
+#: model:product.pricelist,name:event_sale_uclv.list2
+msgid "Cuba Pricelist (CUP)"
+msgstr "Tarifa en Moneda Nacional"
+
+#. module: event_sale
+#: model:ir.model.fields,help:event_sale.field_event_event_ticket_seats_max
+msgid "Define the number of available tickets. If you have too much registrations you will not be able to sell tickets anymore. Set 0 to ignore this rule set as unlimited."
+msgstr "Define el número de Tickets disponibles. Si tienen muchas inscripciones no podrás vender los tickets nunca mas. Marca 0 para ignorar esta regla ilimitada. "
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_1
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_1
+#: model:product.product,name:event_sale_uclv.product_product_event_1
+#: model:product.product,name:event_sale_uclv.product_product_event_1_0201
+#: model:product.product,name:event_sale_uclv.product_product_event_1_2101
+#: model:product.template,name:event_sale_uclv.product_product_event_1_0201_product_template
+#: model:product.template,name:event_sale_uclv.product_product_event_1_2101_product_template
+#: model:product.template,name:event_sale_uclv.product_product_event_1_product_template
+msgid "Delegate"
+msgstr "Delegado"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_8
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_8
+#: model:product.product,name:event_sale_uclv.product_product_event_8
+#: model:product.template,name:event_sale_uclv.product_product_event_8_product_template
+msgid "Delegate + Double Room"
+msgstr "Delegado + Habitación Doble"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_9
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_9
+#: model:product.product,name:event_sale_uclv.product_product_event_9
+#: model:product.template,name:event_sale_uclv.product_product_event_9_product_template
+msgid "Delegate + June 25th Day Pass with Bus"
+msgstr "Delegado + Pasadía 25 de junio con transporte"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_13
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_13
+#: model:product.product,name:event_sale_uclv.product_product_event_13
+#: model:product.template,name:event_sale_uclv.product_product_event_13_product_template
+msgid "Delegate + June 25th Day Pass with Bus + June 26th Day Pass with Bus"
+msgstr "Delegado + Pasadía 25 de junio con transporte + Pasadía 26 de junio con transporte"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_15
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_15
+#: model:product.product,name:event_sale_uclv.product_product_event_15
+#: model:product.template,name:event_sale_uclv.product_product_event_15_product_template
+msgid "Delegate + June 25th Day Pass with Bus + June 26th Day Pass without Bus"
+msgstr "Delegado + Pasadía 25 de junio con transporte + Pasadía 26 de junio sin transporte"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_11
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_11
+#: model:product.product,name:event_sale_uclv.product_product_event_11
+#: model:product.template,name:event_sale_uclv.product_product_event_11_product_template
+msgid "Delegate + June 25th Day Pass without Bus"
+msgstr "Delegado + Pasadía 25 de junio sin transporte"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_16
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_16
+#: model:product.product,name:event_sale_uclv.product_product_event_16
+#: model:product.template,name:event_sale_uclv.product_product_event_16_product_template
+msgid "Delegate + June 25th Day Pass without Bus + June 26th Day Pass with Bus"
+msgstr "Delegado + Pasadía 25 de junio sin transporte + Pasadía 26 de junio con transporte"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_14
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_14
+#: model:product.product,name:event_sale_uclv.product_product_event_14
+#: model:product.template,name:event_sale_uclv.product_product_event_14_product_template
+msgid "Delegate + June 25th Day Pass without Bus + June 26th Day Pass without Bus"
+msgstr "Delegado + Pasadía 25 de junio sin transporte + Pasadía 26 de junio sin transporte"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_10
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_10
+#: model:product.product,name:event_sale_uclv.product_product_event_10
+#: model:product.template,name:event_sale_uclv.product_product_event_10_product_template
+msgid "Delegate + June 26th Day Pass with Bus"
+msgstr "Delegado + Pasadía 26 de junio con transporte"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_12
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_12
+#: model:product.product,name:event_sale_uclv.product_product_event_12
+#: model:product.template,name:event_sale_uclv.product_product_event_12_product_template
+msgid "Delegate + June 26th Day Pass without Bus"
+msgstr "Delegado + Pasadía 26 de junio sin transporte"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_7
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_7
+#: model:product.product,name:event_sale_uclv.product_product_event_7
+#: model:product.template,name:event_sale_uclv.product_product_event_7_product_template
+msgid "Delegate + Single Room"
+msgstr "Delegado + Habitación Sencilla"
+
+#. module: event_sale
+#: model:ir.model.fields,help:event_sale.field_product_product_event_ok
+#: model:ir.model.fields,help:event_sale.field_product_template_event_ok
+#: model:ir.model.fields,help:event_sale.field_sale_order_line_event_ok
+msgid "Determine if a product needs to create automatically an event registration at the confirmation of a sales order line."
+msgstr "Determina si un producto crea automáticamente una inscripción a un evento en la confirmación de la línea del pedido de venta."
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_display_name
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_display_name
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_editor_id
+msgid "Editor"
+msgstr "Editor"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_email
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. modules: event_sale, event_sale_uclv
+#: model:ir.model,name:event_sale.model_event_event
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_event_id
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_event_id
+#: model:ir.model.fields,field_description:event_sale.field_sale_order_line_event_id
+#: model:ir.model,name:event_sale_uclv.model_event_event
+msgid "Event"
+msgstr "Evento"
+
+#. modules: event_sale, event_sale_uclv
+#: model:ir.model,name:event_sale.model_event_type
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_event_type_id
+#: model:ir.model,name:event_sale_uclv.model_event_type
+msgid "Event Category"
+msgstr "Categoría de evento"
+
+#. module: event_sale
+#: model:ir.ui.view,arch_db:event_sale.event_ticket_form_view
+msgid "Event Name"
+msgstr "Nombre del evento"
+
+#. module: event_sale
+#: model:product.product,name:event_sale.product_product_event
+#: model:product.template,name:event_sale.product_product_event_product_template
+msgid "Event Registration"
+msgstr "Registro de eventos"
+
+#. module: event_sale
+#: model:ir.actions.act_window,name:event_sale.action_sale_order_event_registration
+msgid "Event Registrations"
+msgstr "Registro eventos"
+
+#. modules: event_sale, event_sale_uclv
+#: model:ir.model,name:event_sale.model_event_event_ticket
+#: model:ir.model.fields,field_description:event_sale.field_event_event_event_ticket_ids
+#: model:ir.model.fields,field_description:event_sale.field_event_registration_event_ticket_id
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_event_ticket_id
+#: model:ir.model.fields,field_description:event_sale.field_sale_order_line_event_ticket_id
+#: model:ir.model,name:event_sale_uclv.model_event_event_ticket
+msgid "Event Ticket"
+msgstr "Ticket del evento"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_product_product_event_ticket_ids
+msgid "Event Tickets"
+msgstr "Tickets del evento"
+
+#. module: event_sale
+#: model:ir.ui.view,arch_db:event_sale.event_ticket_form_view
+msgid "Event's Ticket"
+msgstr "Ticket del Evento"
+
+#. module: event_sale
+#: model:ir.ui.view,arch_db:event_sale.event_sale_product_template_form
+msgid "Events"
+msgstr "Eventos"
+
+#. modules: event_sale, event_sale_uclv
+#: code:addons/event_sale/models/event.py:228
+#: code:addons/event_sale_uclv/models/event.py:225
+#, python-format
+msgid "Free"
+msgstr "Gratis"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_3
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_3
+#: model:product.product,name:event_sale_uclv.product_product_event_3
+#: model:product.product,name:event_sale_uclv.product_product_event_3_0201
+#: model:product.product,name:event_sale_uclv.product_product_event_3_2101
+#: model:product.template,name:event_sale_uclv.product_product_event_3_0201_product_template
+#: model:product.template,name:event_sale_uclv.product_product_event_3_2101_product_template
+#: model:product.template,name:event_sale_uclv.product_product_event_3_product_template
+msgid "Graduate student"
+msgstr "Estudiante de posgrado"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_00
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_00
+#: model:product.product,name:event_sale_uclv.product_product_event_00
+#: model:product.template,name:event_sale_uclv.product_product_event_00_product_template
+msgid "Guest"
+msgstr "Invitado"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_id
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_id
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: event_sale_uclv
+#: model:product.pricelist,name:event_sale_uclv.list1
+msgid "International Pricelist"
+msgstr "Tarifa Internacional"
+
+#. modules: event_sale, event_sale_uclv
+#: model:ir.model,name:event_sale.model_account_invoice
+#: model:ir.model,name:event_sale_uclv.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_is_expired
+msgid "Is Expired"
+msgstr "Está expirado"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_product_product_event_ok
+#: model:ir.model.fields,field_description:event_sale.field_product_template_event_ok
+#: model:ir.model.fields,field_description:event_sale.field_sale_order_line_event_ok
+msgid "Is an Event Ticket"
+msgstr "Es un ticket de evento"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket___last_update
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor___last_update
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_write_uid
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_write_uid
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_write_date
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_write_date
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: event_sale
+#: selection:event.event.ticket,seats_availability:0
+msgid "Limited"
+msgstr "Limitado"
+
+#. module: event_sale_uclv
+#: code:addons/event_sale_uclv/models/event.py:38
+#: code:addons/event_sale_uclv/models/event.py:46
+#: code:addons/event_sale_uclv/models/event.py:48
+#, python-format
+msgid "Login to buy this item"
+msgstr "Inicie sesión para comprar este artículo"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_seats_max
+msgid "Maximum Available Seats"
+msgstr "Plazas máximas disponibles"
+
+#. modules: event_sale, event_sale_uclv
+#: code:addons/event_sale/models/event.py:223
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_name
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_name
+#: code:addons/event_sale_uclv/models/event.py:220
+#, python-format
+msgid "Name"
+msgstr "Nombre"
+
+#. modules: event_sale, event_sale_uclv
+#: code:addons/event_sale/models/event.py:152
+#: code:addons/event_sale_uclv/models/event.py:149
+#, python-format
+msgid "No more available seats for the ticket"
+msgstr "No más sitios disponibles para este ticket"
+
+#. modules: event_sale, event_sale_uclv
+#: code:addons/event_sale/models/event.py:179
+#: code:addons/event_sale_uclv/models/event.py:176
+#, python-format
+msgid "No more available seats for this ticket"
+msgstr "No más sitios disponibles para este ticket"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_5
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_5
+#: model:product.product,name:event_sale_uclv.product_product_event_5
+#: model:product.product,name:event_sale_uclv.product_product_event_5_0201
+#: model:product.product,name:event_sale_uclv.product_product_event_5_2101
+#: model:product.template,name:event_sale_uclv.product_product_event_5_0201_product_template
+#: model:product.template,name:event_sale_uclv.product_product_event_5_2101_product_template
+#: model:product.template,name:event_sale_uclv.product_product_event_5_product_template
+msgid "Non-presential delegate"
+msgstr "Delegado no presencial"
+
+#. modules: event_sale, event_sale_uclv
+#: code:addons/event_sale/models/event.py:224
+#: code:addons/event_sale_uclv/models/event.py:221
+#, python-format
+msgid "None"
+msgstr "Ninguno"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_registration_id
+msgid "Original Registration"
+msgstr "registro original"
+
+#. modules: event_sale, event_sale_uclv
+#: code:addons/event_sale/models/event.py:233
+#: code:addons/event_sale_uclv/models/event.py:230
+#, python-format
+msgid "Paid"
+msgstr "Pagado"
+
+#. modules: event_sale, event_sale_uclv
+#: code:addons/event_sale/models/event.py:234
+#: code:addons/event_sale_uclv/models/event.py:231
+#, python-format
+msgid "Payment"
+msgstr "Pago"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_phone
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_price
+msgid "Price"
+msgstr "Precio"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_price_reduce
+msgid "Price Reduce"
+msgstr "Reducción de precio"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_price_reduce_taxinc
+msgid "Price Reduce Tax inc"
+msgstr "Impuestos incluidos en el precio reducido"
+
+#. modules: event_sale, event_sale_uclv
+#: model:ir.model,name:event_sale.model_product_product
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_product_id
+#: model:ir.model,name:event_sale_uclv.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. modules: event_sale, event_sale_uclv
+#: model:ir.model,name:event_sale.model_product_template
+#: model:ir.model,name:event_sale_uclv.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. modules: event_sale, event_sale_uclv
+#: model:ir.model,name:event_sale.model_sale_order
+#: model:ir.model,name:event_sale_uclv.model_sale_order
+msgid "Quotation"
+msgstr "Presupuesto"
+
+#. module: event_sale
+#: code:addons/event_sale/models/event.py:20
+#: code:addons/event_sale/models/event.py:33
+#: model:ir.ui.view,arch_db:event_sale.view_event_registration_editor_form
+#, python-format
+msgid "Registration"
+msgstr "Registro"
+
+#. module: event_sale
+#: code:addons/event_sale/models/event.py:34
+#: code:addons/event_sale/models/event.py:51
+#, python-format
+msgid "Registration for %s"
+msgstr "Registro para %s"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_registration_ids
+msgid "Registrations"
+msgstr "Registros"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_event_registration_ids
+msgid "Registrations to Edit"
+msgstr "Registros por editar"
+
+#. module: event_sale_uclv
+#: model:ir.model.fields,field_description:event_sale_uclv.field_event_event_ticket_required_ticket_ids
+msgid "Required Ticket"
+msgstr "Ticket requerido"
+
+#. module: event_sale_uclv
+#: model:ir.model.fields,field_description:event_sale_uclv.field_event_event_ticket_requires_approved_track_to_buy
+msgid "Requires approved track to buy"
+msgstr "Requiere un trabajo aprobado"
+
+#. module: event_sale_uclv
+#: model:ir.model.fields,field_description:event_sale_uclv.field_event_event_ticket_requires_other_ticket_to_buy
+msgid "Requires other ticket to buy"
+msgstr "Requiere haber comprado otro ticket"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_seats_reserved
+msgid "Reserved Seats"
+msgstr "Plazas reservadas"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_deadline
+msgid "Sales End"
+msgstr "Final de las ventas"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_sale_order_id
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. modules: event_sale, event_sale_uclv
+#: model:ir.model,name:event_sale.model_sale_order_line
+#: model:ir.model.fields,field_description:event_sale.field_event_registration_sale_order_line_id
+#: model:ir.model.fields,field_description:event_sale.field_registration_editor_line_sale_order_line_id
+#: model:ir.model,name:event_sale_uclv.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_seats_used
+msgid "Seats Used"
+msgstr "Asientos usados"
+
+#. module: event_sale
+#: model:event.type,name:event_sale.event_type_data_sale
+msgid "Sell Online"
+msgstr "Sell Online"
+
+#. module: event_sale
+#: model:ir.ui.view,arch_db:event_sale.view_event_registration_editor_form
+msgid "Skip"
+msgstr "Saltar"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_registration_sale_order_id
+msgid "Source Sales Order"
+msgstr "Orden de venta original"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0904_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_0905_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_000
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_000
+#: model:product.product,name:event_sale_uclv.product_product_event_000
+#: model:product.template,name:event_sale_uclv.product_product_event_000_product_template
+msgid "Staff"
+msgstr "Comité Organizador"
+
+#. modules: event_sale, event_sale_uclv
+#: code:addons/event_sale/models/event.py:231
+#: code:addons/event_sale_uclv/models/event.py:228
+#, python-format
+msgid "The registration must be paid"
+msgstr "El registro debe ser pagado"
+
+#. modules: event_sale, event_sale_uclv
+#: code:addons/event_sale/models/event.py:224
+#: code:addons/event_sale_uclv/models/event.py:221
+#, python-format
+msgid "Ticket"
+msgstr "Ticket"
+
+#. module: event_sale
+#: model:ir.ui.view,arch_db:event_sale.event_event_report_template_badge
+#: model:ir.ui.view,arch_db:event_sale.view_event_registration_ticket_search
+msgid "Ticket Type"
+msgstr "Tipo de vale"
+
+#. modules: event_sale, event_sale_uclv
+#: code:addons/event_sale/models/event.py:157
+#: code:addons/event_sale_uclv/models/event.py:154
+#, python-format
+msgid "Ticket should belong to either event category or event but not both"
+msgstr "Ticket should belong to either event category or event but not both"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_type_use_ticketing
+msgid "Ticketing"
+msgstr "Venta de tickets"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_type_event_ticket_ids
+#: model:ir.ui.view,arch_db:event_sale.event_type_view_form_inherit_sale
+#: model:ir.ui.view,arch_db:event_sale.view_event_form_inherit_ticket
+msgid "Tickets"
+msgstr "Tickets"
+
+#. modules: event_sale, event_sale_uclv
+#: code:addons/event_sale/models/event.py:230
+#: code:addons/event_sale_uclv/models/event.py:227
+#, python-format
+msgid "To pay"
+msgstr "A pagar"
+
+#. module: event_sale
+#: model:ir.model.fields,field_description:event_sale.field_event_event_ticket_seats_unconfirmed
+msgid "Unconfirmed Seat Reservations"
+msgstr "Reservas de plazas no confirmadas"
+
+#. module: event_sale_uclv
+#: model:event.event.ticket,name:event_sale_uclv.event_0101_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0102_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0103_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0201_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0301_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0401_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0402_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0403_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0404_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0501_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0502_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0503_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0504_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0601_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0602_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0603_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0604_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0605_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0606_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0701_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0702_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0703_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0704_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0705_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0706_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0707_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0801_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0901_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0902_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_0903_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1001_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1002_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1101_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1201_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1301_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1401_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1402_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1403_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1501_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1601_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1701_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1801_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_1901_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_2001_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_2101_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_2201_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_2301_ticket_4
+#: model:event.event.ticket,name:event_sale_uclv.event_2401_ticket_4
+#: model:product.product,name:event_sale_uclv.product_product_event_4
+#: model:product.product,name:event_sale_uclv.product_product_event_4_0201
+#: model:product.product,name:event_sale_uclv.product_product_event_4_2101
+#: model:product.template,name:event_sale_uclv.product_product_event_4_0201_product_template
+#: model:product.template,name:event_sale_uclv.product_product_event_4_2101_product_template
+#: model:product.template,name:event_sale_uclv.product_product_event_4_product_template
+msgid "Undergraduate student"
+msgstr "Estudiante de pregrado"
+
+#. module: event_sale
+#: selection:event.event.ticket,seats_availability:0
+msgid "Unlimited"
+msgstr "Ilimitado"
+
+#. module: event_sale_uclv
+#: code:addons/event_sale_uclv/models/event.py:44
+#, python-format
+msgid "You need an accepted track to buy this item"
+msgstr "Necesita un trabajo aceptado para comprar este artículo"
+
+#. module: event_sale_uclv
+#: code:addons/event_sale_uclv/models/event.py:36
+#, python-format
+msgid "You need to buy other ticket in order to buy this item"
+msgstr "Necesita comprar otro ticket antes de comprar este artículo"
+
+#. module: event_sale
+#: model:ir.ui.view,arch_db:event_sale.view_event_registration_editor_form
+msgid "please give details about the registrations"
+msgstr "Por favor proporcione detalles sobre los registros"
+
+#. modules: event_sale, event_sale_uclv
+#: model:ir.model,name:event_sale.model_registration_editor
+#: model:ir.model,name:event_sale_uclv.model_registration_editor
+msgid "registration.editor"
+msgstr "registration.editor"
+
+#. modules: event_sale, event_sale_uclv
+#: model:ir.model,name:event_sale.model_registration_editor_line
+#: model:ir.model,name:event_sale_uclv.model_registration_editor_line
+msgid "registration.editor.line"
+msgstr "registration.editor.line"
+

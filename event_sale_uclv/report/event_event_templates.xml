@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="event_sale.event_registration_report_template_badge" inherit_id="event.event_registration_report_template_badge">
+        <xpath expr="//div[@id='o_event_name']" position="after">
+            <div t-if="o.event_ticket_id" class="col-xs-12 text-center" style="padding:0px;">
+                <div style="padding: 8px;" class="mt16 text-center">
+                    <span class="h2" style="font-family:'AvantGarde'!important;"><span t-field="o.event_ticket_id"/></span>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="event_sale_uclv.event_registration_report_template_badge_portrait" inherit_id="event_uclv.event_registration_report_template_badge_portrait">
+        <xpath expr="//div[@id='o_event_name']" position="after">
+            <div t-if="o.event_ticket_id" class="col-xs-12 text-center" style="padding:0px;">
+                <div style="padding: 8px;" class="mt16 text-center">
+                    <span class="h2" style="font-family:'AvantGarde'!important;"><span t-field="o.event_ticket_id"/></span>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="event_sale.event_event_report_template_badge" inherit_id="event.event_event_report_template_badge">
+        <xpath expr="//div[@id='o_event_attendee_name']" position="inside">
+            <div t-if="bool(len(event.event_ticket_ids))" class="col-xs-12" style="padding: 0px;" t-ignore="true">
+                <div style="padding: 8px;" class="mt16 text-center">
+                    <h2 style="font-family:'AvantGarde'!important;">Ticket Type</h2>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>
