@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="contact_name" inherit_id="base.contact_name">
+        <xpath expr="//div" position="replace">
+
+            <div t-if="'avatar' in fields" class="m-1 d-inline-block">
+                <span t-field="object.image_128" t-options='{"widget": "image", "style": "object-fit: cover; border-radius: 50%; width: 50px; height: 50px;"}'/>
+            </div>
+            <div t-if="'name' in fields" class="d-inline-block">
+                <t t-if="object.name">
+                    <span itemprop="name" t-esc="name"/>
+                </t>
+                <t t-if="not object.name and object.parent_name">
+                    <span itemprop="name" t-esc="object.parent_name"/>
+                </t>
+                <t t-if="options.get('country_image') and 'country_id' in fields and object.country_id and object.country_id.image_url">
+                    <img height="16px" t-att-src="object.country_id.image_url" t-att-alt="'Flag of %s' % object.country_id.name" t-att-title="object.country_id.name"/>
+                </t>
+            </div>
+
+        </xpath>
+    </template>
+
+</odoo>
