@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website.company_description" name="Company Description">
+        <address itemscope="itemscope" itemtype="http://schema.org/Organization">
+            <!-- TODO widget contact must add itemprop attributes -->
+            <div t-field="res_company.partner_id" t-options='{
+                    "widget": "contact",
+                    "fields": ["name", "address", "phone", "mobile", "email"]}'/>            
+        </address>
+        <t t-if="res_company.osm_iframe_by_pos()">
+            <iframe height="300px" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" t-att-src="res_company.osm_iframe_by_pos()" class="thumbnail">
+            </iframe>
+        </t>    
+    </template>
+</odoo>
