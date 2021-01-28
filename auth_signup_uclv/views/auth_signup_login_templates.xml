@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="fields" inherit_id="auth_signup.fields" name="Auth Signup/ResetPassword form fields">
+        <xpath expr="//input[@id='login']" position="replace">
+            <input type="email" name="login" t-att-value="login" id="login" class="form-control" autofocus="autofocus"
+                    autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+        </xpath>
+
+        <xpath expr="//div[hasclass('field-name')]" position="replace">
+            <div class="form-group field-title">
+                <label for="title" class="control-label label-optional">Your Title</label>
+                <select name="title" t-att-value="title" id="title" class="form-control col-xs-2" >
+                    <option value=''> </option>
+                    <t t-foreach='titles' t-as="title2">
+                        <option t-esc='title2.name' t-att-value='title2.id'/>
+                    </t>
+                </select>
+            </div>
+            <div class="form-group field-name">
+                <label for="title" class="control-label">Your Name</label>
+                <input type="text" name="name" t-att-value="name" id="name" class="form-control col-xs-10" placeholder="e.g. John Doe"
+                            required="required" t-att-readonly="'readonly' if only_passwords else None"
+                            t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+            </div>
+            <div class="form-group field-gender">
+                <label class="control-label" for="gender">Your Gender</label><br/>
+                <label class="radio-inline"><input type="radio" name="gender" value="m"/> Male</label>
+                <label class="radio-inline"><input type="radio" name="gender" value="f"/> Female</label>
+                <label class="radio-inline"><input type="radio" name="gender" value="u" checked="checked" /> Prefer not say</label>
+            </div>
+
+            <div class="form-group field-phone">
+                <label for="phone" class="control-label label-optional">Your Phone Number</label>
+                <input type="text" name="phone" id="phone" class="form-control"
+                    placeholder="e.g. +5353123456"/>
+            </div>
+
+            <div class="form-group field-institution">
+                <label for="institution" class="control-label label-optional">Your Institution</label>
+                <input type="text" name="institution" id="institution" class="form-control" placeholder="e.g. UCLV"/>
+            </div>
+            <div class="form-group field-country-id">
+                <label for="country_id" class="control-label">Your Country</label>
+                <select name="country_id" id="country_id" class="form-control" required="required">
+                    <option value=''> </option>
+                    <t t-foreach='countries' t-as="country2">
+                        <option t-esc='country2.name' t-att-value='country2.id'/>
+                    </t>
+                </select>
+
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="res_partner_form_view" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- add gender and institution fields in form -->
+                <field name="parent_id" position="after">
+                    <field name="gender" placeholder="Gender..." attrs="{'invisible': [('is_company','=', True)]}"/>
+                </field>
+                <field name="category_id" position="after">
+                    <field name="institution" placeholder="" attrs="{'invisible': [('is_company','=', True)]}"/>
+                    <field name="reviewer" attrs="{'invisible': [('is_company','=', True)]}" groups="base.group_no_one"/>
+                </field>
+                <field name="parent_id" position="replace">
+                    <field name="parent_id" groups="base.group_no_one" />
+                </field>
+            </field>
+        </record>
+
+</odoo>
