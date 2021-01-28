@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+    <!-- template use to render a Track Certificate -->
+    <template id="event_track_report_template_certificate4">
+        <t t-call="web.basic_layout">
+            <style>
+                .cert-h1
+                {
+                    font-size: 2.3cm;
+                    font-family:'AvantGarde'!important;
+                }
+                .cert-h2
+                {
+                    font-size: 1cm; 
+                    font-weight: bold; 
+                    font-family:'AvantGarde'!important;
+                }
+                .cert-h3
+                {
+                    font-size: 0.7cm;
+                    font-family:'AvantGarde'!important;
+                }
+                .cert-h4
+                {
+                    font-size: 0.5cm;
+                    font-family:'AvantGarde'!important;
+                }
+                .bold
+                {
+                    font-weight: bold;
+                }
+                .uppercase
+                {
+                    text-transform:uppercase; 
+                }
+                .green{color:#009933;}
+                .bg-green{
+                        color:white; 
+                        background-color:#009933;
+                        padding: 10px 20px;
+                        z-index:1;
+                    }
+            </style>
+            <t t-foreach="docs" t-as="o">
+                <div class="page" style="height:270mm;">
+                        <img src="/website_event_track_uclv/static/src/img/cert-bg-att.png" style="position: absolute;z-index: -2; height:270mm; left:0;" />                        
+                            <div class="row" style="display:flex;">
+                                <div class="col-xs-8 col-xs-offset-2 text-right" style="padding-top:3.5in;">
+                                    <div class="row" style="margin:0 0 !important;">
+                                        <div class="col-xs-12" style="padding:0 50px 0 100px!important;">
+                                            <span class="cert-h3 bold">En el evento: </span><span class="cert-h3 bold uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin:0 0 !important;">
+                                        <div class="col-xs-12" style="padding:12px 50px 0 50px!important;">
+                                            <span class="cert-h3 bold">A: </span><span class="cert-h3 bold uppercase" t-esc="o.with_context({'lang': 'es_ES'}).name" />
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row" style="margin:16px 0 !important;">
+                                        <div class="text-right col-xs-11 col-xs-offset-1" style="padding:0 50px 0 100px!important;">
+                                            <span t-if="o.partner_id.gender == 'm'" class="h3 cert-h3">Autor de: </span>
+                                            <span t-if="o.partner_id.gender == 'f'" class="h3 cert-h3">Autora de: </span>
+                                            <span t-if="o.partner_id.gender == 'u' or not o.partner_id.gender" class="h3 cert-h3">Autor(a) de: </span>
+                                            <span class="h3 cert-h3 uppercase" t-esc="o.with_context({'lang': 'es_ES'}).name" />
+                                        </div>
+                                    </div> -->
+                                    <div class="row" style="margin:12px 0 !important;">
+                                        <div class="text-right col-xs-11 col-xs-offset-1" style="padding:0 50px 0 20px!important;">
+                                            <span t-if="len(o.author_ids) &gt;= 0" class="h3 cert-h3">Autor: </span>
+                                            <span t-if="len(o.author_ids) &gt; 1 and len(o.author_ids) &lt; 6 " class="h3 cert-h3">Autores: </span>
+                                            <span t-if="len(o.author_ids) &gt;= 6" class="h4 cert-h4">Autores: </span>
+                                            <span t-if="len(o.author_ids) &lt; 6" class="h3 cert-h3" t-esc="o.partner_id.with_context({'lang': 'es_ES'}).name" />
+                                            <span t-if="len(o.author_ids) &gt;= 6" class="h4 cert-h4" t-esc="o.partner_id.with_context({'lang': 'es_ES'}).name" />
+                                            <t t-set="count" t-value="1" />
+                                            <t t-foreach="o.author_ids" t-as="author">
+                                                <t t-if="author.name != o.partner_id.with_context({'lang': 'es_ES'}).name">
+                                                    <t t-if="count &lt; 15">
+                                                        <t t-if="len(o.author_ids) &lt; 6">
+                                                            <span t-if="count &lt; len(o.author_ids)" class="h3 cert-h3 mt8">, </span>
+                                                            <span class="h3 cert-h3 mt8 text-capitalize" t-esc="author.full_name" />
+                                                            <t t-set="count" t-value="count+1" />
+                                                        </t>
+                                                        <t t-if="len(o.author_ids) &gt;= 6">
+                                                            <span t-if="count &lt; len(o.author_ids)" class="h4 cert-h4 mt8">, </span>
+                                                            <span class="h4 cert-h4 mt8 text-capitalize" t-esc="author.full_name" />
+                                                            <t t-set="count" t-value="count+1" />
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div style="padding-top: 7in; padding-right:25px; float:right">
+                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.authenticity_url, 200, 200)" style="width:2.5in;height:2.5in;"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

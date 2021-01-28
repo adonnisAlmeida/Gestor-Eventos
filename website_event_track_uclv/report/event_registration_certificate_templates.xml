@@ -18,42 +18,61 @@
     <!-- template use to render a Registration Certificate -->
     <template id="event_registration_report_template_certificate">
         <t t-call="web.basic_layout">
+            <style>
+                .cert-h1
+                {
+                    font-size: 2.3cm;
+                    font-family:'AvantGarde'!important;
+                }
+                .cert-h2
+                {
+                    font-size: 1cm; 
+                    font-weight: bold; 
+                    font-family:'AvantGarde'!important;
+                }
+                .cert-h3
+                {
+                    font-size: 0.7cm;
+                    font-family:'AvantGarde'!important;
+                }
+                .bold
+                {
+                    font-weight: bold;
+                }
+                .uppercase
+                {
+                    text-transform:uppercase; 
+                }
+                .green{color:#009933;}
+                .bg-green{
+                        color:white; 
+                        background-color:#009933;
+                        padding: 10px 20px;
+                        z-index:1;
+                    }
+            </style>
             <t t-foreach="docs" t-as="o">
-                <div class="page">
-                    <div class="row" style="padding-left:7mm; padding-top: 7mm; background: url(/website_event_track_uclv/static/src/img/cert-bg.png);  background-position-y: bottom;
-    background-clip: border-box;
-    background-repeat: no-repeat;
-    height:calc(8in-14px);
-    background-size: contain;">
-                        <div class="col-xs-9 col-xs-offset-3 text-center" >
-                            <div class="h3" style="font-family:'AvantGarde'!important;">El Comité Organizador de la Convención UCLV 2019</div>
-                            <div class="h3" style="font-family:'AvantGarde'!important;">expide el siguiente</div>
-                            <div style="text-transform:uppercase; font-size: 64px; font-weight: bold; font-family:'AvantGarde'!important;">Certificado</div>
-                            <div>
-                                <span style="font-size: 64px; font-weight: bold; font-family:'AvantGarde'!important;">A: </span><span class="h2" style="font-size: 64px; font-weight: bold; font-family:'AvantGarde'!important;" t-field="o.name" />
+                <div class="page" style="height:270mm;">
+                    <img src="/website_event_track_uclv/static/src/img/cert-bg-att.png" style="position: absolute;z-index: -2; height:270mm; left:0;" />
+                    <div class="row" style="display:flex;">
+                        <div class="col-xs-8 col-xs-offset-2 text-right" style="padding-top:4.7in;">
+                            <div class="row" style="margin:0 0 !important;">
+                                <div class="col-xs-12" style="padding:0 50px 0 150px!important;">
+                                    <span class="cert-h3 bold">En el evento: </span><span class="cert-h3 bold uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
+                                </div>
                             </div>
-                            <div>
-                                <span class="h2" style="font-family:'AvantGarde'!important;">En su condición de </span>
-                                <span class="h2" style="text-transform:uppercase; font-family:'AvantGarde'!important;" t-field="o.event_ticket_id.name" />
-                                <span class="h2" style="font-family:'AvantGarde'!important;"> en el evento </span>
+                            <div class="row" style="margin:16px 0 !important;">
+                                <div class="col-xs-12" style="padding:0 50px 0 100px!important;">
+                                    <span class="cert-h3 bold">A: </span><span class="cert-h3 bold uppercase" t-field="o.name" />
+                                </div>
                             </div>
-                            <div class="h2" style="text-transform:uppercase; font-family:'AvantGarde'!important;" t-field="o.event_id.name"/>
-                            
-                            <div class="h2" style="font-family:'AvantGarde'!important;">Universidad Central "Marta Abreu" de Las Villas</div>
-                            <div class="h2" style="text-transform:uppercase; font-family:'AvantGarde'!important;" t-field="o.date_closed" />
-                                
-                            
-                            <div style="height:200px; padding-left:7mm; padding-top: 7mm; background: url(/website_event_track_uclv/static/src/img/uclv-seal.png); background-position-y: bottom;
-                                background-clip: border-box;
-                                background-repeat: no-repeat;
-                                background-size: contain;
-                                position: absolute;
-                                right: 100px;
-                                bottom: 100px;
-                                " > </div>
-                            
-                        </div>                        
-                    </div>                    
+                        </div>
+                        <div class="col-xs-2">
+                            <div style="padding-top: 7in; padding-right:25px; float:right">
+                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.authenticity_url, 200, 200)" style="width:2.5in;height:2.5in;"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </t>
         </t>

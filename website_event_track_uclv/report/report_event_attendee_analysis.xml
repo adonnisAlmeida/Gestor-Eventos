@@ -52,7 +52,7 @@
 
     <record id="action_event_attendee_analysis_report_template" model="ir.actions.act_window">
         <field name="name">Attendee Analysis</field>
-        <field name="res_model">report.event.attendee.analysis</field>       
+        <field name="res_model">report.event.attendee.analysis</field>
         <field name="view_mode">graph,pivot</field>
         <field name="search_view_id" ref="view_event_attendee_analysis_filter"/>
         <field name="view_id" ref="view_event_attendee_analysis_pivot"/>
