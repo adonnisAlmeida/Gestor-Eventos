@@ -13,7 +13,6 @@ class AttendeeWizard(models.TransientModel):
     errors = fields.Text("Errors", readonly=True, default="")
     state = fields.Selection([('select', 'select'), ('done', 'done'), ('error', 'error')], default='select')
 
-    @api.multi
     def action_create(self):
         this = self[0]
         active_ids = self.env.context.get('active_ids', [])

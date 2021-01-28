@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-       <record id="tevent_registration_create_wizard_view" model="ir.ui.view">
+       <record id="event_registration_create_wizard_view" model="ir.ui.view">
                 <field name="name">event.registration.create.wizard.form</field>
                 <field name="model">event.registration.create.wizard</field>
                 <field name="arch" type="xml">
@@ -35,10 +35,14 @@
                 </field>
             </record>
 
-            <act_window id="action_event_registration_create_wizard"
-                multi="True"
-                key2="client_action_multi" name="Crear participantes"
-                res_model="event.registration.create.wizard" src_model="event.track"
-                view_mode="form" target="new" view_type="form" />
+            <record id="action_event_registration_create_wizard" model="ir.actions.act_window">
+                <field name="name">Create attendees</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">event.registration.create.wizard</field>
+                <field name="view_id" ref="event_registration_create_wizard_view"/>
+                <!-- <field name="src_model">event.track</field> -->
+                <field name="view_mode">form</field>
+                <field name="target">new</field>
+            </record>
     </data>
 </odoo>
