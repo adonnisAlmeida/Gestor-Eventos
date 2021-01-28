@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_event_form">
+            <field name="name">event.event.form</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_title')]" position="after">
+                    <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "image_128"}'/>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <label for="short_name" class="oe_edit_only"/>
+                    <h3><field name="short_name" placeholder="Event Short Name"/></h3>
+                    <label for="subname" class="oe_edit_only"/>
+                    <h3><field name="subname" placeholder="Event Sub Name"/></h3>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_event_kanban">
+            <field name="name">event.event.kanban</field>
+            <field name="inherit_id" ref="event.view_event_kanban" />
+            <field name="model">event.event</field>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('o_kanban_record_title')]" position="after">
+                    <h4 class="o_kanban_record_title"><field name="short_name"/></h4>
+                    <h5 class="o_kanban_record_title"><field name="subname"/></h5>
+                </xpath>
+                <field name="name" position="before">
+                    <field name="id" invisible="1"/>
+                    <field name="number"/>
+                </field>
+                <xpath expr="//div[hasclass('col-3')]" position="inside">
+                    <br/>
+                    <div>
+                        <div class="o_kanban_image" style="float:none;width:auto;">
+                            <img style="background-color:white;padding:4px;" width="64px" height="64px" t-att-src="kanban_image('event.event', 'image_128', record.id.value)"/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record> 
+    </data>
+</odoo>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="event.paperformat_euro_lowmargin" model="report.paperformat">
+        <field name="name">European A4 low margin</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">80</field>
+    </record>
+    <record id="paperformat_euro_lowmargin_portrait" model="report.paperformat">
+        <field name="name">European A4 low margin portrait</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">80</field>
+    </record>
+    <!-- template use to render a Registration Badge -->
+    <template id="event.event_registration_report_template_badge">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="row">
+                        <!-- Front -->
+                        <div class="col-xs-6 text-center" style="padding-left:7mm; border-left:1px dashed black; height: 130mm; -webkit-transform:rotate(180deg); padding-top: 7mm;background: url(/event_uclv/static/src/img/footer.png);  background-position-y: bottom;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-size: contain;">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div>
+                                        <img src="/event_uclv/static/src/img/logo.png" class="img img-responsive"/>
+                                    </div>
+                                    <div>
+                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.url, 400, 400)" style="width:3.4cm;height:3.4cm;"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="h2" style="text-transform:uppercase; font-family:'AvantGarde'!important;" t-field="o.event_id.name"/>
+                                    <!-- <h5 style="text-transform:uppercase;" t-field="o.event_id.short_name"/> -->
+                                    <div class="h5" style="text-transform:uppercase;font-family:'AvantGarde'!important;" t-field="o.event_id.subname"/>
+                                    <small style="font-family:'AvantGarde'!important;">( <i class="fa fa-clock-o"></i> <span itemprop="startDate" t-field="o.event_id.date_begin" t-options='{"hide_seconds": True}'> </span> <i>to</i> <span itemprop="endDate" t-field="o.event_id.date_end" t-options='{"hide_seconds": True}'> </span> )</small>
+                                    
+                                    <div style="padding:8px;" class="col-xs-12 text-center mt32" id="o_event_name">
+                                        <span class="h2" style="font-family:'AvantGarde'!important;" t-field="o.name" />
+                                    </div>
+                                
+                                    <div t-field="o.event_id.badge_front"></div>
+                                    
+                                    <div>
+                                        <img class="mt16" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=1' %  ('EAN8', o.id, 400, 200)" style="width:4cm;height:2cm;"/>
+                                    </div> 
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Back -->
+                        <div class="col-xs-6" style="padding-right:7mm; height: 130mm; -webkit-transform:rotate(180deg); padding-top: 2mm;">
+                            back
+                            <span t-field="o.event_id.badge_back"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Inner left -->
+                        <div class="col-xs-6" style="padding:7mm 7mm 7mm 20mm; border-top:1px dashed black; height: 130mm;">
+                            <h4>Instrucciones:</h4>
+                            <ol>
+                                <li>Imprima esta página en un papel A4</li>
+                                <li>Doble la hoja por la línea punteada de arriba</li>
+                                <li>Doble la hoja nuevamente por la línea punteada de la derecha para obtener el solapín</li>
+                                <li>Este texto debe quedar en la parte interna del solapín</li>
+                                <li>Presente este solapín en el momento de la acreditación para ser escaneado</li>
+                            </ol>
+                            <h4>Directions:</h4>
+                            <ol>
+                                <li>Print this page in an A4 sheet</li>
+                                <li>Fold the page by the large dotted line above</li>
+                                <li>Fold the page again by the dotted line at right to obtain an A6 badge</li>
+                                <li>This text should be at the inner part of badge</li>
+                                <li>Present this badge at accreditation time to be scanned</li>
+                            </ol>
+                            <span t-field="o.event_id.badge_innerleft"/>
+                        </div>
+                        <!-- Inner right -->
+                        <div class="col-xs-6 text-center" style="border-left:1px dashed black; border-top:1px dashed black; height: 130mm; text-center">
+                            inner right
+                            <span t-field="o.event_id.badge_innerright"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="event_registration_report_template_badge_portrait">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="row">
+                        <!-- Front -->
+                        <div class="col-xs-6 text-center" style="padding-left:7mm; border-left:1px dashed black; height: 185mm; -webkit-transform:rotate(180deg); padding-top: 7mm;background: url(/event_uclv/static/src/img/footer.png);  background-position-y: bottom;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-size: contain;">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div>
+                                        <img src="/event_uclv/static/src/img/logo.png" class="img img-responsive"/>
+                                    </div>
+                                    <div>
+                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.url, 400, 400)" style="width:3.4cm;height:3.4cm;"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-9">
+                                    <h3 style="text-transform:uppercase;" t-field="o.event_id.name"/>
+                                    <!-- <h5 style="text-transform:uppercase;" t-field="o.event_id.short_name"/> -->
+                                    <h5 style="text-transform:uppercase;" t-field="o.event_id.subname"/>
+                                    <small>( <i class="fa fa-clock-o"></i> <span itemprop="startDate" t-field="o.event_id.date_begin" t-options='{"hide_seconds": True}'> </span> <i>to</i> <span itemprop="endDate" t-field="o.event_id.date_end" t-options='{"hide_seconds": True}'> </span> )</small>
+                                    
+                                    <div style="background: #009933; color:white; padding:10px 8px 18px 8px;border-radius:30px;" class="col-xs-12 text-center mt32" id="o_event_name">
+                                        <span class="h3" t-field="o.name" />
+                                    </div>
+                                
+                                    <div t-field="o.event_id.badge_front"></div>
+                                    
+                                    <div class="pull-left">
+                                        <img class="mt16" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=1' %  ('EAN8', o.id, 400, 200)" style="width:4cm;height:2cm;"/>
+                                    </div> 
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Back -->
+                        <div class="col-xs-6" style="padding-right:7mm; height: 185mm; -webkit-transform:rotate(180deg); padding-top: 2mm;">
+                            back
+                            <span t-field="o.event_id.badge_back"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Inner left -->
+                        <div class="col-xs-6" style="padding:7mm 7mm 7mm 20mm; border-top:1px dashed black; height: 185mm;">
+                            <h4>Instrucciones:</h4>
+                            <ol>
+                                <li>Imprima esta página en un papel A4</li>
+                                <li>Doble la hoja por la línea punteada de arriba</li>
+                                <li>Doble la hoja nuevamente por la línea punteada de la derecha para obtener el solapín</li>
+                                <li>Este texto debe quedar en la parte interna del solapín</li>
+                                <li>Presente este solapín en el momento de la acreditación para ser escaneado</li>
+                            </ol>
+                            <h4>Directions:</h4>
+                            <ol>
+                                <li>Print this page in an A4 sheet</li>
+                                <li>Fold the page by the large dotted line above</li>
+                                <li>Fold the page again by the dotted line at right to obtain an A6 badge</li>
+                                <li>This text should be at the inner part of badge</li>
+                                <li>Present this badge at accreditation time to be scanned</li>
+                            </ol>
+                            <span t-field="o.event_id.badge_innerleft"/>
+                        </div>
+                        <!-- Inner right -->
+                        <div class="col-xs-6 text-center" style="border-left:1px dashed black; border-top:1px dashed black; height: 185mm; text-center">
+                            inner right
+                            <span t-field="o.event_id.badge_innerright"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+    <!-- template use to edit Event Badget (allow to set the HTML badge fields) -->
+    <template id="event.event_event_report_template_badge">
+        <t t-call="website.layout">
+            <div id="wrap" class="js_event">
+                <div class="container">
+                    <div class="page">
+                    <t t-foreach="docs" t-as="event">
+                        <div class="row">
+                            <!-- Front -->
+                            <div class="col-xs-6 text-center" style="padding-left:7mm; border-right:1px dashed black; height: 149mm; padding-top: 7mm; font-family:'AvantGarde';">
+                                <div class="row" t-ignore="true">
+                                    <div class="col-xs-3">
+                                        <span t-if="event.organizer_id.is_company and event.organizer_id.company_id.logo">
+                                            <div t-field="event.event_logo">
+                                                <img src="/event_uclv/static/src/img/logo.png" class="img img-responsive"/>
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <h4 style="text-transform:uppercase;" t-field="event.name"/>
+                                        <h4 style="text-transform:uppercase;" t-field="event.short_name"/>
+                                        <h5 style="text-transform:uppercase;" t-field="event.subname"/>
+                                        <h5>( <i class="fa fa-clock-o"></i> <span itemprop="startDate" t-field="event.date_begin" t-options='{"hide_seconds": True}'> </span> <i>to</i> <span itemprop="endDate" t-field="event.date_end" t-options='{"hide_seconds": True}'> </span> )</h5>
+                                        
+                                        <div class="col-xs-12 text-center" id="o_event_attendee_name">
+                                            <small><h3>Attendee Name</h3></small>
+                                        </div>
+                                    
+                                    
+                                        <div t-field="event.badge_front"></div>
+
+                                        <div class="col-xs-12 text-center" id="o_registration_url">
+                                            <span>
+                                                <img t-att-src="'/report/barcode/QR/%s' % event.url" style="height:3cm; width:3cm;"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                        
+                                    
+                                </div>
+                            </div>
+                            <!-- Back -->
+                            <div class="col-xs-6" style="padding-right:7mm; height: 149mm; padding-top: 2mm;">
+                                <div t-field="event.badge_back"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Inner left -->
+                            <div class="col-xs-6 text-center" style="padding-right:7mm; border-top:1px dashed black; height: 148mm;">
+                                <div t-field="event.badge_innerleft"/>
+                            </div>
+                            <!-- Inner right -->
+                            <div class="col-xs-6 text-center" style="border-left:1px dashed black; border-top:1px dashed black; height: 148mm; text-center">
+                                <div t-field="event.badge_innerright"/>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

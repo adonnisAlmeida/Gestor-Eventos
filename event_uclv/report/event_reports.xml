@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="report_event_registration_badge_portrait"
+        model="event.registration"
+        string="Registration Badge Portrait"
+        report_type="qweb-pdf"
+        name="event_uclv.event_registration_report_template_badge_portrait"
+        file="event_uclv.event_registration_report_template_badge_portrait"
+        paperformat="paperformat_euro_lowmargin_portrait"
+        print_report_name="'Registration Event - %s' % (object.name).replace('/','')"
+    />
+</odoo>
