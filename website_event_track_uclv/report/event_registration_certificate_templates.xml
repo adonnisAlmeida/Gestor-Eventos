@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_certificate_lowmargin_landscape" model="report.paperformat">
+        <field name="name">Letter paper low margin landscape</field>
+        <field name="default" eval="True"/>
+        <field name="format">Letter</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">80</field>
+    </record>
+    <!-- template use to render a Registration Certificate -->
+    <template id="event_registration_report_template_certificate">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="row" style="padding-left:7mm; padding-top: 7mm; background: url(/website_event_track_uclv/static/src/img/cert-bg.png);  background-position-y: bottom;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    height:calc(8in-14px);
+    background-size: contain;">
+                        <div class="col-xs-9 col-xs-offset-3 text-center" >
+                            <div class="h3" style="font-family:'AvantGarde'!important;">El Comité Organizador de la Convención UCLV 2019</div>
+                            <div class="h3" style="font-family:'AvantGarde'!important;">expide el siguiente</div>
+                            <div style="text-transform:uppercase; font-size: 64px; font-weight: bold; font-family:'AvantGarde'!important;">Certificado</div>
+                            <div>
+                                <span style="font-size: 64px; font-weight: bold; font-family:'AvantGarde'!important;">A: </span><span class="h2" style="font-size: 64px; font-weight: bold; font-family:'AvantGarde'!important;" t-field="o.name" />
+                            </div>
+                            <div>
+                                <span class="h2" style="font-family:'AvantGarde'!important;">En su condición de </span>
+                                <span class="h2" style="text-transform:uppercase; font-family:'AvantGarde'!important;" t-field="o.event_ticket_id.name" />
+                                <span class="h2" style="font-family:'AvantGarde'!important;"> en el evento </span>
+                            </div>
+                            <div class="h2" style="text-transform:uppercase; font-family:'AvantGarde'!important;" t-field="o.event_id.name"/>
+                            
+                            <div class="h2" style="font-family:'AvantGarde'!important;">Universidad Central "Marta Abreu" de Las Villas</div>
+                            <div class="h2" style="text-transform:uppercase; font-family:'AvantGarde'!important;" t-field="o.date_closed" />
+                                
+                            
+                            <div style="height:200px; padding-left:7mm; padding-top: 7mm; background: url(/website_event_track_uclv/static/src/img/uclv-seal.png); background-position-y: bottom;
+                                background-clip: border-box;
+                                background-repeat: no-repeat;
+                                background-size: contain;
+                                position: absolute;
+                                right: 100px;
+                                bottom: 100px;
+                                " > </div>
+                            
+                        </div>                        
+                    </div>                    
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

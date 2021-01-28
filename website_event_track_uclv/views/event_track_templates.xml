@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="tracks_session" inherit_id="website_event_track.tracks_session" name="Event Tracks">
+        <xpath expr="//t[@t-call='website_event.layout']" position="replace">
+            <t t-call="website_event.event_details">
+                <section class="bg-200">            
+                    <div class="container overflow-hidden d-block" style="position:relative; top:-40px;">
+                        <div class="row no-gutters mb-3">
+                            <div class="col-lg-12 bg-white px-3 pt-5 pb-0 shadow-sm o_wevent_online o_wesession_index">
+                                <!-- Options -->
+                                <t t-set="option_track_wishlist" t-value="not event.is_done and is_view_active('website_event_track.session_topbar_wishlist')"/>
+                                <!-- Topbar -->
+                                <t t-call="website_event_track.session_topbar"/>
+                                <!-- Drag/Drop Area -->
+                                <div id="oe_structure_wesession_index_1" class="oe_structure"/>
+                                <!-- Content -->
+                                <div class="o_wesession_container container">
+                                    <div class="row">
+                                        <t t-call="website_event_track.tracks_search"/>
+                                    </div>
+                                    <div class="row">
+                                        <t t-call="website_event_track.tracks_main"/>
+                                    </div>
+                                </div>
+                                <!-- Drag/Drop Area -->
+                                <div id="oe_structure_wesession_index_2" class="oe_structure mb-5"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </xpath>
+    </template>
+    
+    <template id="agenda_topbar" inherit_id="website_event_track.agenda_topbar" name="Agenda Tools">
+        <xpath expr="//nav" position="replace">
+            <nav class="navbar navbar-light bg-white d-print-none" >
+                <div class="container">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between w-100">
+                        <ul class="o_weagenda_topbar_filters o_wevent_index_topbar_filters nav">
+                        </ul>
+                        <div class="form-inline pl-sm-3 pr-0">
+                            <label class="invisible text-muted mr-2" id="search_summary"><span id="search_number" class="mr-1">0</span>Results</label>
+                            <input type="text" class="form-control" placeholder="Filter Tracks..." id="event_track_search"/>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </xpath>
+    </template>
+
+    <template id="session_topbar" inherit_id="website_event_track.session_topbar" name="Tracks Tools">
+        <xpath expr="//nav" position="replace">
+            <nav class="navbar navbar-light bg-white d-print-none">
+                <div class="container">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between w-100">
+                        <ul class="o_wesession_topbar_filters o_wevent_index_topbar_filters nav">
+                            <!-- Optional wishlist filter -->
+                            <li t-if="option_track_wishlist" class="nav-item dropdown mr-2 my-1">
+                                <a href="#" role="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-folder-open"/> Favorites
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a t-att-href="'/event/%s/track?%s' % (
+                                            slug(event),
+                                            keep_query('*', search_wishlist='')
+                                        )"
+                                        class="dropdown-item d-flex align-items-center justify-content-between">
+                                        All Talks
+                                    </a>
+                                    <a t-att-href="'/event/%s/track?%s' % (
+                                            slug(event),
+                                            keep_query('*', search_wishlist='1')
+                                        )"
+                                        t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if search_wishlist else ''}">
+                                        Favorites
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="d-flex align-items-center flex-wrap pl-sm-3 pr-0">
+                            <t t-call="website_event.events_search_box">
+                                <t t-set="_searches" t-value="searches"/>
+                                <t t-set="action" t-value="'/event/%s/track' % (slug(event))"/>
+                                <t t-set="_placeholder" t-value="'Search a talk ...'"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </xpath>
+    </template>
+
+    <template id="agenda_online" inherit_id="website_event_track.agenda_online" name="Track Online: Agenda">
+        <xpath expr="//t[@t-call='website_event.layout']" position="replace">
+            <t t-call="website_event.event_details">
+                <section class="bg-200">
+                    <div class="container overflow-hidden d-block" style="position:relative; top:-40px;">
+                        <div class="row no-gutters mb-3 shadow-sm">
+                            <div class="o_wevent_online o_weagenda_index col-lg-12 bg-white px-3 pb-0 pt-5">
+                                <!-- Options -->
+                                <t t-set="option_track_wishlist" t-value="not event.is_done and is_view_active('website_event_track.agenda_topbar_wishlist')"/>
+                                <!-- Topbar -->
+                                <t t-call="website_event_track.agenda_topbar"/>
+                                <!-- Drag/Drop Area -->
+                                <div class="oe_structure" id="oe_structure_website_event_track_agenda_1"/>
+                                <!-- Content -->
+                                <div class="container">
+                                    <div class="row mb-5">
+                                        <t t-call="website_event_track.agenda_main"/>
+                                    </div>
+                                </div>
+                                <!-- Drag/Drop Area -->
+                                <div class="oe_structure" id="oe_structure_website_event_track_agenda_2"/>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="event_track_proposal" inherit_id="website_event_track.event_track_proposal">
+        <xpath expr="//t[@t-call='website_event.layout']" position="replace">
+            <t t-call="website_event.event_details">
+                <section class="bg-200">
+                    <div class="container overflow-hidden d-block" style="position:relative; top:-40px;">
+                        <div class="row no-gutters mb-3 shadow-sm">
+                            <div class="col-lg-8 bg-white px-3 pb-0 o_wevent_online pt-5">
+                                <div class="oe_structure" id="oe_structure_website_event_track_proposal_1"/>
+                                <div class="container">                                
+                                    <div class="oe_structure" />                                
+                                    <section id="forms" t-if="not event.website_track_proposal">
+                                        <h3>Proposals are closed!</h3>
+                                        <p>
+                                            This event does not accept proposals.
+                                        </p>
+                                    </section>
+                                    <div t-if="not track">
+                                        <section>
+                                            <h3 class="o_page_header">Application</h3>
+                                            <p>
+                                                Fill this form to propose your paper.
+                                            </p>
+                                            <div class="alert alert-info" role="alert">
+                                                <i class="fa fa-info-circle"/>
+                                                You can add multiple speakers by separating names, emails and phones with commas.
+                                            </div>
+                                        </section>
+                                        <section id="forms" class="mb-5"
+                                            t-if="event.website_track_proposal">
+                                            <form class="mt32 js_website_submit_form website_event_track" t-attf-action="/event/#{event.id}/track_proposal/post" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12 col-form-label" for="language_id">Main Language <span class="text-danger"> *</span></label>
+                                                    <div class="col-sm-12">
+                                                        <select class="form-control" name="language_id">
+                                                            <t t-foreach='event.allowed_language_ids' t-as="lang2">
+                                                                <option t-esc='lang2.name' t-att-value='lang2.id'/>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12 col-form-label" for="track_name">Title <small class="text-muted" title="English"> [EN]</small><span class="text-danger"> *</span></label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" name="track_name" required="True" placeholder="Insert paper title here (in English)" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12 col-form-label" for="track_name_translation">Title <small class="text-muted" title="Spanish"> [ES]</small><span class="text-danger"> *</span></label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" name="track_name_es" required="True" placeholder="Insert paper title here (in Spanish)" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12 col-form-label" >Authors</label>
+                                                    <div class="col-sm-12">
+                                                        <table id="authors_table" class="table">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Institution</th>
+                                                                <th scope="col">Email</th>
+                                                                <th scope="col"></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row">1</th>
+                                                                    <td data-editable="name">Mark</td>
+                                                                    <td data-editable="institution">Otto</td>
+                                                                    <td data-editable="email">@mdo</td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <button class="add_author btn btn-primary">Add Author</button>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12" for="description">Abstract <small class="text-muted" title="English"> [EN]</small><span class="text-danger"> *</span></label>
+                                                    <div class="col-sm-12">
+                                                        <textarea class="form-control o_wysiwyg_loader" name="description" required="True"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12" for="description">Abstract<small class="text-muted" title="Spanish"> [ES]</small><span class="text-danger"> *</span></label>
+                                                    <div class="col-sm-12">
+                                                        <textarea class="form-control o_wysiwyg_loader" name="description_es" required="True" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12 col-form-label" for="keywords">Keywords <small class="text-danger">*</small></label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" name="keywords" required="True" placeholder="Comma separated list of keywords"/>
+                                                    
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12 col-form-label" for="partner_name">Speaker(s) Name</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" name="partner_name" readonly="True" t-att-value='event.current_user.partner_id.full_name'/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12 col-form-label" for="email_from">Speaker(s) Email</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="email" class="form-control" name="email_from" required="True" multiple="multiple"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12 col-form-label" for="phone">Speaker(s) Phone</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" name="phone" required="True"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-12 col-form-label" for="biography">Speaker(s) Biography</label>
+                                                    <div class="col-sm-12">
+                                                        <textarea  class="form-control" name="biography" rows="5"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">                                                
+                                                    <div class="col-sm-12">
+                                                        <input name="publish_complete" type="checkbox" checked="checked" /> 
+                                                        <span><b>I authorize the publication of this work</b></span><br/>
+                                                        <span class="text-muted"> (Uncheck this option if you do not want this work to be published)</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="form-group row o_form_buttons">
+                                                    <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
+                                                        <button type="submit" class="btn btn-primary">Submit Paper</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </section>
+                                    </div>
+                                    <div t-else="">
+                                        <t t-call="website_event_track.event_track_proposal_success"/>
+                                    </div>
+                                    <div class="oe_structure" id="oe_structure_website_event_track_proposal_2"/>
+                                </div>
+                                <div class="oe_structure" id="oe_structure_website_event_track_proposal_3"/>
+                            </div>
+                            <div class="col-lg-4 bg-secondary shadow-sm d-print-none">
+                                <t t-if="event.website_track_proposal and event.paper_abstract_deadline and not event.paper_abstract_deadline_overdue">
+                                    <div class="o_wevent_sidebar_block">
+                                        <h6 class="o_wevent_sidebar_title">Paper dates</h6>
+                                        <small class="text-muted">Abstracts submission until</small>
+                                        <div class="d-flex">                                        
+                                            <h5 t-field="event.with_context(tz=event.date_tz).paper_abstract_deadline" class="my-1 mr-1" t-options="{'date_only': 'true', 'format': 'EEEE'}"/>
+                                            <h5 class="my-1" t-field="event.with_context(tz=event.date_tz).paper_abstract_deadline" t-options="{'date_only': 'true', 'format': 'long'}" t-att-datetime="event.paper_abstract_deadline"/>
+                                        </div>
+                                        
+                                        <i class="fa fa-long-arrow-down d-block text-muted mx-3 my-2" style="font-size: 1.5rem"/>
+                                        
+                                        <small class="text-muted">Acceptance notifications until</small>
+                                        <div class="d-flex">
+                                            <h5 t-field="event.with_context(tz=event.date_tz).paper_abstract_notification_date" class="my-1 mr-1" t-options="{'date_only': 'true', 'format': 'EEEE'}"/>
+                                            <h5 class="my-1" t-field="event.with_context(tz=event.date_tz).paper_abstract_notification_date" t-options="{'date_only': 'true', 'format': 'long'}" t-att-datetime="event.paper_abstract_notification_date"/>
+                                        </div>
+                                        
+                                        <i class="fa fa-long-arrow-down d-block text-muted mx-3 my-2" style="font-size: 1.5rem"/>
+                                        
+                                        <small class="text-muted">Final papers submissions until</small>
+                                        <div class="d-flex">
+                                            <h5 t-field="event.with_context(tz=event.date_tz).paper_final_deadline" class="my-1 mr-1" t-options="{'date_only': 'true', 'format': 'EEEE'}"/>
+                                            <h5 class="my-1" t-field="event.with_context(tz=event.date_tz).paper_final_deadline" t-options="{'date_only': 'true', 'format': 'long'}" t-att-datetime="event.paper_final_deadline"/>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </t>
+                                <t t-if="len(event.attachment_ids)>0">
+                                    <div class="o_wevent_sidebar_block">
+                                        <h6 class="o_wevent_sidebar_title">Templates</h6>
+                                        <t t-foreach='event.sudo().attachment_ids' t-as="att">
+                                            <div style="display:flex;">
+                                                <div class="o_image" style="width:22px; height:22px;" t-att-data-mimetype="att.mimetype"/>
+                                                <a t-attf-href="/web/content/#{att.id}?download=true">
+                                                    <span t-field="att.name"/> 
+                                                </a>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </t>
+                                <div class="o_wevent_sidebar_block">
+                                    <h6 class="o_wevent_sidebar_title">Talks Types</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb4">
+                                            <strong>Conferences</strong>. These are standard talks with slides,
+                                            alocated in slots of 45-60 minutes.
+                                        </li>
+                                        <li class="mb4">
+                                            <strong>Work Presentations</strong>. These are 10-15 minutes presentations with a round of questions at the end.
+                                        </li>
+                                        <li class="mb4">
+                                            <strong>Scientific Posters</strong>. Only a scientific poster without oral presentation.
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="o_wevent_sidebar_block">
+                                    <h6 class="o_wevent_sidebar_title">Submission Agreement</h6>
+                                    <p>
+                                    We require speakers to accept an agreement in which they commit to:
+                                    </p>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            Timely release of presentation material (slides),
+                                            for publishing on our website.
+                                        </li><li>
+                                            Allow video and audio recording of their
+                                            presentation, for publishing on our website.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="event_track_proposal_success" inherit_id="website_event_track.event_track_proposal_success">
+        <xpath expr="//section" position="replace">
+            <t t-call="website_event.event_details">
+                <div id="o_event_paper_success" class="col-md-12">
+                    <section class="container mt48">
+                        <h3 class="mb16 mt16">Thank you for your paper</h3>
+                    </section>
+                    <p>
+                        We will evaluate your proposition and get back to you shortly.
+                    </p>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

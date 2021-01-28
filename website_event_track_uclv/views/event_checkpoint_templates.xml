@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="event_checkpoint" name="Attendance Checkpoint">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Attendance Checkpoint</t>
+            <t t-set="no_footer">1</t>
+            <div id="wrap">
+                <div class="container oe_website_sale mt64">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h4 class="mb0 mt0">
+                                <span>Attendance Checkpoint</span>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-xs-offset-4 col-sm-1 col-sm-offset-0">
+                            <img t-attf-src="/web/image/res.partner/#{registration.partner_id.id}/image_128/100x100" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="row" style="padding-left:10px !important;">
+                                <label class="col-xs-3 col-sm-2">Reference:</label>
+                                <span class="col-xs-9 col-sm-10" t-field="registration.id" />
+                            </div>
+                            <div class="row" style="padding-left:10px !important;">
+                                <label class="col-xs-3 col-sm-2">Contact:</label>
+                                <span class="col-xs-9 col-sm-10" t-field="registration.partner_id.name" />
+                            </div>
+                            <div class="row" style="padding-left:10px !important;">   
+                                <label class="col-xs-3 col-sm-2">Name:</label>
+                                <span class="col-xs-9 col-sm-10" t-field="registration.name" />
+                            </div>
+                                    
+                            <div class="row" t-if="registration.email"  style="padding-left:10px !important;">
+                                <label class="col-xs-3 col-sm-2">Email:</label>
+                                <span class="col-xs-9 col-sm-10" t-field="registration.email" />
+                            </div>
+                            <div class="row" t-if="registration.passport" style="padding-left:10px !important;">
+                                <label class="col-xs-3 col-sm-2">Passport or ID:</label>
+                                <span class="col-xs-9 col-sm-10" t-field="registration.passport" />
+                            </div>
+                            <div class="row" style="padding-left:10px !important;">
+                                <label class="col-sm-2">Event:</label>
+                                <div class="col-sm-10">
+                                    <span t-if="registration.event_id.name">
+                                        <t t-esc="registration.event_id.name"/>
+                                    </span>
+                                    <span t-if="registration.event_id.short_name">
+                                        <t t-esc="registration.event_id.short_name"/>
+                                    </span>
+                                    <div t-if="registration.event_id.subname">
+                                        <t class="text-small" t-esc="registration.event_id.subname"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" t-if="registration.event_ticket_id" style="padding-left:10px !important;">
+                                <label class="col-xs-3 col-sm-2">Ticket:</label>
+                                <span class="col-xs-9 col-sm-10" t-field="registration.event_ticket_id.name" />
+                            </div>
+                            <div class="row" style="padding-left:10px !important;">
+                                <label class="col-xs-3 col-sm-2">Status:</label>
+                                <div class="col-xs-9 col-sm-10">
+                                    <span  t-field="registration.state" class="label label-default"/>
+                                </div>
+                            </div>                                
+                            <div class="row" style="padding-left:10px !important;">
+                                <label class="col-xs-3 col-sm-2">Payment:</label>
+                                <div class="col-xs-9 col-sm-10">
+                                    <span t-if="registration.paid" class="label label-success">Paid</span>
+                                    <span t-if="not registration.paid" class="label label-danger">Unpaid</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-call="portal.portal_signature">
+                        <t t-set="object" t-value="registration"/>
+                        <t t-set="partner_name" t-value="registration.partner_id.name"/>
+                        <t t-set="callUrl" t-value="'/event/checkpopint/assist'"/>
+                        <t t-set="accessToken" t-value="0"/>
+                    </t>
+                    <a t-if="registration.paid and registration.state in ('draft','open')" class="btn btn-primary"><i class="fa fa-check"/> Assisted</a>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

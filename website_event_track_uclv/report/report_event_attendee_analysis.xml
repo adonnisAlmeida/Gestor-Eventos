@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="view_event_attendee_analysis_pivot" model="ir.ui.view">
+        <field name="name">event.attendee.analysis.pivot</field>
+        <field name="model">report.event.attendee.analysis</field>
+        <field name="arch" type="xml">
+            <pivot string="Attendee Analysis" disable_linking="False">
+                <field name="event_id" type="row"/>
+                <field name="attendee_id" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_event_attendee_analysis_graph" model="ir.ui.view">
+        <field name="name">event.attendee.analysis.graph</field>
+        <field name="model">report.event.attendee.analysis</field>
+        <field name="arch" type="xml">
+            <graph string="Attendee Analysis" type="pie">
+                <field name="attendee_state" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_event_attendee_analysis_filter" model="ir.ui.view">
+        <field name="name">view.event.attendee.analysis.filter</field>
+        <field name="model">report.event.attendee.analysis</field>
+        <field name="arch" type="xml">
+            <search string="Attendee Analysis">
+                <field name="event_name"/>
+                <field name="event_id"/>
+                <field name="contact_id"/>
+                <field name="contact_user_id"/>
+                <field name="attendee_id"/>
+                <field name="ticket_id"/>
+                <!-- <field name="attendee_stage_id"/> -->
+                <filter string="Without User" name="filter_without_user" domain="[('contact_user_id', '=', None)]"/>
+                <filter string="Without Email" name="filter_without_email" domain="[('contact_email', '=', None)]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Main Event" name="groub_by_event_name" context="{'group_by': 'event_name'}"/>
+                    <filter string="Event" name="groub_by_event_id" context="{'group_by': 'event_id'}"/>
+                    <filter string="Coordinator" name="groub_by_coordinator_id" context="{'group_by': 'coordinator_id'}"/>
+                    <filter string="attendee" name="groub_by_attendee_id" context="{'group_by': 'attendee_id'}"/>
+                    <filter string="State" name="groub_by_state" context="{'group_by': 'attendee_state'}" />
+                    <filter string="Contact" name="groub_by_contact_id" context="{'group_by': 'contact_id'}"/>
+                    <filter string="Contact Country" name="groub_by_contact_country_id" context="{'group_by': 'contact_country_id'}"/>
+                    <filter string="User" name="groub_by_contact_user_id" context="{'group_by': 'contact_user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_event_attendee_analysis_report_template" model="ir.actions.act_window">
+        <field name="name">Attendee Analysis</field>
+        <field name="res_model">report.event.attendee.analysis</field>       
+        <field name="view_mode">graph,pivot</field>
+        <field name="search_view_id" ref="view_event_attendee_analysis_filter"/>
+        <field name="view_id" ref="view_event_attendee_analysis_pivot"/>
+    </record>
+
+    <menuitem id="menu_event_attendee_analysis" name="Attendee analysis" action="action_event_attendee_analysis_report_template" parent="event.menu_reporting_events"
+            groups="event.group_event_user" sequence="3"/>
+    </data>
+</odoo>

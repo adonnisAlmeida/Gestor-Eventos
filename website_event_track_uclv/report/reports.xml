@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            string="Attendee List"
+            id="action_report_attendee_list"
+            model="attendee.list.report"
+            report_type="qweb-pdf"
+            name="website_event_track_uclv.report_attendee_list"
+            file="website_event_track_uclv.report_attendee_list"
+            print_report_name="Attendee List"
+        />
+        <report
+            id="report_event_registration_certificate"
+            model="event.registration"
+            string="Attendee Certificate"
+            report_type="qweb-html"
+            name="website_event_track_uclv.event_registration_report_template_certificate"
+            file="website_event_track_uclv.event_registration_report_template_certificate"
+            paperformat="paperformat_certificate_lowmargin_landscape"
+            print_report_name="'Attendee Certificate - %s' % (object.name).replace('/','')"
+        />
+    </data>
+</odoo>

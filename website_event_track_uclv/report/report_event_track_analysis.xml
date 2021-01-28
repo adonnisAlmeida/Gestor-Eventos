@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="view_event_track_analysis_pivot" model="ir.ui.view">
+        <field name="name">event.track.analysis.pivot</field>
+        <field name="model">report.event.track.analysis</field>
+        <field name="arch" type="xml">
+            <pivot string="Track Analysis" disable_linking="False">
+                <field name="event_id" type="row"/>
+                <field name="track_id" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_event_track_analysis_graph" model="ir.ui.view">
+        <field name="name">event.track.analysis.graph</field>
+        <field name="model">report.event.track.analysis</field>
+        <field name="arch" type="xml">
+            <graph string="Track Analysis" type="pie">
+                <field name="track_stage_id" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_event_track_analysis_filter" model="ir.ui.view">
+        <field name="name">view.event.track.analysis.filter</field>
+        <field name="model">report.event.track.analysis</field>
+        <field name="arch" type="xml">
+            <search string="Track Analysis">
+                <field name="event_name"/>
+                <field name="event_id"/>
+                <field name="author_id"/>
+                <field name="author_user_id"/>
+                <field name="track_id"/>
+                <field name="language_id"/>
+                <field name="track_stage_id"/>
+                <filter string="Without User" name="filter_without_user" domain="[('author_user_id', '=', None)]"/>
+                <filter string="Without Email" name="filter_without_email" domain="[('author_email', '=', None)]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Main Event" name="groub_by_event_name" context="{'group_by': 'event_name'}"/>
+                    <filter string="Event" name="groub_by_event_id" context="{'group_by': 'event_id'}"/>
+                    <filter string="Coordinator" name="groub_by_coordinator_id" context="{'group_by': 'coordinator_id'}"/>
+                    <filter string="Track" name="groub_by_track_id" context="{'group_by': 'track_id'}"/>
+                    <filter string="Stage" name="groub_by_stage_id" context="{'group_by': 'track_stage_id'}" />
+                    <filter string="Author" name="groub_by_author_id" context="{'group_by': 'author_id'}"/>
+                    <filter string="Author Country" name="groub_by_author_country_id" context="{'group_by': 'author_country_id'}"/>
+                    <filter string="User" name="groub_by_author_user_id" context="{'group_by': 'author_user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_event_track_analysis_report_template" model="ir.actions.act_window">
+        <field name="name">Track Analysis</field>
+        <field name="res_model">report.event.track.analysis</field>        
+        <field name="view_mode">graph,pivot</field>
+        <field name="search_view_id" ref="view_event_track_analysis_filter"/>
+        <field name="view_id" ref="view_event_track_analysis_pivot"/>
+    </record>
+
+    <menuitem parent="event.event_main_menu" id="event.menu_reporting_events" sequence="99" groups="event.group_event_user" name="Reporting"/>
+    <menuitem name="Events"
+            id="event.event_event_menu_pivot_report"
+            action="event.event_event_action_pivot"
+            sequence="3"
+            parent="event.menu_reporting_events"
+            groups="event.group_event_user"/>
+    <menuitem id="menu_event_track_analysis" name="Track analysis" action="action_event_track_analysis_report_template" parent="event.menu_reporting_events"
+            groups="event.group_event_user" sequence="2"/>
+    </data>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+admin_access, odoo_v11_importer admin access,model_event_v11_importer,base.group_no_one,1,1,1,1
+admin_security_rule, Model db_backup admin access,model_event_v11_importer,odoo_v11_importer.group_manager,1,1,1,1

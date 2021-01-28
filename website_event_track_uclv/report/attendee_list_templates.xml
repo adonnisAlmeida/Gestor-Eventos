@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_attendee_list">
+            <t t-call="web.html_container">
+                 <t t-call="web.external_layout">
+                    <!-- <t t-foreach="docs" t-as="o"> -->
+                        <div class="page">
+                            <div class="oe_structure"/>
+                            <h2>Attendee List</h2>
+                            <table class="table table-condensed table-bordered">
+                                <tr>
+                                    <td width="50%"><strong>Events</strong></td>
+                                    <td width="17%"><strong>Tickets</strong></td>
+                                    <td width="17%"><strong>Pricelists</strong></td>
+                                    <td width="16%"><strong>Date</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><span t-foreach="events" t-as="e"><span t-esc="e"/><br/></span></td>
+                                    <td><span t-foreach="tickets" t-as="t"><span t-esc="t"/><br/></span></td>
+                                    <td><span t-foreach="pricelists" t-as="p"><span t-esc="p"/><br/></span></td>
+                                    <td><span t-esc="date"/></td>
+                                </tr>
+                            </table>
+                            <table class="table table-condensed table-bordered mt32">
+                                <thead>
+                                    <tr>
+                                        <th width="5%">Ref</th>
+                                        <th width="35%">Name</th>
+                                        <th width="5%" class="text-center">Country</th>
+                                        <th width="20%" class="text-center">Institution</th>
+                                        <th width="10%" class="text-center">Passport or ID</th>
+                                        <th width="10%" class="text-center">Balance</th>
+                                        <th width="10%" class="text-center">Payment</th>
+                                        <th width="10%" class="text-center">Invoice</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <tr t-foreach="attendees" t-as="att">
+                                        <td><span t-esc="att.id"/></td>
+                                        <td><span t-esc="att.name"/></td>
+                                        <td class="text-center"><span t-esc="att.country_id.code"/></td>
+                                        <td><span t-esc="att.institution and att.institution[0:100] or ''"/></td>
+                                        <td class="text-right"><span t-esc="att.passport"/></td>
+                                        <td class="text-right"><span t-esc="att.balance"/> <span t-esc="att.currency_id.symbol"/></td>
+                                        <td class="text-right"> </td>
+                                        <td class="text-right"> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            <!-- </t> -->
+        </template>
+    </data>
+</odoo>

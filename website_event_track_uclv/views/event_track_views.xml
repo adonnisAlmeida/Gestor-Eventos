@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<odoo>       
+        <record model="ir.ui.view" id="view_event_location_form">
+            <field name="name">Event Locations</field>
+            <field name="model">event.track.location</field>
+            <field name="inherit_id" ref="website_event_track.view_event_location_form" />
+            <field name="arch" type="xml">
+                <field name="name" position="before" >
+                    <field name="partner_id" domain="[('is_company','=',True)]" required="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_event_location_tree">
+            <field name="name">Event Location</field>
+            <field name="model">event.track.location</field>
+            <field name="inherit_id" ref="website_event_track.view_event_location_tree" />
+            <field name="arch" type="xml">
+                <field name="name" position="before" >
+                    <field name="partner_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_event_track_search">
+            <field name="name">event.track.search</field>
+            <field name="inherit_id" ref="website_event_track.view_event_track_search" />
+            <field name="model">event.track</field>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="inside">
+                    <filter string="Author" name="author" context="{'group_by': 'partner_id'}"/>
+                    <filter string="First Reviewer" name="reviewer_id" context="{'group_by': 'reviewer_id'}"/>
+                    <filter string="Second Reviewer" name="reviewer2_id" context="{'group_by': 'reviewer2_id'}"/>
+                </xpath>                
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_event_track_form">
+            <field name="name">event.track.form</field>
+            <field name="inherit_id" ref="website_event_track.view_event_track_form" />
+            <field name="model">event.track</field>
+            <field name="arch" type="xml">
+                <field name="user_id" position="replace" >
+                    <field name="user_id" readonly="True" />
+                </field>
+                <field name="user_id" position="after" >
+                    <field name="reviewer_id" options="{'no_create': True}"/>
+                    <field name="reviewer2_id" options="{'no_create': True}"/>
+                </field>
+
+                <field name="partner_phone" position="after">
+                    <field name="publish_complete" readonly="True"/>
+                </field>
+                <field name="location_id" position="replace">
+                    <field name="address_id" invisible="1" />
+                    <field name="location_id" domain="[('partner_id', '=', address_id)]"/>
+                </field>        
+                <field name="tag_ids" position="after">                    
+                    <field name="language_id" />
+                    <field name="track_type_id" />
+                </field>
+                <!-- <xpath expr="//button[@name='toggle_active']" position="replace">
+                    <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive"  groups="event_uclv.group_event_multimanager">
+                        <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                    </button>
+                </xpath> -->
+                <xpath expr="//group" position="after">
+                        <group>
+                            <field name="description" />
+                            <field name="description_lang" />
+                        </group>
+                        <group>
+                            <notebook>
+                                <page string="Authors" >
+                                    <field name="author_ids">
+                                        <tree editable = "bottom">
+                                            <field name="sequence" widget="handle" groups="event.group_event_manager"/>
+                                            <field name="res_partner_id" />
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="sequence" groups="event.group_event_manager"/>
+                                                <field name="res_partner_id" />
+                                            </group>
+                                        </form>
+                                    </field>
+                                </page>
+                                <page string="First Review" >
+                                   <group cols="6" colspan="2">
+                                       <group>
+                                          <field name="coordinator_notes"/>
+                                       </group>
+                                       <group>
+                                          <field name="author_notes"/>
+                                       </group>
+                                       <group>
+                                           <field name="recommendation"/>
+                                       </group>                                       
+                                   </group>
+                                </page>
+
+                                <page string="Second Review" >
+                                    <group>
+                                        <group>
+                                            <field name="coordinator_notes2"/>
+                                        </group>
+                                        <group>
+                                            <field name="author_notes2"/>
+                                        </group>
+                                        <group>
+                                            <field name="recommendation2"/>
+                                        </group>                                        
+                                    </group>
+                                </page>
+
+                            </notebook>
+                        </group>
+
+                    </xpath>
+            </field>
+        </record>   
+
+        <menuitem
+            id="website_event_track.menu_event_track"
+            name="Event Tracks"
+            action="website_event_track.action_event_track"
+            parent="event.event_main_menu"
+            sequence="12"
+            groups="event.group_event_manager"/>
+       
+        <record model="ir.ui.view" id="view_event_track_tag_form">
+            <field name="name">Track Tags</field>
+            <field name="model">event.track.tag</field>
+            <field name="inherit_id" ref="website_event_track.view_event_track_tag_form" />
+            <field name="arch" type="xml">
+                
+                <field name="name" position="after" >
+                    <button type="object" name="split">Split</button>
+                </field>
+            </field>
+        </record>
+</odoo>

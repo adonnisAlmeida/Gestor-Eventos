@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- <record id="event_type_view_form_inherit_track" model="ir.ui.view">
+        <field name="name">event.type.view.form.inherit.track</field>
+        <field name="model">event.type</field>
+        <field name="inherit_id" ref="website_event_track.event_type_view_form_inherit_track"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='event_type_visibility_website']/div[hasclass('o_setting_right_pane')]" position='inside'>
+                <div class="row mt16" attrs="{'invisible': [('website_menu', '=', False)]}">
+                    <label class="col-md-4" for="website_registration"/> <field name="website_registration"/>
+                </div>
+            </xpath>
+        </field>
+    </record> -->
+
+        <!-- Events Organisation/CONFIGURATION/EVENTS -->
+        <!-- <record id="view_event_form_inherit" model="ir.ui.view">
+            <field name="name">Event</field>
+            <field name="inherit_id" ref="event.view_event_form"/>
+            <field name="model">event.event</field>
+            <field name="arch" type="xml">
+                <field name="auto_confirm" position="after">
+                    <field name="allowed_pricelist_ids" widget="many2many_tags" groups="base.group_no_one"/>
+                    <field name="requires_approved_track_to_buy" string="Track approved" groups="base.group_no_one"/>
+                </field>
+            </field>
+        </record> -->
+
+        <record id="view_event_form" model="ir.ui.view">
+            <field name="name">event.event.view.from.inherit.track.uclv</field>
+            <field name="inherit_id" ref="website_event.event_event_view_form"/>
+            <field name="model">event.event</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='organizer_id']" position="after">
+                    <field name="number"/>
+                    <field name="email"/>
+                    
+                </xpath>
+                <!--<label for="website_menu" position="after">
+                    <field name="website_registration" attrs="{'invisible': [('website_menu', '=', False)]}"/>
+                    <label for="website_registration" string="Registration on Website" attrs="{'invisible': [('website_menu', '=', False)]}"/><br/>                    
+                </label>
+                
+                
+                <xpath expr="//button[@name='toggle_active']" position="replace">
+                    <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" groups="event_uclv.group_event_multimanager">
+                        <field name="active" widget="boolean_button" options='{"terminology": "archive"}' />
+                    </button>
+                </xpath>-->
+                
+                <button name="%(website_event_track.action_event_track_from_event)d" position="replace">
+                    <button name="%(website_event_track.action_event_track_from_event)d"
+                            type="action"
+                            class="oe_stat_button"
+                            groups="event.group_event_manager"
+                            icon="fa-microphone"
+                            context="{'default_date': date_begin}">
+                        <field name="track_count" string="Tracks" widget="statinfo"/>
+                    </button>        
+                </button>
+                    
+                <button name="%(website_event_track.event_sponsor_action_from_event)d" position="replace">
+                    <button name="%(website_event_track.event_sponsor_action_from_event)d"
+                            type="action"
+                            groups="event.group_event_manager"
+                            class="oe_stat_button"
+                            icon="fa-users">
+                        <field name="sponsor_count" widget="statinfo"/>
+                    </button>
+                </button>
+                
+                <xpath expr="//sheet/group[last()]" position="after">
+                    <group string="Papers Submissions" name="papers_group">
+                        <group>
+                            <!-- <field name="website_introduction_msg" /> -->
+                            <field name="allowed_language_ids" widget="many2many_tags" string="Allowed languages" />
+                            <field name="paper_abstract_deadline" string="Accepts abstracts ultil"/>
+                            <field name="paper_abstract_notification_date" string="Abstracts revision ends"/>
+                            <field name="paper_final_deadline" string="Final papers date"/>
+                            <!-- <field name="website_track_proposal_msg" string="Track Proposal Message" /> 
+                            <field name="website_track_proposal_template" string="Track Proposal Template" /> -->
+                        </group>
+                    </group>
+                </xpath>
+           </field>
+        </record>
+
+        <record id="view_event_tree_inherited" model="ir.ui.view">
+            <field name="name">event.event.tree</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="number"/>
+                </field>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="view_event_search_inherit">
+            <field name="name">event.event.search</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_search"/>
+            <field name="arch" type="xml">
+                <field name="name" position="replace">
+                    <field name="name" string="Nombre" />
+                    <field name="short_name" string="Nombre corto" />
+                    <field name="subname" string="Nombre de subevento" />
+                </field>
+
+                    <!-- <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction','=',True)]"/>
+                    <separator/>
+                    <filter string="Unconfirmed" name="draft" domain="[('state','=','draft')]" help="Events in New state"/>
+                    <filter name="confirm" string="Confirmed" domain="[('state','=','confirm')]" help="Confirmed events"/>
+                    <separator/>
+                    <filter string="My Events" help="My Events" domain="[('user_id','=',uid)]"/>
+                    <separator/>
+                    <filter string="Upcoming" name="upcoming"
+                        domain="['&amp;', ('state', '!=', 'cancel'), ('date_begin','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]" help="Upcoming events from today" />
+                    <field name="event_type_id"/>
+                    <field name="user_id"/>
+                    <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Responsible" context="{'group_by': 'user_id'}"/>
+                        <filter string="Event Category" context="{'group_by':'event_type_id'}"/>
+                        <filter string="Status" context="{'group_by':'state'}"/>
+                        <filter string="Start Month" domain="[]" context="{'group_by':'date_begin'}"/>
+                    </group> -->
+                
+            </field>
+        </record>
+</odoo>

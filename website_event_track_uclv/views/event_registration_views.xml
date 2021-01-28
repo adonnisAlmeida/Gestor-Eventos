@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_registration_search_inherit">
+        <field name="name">event.registration.search.inherit</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_registration_search"/>
+        <field name="arch" type="xml">            
+            <filter name="expected" position="after">
+                <filter string="Paid" name="paid" domain="[('paid', '=', True)]" />
+                <filter string="Unpaid" name="unpaid" domain="[('paid', '=', False)]" />
+            </filter>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_event_registration_form_inherit">
+        <field name="name">event.registration.form.inherit</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_event_registration_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//sheet/group" position='before'>
+                <div class="oe_button_box" name="button_box">
+                    <button class="oe_stat_button" type="action" context="{'search_default_event_registration_id': active_id}" name="%(event_registration_payment_action)d" icon="fa-money">
+                        <field string="Payments" name="payment_count" widget="statinfo" />
+                    </button>
+                </div>
+            </xpath> -->
+            <xpath expr="//sheet/group" position='after'>
+                <notebook groups="event_uclv.group_event_accountant">
+                    <page string="Payments">
+                        <field name="payment_ids">
+                            <tree string="Payments" editable="bottom">
+                                <field name="payment_date"/>
+                                <!-- <field name="event_registration_id" /> -->
+                                <field name="currency_id" invisible="1"/>
+                                <field name="amount"/>
+                                <field name="payment_type" />
+                                <field name="reference" />
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+            <field name="email" position="after">
+                <field name="institution" />
+                <field name="country_id" />
+                <field name="gender" />
+            </field>
+            <field name="partner_id" position="before">
+                <field name="id" string="Reference" />
+            </field>
+            <field name="phone" position="replace">
+                <field name="passport"/>
+            </field>
+            <field name="event_id" position="after">
+                <field name="pricelist_id" options="{'no_create': True}" />
+            </field>
+            <field name="event_ticket_id" position="replace">
+                <field name="event_ticket_id" domain="[('event_id', '=', event_id),('allowed_pricelist_ids', 'in', pricelist_id)]" options="{'no_create': True}"/>
+            </field>
+            <field name="event_ticket_id" position="after">
+                <field name="currency_id" groups="base.group_no_one"/>
+                <field name="final_price"/>
+                <field name="balance" />
+            </field>
+            <field name="date_open" position="after">
+                <field name="paid"/>
+                <field name="paid_date"/>
+            </field>
+        </field>
+    </record>
+    
+    <!-- <record id="event_sale.view_event_registration_ticket_form" model="ir.ui.view">
+            <field name="name">event.registration.form.inherit</field>
+            <field name="model">event.registration</field>
+            <field name="inherit_id" ref="event.view_event_registration_form" />
+            <field name="arch" type="xml">
+                <field name="event_id" position="after">
+                    <field name="event_ticket_id" domain="[('event_id', '=', event_id)]"/>
+                </field>
+                <group name="event" position="after">
+                    <group string="Origin">
+                        <field name="sale_order_id"/>
+                        <field name="origin" attrs="{'invisible': [('sale_order_id', '!=', False)]}"/>
+                        <field name="sale_order_line_id" readonly="1" attrs="{'invisible': [('sale_order_id', '=', False)]}"/>
+                    </group>
+                </group>
+            </field>
+    </record> -->
+
+    <record model="ir.ui.view" id="view_event_registration_tree_inherit">
+        <field name="name">event.registration.tree.inherit</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_event_registration_tree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="before">
+                <field name="id" string="Reference"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="balance"/>
+            </field>
+        </field>
+    </record>
+</odoo>

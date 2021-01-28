@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="attendee_list_wizard" model="ir.ui.view">
+            <field name="name">Attendee List</field>
+            <field name="model">attendee.list.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Attendee List">
+                    <h4>Select params to print report:</h4>
+                    <group colspan="4">
+                        <group>
+                            <field name="event_ids" widget="many2many_tags"/>
+                            <field name="ticket_ids" widget="many2many_tags"/>
+                            <field name="pricelist_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="only_unpaid" />
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print" type="object" default_focus="1" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="attendee_list_wizard_action" model="ir.actions.act_window">
+            <field name="name">Attendee List</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">attendee.list.wizard</field>
+            <field name="view_id" ref="attendee_list_wizard"/>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem name="Attendee List..." action="attendee_list_wizard_action" id="attendee_list_wizard_action_menu" parent="event.menu_reporting_events" sequence="4" groups="event.group_event_user"/>
+    </data>
+</odoo>

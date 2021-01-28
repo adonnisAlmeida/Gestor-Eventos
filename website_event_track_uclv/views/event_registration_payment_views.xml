@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="event_registration_payment_search" model="ir.ui.view">
+        <field name="name">event.registration.payment.search</field>
+        <field name="model">event.registration.payment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="payment_date" />
+                <field name="event_registration_id" />
+                <field name="currency_id"/>
+                <field name="amount"/>
+                <field name="payment_type" />
+                <field name="reference" />
+            </search>
+        </field>
+	</record>
+
+    <record id="event_registration_payment_list" model="ir.ui.view">
+        <field name="name">event.registration.payment.list</field>
+        <field name="model">event.registration.payment</field>
+        <field name="arch" type="xml">
+            <tree string="Payments">
+                <field name="payment_date" />
+                <field name="event_registration_id" />
+                <field name="currency_id" invisible="1"/>
+                <field name="amount"/>
+                <field name="payment_type" />
+                <field name="reference" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="event_registration_payment_form">
+        <field name="name">event.registration.payment.form</field>
+        <field name="model">event.registration.payment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="payment_date"/>
+                        <field name="event_registration_id" />
+                        <field name="currency_id" invisible="1"/>
+                        <field name="amount"/>
+                        <field name="payment_type" />
+                        <field name="reference" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="event_registration_payment_action" model="ir.actions.act_window">
+        <field name="name">Payments</field>
+        <field name="res_model">event.registration.payment</field>        
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="event_registration_payment_list"/>
+        <field name="search_view_id" ref="event_registration_payment_search" />
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            Click to create a new payment.
+            </p>
+        </field>
+    </record>
+
+    <record id="event_registration_payment_action_filter" model="ir.actions.act_window">
+        <field name="name">Payments</field>
+        <field name="res_model">event.registration.payment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="event_registration_payment_list"/>
+        <field name="search_view_id" ref="event_registration_payment_search" />
+
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            Click to create a new payment.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Attendees"
+        id="event.menu_action_registration" parent="event.event_main_menu"
+        action="event.action_registration" groups="event.group_event_user" sequence="10"/>
+    
+    <menuitem name="Payments"
+        id="event_registration_payment_menu" parent="event.event_main_menu"
+        action="event_registration_payment_action" groups="event_uclv.group_event_accountant" sequence="10"/>
+        
+
+</odoo>
