@@ -8,7 +8,7 @@ import odoo.addons.portal.controllers.portal as PortalController
 
 class CustomerPortal(PortalController.CustomerPortal):
     MANDATORY_BILLING_FIELDS = ["name", "email", "country_id", "gender"]
-    OPTIONAL_BILLING_FIELDS = ["zipcode", "phone", "city", "company_name", "state_id", "website_description", "street", "city", "title", "reviewer", "vat"]
+    OPTIONAL_BILLING_FIELDS = ["zipcode", "phone", "city", "institution", "state_id", "website_description", "street", "city", "title", "reviewer", "vat"]
 
     @route(['/my/account'], type='http', auth='user', website=True)
     def account(self, redirect=None, **post):
@@ -52,8 +52,7 @@ class CustomerPortal(PortalController.CustomerPortal):
                     values.update({'state_id': False})
                 else:
                     values.update({'state_id': int(values.get('state_id'))})
-                values.update({'zip': values.pop('zipcode', '')})
-                
+                values.update({'zip': values.pop('zipcode', '')})       
                                                
 
                 partner.sudo().write(values)
