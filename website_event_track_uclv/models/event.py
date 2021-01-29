@@ -13,12 +13,12 @@ class EventType(models.Model):
 
     website_registration = fields.Boolean('Registration on Website')
     
-    @api.onchange('website_menu')
+    """@api.onchange('website_menu')
     def _onchange_website_menu(self):
         if not self.website_menu:
             self.website_registration = False
             self.website_track = False
-            self.website_track_proposal = False
+            self.website_track_proposal = False """
 
 
 class Event(models.Model):
@@ -35,20 +35,7 @@ class Event(models.Model):
 
     website_registration = fields.Boolean('Registration on Website', compute='_compute_website_registration', inverse='_set_website_menu')
     website_registration_ok = fields.Boolean('Registration on Website')
-    
-    #website_track_proposal_msg = fields.Html(string="Proposal Message", translate=True, default="""<p>
-    #                            We will accept a broad range of
-    #                            presentations, from reports on academic and
-    #                            commercial projects to tutorials and case
-    #                            studies. As long as the presentation is
-    #                            interesting and potentially useful to the
-    #                            audience, it will be considered for
-    #                            inclusion in the programme.
-    #                        </p>""")
-    #website_introduction_msg = fields.Html(string="Introduction Message", translate=True, default="""<p>
-    #                            This is the introduction.
-    #                        </p>""")
-    
+           
     def _get_overdue(self):
         overdue = False
         if self.paper_abstract_deadline:
@@ -67,7 +54,6 @@ class Event(models.Model):
         self.paper_abstract_deadline_month = month
     
     attachment_ids = fields.One2many('ir.attachment', 'res_id', domain=[('res_model', '=', 'event.event')], string='Attachments')
-    #website_track_proposal_template = fields.Binary(string="Proposal Template")
     paper_abstract_deadline = fields.Date(string="Abstracts Deadline")
     paper_abstract_deadline_month = fields.Char(string="Abstracts Deadline Month", compute='_get_month')
     paper_abstract_deadline_overdue = fields.Boolean(string="Abstracts Deadline Overdue", compute='_get_overdue')
@@ -86,6 +72,28 @@ class Event(models.Model):
         for event in self:
             event.website_registration = event.website_registration_ok
     
+    def _get_track_menu_entries(self):
+        """ Method returning menu entries to display on the website view of the
+        event, possibly depending on some options in inheriting modules.
+
+        Each menu entry is a tuple containing :
+          * name: menu item name
+          * url: if set, url to a route (do not use xml_id in that case);
+          * xml_id: template linked to the page (do not use url in that case);
+          * menu_type: key linked to the menu, used to categorize the created
+            website.event.menu;
+        """
+        self.ensure_one()
+        return [
+            ('Papers', '/event/%s/track' % slug(self), False, 10, 'track'),
+            ('Agenda', '/event/%s/agenda' % slug(self), False, 70, 'track')
+        ]
+
+    def _get_track_proposal_menu_entries(self):
+        """ See website_event_track._get_track_menu_entries() """
+        self.ensure_one()
+        return [('Upload a paper', '/event/%s/track_proposal' % slug(self), False, 15, 'track_proposal')]
+
     """@api.onchange('event_type_id')
     def _onchange_type(self):
         super(Event, self)._onchange_type()
@@ -95,15 +103,15 @@ class Event(models.Model):
             self.website_track_proposal = self.event_type_id.website_track_proposal
     """
     
-    @api.onchange('website_menu')
+    """@api.onchange('website_menu')
     def _onchange_website_menu(self):
         if not self.website_menu:
             self.website_registration = False
             self.website_track = False
-            self.website_track_proposal = False
+            self.website_track_proposal = False """
     
     
-    def _set_website_menu(self):
+    """ def _set_website_menu(self):
         for event in self:
             event.website_track_proposal_ok = event.website_track_proposal
             event.website_track_ok = event.website_track
@@ -157,7 +165,9 @@ class Event(models.Model):
                             'value': trans.get(created.name, created.name),
                             'state': 'translated'
                         })
+    """
 
+    """
     def _get_menu_entries(self):
         self.ensure_one()
         res = [
@@ -172,6 +182,7 @@ class Event(models.Model):
         if self.website_track_proposal:
             res += [('Upload a paper', '/event/%s/track_proposal' % slug(self), False, 'fa fa-upload')]
         return res
+    """
 
     @api.model
     def create(self, vals):
@@ -181,7 +192,6 @@ class Event(models.Model):
                 image = f.read()
             vals['image_1920'] = base64.b64encode(image)
         return super(Event, self).create(vals)
-
     
     def write(self, vals):
         group = self.env.ref('event_uclv.group_event_multimanager')
