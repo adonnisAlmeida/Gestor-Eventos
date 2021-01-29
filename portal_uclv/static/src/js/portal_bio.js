@@ -7,7 +7,7 @@ odoo.define('portal_uclv.portal_bio', function (require) {
     var wysiwygLoader = require('web_editor.loader');
     var _t = core._t;
 
-    publicWidget.registry.PortalAvatar = publicWidget.Widget.extend({
+    publicWidget.registry.PortalBio = publicWidget.Widget.extend({
         selector: '#portal_bio',
         
         init: function () {

@@ -2,8 +2,8 @@
 <odoo>
     <template id="assets_frontend" inherit_id="website.assets_frontend">
        <xpath expr="." position="inside">
-           <script type="text/javascript" src="/portal_uclv/static/src/js/portal_avatar.js"></script>
-           <script type="text/javascript" src="/portal_uclv/static/src/js/portal_bio.js"></script>
+            <script type="text/javascript" src="/portal_uclv/static/src/js/portal_avatar.js"></script>
+            <script type="text/javascript" src="/portal_uclv/static/src/js/portal_bio.js"></script>
        </xpath>
        <xpath expr="//link[last()]" position="after">
             <link rel="stylesheet" type="text/scss" href="/portal_uclv/static/src/scss/portal.scss"/>
@@ -18,17 +18,7 @@
         </xpath>
     </template>
     
-    <!-- <template id="frontend_layout" inherit_id="portal.frontend_layout">
-        <xpath expr="//ul[@id='top_menu']/li[hasclass('dropdown')]/a[@data-toggle='dropdown']" position="replace">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <span t-field="user_id.partner_id.image_128" t-options='{"widget": "image", "style":"height: 26px; width: 26px; object-fit: cover; transform: translateY(-2px); border-radius: 50% !important;"}'/>
-                <b>
-                    <span t-esc="(len(user_id.name)&gt;25) and (user_id.name[:23]+'...') or user_id.name"/>                    
-                </b>
-            </a>                                   
-        </xpath>
-    </template> -->
-
+    
     <template id="portal_my_details" inherit_id="portal.portal_my_details">
         <xpath expr="//form" position="attributes">
             <attribute name="enctype">multipart/form-data</attribute>
@@ -48,7 +38,7 @@
                 </div>
             </div>
             <div t-attf-class="form-group #{error.get('title') and 'has-error' or ''} col-xl-6">
-                <label class="col-form-label" for="name">Title</label>
+                <label class="col-form-label label-optional" for="name">Title</label>
                 <select name="title" id="title" class="form-control" >
                     <option value=''> </option>
                     <t t-foreach='titles' t-as="title2">
@@ -62,9 +52,27 @@
                 <label class="radio-inline"><input type="radio" name="gender" value="f" t-att-checked="partner.gender=='f'"/> Female</label>
                 <label class="radio-inline"><input type="radio" name="gender" value="u" t-att-checked="partner.gender=='u'" /> Prefer not say</label>
             </div>
+        </xpath>  
+        <xpath expr="//input[@name='email']" position="replace">
+            <input type="email" name="email"  t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email" readonly="True"/>
+        </xpath>  
+        <xpath expr="//div[hasclass('row')]/div[8]" position="replace">
+            <div t-attf-class="form-group #{error.get('institution') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label label-optional" for="institution">Institution</label>
+                <input type="text" name="institution" t-attf-class="form-control #{error.get('institution') and 'is-invalid' or ''}" t-att-value="institution or partner.institution"/>
+            </div>
         </xpath>
-        <xpath expr="//label[@for='company_name']" position="replace">
-            <label class="col-form-label label-optional" for="company_name">Institution</label>
+        <xpath expr="//div[hasclass('row')]/div[9]" position="replace">
+            <!-- nothing -->
+        </xpath>
+        <xpath expr="//label[@for='street']" position="replace">
+            <label class="col-form-label label-optional" for="street">Street</label>
+        </xpath>
+        <xpath expr="//label[@for='phone']" position="replace">
+            <label class="col-form-label label-optional" for="phone">Phone</label>
+        </xpath>
+        <xpath expr="//label[@for='city']" position="replace">
+            <label class="col-form-label label-optional" for="city">City</label>
         </xpath>
         <xpath expr="//input[@name='redirect']" position="before">
             <div class="clearfix"/>
