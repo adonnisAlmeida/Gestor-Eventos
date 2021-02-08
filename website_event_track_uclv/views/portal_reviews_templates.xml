@@ -44,27 +44,27 @@
                                 <th t-if="groupby == 'event'">
                                     <em class="font-weight-normal text-muted">Reviews for event:</em>
                                     <span t-field="reviews[0].sudo().event_id.name"/></th>
-                                <th t-if="groupby == 'status'">
+                                <th t-if="groupby == 'state'">
                                     <em class="font-weight-normal text-muted">Reviews in state:</em>
-                                    <span class="text-truncate" t-field="reviews[0].sudo().status"/></th>
+                                    <span class="text-truncate" t-field="reviews[0].sudo().state"/></th>
                                 <th t-if="groupby != 'event'" class="text-center">Event</th>
-                                <th t-if="groupby != 'status'" class="text-center">Status</th>
+                                <th t-if="groupby != 'state'" class="text-center">State</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <t t-foreach="reviews" t-as="prop">
+                            <t t-foreach="reviews" t-as="review">
                                 <tr>
                                     <td class="text-left">
-                                        #<span t-esc="prop.id"/>
+                                        #<span t-esc="review.id"/>
                                     </td>
                                     <td>
-                                        <a t-attf-href="/my/review/#{prop.id}?{{ keep_query() }}"><span t-field="prop.name"/></a>
+                                        <a t-attf-href="/my/review/#{review.id}?{{ keep_query() }}"><span t-field="review.track_id.name"/></a>
                                     </td>
                                     <td t-if="groupby != 'event'" class="text-center">
-                                        <span class="badge badge-pill badge-info" title="Current event of the review" t-esc="prop.event_id.name" />
+                                        <span class="badge badge-pill badge-info" title="Current event of the review" t-esc="review.track_id.event_id.name" />
                                     </td>
-                                    <td t-if="groupby != 'status'" class="text-center">
-                                        <span class="badge badge-pill badge-info" title="Current state of the review" t-esc="status" />
+                                    <td t-if="groupby != 'state'" class="text-center">
+                                        <span class="badge badge-pill badge-info" title="Current state of the review" t-esc="review.state" />
                                     </td>
                                 </tr>
                             </t>
@@ -88,8 +88,8 @@
                                 </div>
                                 <small class="text-muted d-none d-md-inline"> (#<span t-field="review.id"/>)</small>
                                 <div class="col-3 col-md-2 text-right">
-                                    <small class="text-right">Status:</small>
-                                    <span t-esc="status" class=" badge badge-pill badge-info" title="Current state of this review"/>
+                                    <small class="text-right">State:</small>
+                                    <span t-esc="review.state" class=" badge badge-pill badge-info" title="Current state of this review"/>
                                 </div>
                             </h5>
                         </div>
@@ -102,7 +102,7 @@
                                 <div class="d-flex mb-1">
                                     <h3><strong>Title<small class="text-sm text-muted" title="English"> [EN] </small>:</strong></h3>
                                 </div>                                    
-                                <h3 class="text-uppercase" t-field="review.with_context(lang='en_US').name" />                                    
+                                <h3 class="text-uppercase" t-field="review.track_id.with_context(lang='en_US').name" />                                    
                             </div>
                         </div>
                         <div class="row mb-4">
@@ -110,17 +110,17 @@
                                 <div class="d-flex mb-1">
                                     <h3><strong>Title<small class="text-sm text-muted" title="Spanish"> [ES]</small>:</strong></h3>
                                 </div>                                    
-                                <h3 class="text-uppercase" t-field="review.with_context(lang='es_ES').name" />
+                                <h3 class="text-uppercase" t-field="review.track_id.with_context(lang='es_ES').name" />
                                 
                             </div>
                         </div>
 
 
                         <div class="mb-4">
-                            <strong>Event:</strong> <a t-attf-href="/event/#{review.event_id.id}"> 
-                                <t t-esc="review.event_id.name"/> 
-                                <t t-if="review.event_id.short_name" t-esc="review.event_id.short_name"/> 
-                                <t t-if="review.event_id.subname" t-esc="review.event_id.subname"/>
+                            <strong>Event:</strong> <a t-attf-href="/event/#{review.track_id.event_id.id}"> 
+                                <t t-esc="review.track_id.event_id.name"/> 
+                                <t t-if="review.track_id.event_id.short_name" t-esc="review.track_id.event_id.short_name"/> 
+                                <t t-if="review.track_id.event_id.subname" t-esc="review.track_id.event_id.subname"/>
                             </a>
                         </div>
 
@@ -128,98 +128,98 @@
                             <div class="col-12 col-md-6 mb-1">
                                 <strong>Date:</strong> <span t-field="review.create_date" t-options='{"widget": "date"}'/>
                             </div>
-                            <div class="col-12 col-md-6" t-if="review.event_id.paper_abstract_notification_date">
-                                <strong>Deadline:</strong> <span t-field="review.event_id.paper_abstract_notification_date" t-options='{"widget": "date"}'/>
-                                <time class="timeago text-muted small" t-att-datetime="review.event_id.paper_abstract_notification_date"></time>
+                            <div class="col-12 col-md-6" t-if="review.track_id.event_id.paper_abstract_notification_date">
+                                <strong>Deadline:</strong> <span t-field="review.track_id.event_id.paper_abstract_notification_date" t-options='{"widget": "date"}'/>
+                                <time class="timeago text-muted small" t-att-datetime="review.track_id.event_id.paper_abstract_notification_date"></time>
                             </div>
                         </div>
-                        <div class="row mb-4" t-if="review.sudo().tag_ids">
+                        <div class="row mb-4" t-if="review.sudo().track_id.tag_ids">
                             <div class="col-12 col-md-6 mb-1">
                                 <h4><strong>Keywords:</strong></h4>                            
-                                <t t-foreach="review.sudo().tag_ids" t-as="tag">
+                                <t t-foreach="review.sudo().track_id.tag_ids" t-as="tag">
                                     <span class="label label-info" t-esc="tag.name" />
                                 </t>                            
                             </div>
                         </div>
-                        <div class="row mb-4" t-if="review.language_id">
+                        <div class="row mb-4" t-if="review.track_id.language_id">
                             <div class="col-12 col-md-6 mb-1">
                                 <h4><strong>Language:</strong></h4>
-                                <span t-field="review.sudo().language_id" />
+                                <span t-field="review.sudo().track_id.language_id" />
                             </div>
                         </div>
-                        <div class="row mb-4" t-if="len(review.author_ids)>1">
+                        <div class="row mb-4" t-if="len(review.track_id.author_ids)>1">
                             <div class="col-12 col-md-6 mb-1">
                                 <h4><strong>Authors:</strong></h4>
                                 <ul class="col-xs-11 col-xs-offset-1 col-sm-8">
-                                    <li t-foreach='review.author_ids' t-as="author">
-                                        <div t-field="author.sudo().res_partner_id.name"/>
+                                    <li t-foreach='review.track_id.author_ids' t-as="author">
+                                        <div t-field="author.sudo().partner_id.name"/>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="row mb-4" t-if="review.user_id or review.partner_id">
-                            <div class="col-12 col-md-6 pb-2" t-if="review.user_id">
+                        <div class="row mb-4" t-if="review.track_id.user_id or review.track_id.partner_id">
+                            <div class="col-12 col-md-6 pb-2" t-if="review.track_id.user_id">
                                 <h4><strong>Coordinator</strong></h4>
                                 <div class="row">
                                     <div class="col flex-grow-0 pr-3">
-                                        <img t-if="review.user_id.image_1024" class="rounded-circle mt-1 o_portal_contact_img" t-att-src="image_data_uri(review.user_id.image_1024)" alt="Contact"/>
+                                        <img t-if="review.track_id.user_id.image_1024" class="rounded-circle mt-1 o_portal_contact_img" t-att-src="image_data_uri(review.track_id.user_id.image_1024)" alt="Contact"/>
                                         <img t-else="" class="rounded-circle mt-1 o_portal_contact_img" src="/web/static/src/img/user_menu_avatar.png" alt="Contact"/>
                                     </div>
                                     <div class="col pl-md-0">
-                                        <div t-field="review.user_id" t-options='{"widget": "contact", "fields": ["name", "email", "phone"]}'/>
+                                        <div t-field="review.track_id.user_id" t-options='{"widget": "contact", "fields": ["name", "email", "phone"]}'/>
                                     </div>
                                 </div>
                             </div>
-                            <div class="coll-12 col-md-6 pb-2" t-if="review.partner_id">
+                            <div class="coll-12 col-md-6 pb-2" t-if="review.track_id.partner_id">
                                 <h4><strong>Owner</strong></h4>
                                 <div class="row">
                                     <div class="col flex-grow-0 pr-3">
-                                        <img t-if="review.partner_id.image_1024" class="rounded-circle mt-1 o_portal_contact_img" t-att-src="image_data_uri(review.partner_id.image_1024)" alt="Contact"/>
+                                        <img t-if="review.track_id.partner_id.image_1024" class="rounded-circle mt-1 o_portal_contact_img" t-att-src="image_data_uri(review.track_id.partner_id.image_1024)" alt="Contact"/>
                                         <img t-else="" class="rounded-circle mt-1 o_portal_contact_img" src="/web/static/src/img/user_menu_avatar.png" alt="Contact"/>
                                     </div>
                                     <div class="col pl-md-0">
-                                        <div t-field="review.partner_id" t-options='{"widget": "contact", "fields": ["name", "email", "phone"]}'/>
-                                        <div t-if="review.partner_id.institution">
+                                        <div t-field="review.track_id.partner_id" t-options='{"widget": "contact", "fields": ["name", "email", "phone"]}'/>
+                                        <div t-if="review.track_id.partner_id.institution">
                                             <span class="fa fa-home" /> <span itemprop="institution" t-field="review.partner_id.company_name" />
                                         </div>
-                                        <div t-if="review.partner_id.country_id">
-                                            <img height="16px" t-att-src="review.partner_id.country_id.image_url" t-att-alt="'Flag of %s' % review.partner_id.country_id.name" t-att-title="review.partner_id.country_id.name"/>
-                                            <span t-field="review.partner_id.country_id.name" />
+                                        <div t-if="review.track_id.partner_id.country_id">
+                                            <img height="16px" t-att-src="review.track_id.partner_id.country_id.image_url" t-att-alt="'Flag of %s' % review.track_id.partner_id.country_id.name" t-att-title="review.track_id.partner_id.country_id.name"/>
+                                            <span t-field="review.track_id.partner_id.country_id.name" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row" t-if="review.description">
-                            <div t-if="review.description" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
+                        <div class="row" t-if="review.track_id.description">
+                            <div t-if="review.track_id.description" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
                                 <hr class="mb-1"/>
                                 <div class="d-flex my-2">
                                     <h4><strong>Abstract<small class="text-sm text-muted" title="English"> [EN]</small>:</strong></h4>
                                 </div>
                                 <div class="py-1 px-2 bg-100 review_description js_comment" >
-                                    <t t-raw="review.description" />
+                                    <t t-raw="review.track_id.description" />
                                 </div>
                             </div>
                         </div>
-                        <div class="row" t-if="review.description">
-                            <div t-if="review.description" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
+                        <div class="row" t-if="review.track_id.description_es">
+                            <div t-if="review.track_id.description_es" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
                                 <hr class="mb-1"/>
                                 <div class="d-flex my-2">
                                     <h4><strong>Abstract<small class="text-sm text-muted" title="Spanish"> [ES]</small>:</strong></h4>
                                 </div>
                                 <div class="py-1 px-2 bg-100 review_description js_comment" >
-                                    <t t-raw="review.description_es" />
+                                    <t t-raw="review.track_id.description_es" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div t-if="review.attachment_ids" t-attf-class="col-12 col-lg-12 o_project_portal_attachments">
+                            <div t-if="review.track_id.attachment_ids" t-attf-class="col-12 col-lg-12 o_project_portal_attachments">
                                 <hr class="mb-1 d-none d-lg-block"/>
                                 <strong class="d-block mb-2">Attachments</strong>
                                 <div class="row">
                                     <div t-attf-class="col col-lg-12">
                                         <ul class="list-group">
-                                            <a class="list-group-item list-group-item-action d-flex align-items-center oe_attachments py-1 px-2" t-foreach='review.attachment_ids' t-as='attachment' t-attf-href="/web/content/#{attachment.id}?download=true&amp;access_token=#{attachment.access_token}" target="_blank" data-no-post-process="">
+                                            <a class="list-group-item list-group-item-action d-flex align-items-center oe_attachments py-1 px-2" t-foreach='review.track_id.attachment_ids' t-as='attachment' t-attf-href="/web/content/#{attachment.id}?download=true&amp;access_token=#{attachment.access_token}" target="_blank" data-no-post-process="">
                                                 <div class='oe_attachment_embedded o_image o_image_small mr-2 mr-lg-3' t-att-title="attachment.name" t-att-data-mimetype="attachment.mimetype" t-attf-data-src="/web/image/#{attachment.id}/40x40?access_token=#{attachment.access_token}"/>
                                                 <div class='oe_attachment_name text-truncate'><t t-esc='attachment.name'/> </div>&amp;nbsp;
                                                 <div class="ml8 text-muted small" t-esc="str(int(round(attachment.file_size/1024)))+' KiB'"/>
@@ -229,7 +229,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mt16 mb16">
+                                <!-- <div class="mt16 mb16">
                                     <a class="btn btn-xs btn-primary" data-toggle="modal" data-target=".modal_file_upload" href="#"><i class="fa fa-paperclip"/> Add</a>
                                     
                                     <div class="modal fade modal_file_upload" role="form" aria-hidden="true">
@@ -254,22 +254,23 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div>
                             <hr class="mb-1"/>
-                            <a t-if="not review_stmt" class="btn btn-primary" data-toggle="modal" data-target=".modal_review_review_stmt"><i class="fa fa-file-text-o"/> Make Review</a>
-                            <h4 t-if="review_stmt"><strong>You have reviewed this paper</strong></h4>
-                            <span t-if="review_stmt" class="text-muted">Your recommendation: <span t-esc="review_stmt" /> </span>
-                            <div class="modal fade modal_review_review_stmt" role="form" aria-hidden="true">
+                            <a t-if="review.state=='open'" class="btn btn-primary" data-toggle="modal" data-target=".modal_review_review"><i class="fa fa-file-text-o"/> Make Review</a>
+                            
+                            <h4 t-if="review.state!='open'"><strong>You have reviewed this paper</strong></h4>
+                            <span t-if="review.state!='open'" class="text-muted">Your recommendation: <span t-esc="review.state" /> </span>
+                            <div class="modal fade modal_review_review" role="form" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <form method="POST" class="js_accept_json modal-content js_website_submit_form review_assign_form">
                                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                         <input type="hidden" name="review_id" class="review_review_id" t-att-value="review.id"/>
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
-                                            <h4 class="modal-title">Review Review</h4>
+                                            <h4 class="modal-title">Review</h4>
                                         </div>
                                         <div class="modal-body" id="sign-dialog">
                                             <div class="form-group">

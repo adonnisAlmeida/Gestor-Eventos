@@ -38,7 +38,7 @@
             </style>
             <t t-foreach="docs" t-as="o">
             <t t-foreach="o.author_ids" t-as="a">
-                <div t-if="a.res_partner_id.name!=o.partner_id.name and a.res_partner_id.is_participating(o.event_id.id)[0] &gt; 0" class="page" style="height:270mm;">
+                <div t-if="a.partner_id.name!=o.partner_id.name and a.partner_id.is_participating(o.event_id.id)[0] &gt; 0" class="page" style="height:270mm;">
                         <img t-if="o.track_type_id.with_context({'lang': 'es_ES'}).name !='Conferencia'" src="/website_event_track_uclv/static/src/img/cert-bg-track.png" style="position: absolute;z-index: -2; height:270mm; left:0;" />
                         <img t-if="o.track_type_id.with_context({'lang': 'es_ES'}).name =='Conferencia'" src="/website_event_track_uclv/static/src/img/cert-bg-conf.png" style="position: absolute;z-index: -2; height:270mm; left:0;" />
                             <div class="row" style="display:flex;">
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="row" style="margin:0 0 !important;">
                                         <div class="col-xs-12" style="padding:16px 50px 0 50px!important;">
-                                            <span class="cert-h3 bold">A: </span><span class="cert-h3 bold uppercase" t-esc="a.res_partner_id.with_context({'lang': 'es_ES'}).full_name" />
+                                            <span class="cert-h3 bold">A: </span><span class="cert-h3 bold uppercase" t-esc="a.partner_id.with_context({'lang': 'es_ES'}).full_name" />
                                         </div>
                                     </div>
                                     <div class="row" style="margin:16px 0 !important;">

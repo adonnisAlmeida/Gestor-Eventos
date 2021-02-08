@@ -2618,7 +2618,7 @@ msgstr ""
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_visitor__partner_id
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author__res_partner_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author__partner_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_location__partner_id
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_sponsor_view_form
 msgid "Partner"
@@ -3466,7 +3466,7 @@ msgstr "Actividades de Hoy"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_visitor__track_id
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author__event_track_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author__track_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_track_analysis__track_id
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_visitor_view_search
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_form

@@ -823,15 +823,15 @@ class Importer(models.TransientModel):
                     self.env.cr.execute("insert into event_track_event_track_tag_rel(event_track_tag_id, event_track_id) VALUES (%s, %s);" %(event_track_tag[d[0]], event_track[d[1]]))
         
         # event_track_res_partner_rel
-        cr.execute("""select event_track_id, res_partner_id from event_track_res_partner_rel where true""")
+        cr.execute("""select track_id, partner_id from event_track_res_partner_rel where true""")
         data = cr.fetchall()
         for d in data:
             if event_track.get(d[0], False) and res_partner.get(d[1], False):
-                self.env.cr.execute("select count(*) from event_track_author where event_track_id=%s and res_partner_id=%s" %(event_track[d[0]], res_partner[d[1]]))
+                self.env.cr.execute("select count(*) from event_track_author where track_id=%s and partner_id=%s" %(event_track[d[0]], res_partner[d[1]]))
                 count = self.env.cr.fetchall()
                 if not count[0][0]:
                     et = self.env['event.track'].browse(event_track[d[0]])
-                    self.env.cr.execute("insert into event_track_author(event_track_id, res_partner_id, sequence) VALUES (%s, %s, %s);" %(event_track[d[0]], res_partner[d[1]], len(et.author_ids)))
+                    self.env.cr.execute("insert into event_track_author(track_id, partner_id, sequence) VALUES (%s, %s, %s);" %(event_track[d[0]], res_partner[d[1]], len(et.author_ids)))
         
   
 

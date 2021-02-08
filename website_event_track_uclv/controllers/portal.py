@@ -13,7 +13,7 @@ from odoo.tools.translate import _
 from odoo.tools import html_escape as escape, html2plaintext, consteq
 from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager
 from werkzeug.exceptions import NotFound, Forbidden
-from odoo.exceptions import AccessError
+from odoo.exceptions import AccessError, MissingError
 from odoo.osv.expression import OR
 from odoo.tools import groupby as groupbyelem
 from operator import itemgetter
@@ -33,26 +33,20 @@ class PortalController(CustomerPortal):
 
     def get_domain_my_reviews(self, user):
         return [
-            '|',('reviewer_id', '=', user.id), ('reviewer2_id', '=', user.id)
+            ('partner_id', '=', user.partner_id.id)
         ]    
     
     def get_domain_my_new_reviews(self, user):
         return [
-            ('reviewer_id', '=', user.id), ('stage_id', 'in', (1, 2)), ('recommendation','=', None)
-        ]
-    
-    def get_domain_my_new_reviews2(self, user):
-        return [
-            ('reviewer2_id', '=', user.id), ('stage_id', 'in', (1, 2)), ('recommendation2','=', None)
+            ('partner_id', '=', user.partner_id.id), ('state', '=', 'open')
         ]    
+     
 
     def _prepare_home_portal_values(self, counters):
         values = super()._prepare_home_portal_values(counters)
         paper_count = request.env['event.track'].sudo().search_count(self.get_domain_my_papers(request.env.user))
-        all_review_count = request.env['event.track'].sudo().search_count(self.get_domain_my_reviews(request.env.user))
-        new_review_count1 = request.env['event.track'].sudo().search_count(self.get_domain_my_new_reviews(request.env.user))
-        new_review_count2 = request.env['event.track'].sudo().search_count(self.get_domain_my_new_reviews2(request.env.user))
-        new_review_count = new_review_count1 + new_review_count2
+        all_review_count = request.env['event.track.review'].sudo().search_count(self.get_domain_my_reviews(request.env.user))        
+        new_review_count = request.env['event.track.review'].sudo().search_count(self.get_domain_my_new_reviews(request.env.user))
 
         #registration_count = request.env['event.registration'].sudo().search_count(self.get_domain_my_registrations(request.env.user))
 
@@ -219,7 +213,7 @@ class PortalController(CustomerPortal):
         searchbar_sortings = {
             'date': {'label': _('Newest'), 'order': 'create_date desc'},
             'name': {'label': _('Title'), 'order': 'name'},
-            'status': {'label': _('Status'), 'order': 'status, event_id'},
+            'state': {'label': _('State'), 'order': 'state, event_id'},
             'event': {'label': _('Event'), 'order': 'event_id, stage_id'},
         }
         searchbar_filters = {
@@ -235,20 +229,20 @@ class PortalController(CustomerPortal):
         searchbar_groupby = {
             'none': {'input': 'none', 'label': _('None')},
             'event': {'input': 'event', 'label': _('Event')},
-            'status': {'input': 'status', 'label': _('Status')},
+            'state': {'input': 'state', 'label': _('State')},
         }
 
         # extends filterby criteria with event the customer has access to
         domain = self.get_domain_my_reviews(request.env.user)
-        event_ids = request.env['event.track'].search(domain).mapped('event_id.id')
-        events = request.env['event.event'].search([('website_published','=',True),('id', 'in', event_ids)])
+        event_ids = request.env['event.track.review'].sudo().search(domain).mapped('track_id.event_id.id')
+        events = request.env['event.event'].sudo().search([('website_published','=',True),('id', 'in', event_ids)])
         for event in events:
             searchbar_filters.update({
                 str(event.id): {'label': event.name, 'domain': [('event_id', '=', event.id)]}
             })
 
         # extends filterby criteria with event (criteria name is the event id)
-        event_groups = request.env['event.track'].read_group([('event_id', 'in', events.ids)],
+        event_groups = request.env['event.track'].sudo().read_group([('event_id', 'in', events.ids)],
                                                                 ['event_id'], ['event_id'])
         for group in event_groups:
             ev_id = group['event_id'][0] if group['event_id'] else False
@@ -287,29 +281,29 @@ class PortalController(CustomerPortal):
                 search_domain = OR([search_domain, [('event_id', 'ilike', search)]])
             domain += search_domain
 
-        # paper count
-        paper_count = request.env['event.track'].search_count(domain)
+        # review count
+        review_count = request.env['event.track.review'].sudo().search_count(domain)
         # pager
         pager = portal_pager(
             url="/my/reviews",
             url_args={'date_begin': date_begin, 'date_end': date_end, 'sortby': sortby, 'filterby': filterby, 'groupby': groupby, 'search_in': search_in, 'search': search},
-            total=paper_count,
+            total=review_count,
             page=page,
             step=self._items_per_page
         )
         # content according to pager and archive selected
         if groupby == 'event':
             order = "event_id, %s" % order  # force sort on event first to group by event in view
-        elif groupby == 'status':
-            order = "status, %s" % order  # force sort on status first to group by status in view
+        elif groupby == 'state':
+            order = "state, %s" % order  # force sort on status first to group by status in view
 
-        reviews = request.env['event.track'].search(domain, order=order, limit=self._items_per_page, offset=pager['offset'])
+        reviews = request.env['event.track.review'].sudo().search(domain, order=order, limit=self._items_per_page, offset=pager['offset'])
         request.session['my_review_history'] = reviews.ids[:100]
 
         if groupby == 'event':
-            grouped_reviews = [request.env['event.track'].concat(*g) for k, g in groupbyelem(reviews, itemgetter('event_id'))]
+            grouped_reviews = [request.env['event.track.review'].concat(*g) for k, g in groupbyelem(reviews, itemgetter('event_id'))]
         elif groupby == 'status':
-            grouped_reviews = [request.env['event.track'].concat(*g) for k, g in groupbyelem(reviews, itemgetter('status'))]
+            grouped_reviews = [request.env['event.track.review'].concat(*g) for k, g in groupbyelem(reviews, itemgetter('state'))]
         else:
             grouped_reviews = [reviews]
 
@@ -333,15 +327,24 @@ class PortalController(CustomerPortal):
         return request.render("website_event_track_uclv.portal_my_reviews", values)
     
 
-    @http.route(['''/my/review/<model("event.track"):paper>'''], type='http', auth="user", website=True)
-    def portal_my_review(self, paper, comment_coordinator='', comment_author='', recommendation=False,**kw):        
-        paper = paper.sudo()
-        if not paper:
-            raise NotFound()
-        if paper.reviewer_id != request.env.user and paper.reviewer2_id != request.env.user:
-            raise Forbidden()
+    @http.route(['''/my/review/<int:review_id>'''], type='http', auth="public", website=True)
+    def portal_my_review(self, review_id, access_token=None, comment_coordinator='', comment_author='', recommendation=False,**kw):        
+        if access_token:
+            try:
+                review = self._document_check_access('event.track.review', review_id, access_token=access_token)
+                review = review.sudo()
+            except (AccessError, MissingError):
+                return request.redirect('/my')
+        else:
+            # no access token but user may still be authorized cause it's the partner of the review
+            review = request.env['event.track.review'].sudo().browse(review_id)
+            if review.partner_id != request.env.user.partner_id:
+                raise Forbidden()
         
-        if recommendation:
+        if not review:
+            raise NotFound()        
+        
+        """if recommendation:
             if paper.reviewer_id == request.env.user:
                 if not paper.recommendation:
                     paper.write({'recommendation': recommendation})
@@ -373,9 +376,9 @@ class PortalController(CustomerPortal):
             if paper.recommendation2 == 'acceptednc':
                 review = _('Accepted without changes')
             if paper.recommendation2 == 'rejected':
-                review = _('Rejected')
+                review = _('Rejected')"""
 
-        return request.render("website_event_track_uclv.portal_my_review", {'review': paper, 'status': review and 'Reviewed' or 'To Review', 'review_stmt': review})
+        return request.render("website_event_track_uclv.portal_my_review", {'review': review})
     
 
     

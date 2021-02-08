@@ -115,23 +115,36 @@ class TrackLocation(models.Model):
 class TrackAuthor(models.Model):
     _name = 'event.track.author'
 
-    event_track_id = fields.Many2one('event.track', string="Track", required=True, ondelete='cascade')
-    res_partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade')
+    track_id = fields.Many2one('event.track', string="Track", required=True, ondelete='cascade')
+    partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade')
     sequence = fields.Integer(string="Sequence", default=1)
 
-    _sql_constraints = [('track_uniq_partner', 'unique(event_track_id, res_partner_id)', _('Authors can only appear once per paper'))]
+    _sql_constraints = [('track_uniq_partner', 'unique(track_id, partner_id)', _('Authors can only appear once per paper'))]
 
 
 class TrackReview(models.Model):
     _name = 'event.track.review'
-
+    _inherit = ['mail.thread']
+    
     def _default_access_token(self):
         return uuid.uuid4().hex
 
-    event_track_id = fields.Many2one('event.track', string="Track", required=True, ondelete='cascade')
+    track_id = fields.Many2one('event.track', string="Track", required=True, ondelete='cascade')
+    event_id = fields.Many2one('event.event', string="Event", related="track_id.event_id", store=True)
+    name = fields.Char('Name', related="track_id.name")
     partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade')
-    state = fields.Selection([('open','Open'),('expired', 'Expired')], string="State")
     access_token = fields.Char('Invitation Token', default=_default_access_token)
+    state = fields.Selection([('open','Open'),('expired', 'Expired')], string="State")
+
+    @api.model
+    def create(self, vals):        
+        #send invitation email
+        created = super(TrackReview, self).create(vals)
+        template = self.env.ref('website_event_track_uclv.mail_template_reviewer_invitation', raise_if_not_found=False)
+        if template:                    
+            created.with_context(force_send=True).message_post_with_template(template.id)
+
+        return created
 
 
 class Track(models.Model):
@@ -157,19 +170,17 @@ class Track(models.Model):
 
     reviewer_id = fields.Many2one('res.users', 'First Reviewer', default=False, domain=[("reviewer", '=', True)])
     reviewer2_id = fields.Many2one('res.users', 'Second Reviewer', default=False, domain=[("reviewer", '=', True)])
-    reviewed = fields.Boolean("Reviewed", compute="_get_reviewed", store=False)
     #Revision Stuffs
     coordinator_notes = fields.Text('Notes for the Coordinator')
     author_notes = fields.Text('Notes for the Author')
     recommendation = fields.Selection([('acceptwc', "Accepted With Changes"), ('acceptednc', "Accepted Without Changes"),  ('rejected', "Rejected")], 'Recommendation')
-
     coordinator_notes2 = fields.Text('Notes for the Coordinator')
     author_notes2 = fields.Text('Notes for the Author')
     recommendation2 = fields.Selection(
         [('acceptwc', "Accepted With Changes"), ('acceptednc', "Accepted Without Changes"), ('rejected', "Rejected")],
         'Recommendation')
 
-
+    review_ids = fields.One2many('event.track.review', 'track_id', string='Reviews')
     address_id = fields.Many2one('res.partner', "Address", related="event_id.address_id", readonly=True)
     multiple = fields.Boolean("Multiple", compute="_get_multiple", store=True)
     track_type_id = fields.Many2one('event.track.type', "Track Type")
@@ -178,7 +189,7 @@ class Track(models.Model):
     user_id = fields.Many2one('res.users', related="event_id.user_id", string='Coordinator', readonly=True)
     
     attachment_ids = fields.One2many('ir.attachment', 'res_id', domain=[('res_model', '=', 'event.track')], string='Attachments')
-    author_ids = fields.One2many('event.track.author', 'event_track_id', string='Authors')
+    author_ids = fields.One2many('event.track.author', 'track_id', string='Authors')
     partner_id = fields.Many2one('res.partner', 'Speaker', required=True, domain=[('email', '!=', None)])
     partner_name = fields.Char('Speaker Name', related='partner_id.full_name')
     partner_email = fields.Char('Speaker Email', readonly=True, related='partner_id.email')

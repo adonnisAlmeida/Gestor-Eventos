@@ -362,8 +362,8 @@ class UCLVWebsiteEventTrackController(EventTrackController):
         i = 1
         for au_id in authors:
             request.env['event.track.author'].sudo().create({
-                'event_track_id': track.id,
-                'res_partner_id': au_id,
+                'track_id': track.id,
+                'partner_id': au_id,
                 'sequence': i,
             })
             i += 1

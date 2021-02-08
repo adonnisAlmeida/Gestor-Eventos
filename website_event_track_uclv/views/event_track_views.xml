@@ -66,12 +66,12 @@
                         <field name="author_ids">
                             <tree editable = "bottom">
                                 <field name="sequence" widget="handle" groups="event.group_event_manager"/>
-                                <field name="res_partner_id" />
+                                <field name="partner_id" />
                             </tree>
                             <form>
                                 <group>
                                     <field name="sequence" groups="event.group_event_manager"/>
-                                    <field name="res_partner_id" />
+                                    <field name="partner_id" />
                                 </group>
                             </form>
                         </field>
@@ -80,6 +80,19 @@
                 <xpath expr="//notebook/page[@name='description']" position="after">
                     <page string="Description [ES]" >
                         <field name="description_es" />
+                    </page>
+                    <page string="Reviews" name="reviews">
+                        <field name="review_ids">
+                            <tree editable = "bottom">
+                                <field name="partner_id" />
+                                <field name="state" />
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="partner_id" />
+                                </group>
+                            </form>
+                        </field>
                     </page>
                     <page string="First Review" >
                         <group cols="6" colspan="2">

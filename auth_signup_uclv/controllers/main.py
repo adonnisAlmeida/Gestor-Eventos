@@ -35,13 +35,10 @@ class UCLVAuthSignupHome(AuthSignupHome):
                     )
                     template = request.env.ref('auth_signup.mail_template_user_signup_account_created', raise_if_not_found=False)
                     if user_sudo and template:
-                        template.sudo().with_context(
-                            lang=user_sudo.lang,
-                            auth_login=werkzeug.url_encode({'auth_login': user_sudo.email}),
-                        ).send_mail(user_sudo.id, force_send=True)
+                        template.sudo().send_mail(user_sudo.id, force_send=True)
                 return self.web_login(*args, **kw)
             except UserError as e:
-                qcontext['error'] = e.name or e.value
+                qcontext['error'] = e.args[0]
             except (SignupError, AssertionError) as e:
                 if request.env["res.users"].sudo().search([("login", "=", qcontext.get("login"))]):
                     qcontext["error"] = _("Another user is already registered using this email address.")
@@ -89,15 +86,20 @@ class UCLVAuthSignupHome(AuthSignupHome):
 
     def do_signup(self, qcontext):
         """ Shared helper that creates a res.partner out of a token """
-        values = { key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'country_id', 'institution', 'title', 'gender') }
-        if not values:
-            raise UserError(_("The form was not properly filled in."))
-        # email validation
-        values.update({'country_id': int(values.get('country_id'))})
-        if values.get('title'):
-            values.update({'title': int(values.get('title'))})
+
+        if qcontext.get('token'):
+            values = { key: qcontext.get(key) for key in ('login', 'name', 'password')}
         else:
-            values.update({'title': False})
+            values = { key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'country_id', 'institution', 'title', 'gender') }
+            values.update({'country_id': int(values.get('country_id', 0))})
+            if values.get('title', 0):
+                values.update({'title': int(values.get('title', 0))})
+            else:
+                values.update({'title': False})
+        if not values:
+            raise UserError(_("The form was not properly filled in."))        
+        
+        
         
         if values.get('login') and not tools.single_email_re.match(values.get('login')):
             raise UserError(_('Invalid Email! Please enter a valid email address.'))

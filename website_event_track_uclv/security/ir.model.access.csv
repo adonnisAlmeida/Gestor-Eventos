@@ -5,6 +5,7 @@ access_event_track_tag_public,event.track.tag public,website_event_track.model_e
 access_event_track_tag_manager,event.track.tag manager,website_event_track.model_event_track_tag,event.group_event_manager,1,1,1,1
 access_event_track_location_public,event.track.location public,website_event_track.model_event_track_location,,1,0,0,0
 access_event_track_location_manager,event.track.location manager,website_event_track.model_event_track_location,event.group_event_manager,1,0,0,0
+access_event_track_review_manager,event.track.review manager,website_event_track_uclv.model_event_track_review,event.group_event_manager,1,1,1,1
 access_event_track_location_multimanager,event.track.location multimanager,website_event_track.model_event_track_location,event_uclv.group_event_multimanager,1,1,1,1
 access_event_track__public,event.track.public,model_event_track,,1,1,0,0
 
@@ -21,7 +22,7 @@ access_author_manager,author_manager,model_event_track_author,event.group_event_
 access_report_event_track_analysis,access_report_event_track_analysis,model_report_event_track_analysis,,1,0,0,0
 access_report_event_attendee_analysis,access_report_event_attendee_analysis,model_report_event_attendee_analysis,,1,0,0,0
 access_event_track_type,access_event_track_type,model_event_track_type,,1,0,0,0
-access_event_track_type_event_manager,event.track.type.event.manager,model_event_track_type,event.group_event_manager,1,1,1,1
+access_event_track_type_event_multimanager,event.track.type.event.multimanager,model_event_track_type,event_uclv.group_event_multimanager,1,1,1,1
 access_event_registration_payment_user,event.registration.payment.user,model_event_registration_payment,event.group_event_manager,1,0,0,0
 access_event_registration_payment_accountant,event.registration.payment.accountant,model_event_registration_payment,event_uclv.group_event_accountant,1,1,1,1
 event.access_event_registration,event.registration,model_event_registration,event.group_event_user,1,0,0,0

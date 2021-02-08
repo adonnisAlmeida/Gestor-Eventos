@@ -10,7 +10,7 @@ class ResPartner(models.Model):
     event_track_done_count = fields.Integer("Event Tracks Done", compute='_compute_event_track_count', help="Number of done tracks.", store=True)
     event_track_ids = fields.One2many("event.track", "partner_id", string="Tracks")
     event_track_author_count = fields.Integer("Event Tracks Author", compute='_compute_event_track_author_count', help="Number of tracks as author.", store=True)
-    event_track_author_ids = fields.One2many('event.track.author', 'res_partner_id', string='Author Tracks')
+    event_track_author_ids = fields.One2many('event.track.author', 'partner_id', string='Author Tracks')
     
     @api.depends('event_track_ids',)
     def _compute_event_track_count(self):
@@ -35,7 +35,7 @@ class ResPartner(models.Model):
     def action_event_track_author_view(self):
         action = self.env.ref('website_event_track.action_event_track').read()[0]
         action['context'] = {}
-        action['domain'] = [('author_ids.res_partner_id', 'child_of', self.ids)]
+        action['domain'] = [('author_ids.partner_id', 'child_of', self.ids)]
         return action
     
     def unlink(self):

@@ -62,7 +62,7 @@
                                         <t t-foreach='track.author_ids' t-as="author" >
                                             <div class="mt4">
                                                 <span class="fa fa-user fa-fw" /> 
-                                                <span class="text-capitalize" t-field="author.sudo().res_partner_id.full_name"/>
+                                                <span class="text-capitalize" t-field="author.sudo().partner_id.full_name"/>
                                             </div>
                                         </t>
                                     </div>

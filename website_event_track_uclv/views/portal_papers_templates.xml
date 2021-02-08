@@ -154,7 +154,7 @@
                                     <strong>Authors:</strong>
                                     <ul class="col-xs-11 col-xs-offset-1 col-sm-8">
                                         <li t-foreach='paper.author_ids' t-as="author">
-                                            <div t-field="author.sudo().res_partner_id.name"/>
+                                            <div t-field="author.sudo().partner_id.name"/>
                                         </li>
                                     </ul>
                                 </div>
@@ -203,8 +203,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" t-if="paper.description">
-                                <div t-if="paper.description" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
+                            <div class="row" t-if="paper.description_es">
+                                <div t-if="paper.description_es" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
                                     <hr class="mb-1"/>
                                     <div class="d-flex my-2">
                                         <strong>Abstract<small class="text-sm text-muted" title="Spanish"> [ES]</small>:</strong>

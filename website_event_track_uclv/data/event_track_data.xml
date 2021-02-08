@@ -20,6 +20,36 @@
     </data>
     <data noupdate="0">
         <!-- Email templates -->
+        <record id="mail_template_reviewer_invitation" model="mail.template">
+            <field name="name">Invitation to review</field>
+            <field name="subject">Invitation to review: ${object.track_id.name}</field>
+            <field name="model_id" ref="website_event_track_uclv.model_event_track_review"/>
+            <field name="use_default_to" eval="True"/>
+            <field name="body_html" type="xml">
+                <div>
+                    <p>
+                        Dear <t t-esc="object.partner_id.name"/>
+                    </p><p>
+                        We are wandering if you can assit us by reviewing a paper for the event ${object.track_id.event_id.name}.
+                    </p>
+                    <p>
+                        You can see that paper at:
+                        <div style="margin-top: 16px;">
+                            <a href="/my/review/${object.id}?access_token=${object.access_token}"
+                                    style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">
+                                View Track
+                            </a>
+                        </div>
+                    </p>
+                    <p>Sincerely, <t t-esc="object.track_id.event_id.user_id.name"/></p>
+                    <p>Coordinator of Event</p>
+                </div>
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+
+
         <record id="mail_template_data_track_accepted" model="mail.template">
             <field name="name">Track: Acceptation</field>
             <field name="subject">Acceptation of ${object.name}</field>
@@ -50,7 +80,7 @@
         </div>
     </p>
     <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
-    <p>Scientific Coordinator of Event</p>
+    <p>Coordinator of Event</p>
 </div>
             </field>
             <field name="auto_delete" eval="True"/>
@@ -78,7 +108,7 @@
         </div>
     </p>
     <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
-    <p>Scientific Coordinator of Event</p>
+    <p>Coordinator of Event</p>
 </div>
             </field>
             <field name="auto_delete" eval="True"/>
@@ -94,13 +124,13 @@
     <p>
         Dear <t t-esc="object.partner_name"/>
     </p><p>
-        We are pleased to inform you that your proposal ${object.name} is been reviewed by experts for the event ${object.event_id.name}.
+        We are pleased to inform you that your proposal ${object.name} is being reviewed by experts for the event ${object.event_id.name}.
     </p>
     <p>
         You will be noticed in short about the result of the review process.        
     </p>
     <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
-    <p>Scientific Coordinator of Event</p>
+    <p>Coordinator of Event</p>
 </div>
             </field>
             <field name="auto_delete" eval="True"/>
@@ -129,7 +159,7 @@
         </div>
     </p>
     <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
-    <p>Scientific Coordinator of Event</p>
+    <p>Coordinator of Event</p>
 </div>
             </field>
             <field name="auto_delete" eval="True"/>
@@ -158,7 +188,7 @@
         </div>
     </p>
     <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
-    <p>Scientific Coordinator of Event</p>
+    <p>Coordinator of Event</p>
 </div>
             </field>
             <field name="auto_delete" eval="True"/>

@@ -73,16 +73,16 @@
                                             <span t-if="len(o.author_ids) &gt;= 6" class="h4 cert-h4" t-esc="o.partner_id.with_context({'lang': 'es_ES'}).name" />
                                             <t t-set="count" t-value="1" />
                                             <t t-foreach="o.author_ids" t-as="author">
-                                                <t t-if="author.res_partner_id.name != o.partner_id.with_context({'lang': 'es_ES'}).name">
+                                                <t t-if="author.partner_id.name != o.partner_id.with_context({'lang': 'es_ES'}).name">
                                                     <t t-if="count &lt; 15">
                                                         <t t-if="len(o.author_ids) &lt; 6">
                                                             <span t-if="count &lt; len(o.author_ids)" class="h3 cert-h3 mt8">, </span>
-                                                            <span class="h3 cert-h3 mt8 text-capitalize" t-esc="author.res_partner_id.full_name" />
+                                                            <span class="h3 cert-h3 mt8 text-capitalize" t-esc="author.partner_id.full_name" />
                                                             <t t-set="count" t-value="count+1" />
                                                         </t>
                                                         <t t-if="len(o.author_ids) &gt;= 6">
                                                             <span t-if="count &lt; len(o.author_ids)" class="h4 cert-h4 mt8">, </span>
-                                                            <span class="h4 cert-h4 mt8 text-capitalize" t-esc="author.res_partner_id.full_name" />
+                                                            <span class="h4 cert-h4 mt8 text-capitalize" t-esc="author.partner_id.full_name" />
                                                             <t t-set="count" t-value="count+1" />
                                                         </t>
                                                     </t>
