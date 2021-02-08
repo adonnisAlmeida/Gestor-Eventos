@@ -36,7 +36,11 @@ odoo.define('portal_uclv.portal_bio', function (require) {
                     styleWithSpan: false,
                     spellCheck: false,
                     styleTags: _.without(weDefaultOptions.styleTags, 'h1', 'h2', 'h3', 'pre', 'small'),
-                    
+                    onPaste: function (e) {
+                        var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                        e.preventDefault();
+                        document.execCommand('insertText', false, bufferText);
+                    }                     
                 };
                 
                 options.plugins = {
