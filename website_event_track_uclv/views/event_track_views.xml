@@ -28,6 +28,7 @@
             <field name="model">event.track</field>
             <field name="arch" type="xml">
                 <xpath expr="//group" position="inside">
+                    <filter string="Next" name="next" domain="[('is_done', '=', False)]"/>
                     <filter string="Author" name="author" context="{'group_by': 'partner_id'}"/>
                     <filter string="First Reviewer" name="reviewer_id" context="{'group_by': 'reviewer_id'}"/>
                     <filter string="Second Reviewer" name="reviewer2_id" context="{'group_by': 'reviewer2_id'}"/>
@@ -48,8 +49,9 @@
                     <field name="reviewer2_id" options="{'no_create': True}"/>
                 </field>
 
-                <field name="partner_phone" position="after">
+                <field name="color" position="after">
                     <field name="publish_complete" readonly="True"/>
+                    <field name="is_done" />
                 </field>
                 <field name="location_id" position="replace">
                     <field name="address_id" invisible="1" />
@@ -58,72 +60,75 @@
                 <field name="tag_ids" position="after">                    
                     <field name="language_id" />
                     <field name="track_type_id" />
-                </field>
-                <!-- <xpath expr="//button[@name='toggle_active']" position="replace">
-                    <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive"  groups="event_uclv.group_event_multimanager">
-                        <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
-                    </button>
-                </xpath> -->
-                <xpath expr="//group" position="after">
-                        <group>
-                            <field name="description" />
-                            <field name="description_lang" />
+                </field>                
+                <xpath expr="//notebook/page[@name='speakers']" position="after">
+                    <page string="Authors" >
+                        <field name="author_ids">
+                            <tree editable = "bottom">
+                                <field name="sequence" widget="handle" groups="event.group_event_manager"/>
+                                <field name="res_partner_id" />
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="sequence" groups="event.group_event_manager"/>
+                                    <field name="res_partner_id" />
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+                <xpath expr="//notebook/page[@name='description']" position="after">
+                    <page string="Description [ES]" >
+                        <field name="description_es" />
+                    </page>
+                    <page string="First Review" >
+                        <group cols="6" colspan="2">
+                            <group>
+                                <field name="coordinator_notes"/>
+                            </group>
+                            <group>
+                                <field name="author_notes"/>
+                            </group>
+                            <group>
+                                <field name="recommendation"/>
+                            </group>                                       
                         </group>
+                    </page>
+                    <page string="Second Review" >
                         <group>
-                            <notebook>
-                                <page string="Authors" >
-                                    <field name="author_ids">
-                                        <tree editable = "bottom">
-                                            <field name="sequence" widget="handle" groups="event.group_event_manager"/>
-                                            <field name="res_partner_id" />
-                                        </tree>
-                                        <form>
-                                            <group>
-                                                <field name="sequence" groups="event.group_event_manager"/>
-                                                <field name="res_partner_id" />
-                                            </group>
-                                        </form>
-                                    </field>
-                                </page>
-                                <page string="First Review" >
-                                   <group cols="6" colspan="2">
-                                       <group>
-                                          <field name="coordinator_notes"/>
-                                       </group>
-                                       <group>
-                                          <field name="author_notes"/>
-                                       </group>
-                                       <group>
-                                           <field name="recommendation"/>
-                                       </group>                                       
-                                   </group>
-                                </page>
-
-                                <page string="Second Review" >
-                                    <group>
-                                        <group>
-                                            <field name="coordinator_notes2"/>
-                                        </group>
-                                        <group>
-                                            <field name="author_notes2"/>
-                                        </group>
-                                        <group>
-                                            <field name="recommendation2"/>
-                                        </group>                                        
-                                    </group>
-                                </page>
-
-                            </notebook>
+                            <group>
+                                <field name="coordinator_notes2"/>
+                            </group>
+                            <group>
+                                <field name="author_notes2"/>
+                            </group>
+                            <group>
+                                <field name="recommendation2"/>
+                            </group>                                        
                         </group>
-
-                    </xpath>
+                    </page>
+                </xpath>
             </field>
-        </record>   
+        </record>
 
+        <record model="ir.actions.act_window" id="action_event_track">
+            <field name="name">Event Tracks</field>
+            <field name="res_model">event.track</field>            
+            <field name="view_mode">kanban,tree,form,calendar,graph,activity</field>
+            <field name="context">{'search_default_next': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Add a new track
+                </p><p>
+                Tracks define the schedule of your event.<br/>These can be a talk, a round table, a meeting, etc.
+                </p>
+            </field>
+        </record>
+   
         <menuitem
             id="website_event_track.menu_event_track"
             name="Event Tracks"
-            action="website_event_track.action_event_track"
+            action="action_event_track"
             parent="event.event_main_menu"
             sequence="12"
             groups="event.group_event_manager"/>

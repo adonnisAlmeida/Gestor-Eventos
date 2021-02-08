@@ -35,7 +35,7 @@ class ResPartner(models.Model):
     def action_event_track_author_view(self):
         action = self.env.ref('website_event_track.action_event_track').read()[0]
         action['context'] = {}
-        action['domain'] = [('author_ids', 'child_of', self.ids)]
+        action['domain'] = [('author_ids.res_partner_id', 'child_of', self.ids)]
         return action
     
     def unlink(self):

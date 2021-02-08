@@ -71,12 +71,12 @@
                 </button>
                 
                 <xpath expr="//sheet/group[last()]" position="after">
-                    <group string="Papers Submissions" name="papers_group">
+                    <group string="Papers Submittions" name="papers_group">
                         <group>
                             <!-- <field name="website_introduction_msg" /> -->
                             <field name="allowed_language_ids" widget="many2many_tags" string="Allowed languages" />
-                            <field name="paper_abstract_deadline" string="Accepts abstracts ultil"/>
-                            <field name="paper_abstract_notification_date" string="Abstracts revision ends"/>
+                            <field name="paper_abstract_deadline" string="Accepts abstracts until"/>
+                            <field name="paper_abstract_notification_date" string="Abstracts reviews ends"/>
                             <field name="paper_final_deadline" string="Final papers date"/>
                             <!-- <field name="website_track_proposal_msg" string="Track Proposal Message" /> 
                             <field name="website_track_proposal_template" string="Track Proposal Template" /> -->

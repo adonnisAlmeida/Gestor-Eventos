@@ -122,6 +122,18 @@ class TrackAuthor(models.Model):
     _sql_constraints = [('track_uniq_partner', 'unique(event_track_id, res_partner_id)', _('Authors can only appear once per paper'))]
 
 
+class TrackReview(models.Model):
+    _name = 'event.track.review'
+
+    def _default_access_token(self):
+        return uuid.uuid4().hex
+
+    event_track_id = fields.Many2one('event.track', string="Track", required=True, ondelete='cascade')
+    partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade')
+    state = fields.Selection([('open','Open'),('expired', 'Expired')], string="State")
+    access_token = fields.Char('Invitation Token', default=_default_access_token)
+
+
 class Track(models.Model):
     _name = "event.track"    
     _inherit = ['event.track', 'portal.mixin', 'mail.thread', 'mail.activity.mixin', 'website.seo.metadata', 'website.published.mixin']
@@ -143,24 +155,28 @@ class Track(models.Model):
             else:
                 item.multiple = False
 
-    @api.depends('description')
-    def compute_description_lang(self):
-        from langdetect import detect
-        from odoo.tools import html2plaintext
-        for item in self:
-            try:
-                item.description_lang = detect(html2plaintext(item.description))
-            except:
-                item.description_lang = ''
+    reviewer_id = fields.Many2one('res.users', 'First Reviewer', default=False, domain=[("reviewer", '=', True)])
+    reviewer2_id = fields.Many2one('res.users', 'Second Reviewer', default=False, domain=[("reviewer", '=', True)])
+    reviewed = fields.Boolean("Reviewed", compute="_get_reviewed", store=False)
+    #Revision Stuffs
+    coordinator_notes = fields.Text('Notes for the Coordinator')
+    author_notes = fields.Text('Notes for the Author')
+    recommendation = fields.Selection([('acceptwc', "Accepted With Changes"), ('acceptednc', "Accepted Without Changes"),  ('rejected', "Rejected")], 'Recommendation')
+
+    coordinator_notes2 = fields.Text('Notes for the Coordinator')
+    author_notes2 = fields.Text('Notes for the Author')
+    recommendation2 = fields.Selection(
+        [('acceptwc', "Accepted With Changes"), ('acceptednc', "Accepted Without Changes"), ('rejected', "Rejected")],
+        'Recommendation')
+
 
     address_id = fields.Many2one('res.partner', "Address", related="event_id.address_id", readonly=True)
     multiple = fields.Boolean("Multiple", compute="_get_multiple", store=True)
     track_type_id = fields.Many2one('event.track.type', "Track Type")
     publish_complete = fields.Boolean(string="Can be Published", default=True)
-    reviewed = fields.Boolean("Reviewed", compute="_get_reviewed", store=False)
+    
     user_id = fields.Many2one('res.users', related="event_id.user_id", string='Coordinator', readonly=True)
-    reviewer_id = fields.Many2one('res.users', 'First Reviewer', default=False, domain=[("reviewer", '=', True)])
-    reviewer2_id = fields.Many2one('res.users', 'Second Reviewer', default=False, domain=[("reviewer", '=', True)])
+    
     attachment_ids = fields.One2many('ir.attachment', 'res_id', domain=[('res_model', '=', 'event.track')], string='Attachments')
     author_ids = fields.One2many('event.track.author', 'event_track_id', string='Authors')
     partner_id = fields.Many2one('res.partner', 'Speaker', required=True, domain=[('email', '!=', None)])
@@ -171,10 +187,11 @@ class Track(models.Model):
     partner_country = fields.Many2one('res.country','Speaker Country', readonly=True, related='partner_id.country_id')
     partner_institution = fields.Char('Speaker Institution', readonly=True, related='partner_id.institution')
     authenticity_url = fields.Char("Authenticity URL", compute="get_urls")
-    authenticity_token = fields.Char("Authenticity Token")
-    description =  fields.Html("Description", sanitize_tags=True)
-    description_lang = fields.Char(compute="compute_description_lang", store=True)
-    
+    authenticity_token = fields.Char("Authenticity Token")    
+    description = fields.Html(translate=False, sanitize_attributes=False, sanitize_form=False)
+    description_es = fields.Html(translate=False, sanitize_attributes=False, sanitize_form=False)
+    is_done = fields.Boolean('Is Done', related="event_id.is_done", store=True)
+
     tag_ids = fields.Many2many('event.track.tag', string='Keywords')
     kanban_state = fields.Selection([
         ('normal', 'Grey'),
@@ -188,18 +205,7 @@ class Track(models.Model):
     language_id = fields.Many2one("res.lang", "Language")
     duration = fields.Float('Duration', default=0.25)
     image = fields.Binary('Image', related='partner_id.image_512', store=True, attachment=True)
-
-    #Revision Stuffs
-    coordinator_notes = fields.Text('Notes for the Coordinator')
-    author_notes = fields.Text('Notes for the Author')
-    recommendation = fields.Selection([('acceptwc', "Accepted With Changes"), ('acceptednc', "Accepted Without Changes"),  ('rejected', "Rejected")], 'Recommendation')
-
-    coordinator_notes2 = fields.Text('Notes for the Coordinator')
-    author_notes2 = fields.Text('Notes for the Author')
-    recommendation2 = fields.Selection(
-        [('acceptwc', "Accepted With Changes"), ('acceptednc', "Accepted Without Changes"), ('rejected', "Rejected")],
-        'Recommendation')
-
+    
     def build_uuids(self):
         regs = self.search([('authenticity_token', '=', False)])
         for reg in regs:

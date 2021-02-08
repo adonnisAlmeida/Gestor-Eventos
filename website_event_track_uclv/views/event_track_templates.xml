@@ -1,6 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="tracks_session" inherit_id="website_event_track.tracks_session" name="Event Tracks">
+    <template id="event_track_main" inherit_id="website_event_track.event_track_main" name="Track: Main">
+        <xpath expr="//t[@t-call='website_event.layout']" position="replace">
+            <t t-call="website_event.event_details">
+                <section class="bg-200">            
+                    <div class="container overflow-hidden d-block" style="position:relative; top:-40px;">
+                        <div class="row no-gutters mb-3 shadow-sm">
+                            <!-- <div class="col-lg-12 bg-white px-3 pt-5 pb-0 shadow-sm o_wevent_online o_wevent_online_bg o_wesession_index"> -->
+                                <div class="col-lg-8 bg-white px-3 pb-0 o_wevent_online pt-5">
+                                    <!-- Options -->
+                                    <t t-set="option_widescreen" t-value="option_widescreen or False"/>
+                                    <t t-set="option_track_wishlist" t-value="not event.is_done and is_view_active('website_event_track.session_topbar_wishlist')"/>
+                                    <!-- Drag/Drop Area -->
+                                    <div id="oe_structure_wesession_track_index_1" class="oe_structure"/>
+                                    
+                                    <t t-call="website_event_track_uclv.event_track_content"/>
+                                     
+                                    <!-- Drag/Drop Area -->
+                                    <div id="oe_structure_wesession_track_index_2" class="oe_structure"/>
+                                </div>
+                                <div class="col-lg-4 bg-secondary shadow-sm d-print-none">
+                                    <div class="o_wevent_sidebar_block">
+                                        <h6 class="o_wevent_sidebar_title">Practical Info</h6>
+                                        <div class="mb4" t-if="track.track_type_id">
+                                            <i class="fa fa-slideshare fa-fw"></i>
+                                            <span t-field="track.track_type_id.name"/>
+                                            
+                                        </div>
+                                        <div class="mb4" t-if="track.language_id">
+                                            <i class="fa fa-globe fa-fw"></i>
+                                            
+                                            <span t-field="track.language_id.name"/>
+                                            
+                                        </div>
+                                        <div class="mb4">
+                                            <i class="fa fa-flag fa-fw"></i>
+                                            <t t-if="track.date">
+                                                <span t-field="track.with_context(tz=track.event_id.date_tz).date" t-options='{"format":"MMMM dd, Y h:m a", "hide_seconds":"True"}'> </span>
+                                            </t>
+                                            <t t-if="not track.date">
+                                                <span class="text-muted">Not defined</span>
+                                            </t>
+                                        </div>
+                                        <div class="mb4">
+                                            <i class="fa fa-clock-o fa-fw"></i>                        
+                                            <span t-field="track.duration" t-options='{"widget": "duration", "unit": "hour", "round": "minute"}'/>
+                                        </div>
+                                        <div class="mb4">
+                                            <i class="fa fa-map-marker fa-fw"></i>
+                                            <t t-if="track.location_id">
+                                                <span t-field="track.location_id" />
+                                            </t>
+                                            <t t-if="not track.location_id">
+                                                <span class="text-muted">Not defined</span>
+                                            </t>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="o_wevent_sidebar_block">
+                                        <h6 class="o_wevent_sidebar_title">Authors</h6>
+                                        <t t-foreach='track.author_ids' t-as="author" >
+                                            <div class="mt4">
+                                                <span class="fa fa-user fa-fw" /> 
+                                                <span class="text-capitalize" t-field="author.sudo().res_partner_id.full_name"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                    <div class="o_wevent_sidebar_block">
+                                        <h6 class="o_wevent_sidebar_title">Keywords</h6>
+                                        <t t-foreach='track.tag_ids' t-as="tag" >
+                                            <div class="mt4">
+                                                <span class="fa fa-tag fa-fw"> </span>
+                                               
+                                                <span t-field="tag.name"/>
+                                                
+                                            </div>
+                                        </t>
+                                    </div>
+                                    <!-- <div class="o_wevent_sidebar_block">
+                                        <h6 class="o_wevent_sidebar_title">Documents</h6>
+                                        <a t-if="track.stage_id.id in (3, 4)" target="_blank" t-att-href="'/tracks/certificate/%s?%s' % (track.id, keep_query())" title="Download certificate">
+                                            <span class="fa fa-print"/> Track certificate
+                                        </a>
+                                        <div t-if="len(track.attachment_ids) == 0 and track.stage_id.id not in (3, 4)" class="text-center text-muted">
+                                            No documents to show...
+                                        </div>
+                                        <t t-foreach='track.sudo().attachment_ids' t-as="att">
+                                            <div style="display:flex;">
+                                                <div class="o_image" style="width:22px; height:22px;" t-att-data-mimetype="att.mimetype"/>
+                                                <a t-attf-href="/web/content/#{att.id}?download=true">
+                                                    <span t-field="att.name"/> 
+                                                </a>
+                                            </div>
+                                        </t>
+                                    </div> -->
+                                </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="event_track_content" name="Track: Content">
+        <div name="o_wesession_track_main" t-att-class="'col-12 o_wevent_online_page_main o_wesession_track_main bg-white p-0'">
+            
+            <div class="o_wesession_track_main_description overflow-auto">
+                <div class="mx-3 pt-3 mb-3 d-flex justify-content-between flex-column flex-md-row">
+                    <div class="d-flex flex-column">
+                        <span class="h3 mb-0 text-uppercase" t-esc="track.name"/>                        
+                    </div>
+                    <div class="o_we_track_action_buttons d-flex justify-content-md-end align-items-center flex-wrap">
+                        <div class="o_we_track_reminder_button my-1">
+                            <div t-if="option_track_wishlist and not track.is_track_done"
+                                t-call="website_event_track.track_widget_reminder">
+                                <t t-set="reminder_small" t-value="False"/>
+                                <t t-set="reminder_light" t-value="False"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
+                    <h4>Abstract</h4>
+                    <div t-field="track.description" />
+                </section>
+                <section class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
+                    <h4>Abstract</h4>
+                    <div t-field="track.description_es" />
+                </section>
+
+                <t t-if="track.partner_id">
+                    <section class="mt64 mt-4 my-2 mx-3 oe_no_empty" >
+                        <h4>About The Speaker</h4>
+                        <div class="well mt16">
+                            <div class="mx-3 pt-3 mb-3 d-flex justify-content-between flex-column flex-md-row">
+                                <div class="col-sm-2">
+                                    <span t-field="track.partner_id.sudo().image_256"
+                                        t-options='{"widget": "image", "class": "img-avatar"}'/>
+                                </div>
+                                <div class="col-sm-10">
+                                    <h4 t-field="track.partner_id.sudo().full_name" class="mb4"/>
+                                    <div class="mb16">
+                                        <span class="fa fa-home mb4" t-if="track.partner_id.institution" > </span>
+                                        <span class="mb4" t-if="track.partner_id.institution" t-field="track.partner_id.institution"/>
+                                        
+                                        <img height="16px" t-att-src="track.partner_id.country_id.image_url" t-att-alt="'Flag of %s' % track.partner_id.country_id.name" t-att-title="track.partner_id.country_id.name"/>
+                                    </div>
+                                <em><span t-field="track.partner_id.website_description"/></em>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </t>
+
+                
+            </div>
+        </div>
+    </template>
+
+    <template id="tracks_session" inherit_id="website_event_track.tracks_session" name="Event Tracks List">
         <xpath expr="//t[@t-call='website_event.layout']" position="replace">
             <t t-call="website_event.event_details">
                 <section class="bg-200">            
@@ -11,13 +172,14 @@
                                 <t t-set="option_track_wishlist" t-value="not event.is_done and is_view_active('website_event_track.session_topbar_wishlist')"/>
                                 <!-- Topbar -->
                                 <t t-call="website_event_track.session_topbar"/>
+                                <div class="row">
+                                    <t t-call="website_event_track.tracks_search"/>
+                                </div>
                                 <!-- Drag/Drop Area -->
                                 <div id="oe_structure_wesession_index_1" class="oe_structure"/>
                                 <!-- Content -->
                                 <div class="o_wesession_container container">
-                                    <div class="row">
-                                        <t t-call="website_event_track.tracks_search"/>
-                                    </div>
+                                    
                                     <div class="row">
                                         <t t-call="website_event_track.tracks_main"/>
                                     </div>
@@ -32,7 +194,7 @@
         </xpath>
     </template>
     
-    <template id="agenda_topbar" inherit_id="website_event_track.agenda_topbar" name="Agenda Tools">
+    <template id="agenda_topbar" inherit_id="website_event_track.agenda_topbar" name="Agenda Toolbar">
         <xpath expr="//nav" position="replace">
             <nav class="navbar navbar-light bg-white d-print-none" >
                 <div class="container">
@@ -49,7 +211,7 @@
         </xpath>
     </template>
 
-    <template id="session_topbar" inherit_id="website_event_track.session_topbar" name="Tracks Tools">
+    <template id="session_topbar" inherit_id="website_event_track.session_topbar" name="Tracks Toolbar">
         <xpath expr="//nav" position="replace">
             <nav class="navbar navbar-light bg-white d-print-none">
                 <div class="container">
@@ -122,146 +284,253 @@
     </template>
 
     <template id="event_track_proposal" inherit_id="website_event_track.event_track_proposal">
-        <xpath expr="//t[@t-call='website_event.layout']" position="replace">
+        <xpath expr="//t[@t-call='website_event.layout']" position="replace">            
             <t t-call="website_event.event_details">
-                <section class="bg-200">
+                
+                <section class="bg-200 website_event_track_proposal">
+                    <!-- modal to create authors-->
+                    <div class="modal fade" id="modal_add_author" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header align-items-center">
+                                    <h4 class="modal-title">Add Author</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&amp;times;</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="add_author_form" method="post" action="#">
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-form-label" for="author_name">Full Name:</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control form-control-lg" name="author_name" required="True" placeholder="Insert author's full name" />
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-form-label" for="author_email">Email:</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control form-control-lg" name="author_email" required="True" placeholder="Insert author's email address" />
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-form-label label-optional" for="author_institution">Institution:</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control form-control-lg" name="author_institution" placeholder="Insert author's institution name" />
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-form-label" for="author_country_id">Country:</label>
+                                            <div class="col-sm-12">
+                                                <select name="author_country_id" id="author_country_id" class="form-control form-control-lg" required="required" placeholder="Select">
+                                                    <t t-foreach='countries' t-as="country">
+                                                        <option t-esc='country.name' t-att-value='country.id' t-att-data-url="country.image_url" t-att-selected="country.id == event.current_user.partner_id.country_id.id"/>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary js_add_author_modal_cancel">Cancel</button>
+                                    <button type="button" class="btn btn-primary js_add_author_modal_save">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- modal to edit authors-->
+                    <div class="modal fade" id="modal_edit_author" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header align-items-center">
+                                    <h4 class="modal-title">Edit Author</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&amp;times;</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="edit_author_form" method="post" action="#">
+                                        <input type="hidden" name="author_id"/>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-form-label" for="author_name">Full Name:</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control form-control-lg" name="author_name" required="True" placeholder="Insert author's full name" />
+                                                <div class="invalid-feedback" name="author_name_error_feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-form-label" for="author_email">Email:</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control form-control-lg" name="author_email" required="True" placeholder="Insert author's email address" />
+                                                <div class="invalid-feedback" name="author_email_error_feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-form-label label-optional" for="author_institution">Institution:</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control form-control-lg" name="author_institution" placeholder="Insert author's institution name" />
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-form-label" for="author_country_id">Country:</label>
+                                            <div class="col-sm-12">
+                                                <select name="author_country_id" id="author_country_id" class="form-control form-control-lg" required="required" placeholder="Select">
+                                                    <t t-foreach='countries' t-as="country">
+                                                        <option t-esc='country.name' t-att-data-url="country.image_url" t-att-value='country.id'/>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary js_edit_author_modal_cancel">Cancel</button>
+                                    <button type="button" class="btn btn-primary js_edit_author_modal_save">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="container overflow-hidden d-block" style="position:relative; top:-40px;">
                         <div class="row no-gutters mb-3 shadow-sm">
                             <div class="col-lg-8 bg-white px-3 pb-0 o_wevent_online pt-5">
                                 <div class="oe_structure" id="oe_structure_website_event_track_proposal_1"/>
                                 <div class="container">                                
                                     <div class="oe_structure" />                                
-                                    <section id="forms" t-if="not event.website_track_proposal">
-                                        <h3>Proposals are closed!</h3>
-                                        <p>
-                                            This event does not accept proposals.
+                                    <section id="forms" t-if="not event.website_track_proposal or event.paper_abstract_deadline_overdue or event.is_done">
+                                                                            
+                                        <h2>Papers submittions are closed!</h2>
+                                        <hr class="my-4" />                                       
+                                        
+                                        <p t-if="event.is_done" class="lead">
+                                            <span class="fa fa-clock-o" /> This event is already done.
                                         </p>
+                                        <p t-if="not event.is_done and event.paper_abstract_deadline_overdue" class="lead">
+                                            <span class="fa fa-clock-o" /> The submittion deadline is overdue.
+                                        </p>
+                                        <p t-if="not event.is_done and not event.paper_abstract_deadline_overdue and not event.website_track_proposal" class="lead">
+                                            <span class="fa fa-ban" /> This event does not accept papers.
+                                        </p>                        
                                     </section>
-                                    <div t-if="not track">
-                                        <section>
-                                            <h3 class="o_page_header">Application</h3>
-                                            <p>
-                                                Fill this form to propose your paper.
-                                            </p>
-                                            <div class="alert alert-info" role="alert">
-                                                <i class="fa fa-info-circle"/>
-                                                You can add multiple speakers by separating names, emails and phones with commas.
+                                    <t t-else="">
+                                        <div t-if="not track">
+                                            <section>
+                                                <h3 class="o_page_header">Submit your paper</h3>
+                                                <p class="text-muted">
+                                                    Fill this form to submit your paper.
+                                                </p>
+                                            </section>
+                                            <section id="forms" class="mb-5"
+                                                t-if="event.website_track_proposal">
+                                                <form class="mt32 js_website_submit_form" t-attf-action="/event/#{event.id}/track_proposal" method="post" enctype="multipart/form-data">
+                                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                    
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-12 col-form-label" for="language_id">Main Language:</label>
+                                                        <div class="col-sm-12">
+                                                            <t t-set="post_lang_id" t-value="post and int(post.get('language_id', '0')) or 0" />
+                                                            <select t-attf-class="form-control form-control-lg #{error.get('language_id') and 'is-invalid' or ''}" name="language_id">
+                                                                <t t-foreach='event.allowed_language_ids' t-as="lang2">
+                                                                    <option t-esc='lang2.name' t-att-value='lang2.id' t-att-selected="lang2.id == post_lang_id" />
+                                                                </t>
+                                                            </select>                                                            
+                                                            <div t-if="error and error.get('language_id')" class="invalid-feedback" t-esc="error.get('language_id')" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-12 col-form-label" for="track_name">Title <small class="text-muted" title="English"> [EN]</small>:</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" t-attf-class="form-control form-control-lg #{error.get('track_name') and 'is-invalid' or ''}"  name="track_name" required="True" placeholder="Insert paper title here (in English)" t-att-value="post and post.get('track_name', '' ) or ''" />
+                                                            <div t-if="error and error.get('track_name')" class="invalid-feedback" t-esc="error.get('track_name')" />
+                                                        </div>                                                        
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-12 col-form-label" for="track_name_es">Title <small class="text-muted" title="Spanish"> [ES]</small>:</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" t-attf-class="form-control form-control-lg #{error.get('track_name_es') and 'is-invalid' or ''}" name="track_name_es" required="True" placeholder="Insert paper title here (in Spanish)" t-att-value="post and post.get('track_name_es', '' ) or ''" />
+                                                            <div t-if="error and error.get('track_name_es')" class="invalid-feedback" t-esc="error.get('track_name_es')" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">                                                        
+                                                        <label class="col-sm-12 col-form-label">Authors:</label>
+                                                        <input type="hidden" name="authors" id="authors" t-att-value='post and post.get("authors", "[{\"author_id\": 0}]" ) or "[{\"author_id\": 0}]"' />
+                                                        <input type="hidden" name="current_user_name" id="current_user_name" t-att-value='event.current_user.partner_id.full_name' />
+                                                        <input type="hidden" name="current_user_email" id="current_user_email" t-att-value='event.current_user.partner_id.email' />
+                                                        <input type="hidden" name="current_user_institution" id="current_user_institution" t-att-value='event.current_user.partner_id.institution' />
+                                                        <input type="hidden" name="current_user_country_image" id="current_user_country_image" t-att-value='event.current_user.partner_id.country_id.image_url' />
+                                                        <input type="hidden" name="current_user_country_name" id="current_user_country_name" t-att-value='event.current_user.partner_id.country_id.name' />
+                                                        <div class="col-sm-12">                                                            
+                                                            <ol id="authors_list" class="list-unstyled ui-sortable">                                                                
+                                                            </ol>
+                                                            <div t-if="error and error.get('authors')" class="small text-danger mt-1" t-esc="error.get('authors')" />
+                                                            <button class="js_add_author btn btn-secondary">Add Author</button>
+                                                        </div>                                                        
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-12" for="description">Abstract <small class="text-muted" title="English"> [EN]</small>:</label>
+                                                        <div class="col-sm-12">
+                                                            <textarea t-attf-class="form-control form-control-lg o_wysiwyg_loader #{error.get('description') and 'is-invalid' or ''}" name="description" required="True" >
+                                                                <t t-esc="post and post.get('description', '' ) or ''" />
+                                                            </textarea>
+                                                            <div t-if="error and error.get('description')" class="small text-danger mt-1" t-esc="error.get('description')" />
+                                                        </div>                                                        
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-12" for="description_es">Abstract<small class="text-muted" title="Spanish"> [ES]</small>:</label>
+                                                        <div class="col-sm-12">
+                                                            <textarea t-attf-class="form-control form-control-lg o_wysiwyg_loader #{error.get('description_es') and 'is-invalid' or ''}" name="description_es" required="True" >
+                                                                <t t-esc="post and post.get('description_es', '' ) or ''" />
+                                                            </textarea>
+                                                            <div t-if="error and error.get('description_es')" class="small text-danger mt-1" t-esc="error.get('description_es')" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-12 col-form-label" for="keywords">Keywords<small class="text-muted" title="English"> [EN]</small>:</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" t-attf-class="form-control form-control-lg #{error.get('keywords') and 'is-invalid' or ''}" name="keywords" required="True" placeholder="Comma separated list of keywords (in English)" t-att-value="post and post.get('keywords', '' ) or ''"/>
+                                                            <div t-if="error and error.get('keywords')" class="invalid-feedback" t-esc="error.get('keywords')" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-12 col-form-label" for="keywords_es">Keywords<small class="text-muted" title="Spanish"> [ES]</small>:</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" t-attf-class="form-control form-control-lg #{error.get('keywords_es') and 'is-invalid' or ''}" name="keywords_es" required="True" placeholder="Comma separated list of keywords (in Spanish)" t-att-value="post and post.get('keywords_es', '' ) or ''"/>
+                                                            <div t-if="error and error.get('keywords_es')" class="invalid-feedback" t-esc="error.get('keywords_es')" />
+                                                        </div>
+                                                    </div>                                                    
+                                                    <div class="form-group row">                                                
+                                                        <div class="col-sm-12">
+                                                            <input name="publish_complete" type="checkbox" checked="checked" /> 
+                                                            <span><b>I authorize the publication of this work</b></span><br/>
+                                                            <span class="text-muted"> (Uncheck this option if you do not want this work to be published)</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="form-group row o_form_buttons">
+                                                        <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
+                                                            <button type="submit" class="btn btn-primary track_submit">Submit Paper</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </section>
+                                        </div>
+                                        <div t-else="">
+                                            <div id="o_event_paper_success" class="col-md-12">
+                                                <section class="container mt48">
+                                                    <h3 class="mb16 mt16">Thank you for your paper</h3>
+                                                </section>
+                                                <p>
+                                                    We will evaluate your proposition and get back to you shortly via email.
+                                                </p>
+                                                <p>
+                                                    You can track your papers from your Account Page.
+                                                </p>                                                    
+                                                <a class="mt48 btn btn-primary" href="/my/home">Go to my account page</a>
+                                                
                                             </div>
-                                        </section>
-                                        <section id="forms" class="mb-5"
-                                            t-if="event.website_track_proposal">
-                                            <form class="mt32 js_website_submit_form website_event_track" t-attf-action="/event/#{event.id}/track_proposal/post" method="post" enctype="multipart/form-data">
-                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12 col-form-label" for="language_id">Main Language <span class="text-danger"> *</span></label>
-                                                    <div class="col-sm-12">
-                                                        <select class="form-control" name="language_id">
-                                                            <t t-foreach='event.allowed_language_ids' t-as="lang2">
-                                                                <option t-esc='lang2.name' t-att-value='lang2.id'/>
-                                                            </t>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12 col-form-label" for="track_name">Title <small class="text-muted" title="English"> [EN]</small><span class="text-danger"> *</span></label>
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" name="track_name" required="True" placeholder="Insert paper title here (in English)" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12 col-form-label" for="track_name_translation">Title <small class="text-muted" title="Spanish"> [ES]</small><span class="text-danger"> *</span></label>
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" name="track_name_es" required="True" placeholder="Insert paper title here (in Spanish)" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12 col-form-label" >Authors</label>
-                                                    <div class="col-sm-12">
-                                                        <table id="authors_table" class="table">
-                                                            <thead class="thead-dark">
-                                                                <tr>
-                                                                <th scope="col">#</th>
-                                                                <th scope="col">Name</th>
-                                                                <th scope="col">Institution</th>
-                                                                <th scope="col">Email</th>
-                                                                <th scope="col"></th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th scope="row">1</th>
-                                                                    <td data-editable="name">Mark</td>
-                                                                    <td data-editable="institution">Otto</td>
-                                                                    <td data-editable="email">@mdo</td>
-                                                                    <td></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <button class="add_author btn btn-primary">Add Author</button>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12" for="description">Abstract <small class="text-muted" title="English"> [EN]</small><span class="text-danger"> *</span></label>
-                                                    <div class="col-sm-12">
-                                                        <textarea class="form-control o_wysiwyg_loader" name="description" required="True"/>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12" for="description">Abstract<small class="text-muted" title="Spanish"> [ES]</small><span class="text-danger"> *</span></label>
-                                                    <div class="col-sm-12">
-                                                        <textarea class="form-control o_wysiwyg_loader" name="description_es" required="True" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12 col-form-label" for="keywords">Keywords <small class="text-danger">*</small></label>
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" name="keywords" required="True" placeholder="Comma separated list of keywords"/>
-                                                    
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12 col-form-label" for="partner_name">Speaker(s) Name</label>
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" name="partner_name" readonly="True" t-att-value='event.current_user.partner_id.full_name'/>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12 col-form-label" for="email_from">Speaker(s) Email</label>
-                                                    <div class="col-sm-12">
-                                                        <input type="email" class="form-control" name="email_from" required="True" multiple="multiple"/>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12 col-form-label" for="phone">Speaker(s) Phone</label>
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" name="phone" required="True"/>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-12 col-form-label" for="biography">Speaker(s) Biography</label>
-                                                    <div class="col-sm-12">
-                                                        <textarea  class="form-control" name="biography" rows="5"/>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">                                                
-                                                    <div class="col-sm-12">
-                                                        <input name="publish_complete" type="checkbox" checked="checked" /> 
-                                                        <span><b>I authorize the publication of this work</b></span><br/>
-                                                        <span class="text-muted"> (Uncheck this option if you do not want this work to be published)</span>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class="form-group row o_form_buttons">
-                                                    <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
-                                                        <button type="submit" class="btn btn-primary">Submit Paper</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </section>
-                                    </div>
-                                    <div t-else="">
-                                        <t t-call="website_event_track.event_track_proposal_success"/>
-                                    </div>
+                                        </div>
+                                    </t>
                                     <div class="oe_structure" id="oe_structure_website_event_track_proposal_2"/>
                                 </div>
                                 <div class="oe_structure" id="oe_structure_website_event_track_proposal_3"/>
@@ -270,7 +539,7 @@
                                 <t t-if="event.website_track_proposal and event.paper_abstract_deadline and not event.paper_abstract_deadline_overdue">
                                     <div class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Paper dates</h6>
-                                        <small class="text-muted">Abstracts submission until</small>
+                                        <small class="text-muted">Abstracts submittion until</small>
                                         <div class="d-flex">                                        
                                             <h5 t-field="event.with_context(tz=event.date_tz).paper_abstract_deadline" class="my-1 mr-1" t-options="{'date_only': 'true', 'format': 'EEEE'}"/>
                                             <h5 class="my-1" t-field="event.with_context(tz=event.date_tz).paper_abstract_deadline" t-options="{'date_only': 'true', 'format': 'long'}" t-att-datetime="event.paper_abstract_deadline"/>
@@ -286,15 +555,13 @@
                                         
                                         <i class="fa fa-long-arrow-down d-block text-muted mx-3 my-2" style="font-size: 1.5rem"/>
                                         
-                                        <small class="text-muted">Final papers submissions until</small>
+                                        <small class="text-muted">Final papers submittions until</small>
                                         <div class="d-flex">
                                             <h5 t-field="event.with_context(tz=event.date_tz).paper_final_deadline" class="my-1 mr-1" t-options="{'date_only': 'true', 'format': 'EEEE'}"/>
                                             <h5 class="my-1" t-field="event.with_context(tz=event.date_tz).paper_final_deadline" t-options="{'date_only': 'true', 'format': 'long'}" t-att-datetime="event.paper_final_deadline"/>
-                                        </div>
-                                        
-                                        
+                                        </div>                                        
                                     </div>
-                                </t>
+                                </t>                                
                                 <t t-if="len(event.attachment_ids)>0">
                                     <div class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Templates</h6>
@@ -325,7 +592,7 @@
                                 </div>
                                 
                                 <div class="o_wevent_sidebar_block">
-                                    <h6 class="o_wevent_sidebar_title">Submission Agreement</h6>
+                                    <h6 class="o_wevent_sidebar_title">Submittion Agreement</h6>
                                     <p>
                                     We require speakers to accept an agreement in which they commit to:
                                     </p>
@@ -343,22 +610,10 @@
                         </div>
                     </div>
                 </section>
+                
             </t>
         </xpath>
     </template>
 
-    <template id="event_track_proposal_success" inherit_id="website_event_track.event_track_proposal_success">
-        <xpath expr="//section" position="replace">
-            <t t-call="website_event.event_details">
-                <div id="o_event_paper_success" class="col-md-12">
-                    <section class="container mt48">
-                        <h3 class="mb16 mt16">Thank you for your paper</h3>
-                    </section>
-                    <p>
-                        We will evaluate your proposition and get back to you shortly.
-                    </p>
-                </div>
-            </t>
-        </xpath>
-    </template>
+    
 </odoo>

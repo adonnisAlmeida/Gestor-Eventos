@@ -12,15 +12,8 @@ class EventType(models.Model):
     _inherit = 'event.type'
 
     website_registration = fields.Boolean('Registration on Website')
+
     
-    """@api.onchange('website_menu')
-    def _onchange_website_menu(self):
-        if not self.website_menu:
-            self.website_registration = False
-            self.website_track = False
-            self.website_track_proposal = False """
-
-
 class Event(models.Model):
     _inherit = 'event.event'
         
@@ -92,97 +85,7 @@ class Event(models.Model):
     def _get_track_proposal_menu_entries(self):
         """ See website_event_track._get_track_menu_entries() """
         self.ensure_one()
-        return [('Upload a paper', '/event/%s/track_proposal' % slug(self), False, 15, 'track_proposal')]
-
-    """@api.onchange('event_type_id')
-    def _onchange_type(self):
-        super(Event, self)._onchange_type()
-        if self.event_type_id and self.website_menu:
-            self.website_registration = self.event_type_id.website_registration
-            self.website_track = self.event_type_id.website_track
-            self.website_track_proposal = self.event_type_id.website_track_proposal
-    """
-    
-    """@api.onchange('website_menu')
-    def _onchange_website_menu(self):
-        if not self.website_menu:
-            self.website_registration = False
-            self.website_track = False
-            self.website_track_proposal = False """
-    
-    
-    """ def _set_website_menu(self):
-        for event in self:
-            event.website_track_proposal_ok = event.website_track_proposal
-            event.website_track_ok = event.website_track
-            event.website_registration_ok = event.website_registration
-            if event.menu_id and not event.website_menu:
-                event.menu_id.unlink()
-            elif event.website_menu:
-                if not event.menu_id:
-                    root_menu = self.env['website.menu'].create({'name': event.name})
-                    event.menu_id = root_menu
-
-                existing_page_names = event.menu_id.child_id.mapped('base_name')
-                required_page_names = [entry[0] for entry in self._get_menu_entries()]
-                standard_page_names = self._get_standard_menu_entries_names()
-
-                # remove entries that should not exist anymore
-                submenu_to_delete = event.menu_id.child_id.filtered(lambda menu: menu.base_name not in required_page_names and menu.base_name in standard_page_names)
-                submenu_to_delete.unlink()
-
-                # create missing entries
-                
-                for sequence, (name, url, xml_id, icon) in enumerate(self._get_menu_entries()):
-                    if name not in existing_page_names:
-                        if not url:
-                            newpath = self.env['website'].new_page(name + ' ' + self.name, template=xml_id, ispage=False)['url']
-                            url = "/event/" + slug(self) + "/page/" + newpath[1:]
-                        created = self.env['website.menu'].create({
-                            'name': name,
-                            'base_name': name,
-                            'url': url,
-                            'icon': icon,
-                            'parent_id': event.menu_id.id,
-                            'sequence': sequence,
-                        })
-                        
-                        trans = {
-                                    'Introduction': 'Convocatoria',
-                                    'Location':'Ubicación',
-                                    'Register': 'Registro',
-                                    'Talks': 'Presentaciones',
-                                    'Agenda': 'Calendario',
-                                    'Talk Proposals': 'Subir un trabajo'
-                                }
-
-                        self.env['ir.translation'].create({
-                            'name': 'website.menu,name',
-                            'res_id': created.id,
-                            'lang': 'es_ES',
-                            'type': 'model',
-                            'src': created.name,
-                            'value': trans.get(created.name, created.name),
-                            'state': 'translated'
-                        })
-    """
-
-    """
-    def _get_menu_entries(self):
-        self.ensure_one()
-        res = [
-            ('Introduction', '/event/%s/intro' % slug(self), False, 'fa fa-bullhorn')            
-        ]
-        if self.website_registration:
-            res.append(('Register', '/event/%s/register' % slug(self), False, 'fa fa-shopping-cart'))
-        if self.website_track:
-            res += [
-                ('Presentations', '/event/%s/track' % slug(self), False, 'fa fa-slideshare'),
-                ('Agenda', '/event/%s/agenda' % slug(self), False, 'fa fa-calendar')]
-        if self.website_track_proposal:
-            res += [('Upload a paper', '/event/%s/track_proposal' % slug(self), False, 'fa fa-upload')]
-        return res
-    """
+        return [('Submit a paper', '/event/%s/track_proposal' % slug(self), False, 15, 'track_proposal')]
 
     @api.model
     def create(self, vals):
