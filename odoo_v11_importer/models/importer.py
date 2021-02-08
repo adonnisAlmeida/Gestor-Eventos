@@ -738,7 +738,8 @@ class Importer(models.TransientModel):
                         #'partner_biography': d[7],
                         'stage_id': d[8],
                         'kanban_state': d[9], 
-                        'description': d[10], 
+                        'description': d[10],
+                        'description_es': d[10],
                         'date': d[11], 
                         'language_id': d[12] and res_lang.get(d[12], False) or False, 
                         'duration': d[13],  
@@ -809,17 +810,7 @@ class Importer(models.TransientModel):
                             'state': src_t[2]
                         })
 
-                    # import translations of event_track description
-                    cr.execute("""select src, value, state, module from ir_translation where lang='es_ES' and name = 'event.track,description' and type = 'model' and res_id = """ + str(d[0]) +""" limit 1;""")
-                    src_trans = cr.fetchall()
-                    for src_t in src_trans:
-                        dst_t = self.env['ir.translation'].search([('name', '=', 'event.track,description'),('lang', '=', 'es_ES'),('res_id','=', created.id)])
-                        if dst_t:
-                            dst_t.write({
-                            'src': src_t[0],
-                            'value': src_t[1],
-                            'state': src_t[2]
-                        })
+                    
 
         # event_track_event_track_tag_rel
         cr.execute("""select event_track_tag_id, event_track_id from event_track_event_track_tag_rel where true""")
