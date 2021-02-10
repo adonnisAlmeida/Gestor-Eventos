@@ -8,16 +8,7 @@
        <xpath expr="//link[last()]" position="after">
             <link rel="stylesheet" type="text/scss" href="/portal_uclv/static/src/scss/portal.scss"/>
         </xpath>
-    </template>
-
-    <template id="portal_layout" inherit_id="portal.portal_layout">
-        <xpath expr="//div[@t-field='user_id.partner_id']" position="replace">
-            <div t-field="user_id.partner_id" t-options='{"widget": "contact", "fields": ["avatar", "email", "phone", "address", "name"]}'/>
-            <br/>
-            <div class="text-muted text-quote" t-field="user_id.partner_id.website_description"/>
-        </xpath>
-    </template>
-    
+    </template>       
     
     <template id="portal_my_details" inherit_id="portal.portal_my_details">
         <xpath expr="//form" position="attributes">
@@ -96,5 +87,195 @@
             </div>
         </xpath>
     </template>
+    
+    <template id="portal_table" inherit_id="portal.portal_table" name="My Portal Table">
+        <xpath expr="." position="replace" >
+            <div class="container mt48">
+                <div t-attf-class="table-responsive border rounded border-top-0 #{classes if classes else ''}">
+                    <table class="table rounded mb-0 bg-white o_portal_my_doc_table">
+                        <t t-raw="0"/>
+                    </table>
+                </div>
+                <div t-if="pager" class="o_portal_pager text-center">
+                    <t t-call="portal.pager"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
 
+    <template id="portal_record_layout" inherit_id="portal.portal_record_layout" name="Portal single record layout">
+        <xpath expr="." position="replace" >
+            <div class="container mt48">
+                <div t-attf-class="card mt-0 border-top-0 rounded-0 rounded-bottom #{classes if classes else ''}">
+                    <div t-if="card_header" t-attf-class="card-header #{header_classes if header_classes else ''}">
+                        <t t-raw="card_header"/>
+                    </div>
+                    <div t-if="card_body" t-attf-class="card-body #{body_classes if body_classes else ''}">
+                        <t t-raw="card_body"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="portal_layout" inherit_id="portal.portal_layout" name="Portal Layout">
+        <xpath expr="//t[@t-call='portal.frontend_layout']" position="replace">
+            <t t-call="portal.frontend_layout">
+                <t t-set="is_portal" t-value="True"/>
+
+                <t t-if="not no_breadcrumbs and not my_details and not breadcrumbs_searchbar" class="o_portal container mt-3">
+                    
+                    
+                    <nav t-attf-class="navbar navbar-light border-top shadow-sm d-print-none navbar-expand-lg portal_navbar {{classes if classes else ''}}">
+                        <div class="container">
+                            <div class="d-flex flex-column flex-sm-row justify-content-between w-100">
+                                <t t-call="portal.portal_breadcrumbs"/>
+                                <div t-if="prev_record or next_record" class="col-2 flex-grow-0 text-center">
+                                    <t t-call='portal.record_pager'/>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                                
+                </t>
+                <div id="wrap" class='o_portal_wrap'>
+                    <div class="mb64">
+                        <t t-if="my_details">
+                            <div class="container">
+                                <div class="row justify-content-between mt-4">
+                                    <div t-attf-class="col-12 col-md col-lg-6">
+                                        <t t-raw="0"/>
+                                    </div>
+                                    <div id="o_my_sidebar" class="pt-3 pt-lg-0 col-12 col-md col-lg-4 col-xl-3 o_my_sidebar">
+                                        <div class="o_my_contact" t-if="sales_user">
+                                            <t t-call="portal.portal_contact"/>
+                                        </div>
+                                        <div class="o_portal_my_details">
+                                            <h4>Details <a role="button" href="/my/account" class="btn btn-sm btn-link"><i class="fa fa-pencil"/> Edit</a></h4>
+                                            <hr class="mt-1 mb-0"/>
+                                            <div t-field="user_id.partner_id" t-options='{"widget": "contact", "fields": ["email", "phone", "address", "name"]}'/>
+                                        </div>
+                                        <div class="o_portal_my_security mt-3">
+                                            <h4>Account Security </h4>
+                                            <hr class="mt-1 mb-1"/>
+                                            <a href="/my/security"><i class="fa fa-pencil mx-1"/>Edit Security Settings</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <t t-raw="0"/>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//div[@t-field='user_id.partner_id']" position="replace">
+            <div t-field="user_id.partner_id" t-options='{"widget": "contact", "fields": ["avatar", "email", "phone", "address", "name"]}'/>
+            <br/>
+            <div class="text-muted text-quote" t-field="user_id.partner_id.website_description"/>
+        </xpath>
+    </template>
+
+    <template id="portal_searchbar" name="Portal Search Bar" inherit_id="portal.portal_searchbar">
+        <xpath expr="//nav" position="replace">
+            <nav t-attf-class="navbar navbar-light border-top shadow-sm d-print-none navbar-expand-lg portal_navbar {{classes if classes else ''}}">
+                <div class="container">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between w-100">
+                        <!--  Navbar breadcrumb or title  -->
+                        <t t-if="breadcrumbs_searchbar">
+                            <t t-call="portal.portal_breadcrumbs"/>
+                        </t>
+                        <span t-else="" class="navbar-brand mb-0 h1 mr-auto" t-esc="title or 'No title'"/>
+
+                        <!--  Collapse button -->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#o_portal_navbar_content" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle filters">
+                            <span class="navbar-toggler-icon small"/>
+                        </button>
+
+                        <!--  Collapsable content  -->
+                        <div class="collapse navbar-collapse" id="o_portal_navbar_content">
+                            <div class="nav flex-column flex-lg-row ml-auto p-0 mb-3 mb-lg-0 mt-1 mt-lg-0">
+                                <div t-if="searchbar_sortings" class="form-inline">                                    
+                                    <div class="btn-group">
+                                        <a id="portal_searchbar_sortby" data-toggle="dropdown" class="btn dropdown-toggle">
+                                            <i class="fa fa-sort" />
+                                            <t t-esc="searchbar_sortings[sortby].get('label', 'Newest')"/>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="portal_searchbar_sortby">
+                                            <t t-foreach="searchbar_sortings" t-as="option">
+                                                <a t-att-href="request.httprequest.path + '?' + keep_query('*', sortby=option)"
+                                                t-attf-class="dropdown-item#{sortby == option and ' active' or ''}">
+                                                    <span t-esc="searchbar_sortings[option].get('label')"/>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div t-if="searchbar_filters" class="form-inline ml-lg-2">                                    
+                                    <div class="btn-group">
+                                        <a id="portal_searchbar_filters" data-toggle="dropdown" class="btn dropdown-toggle">
+                                            <i class="fa fa-filter" />
+                                            <t t-esc="searchbar_filters.get(filterby,searchbar_filters.get('all')).get('label', 'All')"/>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="portal_searchbar_filters">
+                                            <t t-foreach="searchbar_filters" t-as="option">
+                                                <a t-att-href="default_url + '?' + keep_query('*', filterby=option)"
+                                                t-attf-class="dropdown-item#{filterby == option and ' active' or ''}">
+                                                    <span t-esc="searchbar_filters[option].get('label')"/>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div t-if="searchbar_groupby" class="form-inline ml-lg-2">                                    
+                                    <div class="btn-group">
+                                        <a id="portal_searchbar_groupby" data-toggle="dropdown" class="btn dropdown-toggle">
+                                            <i class="fa fa-folder" />
+                                            <t t-esc="searchbar_groupby[groupby].get('label', 'None')"/>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="portal_searchbar_groupby">
+                                            <t t-foreach="searchbar_groupby" t-as="option">
+                                                <a t-att-href="default_url + '?' + keep_query('*', groupby=option)"
+                                                t-attf-class="dropdown-item#{groupby == option and ' active' or ''}">
+                                                    <span t-esc="searchbar_groupby[option].get('label')"/>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                                <t t-raw="0"/>
+                            </div>
+                            <form t-if="searchbar_inputs" class="form-inline o_portal_search_panel ml-lg-4">
+                                <div class="input-group w-100">
+                                    <div class="input-group-prepend">
+                                        <a type="button" class="btn dropdown-toggle m0" data-toggle="dropdown">
+                                            <i class="fa fa-gear text-small" />
+                                        </a>
+                                        <div class="dropdown-menu" role="menu">
+                                            <t t-foreach='searchbar_inputs' t-as='input'>
+                                                <a t-att-href="'#' + searchbar_inputs[input]['input']"
+                                                    t-attf-class="dropdown-item#{search_in == searchbar_inputs[input]['input'] and ' active' or ''}">
+                                                    <span t-raw="searchbar_inputs[input]['label']"/>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Search" t-att-value='search' name="search"/>
+                                    <span class="input-group-append">
+                                        <button class="btn btn-primary search-submit" type="button">
+                                            <span class="fa fa-search"/>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </xpath>
+    </template>
+
+     
 </odoo>

@@ -1825,16 +1825,6 @@ msgstr ""
 msgid "Finished"
 msgstr "Terminado"
 
-#. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_form
-msgid "First Review"
-msgstr ""
-
-#. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__reviewer_id
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_search
-msgid "First Reviewer"
-msgstr ""
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_stage__fold
@@ -2982,11 +2972,6 @@ msgstr ""
 msgid "Second Review"
 msgstr ""
 
-#. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__reviewer2_id
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_search
-msgid "Second Reviewer"
-msgstr ""
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__access_token

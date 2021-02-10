@@ -51,9 +51,6 @@ class TrackStage(models.Model):
     def validate(self, track):
         review_workflow = self.env['ir.config_parameter'].sudo().get_param('website_event_track_uclv.review_workflow') == 'True'
         if review_workflow:
-            if self.id == 2:
-                if not track.reviewer_id or not track.reviewer2_id:
-                    return False, _("You must assign reviewers to this track in order to set it in this state")
             if self.id == 3: #accepted
                 if not track.partner_id:
                     return False, _("You must assign an speaker to this track in order to set it in this state")
@@ -77,11 +74,6 @@ class TrackStage(models.Model):
             return True, ''
 
     def pre_validate(self, track, vals):
-        if self.id == 1: #proposal
-            if not vals.get('reviewer_id', track.reviewer_id) or not vals.get('reviewer2_id', track.reviewer2_id):
-                return 2
-            if vals.get('reviewer_id', track.reviewer_id) and vals.get('reviewer2_id', track.reviewer2_id):
-                return 0
         if self.id == 2: #review
             if not vals.get('partner_id', track.partner_id) or not vals.get('recommendation', track.recommendation) or not vals.get('recommendation2',track.recommendation2):
                 return 2
@@ -125,6 +117,7 @@ class TrackAuthor(models.Model):
 class TrackReview(models.Model):
     _name = 'event.track.review'
     _inherit = ['mail.thread']
+    _description = "Paper Review"
     
     def _default_access_token(self):
         return uuid.uuid4().hex
@@ -132,9 +125,9 @@ class TrackReview(models.Model):
     track_id = fields.Many2one('event.track', string="Track", required=True, ondelete='cascade')
     event_id = fields.Many2one('event.event', string="Event", related="track_id.event_id", store=True)
     name = fields.Char('Name', related="track_id.name")
-    partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade')
+    partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade', domain=[('email', '!=', '')])
     access_token = fields.Char('Invitation Token', default=_default_access_token)
-    state = fields.Selection([('open','Open'),('expired', 'Expired')], string="State")
+    state = fields.Selection([('notice','Noticed'),('read','Readed'),('accept','Accepted'),('reject','Rejected'),('edit', 'Need changes'),('expired', 'Expired')], string="State", default="notice", required=True)
 
     @api.model
     def create(self, vals):        
@@ -151,25 +144,14 @@ class Track(models.Model):
     _name = "event.track"    
     _inherit = ['event.track', 'portal.mixin', 'mail.thread', 'mail.activity.mixin', 'website.seo.metadata', 'website.published.mixin']
     
-    def _get_reviewed(self):
-        self.reviewed = False
-        if self.reviewer_id.id == self.env.user.id:
-            if self.recommendation:
-                self.reviewed = True
-        if self.reviewer2_id.id == self.env.user.id:
-            if self.recommendation2:
-                self.reviewed = True
-
-    
+       
     def _get_multiple(self):
         for item in self:
             if self.search_count([('name', '=', item.name),('event_id', '=', item.event_id.id)]) > 1:
                 item.multiple = True
             else:
                 item.multiple = False
-
-    reviewer_id = fields.Many2one('res.users', 'First Reviewer', default=False, domain=[("reviewer", '=', True)])
-    reviewer2_id = fields.Many2one('res.users', 'Second Reviewer', default=False, domain=[("reviewer", '=', True)])
+    
     #Revision Stuffs
     coordinator_notes = fields.Text('Notes for the Coordinator')
     author_notes = fields.Text('Notes for the Author')
@@ -230,9 +212,6 @@ class Track(models.Model):
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         if self.partner_id:
-            #self.partner_name = self.partner_id.name
-            #self.partner_email = self.partner_id.email
-            #self.partner_phone = self.partner_id.phone
             self.partner_biography = self.partner_id.website_description
 
     @api.model
@@ -254,18 +233,12 @@ class Track(models.Model):
     def write(self, vals):
         group = self.env.ref('event_uclv.group_event_multimanager')
         if self.env.user not in group.sudo().users:
-            if  self.user_id.id != self.env.user.id and \
-                self.reviewer_id.id != self.env.user.id and \
-                self.reviewer2_id.id != self.env.user.id and \
-                self.partner_id.user_id.id != self.env.user.id:
+            if self.user_id.id != self.env.user.id and self.partner_id.user_id.id != self.env.user.id:
                 raise exceptions.Warning(_("You are not authorized to change this track"))
 
         if 'stage_id' in vals and 'kanban_state' not in vals:
-            vals['kanban_state'] = 'normal'
-        
-        #if not vals.get('partner_email', self.partner_email):
-        #    raise exceptions.Warning(_('Speakers must have an email!'))
-        
+            vals['kanban_state'] = 'normal'        
+              
         location_id = vals.get('location_id', self.location_id.id)
         if location_id:
             location = self.env['event.track.location'].browse(location_id)
@@ -294,50 +267,10 @@ class Track(models.Model):
 
         res = super(Track, self).write(vals)
         
-        url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-        user_name = self.env.user.name
-        company_name = self.env.ref('base.main_company').name
-        if vals.get('reviewer_id'):
-
-            self.message_subscribe([vals['reviewer_id']])
-            mail = self.env['mail.mail'].create(
-                {
-                    'email_from': 'convencionuclv@uclv.cu', 
-                    'reply_to': 'convencionuclv@uclv.cu', 
-                    'email_to': self.reviewer_id.email, 
-                    'subject': _("Reviewer of track"), 
-                    'notification': True,
-                    'auto_delete': True,
-                    'body_html': _('<div><p>Dear %s:</p><p>We are glad to inform you that you have been selected to review the proposal %s for the event %s.</p><p>You will find more details here:<div style="margin-top: 16px;"><a href="%s/my/track/%s" style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">View Track</a></div></p><p>Sincerely, %s</p><br/><p><a href="%s">%s</a></p></div>') % (self.reviewer_id.name, self.name, self.event_id.name, url, str(self.id), user_name, url, company_name)
-                })
-            mail.send()
-        if vals.get('reviewer2_id'):
-            self.message_subscribe([vals['reviewer2_id']])
-            mail = self.env['mail.mail'].create(
-                {
-                    'email_from': 'convencionuclv@uclv.cu', 
-                    'reply_to': 'convencionuclv@uclv.cu', 
-                    'email_to': self.reviewer2_id.email, 
-                    'subject': _("Reviewer of track"), 
-                    'notification': True,
-                    'auto_delete': True,
-                    'body_html': _('<div><p>Dear %s:</p><p>We are glad to inform you that you have been selected to review the proposal %s for the event %s.</p><p>You will find more details here:<div style="margin-top: 16px;"><a href="%s/my/track/%s" style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">View Track</a></div></p><p>Sincerely, %s</p><br/><p><a href="%s">%s</a></p></div>') % (self.reviewer2_id.name, self.name, self.event_id.name, url, str(self.id), user_name, url, company_name)
-                })
-            mail.send()
         if vals.get('partner_id'):
             self.message_subscribe([vals['partner_id']])
-        return res
-
-    
-    """def _track_template(self, tracking):
-        res = super(Track, self)._track_template(tracking)
-        track = self[0]
-        changes, tracking_value_ids = tracking[track.id]
-        #if 'reviewer_id' in changes and track.reviewer_id.email:
-        #    res['reviewer_id'] = (self.env.ref("website_event_track.reviewer_mail_template"), {'composition_mode': 'mass_mail', 'email_to': 'yed@yed.com'})
-        if 'stage_id' in changes and track.stage_id.mail_template_id:
-            res['stage_id'] = (track.stage_id.mail_template_id, {'composition_mode': 'mass_mail'})
-        return res"""
+        return res    
+   
 
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=100):

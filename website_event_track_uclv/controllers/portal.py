@@ -38,7 +38,7 @@ class PortalController(CustomerPortal):
     
     def get_domain_my_new_reviews(self, user):
         return [
-            ('partner_id', '=', user.partner_id.id), ('state', '=', 'open')
+            ('partner_id', '=', user.partner_id.id), ('state', 'in', ('notice','read'))
         ]    
      
 
@@ -214,15 +214,14 @@ class PortalController(CustomerPortal):
             'date': {'label': _('Newest'), 'order': 'create_date desc'},
             'name': {'label': _('Title'), 'order': 'name'},
             'state': {'label': _('State'), 'order': 'state, event_id'},
-            'event': {'label': _('Event'), 'order': 'event_id, stage_id'},
+            'event': {'label': _('Event'), 'order': 'event_id, state'},
         }
         searchbar_filters = {
             'all': {'label': _('All'), 'domain': []},
         }
         searchbar_inputs = {
             'content': {'input': 'content', 'label': _('Search in Content</span>')},
-            'message': {'input': 'message', 'label': _('Search in Messages')},            
-            #'status': {'input': 'status', 'label': _('Search in Status')},
+            'message': {'input': 'message', 'label': _('Search in Messages')},
             'event': {'input': 'project', 'label': _('Search in Event')},
             'all': {'input': 'all', 'label': _('Search in All')},
         }
@@ -272,7 +271,7 @@ class PortalController(CustomerPortal):
         if search and search_in:
             search_domain = []
             if search_in in ('content', 'all'):
-                search_domain = OR([search_domain, ['|', ('name', 'ilike', search), ('description', 'ilike', search)]])
+                search_domain = OR([search_domain, ['|', '|', ('name', 'ilike', search), ('description', 'ilike', search), ('description_es', 'ilike', search)]])
             if search_in in ('message', 'all'):
                 search_domain = OR([search_domain, [('message_ids.body', 'ilike', search)]])
             #if search_in in ('stage', 'all'):
@@ -342,7 +341,10 @@ class PortalController(CustomerPortal):
                 raise Forbidden()
         
         if not review:
-            raise NotFound()        
+            raise NotFound()
+
+        if review.state == 'notice':
+            review.write({'state': 'read'}) #the reviewer has seen the paper
         
         """if recommendation:
             if paper.reviewer_id == request.env.user:

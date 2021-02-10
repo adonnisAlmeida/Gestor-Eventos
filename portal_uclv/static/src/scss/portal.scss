@@ -18,3 +18,48 @@
         }
     }
 }
+#wrapwrap.o_portal {
+    background-color: #E9ECEF !important;
+    color: #212529;
+}
+@media (min-width: 992px)
+{
+    #wrapwrap.o_footer_effect_enable > main {
+        background-color: #E9ECEF;        
+    }
+}
+.portal_navbar {
+    .dropdown-toggle {
+        border: $border-width solid gray('400');
+        @include o-bg-color(gray('white'), $with-extras: false);
+        @include border-radius($dropdown-border-radius);
+        @include hover-focus {
+            border-color: theme-color('primary');
+            color: theme-color('primary');
+            text-decoration: none;
+        }
+        &:after {
+            margin-left: 1.2em;            
+        }
+        .fa {
+            margin-right: .4em;
+            color: theme-color('primary');
+        }
+        &.m0
+        {
+            &:after {
+                margin-left: 0;            
+            }
+        }
+    }
+    .dropdown-menu {
+        margin-top: $navbar-padding-y;
+        min-width: 12rem;
+    }
+    .dropdown-item  {
+        &.active .badge { // Invert badge display when the item is active
+            background-color: color-yiq(theme-color('primary'));
+            color: theme-color('primary');
+        }
+    }
+}

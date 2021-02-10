@@ -89,53 +89,61 @@
                                 <small class="text-muted d-none d-md-inline"> (#<span t-field="review.id"/>)</small>
                                 <div class="col-3 col-md-2 text-right">
                                     <small class="text-right">State:</small>
-                                    <span t-esc="review.state" class=" badge badge-pill badge-info" title="Current state of this review"/>
+
+                                    <span t-if="review.state=='accept'" class="badge badge-pill badge-success" title="Accepted">Accepted</span>
+                                    <span t-if="review.state=='reject'" class="badge badge-pill badge-danger" title="Rejected">Rejected</span>
+                                    <span t-if="review.state=='edit'" class="badge badge-pill badge-warning" title="Needs changes">Needs changes</span>
+                                    <span t-if="review.state in ('notice','read')" class="badge badge-pill badge-info" title="To Review">To Review</span>
+                                    <span t-if="review.state in ('expired',)" class="badge badge-pill badge-muted" title="Expired">Expired</span>
                                 </div>
                             </h5>
                         </div>
                     </div>
                 </t>
-                <t t-set="card_body">
+                <t t-set="card_body">                    
                     <div class="portal_event_review">
+                        <div class="mb-4">
+                            <h4><strong>Event</strong></h4>
+                            <h4><a t-attf-href="/event/#{review.track_id.event_id.id}"> 
+                                <t t-esc="review.track_id.event_id.name"/> 
+                                <t t-if="review.track_id.event_id.short_name" t-esc="review.track_id.event_id.short_name"/> 
+                                <t t-if="review.track_id.event_id.subname" t-esc="review.track_id.event_id.subname"/>
+                            </a></h4>
+                        </div>
+
                         <div class="row mb-4">
                             <div t-attf-class="col-12 col-lg-12 mb-6 mb-md-0">                                    
                                 <div class="d-flex mb-1">
-                                    <h3><strong>Title<small class="text-sm text-muted" title="English"> [EN] </small>:</strong></h3>
+                                    <h4><strong>Title<small class="text-sm text-muted" title="English"> [EN] </small></strong></h4>
                                 </div>                                    
-                                <h3 class="text-uppercase" t-field="review.track_id.with_context(lang='en_US').name" />                                    
+                                <h4 class="text-uppercase" t-field="review.track_id.with_context(lang='en_US').name" />                                    
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div t-attf-class="col-12 col-lg-12 mb-6 mb-md-0">                                    
                                 <div class="d-flex mb-1">
-                                    <h3><strong>Title<small class="text-sm text-muted" title="Spanish"> [ES]</small>:</strong></h3>
+                                    <h4><strong>Title<small class="text-sm text-muted" title="Spanish"> [ES]</small></strong></h4>
                                 </div>                                    
-                                <h3 class="text-uppercase" t-field="review.track_id.with_context(lang='es_ES').name" />
+                                <h4 class="text-uppercase" t-field="review.track_id.with_context(lang='es_ES').name" />
                                 
                             </div>
                         </div>
 
 
-                        <div class="mb-4">
-                            <strong>Event:</strong> <a t-attf-href="/event/#{review.track_id.event_id.id}"> 
-                                <t t-esc="review.track_id.event_id.name"/> 
-                                <t t-if="review.track_id.event_id.short_name" t-esc="review.track_id.event_id.short_name"/> 
-                                <t t-if="review.track_id.event_id.subname" t-esc="review.track_id.event_id.subname"/>
-                            </a>
-                        </div>
+                        
 
                         <div class="row mb-4">
-                            <div class="col-12 col-md-6 mb-1">
-                                <strong>Date:</strong> <span t-field="review.create_date" t-options='{"widget": "date"}'/>
+                            <div class="col-12 col-md-6">
+                                <h4><strong>Date</strong></h4> <span t-field="review.create_date" t-options='{"widget": "date"}'/>
                             </div>
                             <div class="col-12 col-md-6" t-if="review.track_id.event_id.paper_abstract_notification_date">
-                                <strong>Deadline:</strong> <span t-field="review.track_id.event_id.paper_abstract_notification_date" t-options='{"widget": "date"}'/>
+                                <h4><strong>Deadline</strong></h4> <span t-field="review.track_id.event_id.paper_abstract_notification_date" t-options='{"widget": "date"}'/>
                                 <time class="timeago text-muted small" t-att-datetime="review.track_id.event_id.paper_abstract_notification_date"></time>
                             </div>
                         </div>
                         <div class="row mb-4" t-if="review.sudo().track_id.tag_ids">
                             <div class="col-12 col-md-6 mb-1">
-                                <h4><strong>Keywords:</strong></h4>                            
+                                <h4><strong>Keywords</strong></h4>                            
                                 <t t-foreach="review.sudo().track_id.tag_ids" t-as="tag">
                                     <span class="label label-info" t-esc="tag.name" />
                                 </t>                            
@@ -143,20 +151,37 @@
                         </div>
                         <div class="row mb-4" t-if="review.track_id.language_id">
                             <div class="col-12 col-md-6 mb-1">
-                                <h4><strong>Language:</strong></h4>
+                                <h4><strong>Language</strong></h4>
                                 <span t-field="review.sudo().track_id.language_id" />
                             </div>
                         </div>
-                        <div class="row mb-4" t-if="len(review.track_id.author_ids)>1">
-                            <div class="col-12 col-md-6 mb-1">
-                                <h4><strong>Authors:</strong></h4>
-                                <ul class="col-xs-11 col-xs-offset-1 col-sm-8">
-                                    <li t-foreach='review.track_id.author_ids' t-as="author">
-                                        <div t-field="author.sudo().partner_id.name"/>
-                                    </li>
-                                </ul>
+                        <div class="row mb-4">
+                                <div class="col-12 col-md-6 mb-1">
+                                    <h4><strong>Authors</strong></h4>
+                                    <ol>
+                                        <li t-foreach='review.sudo().track_id.author_ids' t-as="author">                                            
+                                            <div>
+                                                <t t-if="author.partner_id == review.sudo().track_id.partner_id">
+                                                    <b><span  itemprop="name" t-field="author.partner_id.name" /></b>
+                                                </t>
+                                                <t t-else="">
+                                                    <span itemprop="name" t-field="author.partner_id.name" />
+                                                </t>
+                                            </div>
+                                            <div>
+                                                <span class="fa fa-envelope text-info" /> <a t-attf-href="mailto:{{author.partner_id.email}}"><t t-esc="author.partner_id.email" /></a>
+                                            </div>
+                                            <div>
+                                                <span class="fa fa-home text-info"/> <span t-if="author.partner_id.institution" itemprop="institution" t-field="author.partner_id.institution" />
+                                                <span t-if="author.partner_id.country_id">
+                                                    <img height="16px" t-att-src="author.partner_id.country_id.image_url" t-att-alt="'Flag of %s' % author.partner_id.country_id.name" t-att-title="author.partner_id.country_id.name"/>
+                                                    <span t-field="author.partner_id.country_id.name" />
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
                             </div>
-                        </div>
                         <div class="row mb-4" t-if="review.track_id.user_id or review.track_id.partner_id">
                             <div class="col-12 col-md-6 pb-2" t-if="review.track_id.user_id">
                                 <h4><strong>Coordinator</strong></h4>
@@ -170,33 +195,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="coll-12 col-md-6 pb-2" t-if="review.track_id.partner_id">
-                                <h4><strong>Owner</strong></h4>
-                                <div class="row">
-                                    <div class="col flex-grow-0 pr-3">
-                                        <img t-if="review.track_id.partner_id.image_1024" class="rounded-circle mt-1 o_portal_contact_img" t-att-src="image_data_uri(review.track_id.partner_id.image_1024)" alt="Contact"/>
-                                        <img t-else="" class="rounded-circle mt-1 o_portal_contact_img" src="/web/static/src/img/user_menu_avatar.png" alt="Contact"/>
-                                    </div>
-                                    <div class="col pl-md-0">
-                                        <div t-field="review.track_id.partner_id" t-options='{"widget": "contact", "fields": ["name", "email", "phone"]}'/>
-                                        <div t-if="review.track_id.partner_id.institution">
-                                            <span class="fa fa-home" /> <span itemprop="institution" t-field="review.partner_id.company_name" />
-                                        </div>
-                                        <div t-if="review.track_id.partner_id.country_id">
-                                            <img height="16px" t-att-src="review.track_id.partner_id.country_id.image_url" t-att-alt="'Flag of %s' % review.track_id.partner_id.country_id.name" t-att-title="review.track_id.partner_id.country_id.name"/>
-                                            <span t-field="review.track_id.partner_id.country_id.name" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="row" t-if="review.track_id.description">
                             <div t-if="review.track_id.description" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
                                 <hr class="mb-1"/>
                                 <div class="d-flex my-2">
-                                    <h4><strong>Abstract<small class="text-sm text-muted" title="English"> [EN]</small>:</strong></h4>
+                                    <h4><strong>Abstract<small class="text-sm text-muted" title="English"> [EN]</small></strong></h4>
                                 </div>
-                                <div class="py-1 px-2 bg-100 review_description js_comment" >
+                                <div class="py-1 review_description js_comment" >
                                     <t t-raw="review.track_id.description" />
                                 </div>
                             </div>
@@ -205,17 +211,19 @@
                             <div t-if="review.track_id.description_es" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
                                 <hr class="mb-1"/>
                                 <div class="d-flex my-2">
-                                    <h4><strong>Abstract<small class="text-sm text-muted" title="Spanish"> [ES]</small>:</strong></h4>
+                                    <h4><strong>Abstract<small class="text-sm text-muted" title="Spanish"> [ES]</small></strong></h4>
                                 </div>
-                                <div class="py-1 px-2 bg-100 review_description js_comment" >
+                                <div class="py-1 review_description js_comment" >
                                     <t t-raw="review.track_id.description_es" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div t-if="review.track_id.attachment_ids" t-attf-class="col-12 col-lg-12 o_project_portal_attachments">
-                                <hr class="mb-1 d-none d-lg-block"/>
-                                <strong class="d-block mb-2">Attachments</strong>
+                                <hr class="mb-1"/>
+                                <div class="d-flex my-2">
+                                    <h4><strong>Attachments</strong></h4>
+                                </div>                                
                                 <div class="row">
                                     <div t-attf-class="col col-lg-12">
                                         <ul class="list-group">
@@ -229,40 +237,15 @@
                                     </div>
                                 </div>
 
-                                <!-- <div class="mt16 mb16">
-                                    <a class="btn btn-xs btn-primary" data-toggle="modal" data-target=".modal_file_upload" href="#"><i class="fa fa-paperclip"/> Add</a>
-                                    
-                                    <div class="modal fade modal_file_upload" role="form" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <form method="POST" enctype="multipart/form-data" class="js_accept_json modal-content js_website_submit_form">
-                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                                                <input type="hidden" name="review_id" class="review_review_id" t-att-value="review.id"/>
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
-                                                    <h4 class="modal-title">Upload new file</h4>
-                                                </div>
-                                                <div class="modal-body" id="sign-dialog">
-                                                    <div class="form-group">
-                                                        <label class="control-label" for="new_file">File</label>
-                                                        <input class="form-control" type="file" name="file" />
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button t-attf-class="btn btn-xs btn-primary">Upload</button>
-                                                    <button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                
                             </div>
                         </div>
                         <div>
                             <hr class="mb-1"/>
-                            <a t-if="review.state=='open'" class="btn btn-primary" data-toggle="modal" data-target=".modal_review_review"><i class="fa fa-file-text-o"/> Make Review</a>
+                            <button t-if="review.state not in ('accept','reject','edit')" class="btn btn-primary" data-toggle="modal" data-target=".modal_review_review"><i class="fa fa-file-text-o"/> Make Review</button>
                             
-                            <h4 t-if="review.state!='open'"><strong>You have reviewed this paper</strong></h4>
-                            <span t-if="review.state!='open'" class="text-muted">Your recommendation: <span t-esc="review.state" /> </span>
+                            <h4 t-if="review.state in ('accept','reject','edit')"><strong>You have reviewed this paper</strong></h4>
+                            <span t-if="review.state in ('accept','reject','edit')" class="text-muted">Your recommendation: <span t-esc="review.state" /> </span>
                             <div class="modal fade modal_review_review" role="form" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <form method="POST" class="js_accept_json modal-content js_website_submit_form review_assign_form">
@@ -285,9 +268,9 @@
                                                 <label class="control-label" for="recommendation">Your recommendation</label>
                                                 <select name="recommendation" class="form-control">
                                                     <option value=""> </option>
-                                                    <option value="acceptwc">Accepted with changes</option>
-                                                    <option value="acceptednc">Accepted without changes</option>
-                                                    <option value="rejected">Rejected</option>
+                                                    <option value="edit">Need changes</option>
+                                                    <option value="accept">Accept</option>
+                                                    <option value="reject">Reject</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -303,11 +286,11 @@
                 </t> 
             </t>
                 
-            <div class="mt32">
+            <div class="container mt32">
                 <h4><strong>Message and communication history</strong></h4>
                 <t t-call="portal.message_thread">
-                    <t t-set="object" t-value="review"/>
-                    <t t-set="token" t-value="review.access_token"/>
+                    <t t-set="object" t-value="review.track_id"/>
+                    <t t-set="token" t-value="review.track_id.access_token"/>
                     <t t-set="pid" t-value="pid"/>
                     <t t-set="hash" t-value="hash"/>
                 </t>

@@ -94,6 +94,28 @@ class Event(models.Model):
             with open(img_path, 'rb') as f:
                 image = f.read()
             vals['image_1920'] = base64.b64encode(image)
+
+        padl = vals.get('paper_abstract_deadline', False)
+        pand = vals.get('paper_abstract_notification_date', False)
+        pfdl = vals.get('paper_final_deadline', False)
+        date_begin = vals.get('date_begin')
+        
+        if padl and padl > date_begin:
+            raise exceptions.Warning(_("The deadline to accept abstracts can not be older than event begin date"))
+        if pand and pand > date_begin:
+            raise exceptions.Warning(_("Notification date can not be older than event begin date"))
+        if pfdl and pfdl > date_begin:
+            raise exceptions.Warning(_("The deadline tu submit final papers can not be older than event begin date"))
+        if pand and not padl:
+            raise exceptions.Warning(_("Events without a deadline to accept abstracts can not have a notification date"))
+        if pand and padl:
+            if pand < padl:
+                raise exceptions.Warning(_("Notification date can not be earlier than the deadline to accept abstracts"))
+        if padl and pfdl:
+            if pfdl < padl:
+                raise exceptions.Warning(_("The deadline tu submit final papers can not be earlier than the deadline to accept abstracts"))
+            
+        
         return super(Event, self).create(vals)
     
     def write(self, vals):
@@ -102,4 +124,23 @@ class Event(models.Model):
             if  self.user_id.id != self.env.user.id:
                 raise exceptions.Warning("You are not authorized to change this event")
         
+        padl = vals.get('paper_abstract_deadline', self.paper_abstract_deadline and self.paper_abstract_deadline.strftime('%Y-%m-%d'))
+        pand = vals.get('paper_abstract_notification_date', self.paper_abstract_notification_date and self.paper_abstract_notification_date.strftime('%Y-%m-%d'))
+        pfdl = vals.get('paper_final_deadline', self.paper_final_deadline and self.paper_final_deadline.strftime('%Y-%m-%d'))
+        date_begin = vals.get('date_begin', self.date_begin.strftime('%Y-%m-%d'))
+        
+        if padl and padl > date_begin:
+            raise exceptions.Warning(_("The deadline to accept abstracts can not be older than event begin date"))
+        if pand and pand > date_begin:
+            raise exceptions.Warning(_("Notification date can not be older than event begin date"))
+        if pfdl and pfdl > date_begin:
+            raise exceptions.Warning(_("The deadline tu submit final papers can not be older than event begin date"))
+        if pand and not padl:
+            raise exceptions.Warning(_("Events without a deadline to accept abstracts can not have a notification date"))
+        if pand and padl:
+            if pand < padl:
+                raise exceptions.Warning(_("Notification date can not be earlier than the deadline to accept abstracts"))
+        if padl and pfdl:
+            if pfdl < padl:
+                raise exceptions.Warning(_("The deadline tu submit final papers can not be earlier than the deadline to accept abstracts"))
         return super(Event, self).write(vals)

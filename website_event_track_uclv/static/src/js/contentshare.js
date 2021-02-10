@@ -23,12 +23,12 @@ $.fn.sharetrack = function (options) {
         getContent: function () {
             var $popover_content = $('<div class="h4 m-0"/>');
             
-            if ($('.track_description').hasClass('js_comment')) {
+            if ($('.review_description').hasClass('js_comment')) {
                 selected_text = this.getSelection('string');
                 var $btn_c = $('<a class="o_share_comment btn btn-link px-2" href="#"/>').append($('<i class="fa fa-lg fa-comment"/>'));
                 $popover_content.append($btn_c);
             }
-            if ($('.track_description').hasClass('js_tweet')) {
+            if ($('.review_description').hasClass('js_tweet')) {
                 var tweet = '"%s" - %s';
                 var baseLength = tweet.replace(/%s/g, '').length;
                 // Shorten the selected text to match the tweet max length
