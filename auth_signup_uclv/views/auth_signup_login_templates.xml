@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <template id="web.brand_promotion_message" name="Brand Promotion Message">
+        <t t-set="odoo_logo">
+            <a target="_blank"
+                t-attf-href="http://www.odoo.com?utm_source=db&amp;utm_medium=#{_utm_medium}"
+                class="pl-1 pr-1">
+                <img alt="Odoo"
+                        src="/web/static/src/img/odoo_logo_tiny.png"
+                        style="height: 1.2em; vertical-align: top;filter:invert(50%) brightness(2);"/>
+            </a>
+        </t>
+        <t t-set="desoft_logo">
+            <a target="_blank"
+                t-attf-href="http://www.desoft.cu"
+                class="pl-1 pr-1">
+                <img alt="Desoft"
+                        src="/auth_signup_uclv/static/src/img/logo-desoft.svg"
+                        style="height: 1.2em; vertical-align: top;filter:invert(50%) brightness(2);"/>
+            </a>
+        </t>
+        <t t-set="final_message">Powered by %s Developed by %s</t>
+        <t t-raw="final_message % (odoo_logo, desoft_logo)"/>
+    </template>
+    
+    <!-- <template id="brand_promotion" name="Brand Promotion">
+        <div class="o_brand_promotion">
+            <t t-call="web.brand_promotion_message">
+                <t t-set="_message"></t>
+                <t t-set="_utm_medium" t-valuef="portal"/>
+            </t>
+        </div>
+    </template> -->
+
     <template id="fields" inherit_id="auth_signup.fields" name="Auth Signup/ResetPassword form fields">
         <xpath expr="//input[@id='login']" position="replace">
             <input type="email" name="login" t-att-value="login" id="login" class="form-control" autofocus="autofocus"

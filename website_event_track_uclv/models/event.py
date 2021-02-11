@@ -20,6 +20,7 @@ class Event(models.Model):
     number = fields.Char(string='Sequence')
     email = fields.Char('Email')
 
+    strict_review_workflow = fields.Boolean(default=True)
     track_ids = fields.One2many('event.track', 'event_id', 'Tracks')
     track_count = fields.Integer('Tracks', compute='_compute_track_count')
 
@@ -100,20 +101,21 @@ class Event(models.Model):
         pfdl = vals.get('paper_final_deadline', False)
         date_begin = vals.get('date_begin')
         
-        if padl and padl > date_begin:
-            raise exceptions.Warning(_("The deadline to accept abstracts can not be older than event begin date"))
-        if pand and pand > date_begin:
-            raise exceptions.Warning(_("Notification date can not be older than event begin date"))
-        if pfdl and pfdl > date_begin:
-            raise exceptions.Warning(_("The deadline tu submit final papers can not be older than event begin date"))
-        if pand and not padl:
-            raise exceptions.Warning(_("Events without a deadline to accept abstracts can not have a notification date"))
-        if pand and padl:
-            if pand < padl:
-                raise exceptions.Warning(_("Notification date can not be earlier than the deadline to accept abstracts"))
-        if padl and pfdl:
-            if pfdl < padl:
-                raise exceptions.Warning(_("The deadline tu submit final papers can not be earlier than the deadline to accept abstracts"))
+        if not self.env.context.get('ignore_errors', False):
+            if padl and padl > date_begin:
+                raise exceptions.Warning(_("The deadline to accept abstracts can not be older than event begin date."))
+            if pand and pand > date_begin:
+                raise exceptions.Warning(_("Notification date can not be older than event begin date"))
+            if pfdl and pfdl > date_begin:
+                raise exceptions.Warning(_("The deadline tu submit final papers can not be older than event begin date"))
+            if pand and not padl:
+                raise exceptions.Warning(_("Events without a deadline to accept abstracts can not have a notification date"))
+            if pand and padl:
+                if pand < padl:
+                    raise exceptions.Warning(_("Notification date can not be earlier than the deadline to accept abstracts"))
+            if padl and pfdl:
+                if pfdl < padl:
+                    raise exceptions.Warning(_("The deadline tu submit final papers can not be earlier than the deadline to accept abstracts"))
             
         
         return super(Event, self).create(vals)
@@ -129,18 +131,19 @@ class Event(models.Model):
         pfdl = vals.get('paper_final_deadline', self.paper_final_deadline and self.paper_final_deadline.strftime('%Y-%m-%d'))
         date_begin = vals.get('date_begin', self.date_begin.strftime('%Y-%m-%d'))
         
-        if padl and padl > date_begin:
-            raise exceptions.Warning(_("The deadline to accept abstracts can not be older than event begin date"))
-        if pand and pand > date_begin:
-            raise exceptions.Warning(_("Notification date can not be older than event begin date"))
-        if pfdl and pfdl > date_begin:
-            raise exceptions.Warning(_("The deadline tu submit final papers can not be older than event begin date"))
-        if pand and not padl:
-            raise exceptions.Warning(_("Events without a deadline to accept abstracts can not have a notification date"))
-        if pand and padl:
-            if pand < padl:
-                raise exceptions.Warning(_("Notification date can not be earlier than the deadline to accept abstracts"))
-        if padl and pfdl:
-            if pfdl < padl:
-                raise exceptions.Warning(_("The deadline tu submit final papers can not be earlier than the deadline to accept abstracts"))
+        if not self.env.context.get('ignore_errors', False):
+            if padl and padl > date_begin:
+                raise exceptions.Warning(_("The deadline to accept abstracts can not be older than event begin date"))
+            if pand and pand > date_begin:
+                raise exceptions.Warning(_("Notification date can not be older than event begin date"))
+            if pfdl and pfdl > date_begin:
+                raise exceptions.Warning(_("The deadline tu submit final papers can not be older than event begin date"))
+            if pand and not padl:
+                raise exceptions.Warning(_("Events without a deadline to accept abstracts can not have a notification date"))
+            if pand and padl:
+                if pand < padl:
+                    raise exceptions.Warning(_("Notification date can not be earlier than the deadline to accept abstracts"))
+            if padl and pfdl:
+                if pfdl < padl:
+                    raise exceptions.Warning(_("The deadline tu submit final papers can not be earlier than the deadline to accept abstracts"))
         return super(Event, self).write(vals)

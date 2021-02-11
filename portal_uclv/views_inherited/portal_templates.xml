@@ -165,7 +165,9 @@
                             </div>
                         </t>
                         <t t-else="">
-                            <t t-raw="0"/>
+                            <div class="container">
+                                <t t-raw="0"/>
+                            </div>
                         </t>
                     </div>
                 </div>

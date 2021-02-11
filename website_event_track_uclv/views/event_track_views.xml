@@ -45,7 +45,7 @@
 
                 <field name="color" position="after">
                     <field name="publish_complete" readonly="True"/>
-                    <field name="is_done" />
+                    <field name="is_done" invisible="True"/>
                 </field>
                 <field name="location_id" position="replace">
                     <field name="address_id" invisible="1" />

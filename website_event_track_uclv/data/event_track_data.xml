@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="1">
-        <record model="ir.config_parameter" id="event_review_workflow">
-            <field name="key">website_event_track_uclv.review_workflow</field>
-            <field name="value">False</field>
-        </record>
         <record id="track_type_conference" model="event.track.type">
             <field name="name">Conference</field>
             <field name="description">Standard talk with slides, alocated in slots of 45-60 minutes.</field>
@@ -195,37 +191,60 @@
         </record>
 
         <record id="website_event_track.event_track_stage0" model="event.track.stage">
-            <field name="name">Proposal</field>
+            <field name="name">Abstract submited</field>
             <field name="sequence">1</field>
+            <field name="is_done" eval="False"/>
+            <field name="is_cancel" eval="False"/>
+            <field name="can_review" eval="True"/>
+            <field name="next_requires_reviews" eval="True"/>                       
         </record>
         <record id="website_event_track.event_track_stage1" model="event.track.stage">
-            <field name="name">Review</field>
+            <field name="name">Abstract review</field>
             <field name="sequence">2</field>
+            <field name="is_done" eval="False"/>
+            <field name="is_cancel" eval="False"/>
+            <field name="requires_reviews" eval="True"/>
+            <field name="can_review" eval="True"/>
             <field name="mail_template_id" ref="mail_template_data_track_review"/>
         </record>
         <record id="website_event_track.event_track_stage2" model="event.track.stage">
-            <field name="name">Accepted</field>
+            <field name="name">Abstract accepted</field>
             <field name="sequence">3</field>
-            <field name="is_done" eval="True"/>
+            <field name="is_done" eval="False"/>
+            <field name="is_cancel" eval="False"/>
+            <field name="publish" eval="False"/>
+            <field name="can_review" eval="False"/>
+            <field name="next_requires_location" eval="True"/>
+            <field name="next_requires_date" eval="True"/>
             <field name="mail_template_id" ref="mail_template_data_track_accepted"/>
         </record>
         <record id="website_event_track.event_track_stage3" model="event.track.stage">
             <field name="name">Scheduled</field>
             <field name="sequence">4</field>
+            <field name="is_cancel" eval="False"/>
             <field name="is_done" eval="True"/>
+            <field name="requires_location" eval="True"/>
+            <field name="requires_date" eval="True"/>
+            <field name="publish" eval="True"/>
+            <field name="can_review" eval="False"/>
             <field name="mail_template_id" ref="mail_template_data_track_schedule"/>
         </record>
         <record id="website_event_track.event_track_stage4" model="event.track.stage">
-            <field name="name">Refused</field>
+            <field name="name">Abstract refused</field>
             <field name="sequence">5</field>
             <field name="fold" eval="True"/>
+            <field name="is_done" eval="False"/>
+            <field name="is_cancel" eval="True"/>
+            <field name="can_review" eval="False"/>
             <field name="mail_template_id" ref="mail_template_data_track_rejected"/>
         </record>
         <record id="website_event_track.event_track_stage5" model="event.track.stage">
-            <field name="name">Cancelled</field>
+            <field name="name">Full refused</field>
             <field name="sequence">6</field>
             <field name="fold" eval="True"/>
+            <field name="is_done" eval="False"/>
             <field name="is_cancel" eval="True"/>
+            <field name="can_review" eval="False"/>
             <field name="mail_template_id" ref="mail_template_data_track_canceled"/>
         </record>
     </data>

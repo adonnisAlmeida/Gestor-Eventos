@@ -3,24 +3,27 @@
 # 	* website_event_track
 # 	* website_event_track_uclv
 #
+# Yerandy <yerandyreyes1985@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0-20201113\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-10 23:46+0000\n"
-"PO-Revision-Date: 2021-02-10 23:46+0000\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2021-02-11 02:52-0500\n"
+"Last-Translator: Yerandy <yerandyreyes1985@gmail.com>\n"
+"Language-Team: English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+"Language: en_US\n"
+"X-Generator: Lokalize 2.0\n"
 
 #. module: website_event_track
 #: code:addons/website_event_track/models/website.py:0
 #, python-format
 msgid "\"Events App Name\" field is required."
-msgstr ""
+msgstr "\"Events App Name\" field is required."
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_track__wishlist_visitor_count
@@ -95,17 +98,22 @@ msgid ""
 "                    <p>\n"
 "                        Dear <t t-esc=\"object.partner_id.name\"/>\n"
 "                    </p><p>\n"
-"                        We are wandering if you can assit us by reviewing a paper for the event ${object.track_id.event_id.name}.\n"
+"                        We are wandering if you can assit us by reviewing a"
+" paper for the event ${object.track_id.event_id.name}.\n"
 "                    </p>\n"
 "                    <p>\n"
 "                        You can see that paper at:\n"
 "                        <div style=\"margin-top: 16px;\">\n"
-"                            <a href=\"/my/review/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                            <a href=\"/my/review/${object.id}?access_token=${o"
+"bject.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color:"
+" #FFFFFF; text-decoration: none !important; font-weight: 400;"
+" background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
 "                                View Track\n"
 "                            </a>\n"
 "                        </div>\n"
 "                    </p>\n"
-"                    <p>Sincerely, <t t-esc=\"object.track_id.event_id.user_id.name\"/></p>\n"
+"                    <p>Sincerely, <t t-esc=\"object.track_id.event_id.user_id."
+"name\"/></p>\n"
 "                    <p>Coordinator of Event</p>\n"
 "                </div>\n"
 "            "
@@ -115,17 +123,22 @@ msgstr ""
 "                    <p>\n"
 "                        Estimado/a <t t-esc=\"object.partner_id.name\"/>\n"
 "                    </p><p>\n"
-"                        Nos encantaría su opinión sobre un trabajo del evento ${object.track_id.event_id.name}.\n"
+"                        Nos encantaría su opinión sobre un trabajo del evento"
+" ${object.track_id.event_id.name}.\n"
 "                    </p>\n"
 "                    <p>\n"
 "                        Puede ver el trabajo en:\n"
 "                        <div style=\"margin-top: 16px;\">\n"
-"                            <a href=\"/my/review/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                            <a href=\"/my/review/${object.id}?access_token=${o"
+"bject.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color:"
+" #FFFFFF; text-decoration: none !important; font-weight: 400;"
+" background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
 "                                Ver Trabajo\n"
 "                            </a>\n"
 "                        </div>\n"
 "                    </p>\n"
-"                    <p>Atentamente, <t t-esc=\"object.track_id.event_id.user_id.name\"/></p>\n"
+"                    <p>Atentamente, <t t-esc=\"object.track_id.event_id.user_i"
+"d.name\"/></p>\n"
 "                    <p>Coordinador del Evento</p>\n"
 "                </div>\n"
 "            "
@@ -138,19 +151,27 @@ msgid ""
 "    <p>\n"
 "        Dear <t t-esc=\"object.partner_name\"/>\n"
 "    </p><p>\n"
-"        We are pleased to inform you that your proposal ${object.name} has been accepted for the event ${object.event_id.name}.\n"
+"        We are pleased to inform you that your proposal ${object.name} has"
+" been accepted for the event ${object.event_id.name}.\n"
 "    </p><p>\n"
 "        You will find more details here:\n"
 "        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/track/${object.id}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"            <a href=\"/event/${object.event_id.id}/track/${object.id}\""
+" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
+" none !important; font-weight: 400; background-color: #003399; border: 0px"
+" solid #003399; border-radius:3px\">\n"
 "                View Track\n"
 "            </a>\n"
 "        </div>\n"
 "    </p>\n"
 "    <p>\n"
-"        If you haven't already registered, please register as delegate of this event:\n"
+"        If you haven't already registered, please register as delegate of"
+" this event:\n"
 "        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/register\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"            <a href=\"/event/${object.event_id.id}/register\""
+" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
+" none !important; font-weight: 400; background-color: #003399; border: 0px"
+" solid #003399; border-radius:3px\">\n"
 "                Register as delegate\n"
 "            </a>\n"
 "        </div>\n"
@@ -165,19 +186,27 @@ msgstr ""
 "    <p>\n"
 "        Estimado/a <t t-esc=\"object.partner_name\"/>\n"
 "    </p><p>\n"
-"        Nos complace informarle que su propuesta ${object.name} ha sido aceptada para el evento ${object.event_id.name}.\n"
+"        Nos complace informarle que su propuesta ${object.name} ha sido"
+" aceptada para el evento ${object.event_id.name}.\n"
 "    </p><p>\n"
 "        Encontrará más detalles aquí:\n"
 "        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/track/${object.id}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
-"                Vee Propuesta\n"
+"            <a href=\"/event/${object.event_id.id}/track/${object.id}\""
+" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
+" none !important; font-weight: 400; background-color: #003399; border: 0px"
+" solid #003399; border-radius:3px\">\n"
+"                Ver Propuesta\n"
 "            </a>\n"
 "        </div>\n"
 "    </p>\n"
 "    <p>\n"
-"        Si no lo ha hecho, por favor regístrese como delegado para este evento:\n"
+"        Si no lo ha hecho, por favor regístrese como delegado para este"
+" evento:\n"
 "        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/register\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"            <a href=\"/event/${object.event_id.id}/register\""
+" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
+" none !important; font-weight: 400; background-color: #003399; border: 0px"
+" solid #003399; border-radius:3px\">\n"
 "                Registrarse como delegado\n"
 "            </a>\n"
 "        </div>\n"
@@ -195,12 +224,16 @@ msgid ""
 "    <p>\n"
 "        Dear <t t-esc=\"object.partner_name\"/>\n"
 "    </p><p>\n"
-"        We are pleased to inform you that your proposal ${object.name} has been scheduled for the event ${object.event_id.name}.\n"
+"        We are pleased to inform you that your proposal ${object.name} has"
+" been scheduled for the event ${object.event_id.name}.\n"
 "    </p>\n"
 "    <p>\n"
 "        You will find more details here:\n"
 "        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/track/${object.id}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"            <a href=\"/event/${object.event_id.id}/track/${object.id}\""
+" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
+" none !important; font-weight: 400; background-color: #003399; border: 0px"
+" solid #003399; border-radius:3px\">\n"
 "                View Track\n"
 "            </a>\n"
 "        </div>\n"
@@ -215,12 +248,16 @@ msgstr ""
 "    <p>\n"
 "        Estimado/a <t t-esc=\"object.partner_name\"/>\n"
 "    </p><p>\n"
-"        Nos complace informarle que su propuesta ${object.name} ha sido programada para el evento ${object.event_id.name}.\n"
+"        Nos complace informarle que su propuesta ${object.name} ha sido"
+" programada para el evento ${object.event_id.name}.\n"
 "    </p>\n"
 "    <p>\n"
 "        Encontrará más detalles aquí:\n"
 "        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/track/${object.id}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"            <a href=\"/event/${object.event_id.id}/track/${object.id}\""
+" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
+" none !important; font-weight: 400; background-color: #003399; border: 0px"
+" solid #003399; border-radius:3px\">\n"
 "                Ver propuesta\n"
 "            </a>\n"
 "        </div>\n"
@@ -238,10 +275,12 @@ msgid ""
 "    <p>\n"
 "        Dear <t t-esc=\"object.partner_name\"/>\n"
 "    </p><p>\n"
-"        We are pleased to inform you that your proposal ${object.name} is being reviewed by experts for the event ${object.event_id.name}.\n"
+"        We are pleased to inform you that your proposal ${object.name} is"
+" being reviewed by experts for the event ${object.event_id.name}.\n"
 "    </p>\n"
 "    <p>\n"
-"        You will be noticed in short about the result of the review process.        \n"
+"        You will be noticed in short about the result of the review process. "
+"       \n"
 "    </p>\n"
 "    <p>Sincerely, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
 "    <p>Coordinator of Event</p>\n"
@@ -253,10 +292,12 @@ msgstr ""
 "    <p>\n"
 "        Estimado/a <t t-esc=\"object.partner_name\"/>\n"
 "    </p><p>\n"
-"        Nos complace informarle que su propuesta ${object.name} está siendo revisada por expertos para el evento ${object.event_id.name}.\n"
+"        Nos complace informarle que su propuesta ${object.name} está siendo"
+" revisada por expertos para el evento ${object.event_id.name}.\n"
 "    </p>\n"
 "    <p>\n"
-"        Será informado/a próximamente sobre el resultado del proceso de revisión.        \n"
+"        Será informado/a próximamente sobre el resultado del proceso de"
+" revisión.        \n"
 "    </p>\n"
 "    <p>Atentamente, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
 "    <p>Coordinador del Evento</p>\n"
@@ -271,12 +312,17 @@ msgid ""
 "    <p>\n"
 "        Dear <t t-esc=\"object.partner_name\"/>\n"
 "    </p><p>\n"
-"        We are sorry to inform you that your proposal ${object.name} has been canceled for the event ${object.event_id.name}.\n"
+"        We are sorry to inform you that your proposal ${object.name} has been"
+" canceled for the event ${object.event_id.name}.\n"
 "    </p>\n"
 "    <p>\n"
-"        Good news are that you can still participate as viewer for this event.\n"
+"        Good news are that you can still participate as viewer for this"
+" event.\n"
 "        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/register\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"            <a href=\"/event/${object.event_id.id}/register\""
+" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
+" none !important; font-weight: 400; background-color: #003399; border: 0px"
+" solid #003399; border-radius:3px\">\n"
 "                Register as viewer\n"
 "            </a>\n"
 "        </div>\n"
@@ -291,7 +337,8 @@ msgstr ""
 "    <p>\n"
 "        Estimado/a <t t-esc=\"object.partner_name\"/>\n"
 "    </p><p>\n"
-"        Lamentamos informarle que su propuesta ${object.name} ha sido cancelada para el evento ${object.event_id.name}.\n"
+"        Lamentamos informarle que su propuesta ${object.name} ha sido"
+" cancelada para el evento ${object.event_id.name}.\n"
 "    </p>\n"
 "    <p>Atentamente, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
 "    <p>Coordinador del Evento</p>\n"
@@ -306,12 +353,17 @@ msgid ""
 "    <p>\n"
 "        Dear <t t-esc=\"object.partner_name\"/>\n"
 "    </p><p>\n"
-"        We are sorry to inform you that your proposal ${object.name} has been rejected for the event ${object.event_id.name}.\n"
+"        We are sorry to inform you that your proposal ${object.name} has been"
+" rejected for the event ${object.event_id.name}.\n"
 "    </p>\n"
 "    <p>\n"
-"        Good news are that you can still participate as viewer for this event.\n"
+"        Good news are that you can still participate as viewer for this"
+" event.\n"
 "        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/register\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"            <a href=\"/event/${object.event_id.id}/register\""
+" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
+" none !important; font-weight: 400; background-color: #003399; border: 0px"
+" solid #003399; border-radius:3px\">\n"
 "                Register as viewer\n"
 "            </a>\n"
 "        </div>\n"
@@ -326,7 +378,8 @@ msgstr ""
 "    <p>\n"
 "        Estimado/a <t t-esc=\"object.partner_name\"/>\n"
 "    </p><p>\n"
-"        Lamentamos informarle que su propuesta ${object.name} ha sido rechazada para el evento ${object.event_id.name}.\n"
+"        Lamentamos informarle que su propuesta ${object.name} ha sido"
+" rechazada para el evento ${object.event_id.name}.\n"
 "    </p>\n"
 "    <p>Atentamente, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
 "    <p>Coordinador del Evento</p>\n"
@@ -339,11 +392,15 @@ msgid ""
 "<?xml version=\"1.0\"?>\n"
 "<div>\n"
 "    Dear ${object.partner_name or ''}<br/>\n"
-"    We are pleased to inform you that your proposal ${object.name} has been accepted and confirmed for the event ${object.event_id.name}.\n"
+"    We are pleased to inform you that your proposal ${object.name} has been"
+" accepted and confirmed for the event ${object.event_id.name}.\n"
 "    <br/>\n"
 "    You will find more details here:\n"
 "    <div style=\"margin: 16px 0px 16px 0px;\">\n"
-"        <a href=\"/event/${object.event_id.id}/track/${object.id}\" style=\"padding: 8px 16px 8px 16px; font-size: 14px; color: #FFFFFF; text-decoration: none !important; background-color: #875A7B; border: 0px solid #875A7B; border-radius:3px\">\n"
+"        <a href=\"/event/${object.event_id.id}/track/${object.id}\""
+" style=\"padding: 8px 16px 8px 16px; font-size: 14px; color: #FFFFFF;"
+" text-decoration: none !important; background-color: #875A7B; border: 0px"
+" solid #875A7B; border-radius:3px\">\n"
 "            View Talk\n"
 "        </a>\n"
 "    </div>\n"
@@ -400,7 +457,8 @@ msgstr "<em class=\"font-weight-normal text-muted\">Trabajos en etapa:</em>"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_reviews
 msgid "<em class=\"font-weight-normal text-muted\">Reviews for event:</em>"
-msgstr "<em class=\"font-weight-normal text-muted\">Revisiones del evento:</em>"
+msgstr ""
+"<em class=\"font-weight-normal text-muted\">Revisiones del evento:</em>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_reviews
@@ -452,32 +510,42 @@ msgstr "<i class=\"fa fa-folder-open\"/> Favoritos"
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
 msgid ""
 "<i class=\"fa fa-info-circle\"/>\n"
-"                                You can add multiple speakers by separating names, emails and phones with commas."
+"                                You can add multiple speakers by separating"
+" names, emails and phones with commas."
 msgstr ""
 "<i class=\"fa fa-info-circle\"/>\n"
-" Puede añadir multiples ponentes separando nombres, correos electrónicos y teléfonos con comas."
+" Puede añadir multiples ponentes separando nombres, correos electrónicos y"
+" teléfonos con comas."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
-"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\" style=\"font-size: 1.5rem\"/>\n"
+"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\""
+" style=\"font-size: 1.5rem\"/>\n"
 "                                        \n"
-"                                        <small class=\"text-muted\">Acceptance notifications until</small>"
+"                                        <small class=\"text-muted\""
+">Acceptance notifications until</small>"
 msgstr ""
-"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\" style=\"font-size: 1.5rem\"/>\n"
+"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\""
+" style=\"font-size: 1.5rem\"/>\n"
 "                                        \n"
-"                                        <small class=\"text-muted\">Notificación de aceptación hasta</small>"
+"                                        <small class=\"text-muted\""
+">Notificación de aceptación hasta</small>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
-"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\" style=\"font-size: 1.5rem\"/>\n"
+"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\""
+" style=\"font-size: 1.5rem\"/>\n"
 "                                        \n"
-"                                        <small class=\"text-muted\">Final papers submittions until</small>"
+"                                        <small class=\"text-muted\">Final"
+" papers submittions until</small>"
 msgstr ""
-"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\" style=\"font-size: 1.5rem\"/>\n"
+"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\""
+" style=\"font-size: 1.5rem\"/>\n"
 "                                        \n"
-"                                        <small class=\"text-muted\">Subida de trabajos finales hasta</small>"
+"                                        <small class=\"text-muted\">Subida de"
+" trabajos finales hasta</small>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
@@ -530,7 +598,9 @@ msgstr "<span class=\"fa fa-ban\"/> Este evento no acepta trabajos."
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "<span class=\"fa fa-clock-o\"/> The submittion deadline is overdue."
-msgstr "<span class=\"fa fa-clock-o\"/> La fecha límite para la subida de trabajos ya ha pasado."
+msgstr ""
+"<span class=\"fa fa-clock-o\"/> La fecha límite para la subida de trabajos ya"
+" ha pasado."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
@@ -545,7 +615,8 @@ msgstr "<span class=\"fa fa-hw fa-ban\"> </span> Este certificado es INVÁLIDO"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_authenticity
 msgid "<span class=\"fa fa-hw fa-check\"> </span> This is a valid certificate"
-msgstr "<span class=\"fa fa-hw fa-check\"> </span> Este es un certificado válido"
+msgstr ""
+"<span class=\"fa fa-hw fa-check\"> </span> Este es un certificado válido"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.res_config_settings_view_form
@@ -570,7 +641,7 @@ msgstr "<span class=\"fa fa-warning\"/> No tiene trabajos."
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid "<span class=\"ml8 text-muted small\">Uploaded on </span>"
-msgstr <span class=\"ml8 text-muted small\">"Subido el "
+msgstr "<span class=\"ml8 text-muted small\">\"Subido el "
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_main
@@ -597,10 +668,14 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
 "<span><b>I authorize the publication of this work</b></span><br/>\n"
-"                                                            <span class=\"text-muted\"> (Uncheck this option if you do not want this work to be published)</span>"
+"                                                            <span"
+" class=\"text-muted\"> (Uncheck this option if you do not want this work to"
+" be published)</span>"
 msgstr ""
 "<span><b>Autorizo la publicación del este trabajo</b></span><br/>\n"
-"                                                            <span class=\"text-muted\"> (Desmarque esta opción si no quiere que este trabajo sea publicado)</span>"
+"                                                            <span"
+" class=\"text-muted\"> (Desmarque esta opción si no quiere que este trabajo"
+" sea publicado)</span>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_authenticity
@@ -608,7 +683,8 @@ msgid ""
 "<span><span class=\"fa fa-hw fa-qrcode\"> </span> Ensure you have scanned "
 "the QR code properly!</span>"
 msgstr ""
-"<span><span class=\"fa fa-hw fa-qrcode\"> </span> ¡Asegúrese de haber escaneado el código QR "
+"<span><span class=\"fa fa-hw fa-qrcode\"> </span> ¡Asegúrese de haber"
+" escaneado el código QR "
 "correctamente!</span>"
 
 #. module: website_event_track_uclv
@@ -681,7 +757,8 @@ msgstr "<strong>Autores</strong>"
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
 "<strong>Conferences</strong>. These are standard talks with slides,\n"
-"                                            alocated in slots of 45-60 minutes."
+"                                            alocated in slots of 45-60"
+" minutes."
 msgstr ""
 "<strong>Conferencias</strong>. Son presentaciones con diapositivas,\n"
 "                                            durante 45-60 minutos."
@@ -729,10 +806,12 @@ msgstr "<strong>Idioma</strong>"
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
 msgid ""
 "<strong>Lightning Talks</strong>. These are 30 minutes talks on many\n"
-"                                    different topics. Most topics are accepted in lightning talks."
+"                                    different topics. Most topics are"
+" accepted in lightning talks."
 msgstr ""
 "<strong>Charlas relámpago </strong>. Son 30 minutos de conversaciones\n"
-"sobre temas muy diferentes. La mayoría de los temas son aceptados en las charlas relámpago."
+"sobre temas muy diferentes. La mayoría de los temas son aceptados en las"
+" charlas relámpago."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_content
@@ -756,7 +835,8 @@ msgid ""
 "<strong>Regular Talks</strong>. These are standard talks with slides,\n"
 "                                    alocated in slots of 60 minutes."
 msgstr ""
-"<strong> Conversaciones regulares </strong>. Son conversaciones estándar con presentaciones,\n"
+"<strong> Conversaciones regulares </strong>. Son conversaciones estándar con"
+" presentaciones,\n"
 "Ubicadas en espacios de 60 minutos."
 
 #. module: website_event_track_uclv
@@ -765,7 +845,8 @@ msgid ""
 "<strong>Scientific Posters</strong>. Only a scientific poster without oral "
 "presentation."
 msgstr ""
-"<strong>Cartel científico</strong>. Solo el cartel científico sin presentación "
+"<strong>Cartel científico</strong>. Solo el cartel científico sin"
+" presentación "
 "oral."
 
 #. module: website_event_track_uclv
@@ -813,7 +894,7 @@ msgid ""
 "<strong>Work Presentations</strong>. These are 10-15 minutes presentations "
 "with a round of questions at the end."
 msgstr ""
-"<strong>POnencia</strong>. Son presentaciones de 10-15 minutos "
+"<strong>Ponencias</strong>. Son presentaciones de 10-15 minutos "
 "con una ronda de preguntas al final."
 
 #. module: website_event_track_uclv
@@ -834,7 +915,8 @@ msgid ""
 " * Red indicates something is preventing the progress of this track\n"
 " * Green indicates the track is ready to be pulled to the next stage"
 msgstr ""
-"Cuando el estado de kanban de una sesión indica que existen situaciones especiales que producen efectos:\n"
+"Cuando el estado de kanban de una sesión indica que existen situaciones"
+" especiales que producen efectos:\n"
 " * El gris es la situación por defecto\n"
 " * El rojo indica que hay algo que impide el progreso de la sesión\n"
 " * El verde indica que la sesión puede pasar a la siguiente etapa"
@@ -974,7 +1056,8 @@ msgstr "Aceptado sin cambios"
 #: model:ir.model.fields,help:website_event_track.field_event_track__is_accepted
 #: model:ir.model.fields,help:website_event_track.field_event_track_stage__is_accepted
 msgid "Accepted tracks are displayed in agenda views but not accessible."
-msgstr "Los trabajos aceptados son mostrados en la agenda pero no son accesibles."
+msgstr ""
+"Los trabajos aceptados son mostrados en la agenda pero no son accesibles."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_form
@@ -1103,16 +1186,19 @@ msgstr "Permitir Subida de Trabajos"
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
 "Allow video and audio recording of their\n"
-"                                            presentation, for publishing on our website."
+"                                            presentation, for publishing on"
+" our website."
 msgstr ""
 "Permitir la grabación de video y audio de sus presentaciones \n"
-"                                            para publicarlas en nuestro sitio web."
+"                                            para publicarlas en nuestro sitio"
+" web."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
 msgid ""
 "Allow video and audio recording of their\n"
-"                                    presentation, for publishing on our website."
+"                                    presentation, for publishing on our"
+" website."
 msgstr ""
 "Permitir grabación del audio y vídeo de su presentación, para publicarlo en "
 "nuestro sitio web."
@@ -2043,8 +2129,8 @@ msgid ""
 "Events without a deadline to accept abstracts can not have a notification "
 "date"
 msgstr ""
-"Los eventos sin fecha límite para aceptar resumenes no pueden tener fecha de notificación "
-
+"Los eventos sin fecha límite para aceptar resumenes no pueden tener fecha de"
+" notificación "
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
@@ -2502,12 +2588,14 @@ msgstr "Palabras clave"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "Keywords<small class=\"text-muted\" title=\"English\"> [EN]</small>:"
-msgstr "Palabras clave<small class=\"text-muted\" title=\"Inglés\"> [EN]</small>:"
+msgstr ""
+"Palabras clave<small class=\"text-muted\" title=\"Inglés\"> [EN]</small>:"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "Keywords<small class=\"text-muted\" title=\"Spanish\"> [ES]</small>:"
-msgstr "Palabras clave<small class=\"text-muted\" title=\"Español\"> [ES]</small>:""
+msgstr ""
+"Palabras clave<small class=\"text-muted\" title=\"Español\"> [ES]</small>:"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__language_id
@@ -2812,7 +2900,7 @@ msgstr "Más reciente"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_search
 msgid "Next"
-msgstr "Siguiente"
+msgstr "Próximos"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__activity_date_deadline
@@ -2925,14 +3013,18 @@ msgstr "Notificado"
 #, python-format
 msgid ""
 "Notification date can not be earlier than the deadline to accept abstracts"
-msgstr "La fecha de notificación no puede ser anterior que la fecha límite para aceptar resumenes"
+msgstr ""
+"La fecha de notificación no puede ser anterior que la fecha límite para"
+" aceptar resumenes"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event.py:0
 #: code:addons/website_event_track_uclv/models/event.py:0
 #, python-format
 msgid "Notification date can not be older than event begin date"
-msgstr "La fecha de notificación no puede ser posterior a la fecha de inicio del evento"
+msgstr ""
+"La fecha de notificación no puede ser posterior a la fecha de inicio del"
+" evento"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_needaction_counter
@@ -3125,7 +3217,9 @@ msgstr "Teléfono"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.tracks_display_list
 msgid "Plan your experience by adding your favorites talks to your wishlist"
-msgstr "Planifique su experiencia añadiendo presentaciones favoritas a su lista lista de deseos"
+msgstr ""
+"Planifique su experiencia añadiendo presentaciones favoritas a su lista lista"
+" de deseos"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__access_url
@@ -3622,7 +3716,8 @@ msgstr "Patrocinadores"
 #: model_terms:ir.actions.act_window,help:website_event_track.event_sponsor_action_from_event
 msgid ""
 "Sponsors might be advertised on you event pages footer.<br>\n"
-"    Exhibitors might have a dedicated page with chat room for people to connect with them."
+"    Exhibitors might have a dedicated page with chat room for people to"
+" connect with them."
 msgstr ""
 
 #. module: website_event_track_uclv
@@ -3781,13 +3876,13 @@ msgstr "Trabajo eliminado de sus Favoritos"
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_aside
 #, python-format
 msgid "Talks"
-msgstr "Charlas"
+msgstr "Ponencias"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "Talks Types"
-msgstr "Tipos de charlas"
+msgstr "Tipos de trabajos"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
@@ -3808,10 +3903,10 @@ msgstr "Gracias por su propuesta."
 #: code:addons/website_event_track_uclv/models/event.py:0
 #: code:addons/website_event_track_uclv/models/event.py:0
 #, python-format
-msgid ""
-"The deadline to accept abstracts can not be older than event begin date"
+msgid "The deadline to accept abstracts can not be older than event begin date"
 msgstr ""
-"La fecha límite para aceptar resumenes no puede ser posterior a la fecha de inicio del evento"
+"La fecha límite para aceptar resumenes no puede ser posterior a la fecha de"
+" inicio del evento"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event.py:0
@@ -3821,7 +3916,8 @@ msgid ""
 "The deadline tu submit final papers can not be earlier than the deadline to "
 "accept abstracts"
 msgstr ""
-"La fecha límite para subir los trabajos completos no puede ser anterior a la fecha límite para aceptar resumenes"
+"La fecha límite para subir los trabajos completos no puede ser anterior a la"
+" fecha límite para aceptar resumenes"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event.py:0
@@ -3830,7 +3926,8 @@ msgstr ""
 msgid ""
 "The deadline tu submit final papers can not be older than event begin date"
 msgstr ""
-"La fecha límite para subir los trabajos completos no puede ser posterior a la fecha de inicio del evento"
+"La fecha límite para subir los trabajos completos no puede ser posterior a la"
+" fecha de inicio del evento"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__website_url
@@ -3894,16 +3991,8 @@ msgstr ""
 msgid ""
 "Timely release of presentation material (slides),\n"
 "                                            for publishing on our website."
-msgstr ""
+msgstr "Subida a tiempo de los materiales (diapositivas), \n para publicar en el sitio web."
 
-#. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
-msgid ""
-"Timely release of presentation material (slides),\n"
-"                                    for publishing on our website."
-msgstr ""
-"Publicación temporalizada de material (diapositivas), para publicar en "
-"nuestro sitio web."
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/controllers/portal.py:0
@@ -4174,7 +4263,7 @@ msgstr "Propuestas de seguimientos en el sitio web"
 msgid ""
 "Tracks define the schedule of your event.<br>These can be a talk, a round "
 "table, a meeting, etc."
-msgstr ""
+msgstr "Los trabajos definen la agenda del evento"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_event__website_track
@@ -4312,7 +4401,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
 "We will evaluate your proposition and get back to you shortly via email."
-msgstr ""
+msgstr "Evaluaremos su propuesta y le responderemos en breve via email."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal_success
@@ -4439,34 +4528,33 @@ msgstr ""
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "You can track your papers from your Account Page."
-msgstr ""
+msgstr "Puede rastrear su trabajo desde su Portal"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event_track.py:0
 #, python-format
 msgid ""
 "You must assign an speaker to this track in order to set it in this stage"
-msgstr ""
+msgstr "Debe asignar un ponente a este trabajo para ponerlo en esta etapa"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event_track.py:0
 #, python-format
 msgid "You must assign date to this track in order to set it in this stage"
-msgstr ""
+msgstr "Debe asignar una fecha a este trabajo para ponerlo en esta etapa"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event_track.py:0
 #, python-format
-msgid ""
-"You must assign location to this track in order to set it in this stage"
-msgstr ""
+msgid "You must assign location to this track in order to set it in this stage"
+msgstr "Debe asignar una ubicación a este trabajo para ponerlo en esta etapa"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event_track.py:0
 #, python-format
 msgid ""
 "You must assign reviewers to this track in order to set it in this stage"
-msgstr ""
+msgstr "Debe asignar revisores a este trabajo para ponerlo en esta etapa"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.pwa_offline
@@ -4476,17 +4564,17 @@ msgstr ""
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "Your recommendation"
-msgstr ""
+msgstr "Su recomendación"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "Your recommendation:"
-msgstr ""
+msgstr "Su recomendaciónÑ"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.tracks_cards_track
 msgid "ago"
-msgstr ""
+msgstr "hace"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event.py:0
@@ -4675,3 +4763,4 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_event_track.agenda_main
 msgid "tracks"
 msgstr ""
+

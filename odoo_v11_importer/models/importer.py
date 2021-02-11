@@ -469,8 +469,8 @@ class Importer(models.TransientModel):
                         image_file.close()
                     except:
                         pass
-
-                created = self.env['event.event'].create({
+                
+                created = self.env['event.event'].with_context(ignore_errors=True).create({
                     'name': d[1],
                     #'note'
                     'description': d[27],
@@ -523,8 +523,7 @@ class Importer(models.TransientModel):
                     'paper_abstract_deadline': d[45], # v11 website_track_proposal_deadline
                     'paper_abstract_notification_date': d[45], # workaround
                     'paper_final_deadline': d[45], # workaround
-                    'image_1920': image_data
-                    
+                    'image_1920': image_data,                    
                 })
                 event_event.update({d[0]: created.id})
 
@@ -561,7 +560,18 @@ class Importer(models.TransientModel):
                         'value': src_t[1],
                         'state': src_t[2]
                     })
-
+        
+        # event_allowed_language_rel
+        cr.execute("""select event_event_id, res_lang_id from event_allowed_language_rel where true""")
+        data = cr.fetchall()
+        for d in data:
+            if event_event.get(d[0], False) and res_lang.get(d[1], False):
+                self.env.cr.execute("select count(*) from event_allowed_language_rel where event_event_id=%s and res_lang_id=%s" %(event_event[d[0]], res_lang[d[1]]))
+                count = self.env.cr.fetchall()
+                if not count[0][0]:
+                    self.env.cr.execute("insert into event_allowed_language_rel(event_event_id, res_lang_id) VALUES (%s, %s);" %(event_event[d[0]], res_lang[d[1]]))
+                    self.env.cr.commit()
+                    
         # event_sponsor
         event_sponsor = {}
         """
@@ -718,7 +728,7 @@ class Importer(models.TransientModel):
         activity_date_deadline, coordinator_notes, author_notes, recommendation, coordinator_notes2, author_notes2,
         recommendation2, revision_status, revision_status2, reviewer_id, reviewer2_id, partner_name,
         partner_email, partner_phone, track_type_id, multiple, authenticity_token
-         from event_track where true limit 100;""")
+         from event_track where true;""")
         data = cr.fetchall()
         for d in data:
             exist = self.env['event.track'].with_context(lang='en_US').search([('authenticity_token' , '=', d[39])])
@@ -728,7 +738,7 @@ class Importer(models.TransientModel):
                 if not d[6]:
                     print("NO partner found for event_track: %s" %d[39])
                 else:
-                    created = self.env['event.track'].sudo().with_context({'no_message': True}).create({
+                    created = self.env['event.track'].sudo().with_context({'ignore_errors': True, 'no_message': True}).create({
                         'name':d[1], 
                         'active': d[2], 
                         'publish_complete': d[3],
@@ -761,8 +771,8 @@ class Importer(models.TransientModel):
                         'recommendation2': d[29],  
                         #'revision_status': d[30],  
                         #'revision_status2': d[31],  
-                        'reviewer_id': d[32] and res_users[d[32]] or False, 
-                        'reviewer2_id': d[33] and res_users[d[33]] or False, 
+                        #'reviewer_id': d[32] and res_users[d[32]] or False, 
+                        #'reviewer2_id': d[33] and res_users[d[33]] or False, 
                         'partner_name': d[34], 
                         'partner_email': d[35], 
                         'partner_phone': d[36], 
@@ -823,7 +833,7 @@ class Importer(models.TransientModel):
                     self.env.cr.execute("insert into event_track_event_track_tag_rel(event_track_tag_id, event_track_id) VALUES (%s, %s);" %(event_track_tag[d[0]], event_track[d[1]]))
         
         # event_track_res_partner_rel
-        cr.execute("""select track_id, partner_id from event_track_res_partner_rel where true""")
+        cr.execute("""select event_track_id, res_partner_id from event_track_res_partner_rel where true""")
         data = cr.fetchall()
         for d in data:
             if event_track.get(d[0], False) and res_partner.get(d[1], False):

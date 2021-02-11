@@ -48,45 +48,43 @@ class TrackStage(models.Model):
     _name = 'event.track.stage'
     _inherit = 'event.track.stage'
 
-    def validate(self, track):
-        review_workflow = self.env['ir.config_parameter'].sudo().get_param('website_event_track_uclv.review_workflow') == 'True'
-        if review_workflow:
-            if self.id == 3: #accepted
-                if not track.partner_id:
-                    return False, _("You must assign an speaker to this track in order to set it in this state")
-                if not track.recommendation or not track.recommendation2:
-                    return False, _("You must assign reviewers recomendations to this track in order to set it in this state")
-                track.website_published = True
-            if self.id == 4: #scheduled
-                if not track.location_id or not track.date:
-                    return False, _("You must assign location and date to this track in order to set it in this state")
-                track.website_published = True
-            if self.id in (1, 5, 6):             
-                track.website_published = False
-            return True, ''
-        else:
-            if self.id == 3: #accepted
-                track.website_published = True
-            if self.id == 4: #scheduled
-                track.website_published = True
-            if self.id in (1, 5, 6):
-                track.website_published = False
-            return True, ''
+    can_review = fields.Boolean(default=True)
+    can_edit = fields.Boolean(default=True)
+    requires_partner = fields.Boolean(default=True)
+    requires_reviews = fields.Boolean(default=False)
+    requires_location = fields.Boolean(default=False)
+    requires_date = fields.Boolean(default=False)
+    next_requires_partner = fields.Boolean(default=True)
+    next_requires_reviews = fields.Boolean(default=False)
+    next_requires_location = fields.Boolean(default=False)
+    next_requires_date = fields.Boolean(default=False)
+    publish = fields.Boolean(default=False)
 
-    def pre_validate(self, track, vals):
-        if self.id == 2: #review
-            if not vals.get('partner_id', track.partner_id) or not vals.get('recommendation', track.recommendation) or not vals.get('recommendation2',track.recommendation2):
-                return 2
-            if vals.get('partner_id', track.partner_id) and vals.get('recommendation', track.recommendation) and vals.get('recommendation2', track.recommendation2):
-                return 0
-        if self.id == 3: #accepted
-            if not vals.get('location_id', track.location_id) or not vals.get('date', track.date) or not vals.get('recommendation2',track.recommendation2):
-                return 2
-            if vals.get('location_id', track.location_id) and vals.get('date', track.recommendation) and vals.get('recommendation2', track.date):
-                return 0
+    def kanban_validate(self, track):
+        result = 'done'
+        if self.next_requires_partner and not track.partner_id:
+            result = 'blocked'
+        if self.next_requires_reviews and not len(track.review_ids):
+            result = 'blocked'
+        if self.next_requires_location and not track.location_id:
+            result = 'blocked'
+        if self.next_requires_date and not track.date:
+            result = 'blocked'
+        return result
+
+    def before_enter_validate(self, track):
+        if track.event_id.strict_review_workflow:            
+            if self.requires_partner and not track.partner_id:
+                return False, _("You must assign an speaker to this track in order to set it in this stage")
+            if self.requires_reviews and not len(track.review_ids):
+                return False, _("You must assign reviewers to this track in order to set it in this stage")
+            if self.requires_location and not track.location_id:
+                return False, _("You must assign location to this track in order to set it in this stage")
+            if self.requires_date and not track.date:
+                return False, _("You must assign date to this track in order to set it in this stage")
         
-        return 1
-        
+        return True, ''
+
 
 class TrackType(models.Model):
     _name = 'event.track.type'
@@ -122,12 +120,23 @@ class TrackReview(models.Model):
     def _default_access_token(self):
         return uuid.uuid4().hex
 
+    @api.depends('track_id', 'track_id.event_id','track_id.event_id.paper_abstract_notification_date')
+    def _compute_expired(self):
+        for item in self:
+            item.expired = False
+            if item.track_id.is_done:
+                item.expired = True
+            if item.track_id.event_id.paper_abstract_notification_date and item.track_id.event_id.paper_abstract_notification_date < fields.Date.today():
+                item.expired = True
+
     track_id = fields.Many2one('event.track', string="Track", required=True, ondelete='cascade')
     event_id = fields.Many2one('event.event', string="Event", related="track_id.event_id", store=True)
     name = fields.Char('Name', related="track_id.name")
     partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade', domain=[('email', '!=', '')])
     access_token = fields.Char('Invitation Token', default=_default_access_token)
-    state = fields.Selection([('notice','Noticed'),('read','Readed'),('accept','Accepted'),('reject','Rejected'),('edit', 'Need changes'),('expired', 'Expired')], string="State", default="notice", required=True)
+    state = fields.Selection([('notice','Noticed'),('read','Readed'),('accept','Accepted'),('reject','Rejected'),('edit', 'Need changes')], string="State", default="notice", required=True)
+    expired = fields.Boolean(string='Is expired', compute=_compute_expired)
+    
 
     @api.model
     def create(self, vals):        
@@ -217,13 +226,20 @@ class Track(models.Model):
     @api.model
     def create(self, vals):
         location_id = vals.get('location_id', False)
+        event = self.env['event.event'].browse(vals.get('event_id'))
         if location_id:
             location = self.env['event.track.location'].browse(location_id)
-            event = self.env['event.event'].browse(vals.get('event_id'))
+            
             if location:
                 if location.partner_id != event.address_id:
                     raise exceptions.Warning(_('Room is not valid for this event'))
         
+        if not self.env.context.get('ignore_errors', False):
+            date = vals.get('date', False)
+            if date:            
+                if date < event.date_begin.strftime("%Y-%m-%d %H:%M:%S") or date > event.date_end.strftime("%Y-%m-%d %H:%M:%S"):
+                    raise exceptions.UserError(_("Track date must be between %s and %s") %(event.date_begin.strftime("%Y-%m-%d %H:%M:%S"), event.date_end.strftime("%Y-%m-%d %H:%M:%S") ))
+
         if not vals.get('authenticity_token', False):
             vals.update({'authenticity_token': uuid.uuid1()})
         
@@ -247,26 +263,27 @@ class Track(models.Model):
                 if location.partner_id != event.address_id:
                     raise exceptions.Warning(_('Room is not valid for this event'))
         
+        date = vals.get('date', self.date and self.date.strftime("%Y-%m-%d %H:%M:%S") or False)
+        if date:
+            if date < self.event_id.date_begin.strftime("%Y-%m-%d %H:%M:%S") or date > self.event_id.date_end.strftime("%Y-%m-%d %H:%M:%S"):
+                raise exceptions.UserError(_("Track date must be between %s and %s") %(self.event_id.date_begin.strftime("%Y-%m-%d %H:%M:%S"),self.event_id.date_end.strftime("%Y-%m-%d %H:%M:%S") ))
 
-        #revision
         stage_id = vals.get('stage_id', self.stage_id.id)
         if stage_id:
             stage = self.env['event.track.stage'].browse(stage_id)
-            res = stage.pre_validate(self, vals)
-            if res == 2:
-                vals.update({'kanban_state': 'blocked'})
-            if res == 0:
-                vals.update({'kanban_state': 'done'})
+            vals.update({'kanban_state': stage.kanban_validate(self)})
         
         stage_id = vals.get('stage_id', False)
         if stage_id:
             stage = self.env['event.track.stage'].browse(stage_id)
-            res, err = stage.validate(self)
+            res, err = stage.before_enter_validate(self)
             if not res:
                 raise exceptions.Warning(err)
+            
+            vals.update({'website_published': stage.publish})
 
         res = super(Track, self).write(vals)
-        
+                
         if vals.get('partner_id'):
             self.message_subscribe([vals['partner_id']])
         return res    

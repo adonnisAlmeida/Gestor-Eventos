@@ -20,7 +20,6 @@
         'views/event_views.xml',
         'views/event_registration_payment_views.xml',
         'views/event_registration_views.xml',
-        'views/res_config_settings_views.xml',
         'views/portal_reviews_templates.xml',
         'views/portal_papers_templates.xml',
         'views/event_checkpoint_templates.xml',

@@ -342,18 +342,17 @@ class PortalController(CustomerPortal):
         
         if not review:
             raise NotFound()
-
+        
+        message = ''
         if review.state == 'notice':
             review.write({'state': 'read'}) #the reviewer has seen the paper
         
-        """if recommendation:
-            if paper.reviewer_id == request.env.user:
-                if not paper.recommendation:
-                    paper.write({'recommendation': recommendation})
-            if paper.reviewer2_id == request.env.user:
-                if not paper.recommendation2:
-                    paper.write({'recommendation2': recommendation})
-        if comment_coordinator:
+        if not review.expired and review.track_id.stage_id.can_review:
+            if recommendation:
+                review.write({'state': recommendation})
+                message = 'review_ok'
+            
+        """if comment_coordinator:
             if paper.reviewer_id == request.env.user:
                 paper.write({'coordinator_notes': comment_coordinator})
             if paper.reviewer2_id == request.env.user:
@@ -380,7 +379,7 @@ class PortalController(CustomerPortal):
             if paper.recommendation2 == 'rejected':
                 review = _('Rejected')"""
 
-        return request.render("website_event_track_uclv.portal_my_review", {'review': review})
+        return request.render("website_event_track_uclv.portal_my_review", {'review': review, 'message': message})
     
 
     

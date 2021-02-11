@@ -11,7 +11,7 @@
         </xpath>
     </template>
 
-    <template id="event_sale_uclv.event_registration_report_template_badge_portrait" inherit_id="event_uclv.event_registration_report_template_badge_portrait">
+    <!-- <template id="event_sale_uclv.event_registration_report_template_badge_portrait" inherit_id="event_uclv.event_registration_report_template_badge_portrait">
         <xpath expr="//div[@id='o_event_name']" position="after">
             <div t-if="o.event_ticket_id" class="col-xs-12 text-center" style="padding:0px;">
                 <div style="padding: 8px;" class="mt16 text-center">
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </xpath>
-    </template>
+    </template> -->
 
     <template id="event_sale.event_event_report_template_badge" inherit_id="event.event_event_report_template_badge">
         <xpath expr="//div[@id='o_event_attendee_name']" position="inside">

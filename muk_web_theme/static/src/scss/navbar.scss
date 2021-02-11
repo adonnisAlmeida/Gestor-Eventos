@@ -20,8 +20,29 @@
 *
 **********************************************************************************/
 
+.o_main_navbar {
+	border-bottom: 1px solid darken($o-brand-odoo, 10%);
+	background-color: $o-brand-odoo;
+}
+.o_main_navbar > ul > li > a:hover, .o_main_navbar > ul > li > label:hover {
+    background-color: darken($o-brand-odoo, 10%);
+}
+.o_main_navbar .show .dropdown-toggle {
+    background-color: darken($o-brand-odoo, 10%);
+}
+.o_main_navbar > ul > li.o_extra_menu_items.show > ul > li > a.dropdown-toggle {
+    background-color: lighten($o-brand-odoo, 10%);;
+    pointer-events: none;
+}
+.o_main_navbar > a:hover, .o_main_navbar > a:focus, .o_main_navbar > button:hover, .o_main_navbar > button:focus {
+    background-color: darken($o-brand-odoo, 10%);
+    color: inherit;
+}
+
 @include media-breakpoint-down(sm) {
     .o_main_navbar {
+		border-bottom: 1px solid $o-brand-odoo;
+    	background-color: $o-brand-odoo;
 		display: flex;
 		> .dropdown {
 		    display: flex;

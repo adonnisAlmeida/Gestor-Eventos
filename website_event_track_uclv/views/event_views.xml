@@ -35,7 +35,7 @@
                 <xpath expr="//field[@name='organizer_id']" position="after">
                     <field name="number"/>
                     <field name="email"/>
-                    
+                    <field name="strict_review_workflow" groups="event_uclv.group_event_multimanager"/>                    
                 </xpath>
                 <!--<label for="website_menu" position="after">
                     <field name="website_registration" attrs="{'invisible': [('website_menu', '=', False)]}"/>

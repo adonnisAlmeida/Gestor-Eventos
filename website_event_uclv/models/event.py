@@ -31,7 +31,7 @@ class Event(models.Model):
             'website_id': self.website_id.id,
         })
         #translations workaround
-        t = {'Introduction': 'Introducción', 'Papers': 'Trabajos', 'Upload a paper': 'Subir un trabajo', 'Community': 'Comunidad', 'Agenda': 'Agenda', 'Exhibitors': 'Exhibidores'}
+        t = {'Introduction': 'Introducción', 'Papers': 'Trabajos', 'Submit a paper': 'Subir un trabajo', 'Community': 'Comunidad', 'Agenda': 'Agenda', 'Exhibitors': 'Exhibidores'}
         translation = self.env['ir.translation'].search([('name', '=', 'website.menu,name'),('res_id', '=', website_menu.id),('lang', '=', 'es_ES')])
         if translation:
             translation.write({'value': t.get(translation.src, translation.value)})
