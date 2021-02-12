@@ -96,8 +96,11 @@ class TrackLocation(models.Model):
     _name = "event.track.location"
     _inherit = "event.track.location"    
 
+    def partner_default(self):
+        return self.env.context.get('partner_id', False)
+
     name = fields.Char('Room')
-    partner_id = fields.Many2one('res.partner')
+    partner_id = fields.Many2one('res.partner', default=partner_default)
     
     _sql_constraints = [('name_uniq_partner', 'unique(name, partner_id)', _('Name must be unique by partner!'))]
 
@@ -153,7 +156,18 @@ class Track(models.Model):
     _name = "event.track"    
     _inherit = ['event.track', 'portal.mixin', 'mail.thread', 'mail.activity.mixin', 'website.seo.metadata', 'website.published.mixin']
     
-       
+    def _track_template(self, changes):
+        res = super(Track, self)._track_template(changes)
+        track = self[0]
+        if 'stage_id' in changes and track.stage_id.mail_template_id and not self.env.context.get('no_message'):
+            res['stage_id'] = (track.stage_id.mail_template_id, {
+                'composition_mode': 'comment',
+                'auto_delete_message': True,
+                'subtype_id': self.env['ir.model.data'].xmlid_to_res_id('mail.mt_note'),
+                'email_layout_xmlid': 'mail.mail_notification_light'
+            })        
+        return res
+
     def _get_multiple(self):
         for item in self:
             if self.search_count([('name', '=', item.name),('event_id', '=', item.event_id.id)]) > 1:
@@ -171,7 +185,7 @@ class Track(models.Model):
         [('acceptwc', "Accepted With Changes"), ('acceptednc', "Accepted Without Changes"), ('rejected', "Rejected")],
         'Recommendation')
 
-    review_ids = fields.One2many('event.track.review', 'track_id', string='Reviews')
+    review_ids = fields.One2many('event.track.review', 'track_id', string='Reviews', tracking=True)
     address_id = fields.Many2one('res.partner', "Address", related="event_id.address_id", readonly=True)
     multiple = fields.Boolean("Multiple", compute="_get_multiple", store=True)
     track_type_id = fields.Many2one('event.track.type', "Track Type")

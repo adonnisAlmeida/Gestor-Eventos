@@ -49,7 +49,7 @@
                 </field>
                 <field name="location_id" position="replace">
                     <field name="address_id" invisible="1" />
-                    <field name="location_id" domain="[('partner_id', '=', address_id)]"/>
+                    <field name="location_id" context="{'partner_id': address_id}" domain="[('partner_id', '=', address_id)]"/>
                 </field>        
                 <field name="tag_ids" position="after">                    
                     <field name="language_id" />

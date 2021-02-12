@@ -72,4 +72,22 @@
         <field name="perm_write" eval="True"/>        
         <field name="perm_unlink" eval="True"/>
     </record>
+    <record id="event_track_location_manager" model="ir.rule">
+        <field name="name">Event Track Location: Manager</field>
+        <field name="model_id" ref="website_event_track.model_event_track_location"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('event.group_event_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>        
+        <field name="perm_unlink" eval="True"/>
+    </record> 
+    <record id="event_track_location_user" model="ir.rule">
+        <field name="name">Event Track Location: User</field>
+        <field name="model_id" ref="website_event_track.model_event_track_location"/>
+        <field name="domain_force">[('create_uid','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('event.group_event_user'))]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="True"/>        
+        <field name="perm_unlink" eval="True"/>
+    </record>
 </odoo>

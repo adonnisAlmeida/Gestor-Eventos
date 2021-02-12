@@ -178,13 +178,22 @@ class PortalController(CustomerPortal):
         })        
         return request.render("website_event_track_uclv.portal_my_papers", values)
     
-    @http.route(['''/my/paper/<model("event.track"):prop>'''], type='http', auth="user", website=True)
-    def portal_my_paper(self, prop, **kw):
-        prop = prop.sudo()
+    @http.route(['''/my/paper/<int:track_id>'''], type='http', auth="public", website=True)
+    def portal_my_paper(self, track_id, access_token=None, **kw):
+        if access_token:
+            try:
+                prop = self._document_check_access('event.track', track_id, access_token=access_token)
+                prop = prop.sudo()
+            except (AccessError, MissingError):
+                return request.redirect('/my')
+        else:
+            # no access token but user may still be authorized cause it's the partner of the review
+            prop = request.env['event.track'].sudo().browse(track_id)
+            if prop.partner_id != request.env.user.partner_id:
+                raise Forbidden()
+        
         if not prop:
             raise NotFound()
-        if prop.sudo().partner_id != request.env.user.partner_id:
-            raise Forbidden()
 
         for c_file in request.httprequest.files.getlist('file'):
             data = c_file.read()

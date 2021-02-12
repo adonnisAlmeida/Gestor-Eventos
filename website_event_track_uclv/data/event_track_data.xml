@@ -24,20 +24,20 @@
             <field name="body_html" type="xml">
                 <div>
                     <p>
-                        Dear <t t-esc="object.partner_id.name"/>
+                        Dear ${object.partner_id.full_name}:
                     </p><p>
-                        We are wandering if you can assit us by reviewing a paper for the event ${object.track_id.event_id.name}.
+                        We are wandering if you can assit us by reviewing a paper for event: <h3>${object.track_id.event_id.name}</h3>
                     </p>
                     <p>
                         You can see that paper at:
-                        <div style="margin-top: 16px;">
+                        <div style="margin-top: 16px;margin-bottom: 16px;">
                             <a href="/my/review/${object.id}?access_token=${object.access_token}"
                                     style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">
-                                View Track
+                                View Paper
                             </a>
                         </div>
                     </p>
-                    <p>Sincerely, <t t-esc="object.track_id.event_id.user_id.name"/></p>
+                    <p>Sincerely, ${object.track_id.event_id.user_id.name}</p>
                     <p>Manager of Event</p>
                 </div>
             </field>
@@ -45,37 +45,54 @@
         </record>
 
 
-
-        <record id="mail_template_data_track_accepted" model="mail.template">
-            <field name="name">Track: Acceptation</field>
-            <field name="subject">Acceptation of ${object.name}</field>
+        <record id="mail_template_data_track_review" model="mail.template">
+            <field name="name">Track: Review</field>
+            <field name="subject">Review of ${object.name}</field>
             <field name="model_id" ref="website_event_track.model_event_track"/>
             <field name="use_default_to" eval="True"/>
             <field name="body_html" type="xml">
 <div>
     <p>
-        Dear <t t-esc="object.partner_name"/>
+        Dear ${object.partner_id.full_name}:
     </p><p>
-        We are pleased to inform you that your proposal ${object.name} has been accepted for the event ${object.event_id.name}.
+        We are pleased to inform you that your paper abstract: <h3> ${object.name}</h3> is being reviewed by experts for event: <h3>${object.event_id.name}</h3>
     </p><p>
-        You will find more details here:
-        <div style="margin-top: 16px;">
-            <a href="/event/${object.event_id.id}/track/${object.id}"
-                    style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">
-                View Track
+         You will find more details here:
+        <div style="margin-top: 16px;margin-bottom: 16px;">
+            <a href="/my/paper/${object.id}?access_token=${object.access_token}" style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">
+                View Paper
             </a>
         </div>
+    </p>
+    <p>Sincerely, ${object.event_id.user_id.name}</p>
+    <p>Manager of Event</p>
+</div>
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+
+        <record id="mail_template_data_track_accepted" model="mail.template">
+            <field name="name">Track: Acceptation</field>
+            <field name="subject">Acceptation of Abstract</field>
+            <field name="model_id" ref="website_event_track.model_event_track"/>
+            <field name="use_default_to" eval="True"/>
+            <field name="body_html" type="xml">
+<div>
+    <p>
+        Dear ${object.partner_id.full_name}:
     </p>
     <p>
-        If you haven't already registered, please register as delegate of this event:
-        <div style="margin-top: 16px;">
-            <a href="/event/${object.event_id.id}/register"
-                    style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">
-                Register as delegate
+        We are pleased to inform you that your paper abstract: <h3> ${object.name}</h3> has been accepted for event: <h3>${object.event_id.name}</h3>
+    </p><p>
+        You will find more details here:
+        <div style="margin-top: 16px;margin-bottom: 16px;">
+            <a href="/my/paper/${object.id}?access_token=${object.access_token}" style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">
+                View Paper
             </a>
         </div>
     </p>
-    <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
+    <p>Sincerely, ${object.event_id.user_id.name}</p>
     <p>Manager of Event</p>
 </div>
             </field>
@@ -90,48 +107,25 @@
             <field name="body_html" type="xml">
 <div>
     <p>
-        Dear <t t-esc="object.partner_name"/>
+        Dear ${object.partner_id.full_name}
     </p><p>
-        We are pleased to inform you that your proposal ${object.name} has been scheduled for the event ${object.event_id.name}.
+        We are pleased to inform you that your paper: <h3>${object.name}</h3> has been scheduled for event: <h3>${object.event_id.name}</h3>
     </p>
     <p>
-        You will find more details here:
-        <div style="margin-top: 16px;">
+        Now, it's visible to all visitors in our website:
+        <div style="margin-top: 16px;margin-bottom: 16px;">
             <a href="/event/${object.event_id.id}/track/${object.id}"
                     style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">
-                View Track
+                Take a look
             </a>
         </div>
     </p>
-    <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
+    <p>Sincerely, ${object.event_id.user_id.name}</p>
     <p>Manager of Event</p>
 </div>
             </field>
             <field name="auto_delete" eval="True"/>
         </record>
-
-        <record id="mail_template_data_track_review" model="mail.template">
-            <field name="name">Track: Review</field>
-            <field name="subject">Review of ${object.name}</field>
-            <field name="model_id" ref="website_event_track.model_event_track"/>
-            <field name="use_default_to" eval="True"/>
-            <field name="body_html" type="xml">
-<div>
-    <p>
-        Dear <t t-esc="object.partner_name"/>
-    </p><p>
-        We are pleased to inform you that your proposal ${object.name} is being reviewed by experts for the event ${object.event_id.name}.
-    </p>
-    <p>
-        You will be noticed in short about the result of the review process.        
-    </p>
-    <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
-    <p>Manager of Event</p>
-</div>
-            </field>
-            <field name="auto_delete" eval="True"/>
-        </record>
-
 
         <record id="mail_template_data_track_rejected" model="mail.template">
             <field name="name">Track: Rejected</field>
@@ -141,20 +135,19 @@
             <field name="body_html" type="xml">
 <div>
     <p>
-        Dear <t t-esc="object.partner_name"/>
+        Dear ${object.partner_id.full_name}
     </p><p>
-        We are sorry to inform you that your proposal ${object.name} has been rejected for the event ${object.event_id.name}.
+        We are sorry to inform you that your paper abstract: <h3>${object.name}</h3> has been rejected for event: <h3>${object.event_id.name}</h3>
     </p>
     <p>
-        Good news are that you can still participate as viewer for this event.
-        <div style="margin-top: 16px;">
-            <a href="/event/${object.event_id.id}/register"
-                    style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">
-                Register as viewer
+        You will find more details here:
+        <div style="margin-top: 16px;margin-bottom: 16px;">
+            <a href="/my/paper/${object.id}?access_token=${object.access_token}" style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">
+                View Paper
             </a>
         </div>
     </p>
-    <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
+    <p>Sincerely, ${object.event_id.user_id.name}</p>
     <p>Manager of Event</p>
 </div>
             </field>
@@ -170,20 +163,19 @@
             <field name="body_html" type="xml">
 <div>
     <p>
-        Dear <t t-esc="object.partner_name"/>
+        Dear ${object.partner_id.full_name}
     </p><p>
-        We are sorry to inform you that your proposal ${object.name} has been canceled for the event ${object.event_id.name}.
+        We are sorry to inform you that your paper: <h3>${object.name}</h3> has been canceled for event: <h3>${object.event_id.name}</h3>
     </p>
     <p>
-        Good news are that you can still participate as viewer for this event.
-        <div style="margin-top: 16px;">
-            <a href="/event/${object.event_id.id}/register"
-                    style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">
-                Register as viewer
+        You will find more details here:
+        <div style="margin-top: 16px;margin-bottom: 16px;">
+            <a href="/my/paper/${object.id}?access_token=${object.access_token}" style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px">
+                View Paper
             </a>
         </div>
     </p>
-    <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
+    <p>Sincerely, ${object.event_id.user_id.name}</p>
     <p>Manager of Event</p>
 </div>
             </field>
@@ -230,7 +222,7 @@
             <field name="mail_template_id" ref="mail_template_data_track_schedule"/>
         </record>
         <record id="website_event_track.event_track_stage4" model="event.track.stage">
-            <field name="name">Abstract refused</field>
+            <field name="name">Abstract rejected</field>
             <field name="sequence">5</field>
             <field name="fold" eval="True"/>
             <field name="is_done" eval="False"/>
@@ -239,7 +231,7 @@
             <field name="mail_template_id" ref="mail_template_data_track_rejected"/>
         </record>
         <record id="website_event_track.event_track_stage5" model="event.track.stage">
-            <field name="name">Full refused</field>
+            <field name="name">Full rejected</field>
             <field name="sequence">6</field>
             <field name="fold" eval="True"/>
             <field name="is_done" eval="False"/>

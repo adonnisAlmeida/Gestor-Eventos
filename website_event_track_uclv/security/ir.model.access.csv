@@ -6,7 +6,7 @@ access_author_public,author_public,model_event_track_author,,1,0,0,0
 access_author_user,author_user,model_event_track_author,event.group_event_user,1,1,1,1
 access_event_track_review_user,event.track.review user,website_event_track_uclv.model_event_track_review,event.group_event_user,1,1,1,1
 access_event_track_tag_user,event.track.tag user,website_event_track.model_event_track_tag,event.group_event_user,1,1,1,1
-access_event_track_location_manager,event.track.location manager,website_event_track.model_event_track_location,event.group_event_manager,1,1,1,1
+access_event_track_location_user,event.track.location user,website_event_track.model_event_track_location,event.group_event_user,1,1,1,1
 access_event_sponsor_user,event.sponsor.user,website_event_track.model_event_sponsor,event.group_event_user,1,1,1,1
 access_partner_user,res.partner.user,base.model_res_partner,event.group_event_user,1,1,1,1
 access_partner_manager,res.partner.manager,base.model_res_partner,event.group_event_manager,1,1,1,1
