@@ -67,37 +67,6 @@ class Event(models.Model):
         self.ensure_one()
         return [('Exhibitors', '/event/%s/exhibitors' % slug(self), False, 60, 'exhibitor')]
     
-    """def _set_website_menu(self):
-        for event in self:
-            if event.menu_id and not event.website_menu:
-                event.menu_id.unlink()
-            elif event.website_menu:
-                if not event.menu_id:
-                    root_menu = self.env['website.menu'].create({'name': event.name})
-                    event.menu_id = root_menu
-
-                existing_page_names = event.menu_id.child_id.mapped('name')
-                required_page_names = [entry[0] for entry in self._get_menu_entries()]
-                standard_page_names = self._get_standard_menu_entries_names()
-
-                # remove entries that should not exist anymore
-                submenu_to_delete = event.menu_id.child_id.filtered(lambda menu: menu.name not in required_page_names and menu.name in standard_page_names)
-                submenu_to_delete.unlink()
-
-                # create missing entries
-                for sequence, (name, url, xml_id, icon) in enumerate(self._get_menu_entries()):
-                    if name not in existing_page_names:
-                        if not url:
-                            newpath = self.env['website'].new_page(name + ' ' + self.name, template=xml_id, ispage=False)['url']
-                            url = "/event/" + slug(self) + "/page/" + newpath[1:]
-                        self.env['website.menu'].create({
-                            'name': name,
-                            'url': url,
-                            'icon': icon,
-                            'parent_id': event.menu_id.id,
-                            'sequence': sequence,
-                        })"""
-    
     def osm_iframe_by_pos(self):
         """ v14 ready """
         self.ensure_one()

@@ -13,7 +13,8 @@ UCLV Organization and management of Events.
 """,
     'depends': ['base_uclv', 'event'],
     'data': [
-        'security/event_security.xml',        
+        'security/event_security.xml',
+        'security/ir.model.access.csv',
         'views/event_views.xml',
         'report/event_event_templates.xml',
         'report/event_reports.xml'

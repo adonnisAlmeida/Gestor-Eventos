@@ -4,8 +4,6 @@
 from odoo import api, fields, models, tools, exceptions, SUPERUSER_ID, _
 from odoo.addons.http_routing.models.ir_http import slug
 import datetime
-from odoo.modules import get_module_resource
-import base64
 
 
 class EventType(models.Model):
@@ -90,12 +88,6 @@ class Event(models.Model):
 
     @api.model
     def create(self, vals):
-        if not vals.get('image_1920', False):
-            img_path = get_module_resource('website_event_track_uclv', 'static/src/img', 'default-event.png')
-            with open(img_path, 'rb') as f:
-                image = f.read()
-            vals['image_1920'] = base64.b64encode(image)
-
         padl = vals.get('paper_abstract_deadline', False)
         pand = vals.get('paper_abstract_notification_date', False)
         pfdl = vals.get('paper_final_deadline', False)

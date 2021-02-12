@@ -9,6 +9,9 @@
                 <xpath expr="//div[hasclass('oe_title')]" position="after">
                     <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "image_128"}'/>
                 </xpath>
+                <xpath expr="//field[@name='user_id']" position="replace">
+                    <field name="user_id" required="1" groups="event.group_event_manager"/>
+                </xpath>
                 <xpath expr="//field[@name='name']" position="after">
                     <label for="short_name" class="oe_edit_only"/>
                     <h3><field name="short_name" placeholder="Event Short Name"/></h3>

@@ -5,6 +5,8 @@ import pytz
 from odoo import _, api, fields, models
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tools.translate import html_translate
+from odoo.modules import get_module_resource
+import base64
 
 from dateutil.relativedelta import relativedelta
 try: 
@@ -54,6 +56,15 @@ class EventEvent(models.Model):
         if not recs:
             recs = self.search([('name', operator, name)] + args, limit=limit)
         return recs.name_get()
+
+    @api.model
+    def create(self, vals):
+        if not vals.get('image_1920', False):
+            img_path = get_module_resource('event_uclv', 'static/src/img', 'default-event.png')
+            with open(img_path, 'rb') as f:
+                image = f.read()
+            vals['image_1920'] = base64.b64encode(image)
+        return super(EventEvent, self).create(vals)
 
 
 class EventRegistration(models.Model):
