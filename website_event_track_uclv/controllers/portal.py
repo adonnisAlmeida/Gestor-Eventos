@@ -327,7 +327,7 @@ class PortalController(CustomerPortal):
     
 
     @http.route(['''/my/review/<int:review_id>'''], type='http', auth="public", website=True)
-    def portal_my_review(self, review_id, access_token=None, comment_coordinator='', comment_author='', recommendation=False,**kw):        
+    def portal_my_review(self, review_id, access_token=None, comment_manager='', comment_author='', recommendation=False,**kw):        
         if access_token:
             try:
                 review = self._document_check_access('event.track.review', review_id, access_token=access_token)
@@ -352,11 +352,11 @@ class PortalController(CustomerPortal):
                 review.write({'state': recommendation})
                 message = 'review_ok'
             
-        """if comment_coordinator:
+        """if comment_manager:
             if paper.reviewer_id == request.env.user:
-                paper.write({'coordinator_notes': comment_coordinator})
+                paper.write({'manager_notes': comment_manager})
             if paper.reviewer2_id == request.env.user:
-                paper.write({'coordinator_notes2': comment_coordinator})
+                paper.write({'manager_notes2': comment_manager})
         if comment_author:
             if paper.reviewer_id == request.env.user:
                 paper.write({'author_notes': comment_author})

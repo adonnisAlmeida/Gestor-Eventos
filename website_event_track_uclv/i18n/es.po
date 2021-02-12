@@ -114,7 +114,7 @@ msgid ""
 "                    </p>\n"
 "                    <p>Sincerely, <t t-esc=\"object.track_id.event_id.user_id."
 "name\"/></p>\n"
-"                    <p>Coordinator of Event</p>\n"
+"                    <p>Manager of Event</p>\n"
 "                </div>\n"
 "            "
 msgstr ""
@@ -177,7 +177,7 @@ msgid ""
 "        </div>\n"
 "    </p>\n"
 "    <p>Sincerely, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
-"    <p>Coordinator of Event</p>\n"
+"    <p>Manager of Event</p>\n"
 "</div>\n"
 "            "
 msgstr ""
@@ -239,7 +239,7 @@ msgid ""
 "        </div>\n"
 "    </p>\n"
 "    <p>Sincerely, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
-"    <p>Coordinator of Event</p>\n"
+"    <p>Manager of Event</p>\n"
 "</div>\n"
 "            "
 msgstr ""
@@ -283,7 +283,7 @@ msgid ""
 "       \n"
 "    </p>\n"
 "    <p>Sincerely, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
-"    <p>Coordinator of Event</p>\n"
+"    <p>Manager of Event</p>\n"
 "</div>\n"
 "            "
 msgstr ""
@@ -328,7 +328,7 @@ msgid ""
 "        </div>\n"
 "    </p>\n"
 "    <p>Sincerely, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
-"    <p>Coordinator of Event</p>\n"
+"    <p>Manager of Event</p>\n"
 "</div>\n"
 "            "
 msgstr ""
@@ -369,7 +369,7 @@ msgid ""
 "        </div>\n"
 "    </p>\n"
 "    <p>Sincerely, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
-"    <p>Coordinator of Event</p>\n"
+"    <p>Manager of Event</p>\n"
 "</div>\n"
 "            "
 msgstr ""
@@ -713,7 +713,7 @@ msgstr "<span>horas</span>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
-msgid "<strong class=\"text-muted\">Coordinator</strong>"
+msgid "<strong class=\"text-muted\">Manager</strong>"
 msgstr "<strong class=\"text-muted\">Coordinador</strong>"
 
 #. module: website_event_track_uclv
@@ -765,7 +765,7 @@ msgstr ""
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
-msgid "<strong>Coordinator</strong>"
+msgid "<strong>Manager</strong>"
 msgstr "<strong>Coordinador</strong>"
 
 #. module: website_event_track_uclv
@@ -1231,7 +1231,7 @@ msgstr "¿Algún comentario privado para el autor?"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
-msgid "Any private comment for coordinator?"
+msgid "Any private comment for manager?"
 msgstr "¿Algún comentario privado para el coordinador?"
 
 #. module: website_event_track_uclv
@@ -1685,11 +1685,11 @@ msgstr "Contacto:"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__user_id
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__coordinator_id
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_track_analysis__coordinator_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__manager_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_track_analysis__manager_id
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_attendee_analysis_filter
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_analysis_filter
-msgid "Coordinator"
+msgid "Manager"
 msgstr "Coordinador"
 
 #. module: website_event_track_uclv
@@ -2997,9 +2997,9 @@ msgid "Notes for the Author"
 msgstr "Notas para el autor"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__coordinator_notes
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__coordinator_notes2
-msgid "Notes for the Coordinator"
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__manager_notes
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__manager_notes2
+msgid "Notes for the Manager"
 msgstr "Notas para el coordinador"
 
 #. module: website_event_track_uclv

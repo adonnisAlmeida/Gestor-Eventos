@@ -217,7 +217,7 @@
                                 </div>               
                                 
                                 <div t-if="event.user_id" class="o_wevent_sidebar_block">
-                                    <h6 class="o_wevent_sidebar_title">Coordinator</h6>
+                                    <h6 class="o_wevent_sidebar_title">Manager</h6>
                                     <h4 t-field="event.user_id"/>
                                     <div t-field="event.user_id.partner_id" t-options="{'widget': 'contact', 'fields': ['phone', 'mobile', 'email']}"/>
                                 </div>

@@ -15,7 +15,7 @@ class ReportEventAttendeeAnalysis(models.Model):
     contact_country_id = fields.Many2one('res.country', string='Contact Country', readonly=True)
     contact_institution = fields.Char(string='Contact Institution', readonly=True)
     contact_email = fields.Char(string='Contact Email', readonly=True)
-    coordinator_id = fields.Many2one('res.users', string='Coordinator', readonly=True)
+    manager_id = fields.Many2one('res.users', string='Manager', readonly=True)
     ticket_id  = fields.Many2one('event.event.ticket', string='Ticket', readonly=True)
     attendee_state = fields.Char(string="State", readonly=True)
     attendee_paid = fields.Boolean(string="Is Paid?", readonly=True)
@@ -46,7 +46,7 @@ class ReportEventAttendeeAnalysis(models.Model):
                         contact.id as contact_id,
                         contact_user.id as contact_user_id,
                         country.id as contact_country_id,
-                        resp.id as coordinator_id,
+                        resp.id as manager_id,
                         ticket.id as ticket_id,
                         contact.institution as contact_institution,
                         contact.email as contact_email

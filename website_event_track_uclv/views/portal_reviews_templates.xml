@@ -265,7 +265,7 @@
                                 </div>
                             </li>
                             <li t-if="review.track_id.user_id" class="list-group-item flex-grow-1">
-                                <div class="small mb-1"><strong class="text-muted">Coordinator</strong></div>
+                                <div class="small mb-1"><strong class="text-muted">Manager</strong></div>
                                 <div class="row flex-nowrap">
                                     <div class="col flex-grow-0 pr-2">
                                         <img class="rounded-circle mr4 float-left o_portal_contact_img" t-if="review.track_id.user_id.image_1024" t-att-src="image_data_uri(review.track_id.user_id.image_1024)" alt="Contact"/>
@@ -294,8 +294,8 @@
                                 </header>
                                 <main class="modal-body" id="sign-dialog">
                                     <div class="form-group">
-                                        <label class="control-label" for="comment_coordinator">Any private comment for coordinator?</label>
-                                        <textarea type="text" name="comment_coordinator" id="comment_coordinator" class="form-control comment_coordinator"/>
+                                        <label class="control-label" for="comment_manager">Any private comment for manager?</label>
+                                        <textarea type="text" name="comment_manager" id="comment_manager" class="form-control comment_manager"/>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="comment_author">Any private comment for author?</label>

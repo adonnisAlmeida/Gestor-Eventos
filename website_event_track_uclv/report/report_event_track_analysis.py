@@ -15,7 +15,7 @@ class ReportEventTrackAnalysis(models.Model):
     author_country_id = fields.Many2one('res.country', string='Author Country', readonly=True)
     author_institution = fields.Char(string='Author Institution', readonly=True)
     author_email = fields.Char(string='Author Email', readonly=True)
-    coordinator_id = fields.Many2one('res.users', string='Coordinator', readonly=True)
+    manager_id = fields.Many2one('res.users', string='Manager', readonly=True)
     language_id  = fields.Many2one('res.lang', string='Track Language', readonly=True)
     track_stage_id = fields.Many2one('event.track.stage', string="Track Stage", readonly=True)
     track_stage_ok = fields.Boolean(string="Track Accepted", readonly=True)
@@ -51,7 +51,7 @@ class ReportEventTrackAnalysis(models.Model):
                         author.id as author_id,
                         author_user.id as author_user_id,
                         country.id as author_country_id,
-                        resp.id as coordinator_id,
+                        resp.id as manager_id,
                         lang.id as language_id,
                         author.institution as author_institution,
                         author.email as author_email,

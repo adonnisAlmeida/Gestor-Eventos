@@ -162,10 +162,10 @@ class Track(models.Model):
                 item.multiple = False
     
     #Revision Stuffs
-    coordinator_notes = fields.Text('Notes for the Coordinator')
+    manager_notes = fields.Text('Notes for the Manager')
     author_notes = fields.Text('Notes for the Author')
     recommendation = fields.Selection([('acceptwc', "Accepted With Changes"), ('acceptednc', "Accepted Without Changes"),  ('rejected', "Rejected")], 'Recommendation')
-    coordinator_notes2 = fields.Text('Notes for the Coordinator')
+    manager_notes2 = fields.Text('Notes for the Manager')
     author_notes2 = fields.Text('Notes for the Author')
     recommendation2 = fields.Selection(
         [('acceptwc', "Accepted With Changes"), ('acceptednc', "Accepted Without Changes"), ('rejected', "Rejected")],
@@ -177,7 +177,7 @@ class Track(models.Model):
     track_type_id = fields.Many2one('event.track.type', "Track Type")
     publish_complete = fields.Boolean(string="Can be Published", default=True)
     
-    user_id = fields.Many2one('res.users', related="event_id.user_id", string='Coordinator', readonly=True)
+    user_id = fields.Many2one('res.users', related="event_id.user_id", string='Manager', readonly=True)
     
     attachment_ids = fields.One2many('ir.attachment', 'res_id', domain=[('res_model', '=', 'event.track')], string='Attachments')
     author_ids = fields.One2many('event.track.author', 'track_id', string='Authors')

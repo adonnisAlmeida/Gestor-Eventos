@@ -38,7 +38,7 @@
                         </div>
                     </p>
                     <p>Sincerely, <t t-esc="object.track_id.event_id.user_id.name"/></p>
-                    <p>Coordinator of Event</p>
+                    <p>Manager of Event</p>
                 </div>
             </field>
             <field name="auto_delete" eval="True"/>
@@ -76,7 +76,7 @@
         </div>
     </p>
     <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
-    <p>Coordinator of Event</p>
+    <p>Manager of Event</p>
 </div>
             </field>
             <field name="auto_delete" eval="True"/>
@@ -104,7 +104,7 @@
         </div>
     </p>
     <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
-    <p>Coordinator of Event</p>
+    <p>Manager of Event</p>
 </div>
             </field>
             <field name="auto_delete" eval="True"/>
@@ -126,7 +126,7 @@
         You will be noticed in short about the result of the review process.        
     </p>
     <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
-    <p>Coordinator of Event</p>
+    <p>Manager of Event</p>
 </div>
             </field>
             <field name="auto_delete" eval="True"/>
@@ -155,7 +155,7 @@
         </div>
     </p>
     <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
-    <p>Coordinator of Event</p>
+    <p>Manager of Event</p>
 </div>
             </field>
             <field name="auto_delete" eval="True"/>
@@ -184,7 +184,7 @@
         </div>
     </p>
     <p>Sincerely, <t t-esc="object.event_id.user_id.name"/></p>
-    <p>Coordinator of Event</p>
+    <p>Manager of Event</p>
 </div>
             </field>
             <field name="auto_delete" eval="True"/>

@@ -429,7 +429,7 @@ msgstr "Siguiente"
 
 #. module: website_event_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_uclv.event_description_full
-msgid "Coordinator"
+msgid "Manager"
 msgstr "Coordinador"
 
 #. module: website_event_uclv
