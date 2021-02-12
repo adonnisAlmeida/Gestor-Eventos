@@ -109,15 +109,14 @@ class Event(models.Model):
                 if pfdl < padl:
                     raise exceptions.Warning(_("The deadline tu submit final papers can not be earlier than the deadline to accept abstracts"))
             
+        created = super(Event, self).create(vals)
+        if not created.allowed_language_ids:
+            langs = self.env['res.lang'].search([('active', '=', True)]).ids
+            created.write({'allowed_language_ids': [(6, 0, langs)]})
+        return created
         
-        return super(Event, self).create(vals)
     
     def write(self, vals):
-        group = self.env.ref('event_uclv.group_event_multimanager')
-        if self.env.user not in group.sudo().users:
-            if  self.user_id.id != self.env.user.id:
-                raise exceptions.Warning("You are not authorized to change this event")
-        
         padl = vals.get('paper_abstract_deadline', self.paper_abstract_deadline and self.paper_abstract_deadline.strftime('%Y-%m-%d'))
         pand = vals.get('paper_abstract_notification_date', self.paper_abstract_notification_date and self.paper_abstract_notification_date.strftime('%Y-%m-%d'))
         pfdl = vals.get('paper_final_deadline', self.paper_final_deadline and self.paper_final_deadline.strftime('%Y-%m-%d'))

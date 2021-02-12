@@ -35,25 +35,18 @@
                 <xpath expr="//field[@name='organizer_id']" position="after">
                     <field name="number"/>
                     <field name="email"/>
-                    <field name="strict_review_workflow" groups="event_uclv.group_event_multimanager"/>                    
+                    <field name="strict_review_workflow" groups="event.group_event_manager"/>                    
                 </xpath>
                 <!--<label for="website_menu" position="after">
                     <field name="website_registration" attrs="{'invisible': [('website_menu', '=', False)]}"/>
                     <label for="website_registration" string="Registration on Website" attrs="{'invisible': [('website_menu', '=', False)]}"/><br/>                    
                 </label>
-                
-                
-                <xpath expr="//button[@name='toggle_active']" position="replace">
-                    <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" groups="event_uclv.group_event_multimanager">
-                        <field name="active" widget="boolean_button" options='{"terminology": "archive"}' />
-                    </button>
-                </xpath>-->
+                -->
                 
                 <button name="%(website_event_track.action_event_track_from_event)d" position="replace">
                     <button name="%(website_event_track.action_event_track_from_event)d"
                             type="action"
                             class="oe_stat_button"
-                            groups="event.group_event_manager"
                             icon="fa-microphone"
                             context="{'default_date': date_begin}">
                         <field name="track_count" string="Tracks" widget="statinfo"/>
@@ -63,7 +56,6 @@
                 <button name="%(website_event_track.event_sponsor_action_from_event)d" position="replace">
                     <button name="%(website_event_track.event_sponsor_action_from_event)d"
                             type="action"
-                            groups="event.group_event_manager"
                             class="oe_stat_button"
                             icon="fa-users">
                         <field name="sponsor_count" widget="statinfo"/>
@@ -72,14 +64,11 @@
                 
                 <xpath expr="//sheet/group[last()]" position="after">
                     <group string="Papers Submittions" name="papers_group">
-                        <group>
-                            <!-- <field name="website_introduction_msg" /> -->
+                        <group>                            
                             <field name="allowed_language_ids" widget="many2many_tags" string="Allowed languages" />
                             <field name="paper_abstract_deadline" string="Accepts abstracts until"/>
                             <field name="paper_abstract_notification_date" string="Abstracts reviews ends"/>
                             <field name="paper_final_deadline" string="Final papers date"/>
-                            <!-- <field name="website_track_proposal_msg" string="Track Proposal Message" /> 
-                            <field name="website_track_proposal_template" string="Track Proposal Template" /> -->
                         </group>
                     </group>
                 </xpath>

@@ -11,6 +11,7 @@
     'depends': ['base_uclv', 'event_uclv', 'website_event', 'website_contactus_osm'],
     'installable': True,
     'data': [
+        'security/ir.model.access.csv',
         'views/assets.xml',
         'views/event_templates.xml'
     ]

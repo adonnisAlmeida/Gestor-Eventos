@@ -247,11 +247,6 @@ class Track(models.Model):
 
         
     def write(self, vals):
-        group = self.env.ref('event_uclv.group_event_multimanager')
-        if self.env.user not in group.sudo().users:
-            if self.user_id.id != self.env.user.id and self.partner_id.user_id.id != self.env.user.id:
-                raise exceptions.Warning(_("You are not authorized to change this track"))
-
         if 'stage_id' in vals and 'kanban_state' not in vals:
             vals['kanban_state'] = 'normal'        
               
@@ -286,45 +281,5 @@ class Track(models.Model):
                 
         if vals.get('partner_id'):
             self.message_subscribe([vals['partner_id']])
-        return res    
-   
-
-    @api.model
-    def name_search(self, name, args=None, operator='ilike', limit=100):
-        args = args or []
-        recs = self.browse()
-        group1 = self.env.ref('event_uclv.group_event_multimanager')
-        if self.env.user not in group1.sudo().users:
-            args += [("user_id", "=", self.env.user.id)]
-        if name:
-            recs = self.search([('name', 'ilike', name)] + args, limit=limit)
-        if not recs:
-            recs = self.search([('name', operator, name)] + args, limit=limit)
-        return recs.name_get() 
-
-    
-    @api.model
-    def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
-        new_domain = []
-        group = self.env.ref('event_uclv.group_event_multimanager')
-        if self.env.user not in group.sudo().users:
-            #new_domain.append(("user_id", "=", self.env.user.id))
-            new_domain +=[("user_id", "=", self.env.user.id)]
-        for arg in domain:
-            new_domain.append(arg)
-        return super(Track, self).read_group(new_domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy)
-   
-    @api.model
-    def search(self, args, offset=0, limit=None, order=None, count=False):
-        new_args = []
-        group = self.env.ref('event_uclv.group_event_multimanager')
-        if self.env.user not in group.sudo().users:
-            #new_args.append(("user_id", "=", self.env.user.id))
-            new_args += [("user_id", "=", self.env.user.id)]
-        for arg in args:
-            new_args.append(arg)
-
-        return super(Track, self).search(new_args, offset=offset, limit=limit, order=order, count=count)
-
-
+        return res
     

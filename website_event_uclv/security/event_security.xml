@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="event_menu_manager" model="ir.rule">
+        <field name="name">Event Menu: Manager</field>
+        <field name="model_id" ref="website_event.model_website_event_menu"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('event.group_event_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>        
+        <field name="perm_unlink" eval="True"/>
+    </record> 
+    <record id="event_menu_user" model="ir.rule">
+        <field name="name">Event Menu: User</field>
+        <field name="model_id" ref="website_event.model_website_event_menu"/>
+        <field name="domain_force">[('event_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('event.group_event_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>        
+        <field name="perm_unlink" eval="True"/>
+    </record>
+</odoo>

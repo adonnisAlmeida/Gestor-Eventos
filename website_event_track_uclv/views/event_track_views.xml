@@ -40,7 +40,7 @@
             <field name="model">event.track</field>
             <field name="arch" type="xml">
                 <field name="user_id" position="replace" >
-                    <field name="user_id" readonly="True" />
+                    <field name="user_id" readonly="True" groups="event.group_event_manager"/>
                 </field>               
 
                 <field name="color" position="after">
@@ -64,7 +64,7 @@
                             </tree>
                             <form>
                                 <group>
-                                    <field name="sequence" groups="event.group_event_manager"/>
+                                    <field name="sequence" groups="event.group_event_user"/>
                                     <field name="partner_id" />
                                 </group>
                             </form>
@@ -112,7 +112,7 @@
             action="action_event_track"
             parent="event.event_main_menu"
             sequence="12"
-            groups="event.group_event_manager"/>
+            groups="event.group_event_user"/>
        
         <record model="ir.ui.view" id="view_event_track_tag_form">
             <field name="name">Track Tags</field>
@@ -121,7 +121,7 @@
             <field name="arch" type="xml">
                 
                 <field name="name" position="after" >
-                    <button type="object" name="split">Split</button>
+                    <button type="object" name="split" groups="event.group_event_manager">Split</button>
                 </field>
             </field>
         </record>

@@ -91,18 +91,4 @@ class EventRegistration(models.Model):
     paid = fields.Boolean("Is Paid?", compute="get_balance", store=True)
     paid_date = fields.Datetime("Payment Date", compute="get_balance", store=True)
 
-    @api.model
-    def search(self, args, offset=0, limit=None, order=None, count=False):
-        new_args = []
-        users = self.env.ref('event_uclv.group_event_multimanager').sudo().users
-        users += self.env.ref('event_uclv.group_event_accountant').sudo().users
-        if self.env.user not in users:
-            events = self.env['event.event'].search([('user_id', '=', self.env.user.id)])
-            events_ids = [e.id for e in events]
-            new_args += [("event_id", "in", events_ids)]
-        for arg in args:
-            new_args.append(arg)
-
-        return super(EventRegistration, self).search(new_args, offset=offset, limit=limit, order=order, count=count)
-
-
+    

@@ -1851,9 +1851,9 @@ msgid "Manage &amp; publish a schedule with tracks"
 msgstr "Administrar &amp; publicar un horario con presentaciones"
 
 #. module: event_uclv
-#: model:res.groups,name:event_uclv.group_event_multimanager
-msgid "Manager of all events"
-msgstr "Administrador de todos los eventos"
+#: model:res.groups,name:event.group_event_manager
+msgid "Manager"
+msgstr "Administrador"
 
 #. module: event_uclv
 #: model_terms:ir.ui.view,arch_db:event.view_event_registration_tree

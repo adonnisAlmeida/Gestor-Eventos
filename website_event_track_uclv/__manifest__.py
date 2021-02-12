@@ -12,6 +12,7 @@
     'sequence': 130,
     'depends': ['base_uclv', 'website_event_uclv', 'website_event_track', 'website_event_sale_uclv', 'portal_uclv', 'auth_signup_uclv'],
     'data': [
+        'security/website_event_track_uclv_security.xml',
         'security/ir.model.access.csv',
         'data/event_track_data.xml',
         'views/assets.xml',
