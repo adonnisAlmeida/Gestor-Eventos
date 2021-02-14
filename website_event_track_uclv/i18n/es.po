@@ -98,7 +98,7 @@ msgid ""
 "                    <p>\n"
 "                        Dear <t t-esc=\"object.partner_id.name\"/>\n"
 "                    </p><p>\n"
-"                        We are wandering if you can assit us by reviewing a"
+"                        We are wondering if you can assist us by reviewing a"
 " paper for the event ${object.track_id.event_id.name}.\n"
 "                    </p>\n"
 "                    <p>\n"
@@ -143,78 +143,7 @@ msgstr ""
 "                </div>\n"
 "            "
 
-#. module: website_event_track_uclv
-#: model:mail.template,body_html:website_event_track_uclv.mail_template_data_track_accepted
-msgid ""
-"<?xml version=\"1.0\"?>\n"
-"<div>\n"
-"    <p>\n"
-"        Dear <t t-esc=\"object.partner_name\"/>\n"
-"    </p><p>\n"
-"        We are pleased to inform you that your proposal ${object.name} has"
-" been accepted for the event ${object.event_id.name}.\n"
-"    </p><p>\n"
-"        You will find more details here:\n"
-"        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/track/${object.id}\""
-" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
-" none !important; font-weight: 400; background-color: #003399; border: 0px"
-" solid #003399; border-radius:3px\">\n"
-"                View Track\n"
-"            </a>\n"
-"        </div>\n"
-"    </p>\n"
-"    <p>\n"
-"        If you haven't already registered, please register as delegate of"
-" this event:\n"
-"        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/register\""
-" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
-" none !important; font-weight: 400; background-color: #003399; border: 0px"
-" solid #003399; border-radius:3px\">\n"
-"                Register as delegate\n"
-"            </a>\n"
-"        </div>\n"
-"    </p>\n"
-"    <p>Sincerely, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
-"    <p>Manager of Event</p>\n"
-"</div>\n"
-"            "
-msgstr ""
-"<?xml version=\"1.0\"?>\n"
-"<div>\n"
-"    <p>\n"
-"        Estimado/a <t t-esc=\"object.partner_name\"/>\n"
-"    </p><p>\n"
-"        Nos complace informarle que su propuesta ${object.name} ha sido"
-" aceptada para el evento ${object.event_id.name}.\n"
-"    </p><p>\n"
-"        Encontrará más detalles aquí:\n"
-"        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/track/${object.id}\""
-" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
-" none !important; font-weight: 400; background-color: #003399; border: 0px"
-" solid #003399; border-radius:3px\">\n"
-"                Ver Propuesta\n"
-"            </a>\n"
-"        </div>\n"
-"    </p>\n"
-"    <p>\n"
-"        Si no lo ha hecho, por favor regístrese como delegado para este"
-" evento:\n"
-"        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/register\""
-" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
-" none !important; font-weight: 400; background-color: #003399; border: 0px"
-" solid #003399; border-radius:3px\">\n"
-"                Registrarse como delegado\n"
-"            </a>\n"
-"        </div>\n"
-"    </p>\n"
-"    <p>Sinceramente, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
-"    <p>Coordinador del Evento</p>\n"
-"</div>\n"
-"            "
+
 
 #. module: website_event_track_uclv
 #: model:mail.template,body_html:website_event_track_uclv.mail_template_data_track_schedule
@@ -937,6 +866,7 @@ msgid "Abstract <small class=\"text-muted\" title=\"English\"> [EN]</small>:"
 msgstr "Resumen <small class=\"text-muted\" title=\"Inglés\"> [EN]</small>:"
 
 #. module: website_event_track_uclv
+#. module: website_event_track
 #: model:event.track.stage,name:website_event_track.event_track_stage2
 msgid "Abstract accepted"
 msgstr "Resumen aceptado"
@@ -975,16 +905,19 @@ msgid "Abstract is too short. Try a larger text."
 msgstr "Resumen demasiado corto. Intente un texto más largo."
 
 #. module: website_event_track_uclv
+#. module: website_event_track
 #: model:event.track.stage,name:website_event_track.event_track_stage4
-msgid "Abstract refused"
+msgid "Abstract rejected"
 msgstr "Resumen Rechazado"
 
 #. module: website_event_track_uclv
+#. module: website_event_track
 #: model:event.track.stage,name:website_event_track.event_track_stage1
 msgid "Abstract review"
 msgstr "Resumen en revisión"
 
 #. module: website_event_track_uclv
+#. module: website_event_track
 #: model:event.track.stage,name:website_event_track.event_track_stage0
 msgid "Abstract submited"
 msgstr "Resumen entregado"
@@ -1026,8 +959,8 @@ msgstr "Aceptar"
 
 #. module: website_event_track_uclv
 #: model:mail.template,subject:website_event_track_uclv.mail_template_data_track_accepted
-msgid "Acceptation of ${object.name}"
-msgstr "Aceptación de ${object.name}"
+msgid "Acceptation of Abstract"
+msgstr "Aceptación de Resumen"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields.selection,name:website_event_track_uclv.selection__event_track_review__state__accept
@@ -1295,7 +1228,7 @@ msgstr "Análisis de participantes"
 #. module: website_event_track_uclv
 #: model:ir.actions.report,name:website_event_track_uclv.report_event_registration_certificate
 msgid "Attendee Certificate"
-msgstr "Centificado de Participante"
+msgstr "Certificado de Participante"
 
 #. module: website_event_track_uclv
 #: model:ir.model,name:website_event_track_uclv.model_event_registration_create_wizard
@@ -2236,8 +2169,9 @@ msgid "Full Name:"
 msgstr "Nombre completo:"
 
 #. module: website_event_track_uclv
+#. module: website_event_track
 #: model:event.track.stage,name:website_event_track.event_track_stage5
-msgid "Full refused"
+msgid "Full rejected"
 msgstr "Trabajo completo rechazado"
 
 #. module: website_event_track_uclv
@@ -3460,6 +3394,7 @@ msgid "Schedule some tracks to get started !"
 msgstr "Programe algunas presentaciones para comenzar!"
 
 #. module: website_event_track_uclv
+#. module: website_event_track
 #: model:event.track.stage,name:website_event_track.event_track_stage3
 msgid "Scheduled"
 msgstr "Programado"

@@ -117,7 +117,7 @@ class TrackAuthor(models.Model):
 
 class TrackReview(models.Model):
     _name = 'event.track.review'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread','mail.activity.mixin']
     _description = "Paper Review"
     
     def _default_access_token(self):
@@ -137,9 +137,9 @@ class TrackReview(models.Model):
     name = fields.Char('Name', related="track_id.name")
     partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade', domain=[('email', '!=', '')])
     access_token = fields.Char('Invitation Token', default=_default_access_token)
-    state = fields.Selection([('notice','Noticed'),('read','Readed'),('accept','Accepted'),('reject','Rejected'),('edit', 'Need changes')], string="State", default="notice", required=True)
+    state = fields.Selection([('notice','Noticed'),('read','Readed'),('accept','Accepted'),('reject','Rejected'),('edit', 'Need changes')], string="State", default="notice", required=True, tracking=True)
     expired = fields.Boolean(string='Is expired', compute=_compute_expired)
-    
+    is_done = fields.Boolean(string='Is Done', realated='track_id.is_done')
 
     @api.model
     def create(self, vals):        
@@ -175,6 +175,10 @@ class Track(models.Model):
             else:
                 item.multiple = False
     
+    def _get_reviews_count(self):
+        for item in self:
+            item.reviews_count = len(item.review_ids)
+    
     #Revision Stuffs
     manager_notes = fields.Text('Notes for the Manager')
     author_notes = fields.Text('Notes for the Author')
@@ -186,6 +190,7 @@ class Track(models.Model):
         'Recommendation')
 
     review_ids = fields.One2many('event.track.review', 'track_id', string='Reviews', tracking=True)
+    reviews_count = fields.Integer(compute=_get_reviews_count)
     address_id = fields.Many2one('res.partner', "Address", related="event_id.address_id", readonly=True)
     multiple = fields.Boolean("Multiple", compute="_get_multiple", store=True)
     track_type_id = fields.Many2one('event.track.type', "Track Type")
@@ -225,7 +230,7 @@ class Track(models.Model):
     def build_uuids(self):
         regs = self.search([('authenticity_token', '=', False)])
         for reg in regs:
-            reg.write({'authenticity_token': uuid.uuid1()})
+            reg.write({'authenticity_token': uuid.uuid4()})
 
     def get_urls(self):
         base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
@@ -255,7 +260,7 @@ class Track(models.Model):
                     raise exceptions.UserError(_("Track date must be between %s and %s") %(event.date_begin.strftime("%Y-%m-%d %H:%M:%S"), event.date_end.strftime("%Y-%m-%d %H:%M:%S") ))
 
         if not vals.get('authenticity_token', False):
-            vals.update({'authenticity_token': uuid.uuid1()})
+            vals.update({'authenticity_token': uuid.uuid4()})
         
         return super(Track, self).create(vals)
 

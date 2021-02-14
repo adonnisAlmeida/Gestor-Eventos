@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<odoo>
+        <record model="ir.ui.view" id="view_event_track_review_form">
+            <field name="name">event.track.review.form</field>
+            <field name="model">event.track.review</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
+                    <sheet string="Review">
+                        <group>
+                            <field name="track_id" required="1"/>
+                            <field name="partner_id" string="Reviewer" required="1"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_event_track_review_tree">
+            <field name="name">event.track.review.tree</field>
+            <field name="model">event.track.review</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="track_id"/>
+                    <field name="partner_id" string="Reviewer"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_event_track_review_search">
+            <field name="name">event.track.review.search</field>
+            <field name="model">event.track.review</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="track_id" />
+                    <field name="partner_id" />
+                    <filter string="Next" name="next" domain="[('is_done', '=', False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Track" name="groupby_track_id" context="{'group_by': 'track_id'}"/>
+                        <filter string="Reviewer" name="groupby_partner_id" context="{'group_by': 'partner_id'}"/>
+                        <filter string="State" name="groupby_state" context="{'group_by': 'state'}"/>
+                    </group>                    
+                </search>                
+            </field>
+        </record>        
+
+        <record model="ir.actions.act_window" id="action_event_track_review">
+            <field name="name">Reviews</field>
+            <field name="res_model">event.track.review</field>            
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_groupby_track_id': 1, 'search_default_next': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Add a new review
+                </p><p>
+                Reviews increase quality of tracks.
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_event_track_review_from_track">
+            <field name="name">Reviews</field>
+            <field name="res_model">event.track.review</field>            
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_track_id': active_id, 'default_track_id': active_id}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Add a new review to this track
+                </p><p>
+                Reviews increase quality of tracks.
+                </p>
+            </field>
+        </record>
+   
+        <menuitem
+            id="menu_event_track_review"
+            name="Reviews"
+            action="action_event_track_review"
+            parent="event.event_main_menu"
+            sequence="12"
+            groups="event.group_event_user" />
+        
+</odoo>

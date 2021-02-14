@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<odoo>       
+<odoo>
         <record model="ir.ui.view" id="view_event_location_form">
             <field name="name">Event Locations</field>
             <field name="model">event.track.location</field>
@@ -39,6 +39,14 @@
             <field name="inherit_id" ref="website_event_track.view_event_track_form" />
             <field name="model">event.track</field>
             <field name="arch" type="xml">
+                <button name="%(website_event_track.website_visitor_action_from_track)d" position="before">
+                    <button name="%(website_event_track_uclv.action_event_track_review_from_track)d"
+                            type="action"
+                            class="oe_stat_button"
+                            icon="fa-eye">
+                        <field name="reviews_count" string="Reviews" widget="statinfo"/>
+                    </button>
+                </button>
                 <field name="user_id" position="replace" >
                     <field name="user_id" readonly="True" groups="event.group_event_manager"/>
                 </field>               
@@ -108,7 +116,7 @@
    
         <menuitem
             id="website_event_track.menu_event_track"
-            name="Event Tracks"
+            name="Tracks"
             action="action_event_track"
             parent="event.event_main_menu"
             sequence="12"
