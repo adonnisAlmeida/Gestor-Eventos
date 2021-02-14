@@ -89,5 +89,5 @@
         action="action_partner_form"
         parent="event.event_main_menu"
         sequence="13"
-        groups="event.group_event_manager"/>
+        groups="event.group_event_user"/>
 </odoo>
