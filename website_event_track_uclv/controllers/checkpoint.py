@@ -31,8 +31,7 @@ class CheckpointController(Controller):
     
     @http.route(['''/events/auth/<token>'''], type='http', auth="public", website=True)
     def event_authenticity(self, token, **kw):
-        #reg = request.env['event.registration'].sudo().search([('authenticity_token', '=', token)])
-        reg = False
+        reg = request.env['event.registration'].sudo().search([('authenticity_token', '=', token)])        
         track = request.env['event.track'].sudo().search([('authenticity_token', '=', token)])
         
         return request.render(

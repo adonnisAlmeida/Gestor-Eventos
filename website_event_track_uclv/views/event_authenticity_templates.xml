@@ -6,73 +6,73 @@
             <div id="wrap">
                 <div class="container oe_website_sale mt64 mb128">
                     <div class="row">
-                        <div class="col-xs-12 text-center">
+                        <div class="col-12 text-center">
                             <h1 class="mb8 mt16">
                                 <span>Autheticity Checker</span>
                             </h1>
                         </div>
                     </div>
                     <div class="row mb16 mt8">
-                        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+                        <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                             <div t-if="registration or track" class="alert alert-success text-center"><span class="fa fa-hw fa-check"> </span> This is a valid certificate</div>
                             <div t-if="not registration and not track" class="alert alert-danger text-center"><span class="fa fa-hw fa-ban"> </span> This is an INVALID certificate</div>
                         </div>
                     </div>
                     <div t-if="registration or track" class="row">
-                        <div class="col-xs-12">
+                        <div class="col-12">
                             <h3 class="mb16 mt32">
                                 <span>You must compare this values with the printed version of the certificate:</span>
                             </h3>
                         </div>
                     </div>
                     <div t-if="not registration and not track" class="row">
-                        <div class="col-xs-12 text-center">
+                        <div class="col-12 text-center">
                             <h3 class="mb16 mt32">
                                 <span><span class="fa fa-hw fa-qrcode"> </span> Ensure you have scanned the QR code properly!</span>
                             </h3>
                         </div>
                     </div>
                     <div t-if="registration" class="row">
-                        <div class="col-xs-12">
+                        <div class="col-12">
                             <div class="row" style="padding:10px !important;">   
-                                <label class="col-xs-12 col-md-2">Attendee Name:</label>
-                                <span class="col-xs-12 col-md-10" t-field="registration.name" />
+                                <label class="col-12 col-md-2">Attendee Name:</label>
+                                <span class="col-12 col-md-10" t-field="registration.name" />
                             </div>
                             <div class="row" style="padding:10px !important;">
-                                <label class="col-xs-12 col-md-2">Event:</label>
-                                <div class="col-xs-12 col-md-10">
+                                <label class="col-12 col-md-2">Event:</label>
+                                <div class="col-12 col-md-10">
                                     <a class="text-primary" t-if="registration.event_id.name" t-att-href="registration.event_id.website_url">
                                         <t t-esc="registration.event_id.with_context({'lang': 'es_ES'}).name"/>
                                     </a>
                                 </div>
                             </div>
                             <div class="row" t-if="registration.event_id.subname" style="padding:10px !important;">
-                                <label class="col-xs-12 col-md-2">Sub Event:</label>
-                                <div class="col-xs-12 col-md-10">
+                                <label class="col-12 col-md-2">Sub Event:</label>
+                                <div class="col-12 col-md-10">
                                     <a class="text-primary" t-if="registration.event_id.subname" t-att-href="registration.event_id.website_url">
                                         <t t-esc="registration.event_id.with_context({'lang': 'es_ES'}).subname"/>
                                     </a>
                                 </div>
                             </div>
                             <div class="row" t-if="registration.event_ticket_id" style="padding:10px !important;">
-                                <label class="col-xs-12 col-md-2">Ticket:</label>
-                                <span class="col-xs-12 col-md-10" t-field="registration.event_ticket_id.product_id.with_context({'lang': 'es_ES'}).description_official" />
+                                <label class="col-12 col-md-2">Ticket:</label>
+                                <span class="col-12 col-md-10" t-field="registration.event_ticket_id.product_id.with_context({'lang': 'es_ES'}).description" />
                             </div>
                             <div class="row" t-if="registration.date_closed" style="padding:10px !important;">
-                                <label class="col-xs-12 col-md-2">Emission Date:</label>
-                                <span class="col-xs-12 col-md-10" t-field="registration.date_closed" />
+                                <label class="col-12 col-md-2">Emission Date:</label>
+                                <span class="col-12 col-md-10" t-field="registration.date_closed" />
                             </div>
                             <div class="row" t-if="not registration.date_closed" style="padding:10px !important;">
-                                <label class="col-xs-12 col-md-2">Emission Date:</label>
-                                <span class="col-xs-12 col-md-10" t-field="registration.event_id.date_end" />
+                                <label class="col-12 col-md-2">Emission Date:</label>
+                                <span class="col-12 col-md-10" t-field="registration.event_id.date_end" />
                             </div>
                         </div>
                     </div>
                     <div t-if="track" class="row">
-                        <div class="col-xs-12">
+                        <div class="col-12">
                             <div class="row" style="padding:10px !important;">   
-                                <label class="col-xs-12 col-md-2">Track Name:</label>
-                                <span class="col-xs-12 col-md-10" >
+                                <label class="col-12 col-md-2">Track Name:</label>
+                                <span class="col-12 col-md-10" >
                                     <a class="text-primary" t-att-href="track.website_url" t-if="track.website_published">
                                         <span t-esc="track.with_context({'lang': 'es_ES'}).name" />
                                     </a>
@@ -80,38 +80,38 @@
                                 </span>
                             </div>
                             <div class="row" style="padding:10px !important;">
-                                <label class="col-xs-12 col-md-2">Event:</label>
-                                <div class="col-xs-12 col-md-10">
+                                <label class="col-12 col-md-2">Event:</label>
+                                <div class="col-12 col-md-10">
                                     <a class="text-primary" t-if="track.event_id.name" t-att-href="track.event_id.website_url">
                                         <t t-esc="track.event_id.with_context({'lang': 'es_ES'}).name"/>
                                     </a>
                                 </div>
                             </div>
                             <div class="row" t-if="track.event_id.subname" style="padding:10px !important;">
-                                <label class="col-xs-12 col-md-2">Sub Event:</label>
-                                <div class="col-xs-12 col-md-10">
+                                <label class="col-12 col-md-2">Sub Event:</label>
+                                <div class="col-12 col-md-10">
                                     <a class="text-primary" t-if="track.event_id.subname" t-att-href="track.event_id.website_url">
                                         <t t-esc="track.event_id.with_context({'lang': 'es_ES'}).subname"/>
                                     </a>
                                 </div>
                             </div>
                             <div class="row" t-if="track.partner_id" style="padding:10px !important;">
-                                <label class="col-xs-12 col-md-2">Speaker:</label>
-                                <span class="col-xs-12 col-md-10" t-field="track.partner_id.with_context({'lang': 'es_ES'}).name" />
+                                <label class="col-12 col-md-2">Speaker:</label>
+                                <span class="col-12 col-md-10" t-field="track.partner_id.with_context({'lang': 'es_ES'}).name" />
                             </div>
                             <div class="row" t-if="track.author_ids" style="padding:10px !important;">
-                                <label class="col-xs-12 col-md-2">Authors:</label>
+                                <label class="col-12 col-md-2">Authors:</label>
                                 <t t-foreach="track.author_ids" t-as="author">
-                                    <span class="col-xs-12 col-md-10" t-field="author.partner_id.with_context({'lang': 'es_ES'}).name" />
+                                    <span class="col-12 col-md-10" t-field="author.partner_id.with_context({'lang': 'es_ES'}).name" />
                                 </t>
                             </div>
                             <div class="row" t-if="track.date" style="padding:10px !important;">
-                                <label class="col-xs-12 col-md-2">Emission Date:</label>
-                                <span class="col-xs-12 col-md-10" t-field="track.date" />
+                                <label class="col-12 col-md-2">Emission Date:</label>
+                                <span class="col-12 col-md-10" t-field="track.date" />
                             </div>
                             <div class="row" t-if="not track.date" style="padding:10px !important;">
-                                <label class="col-xs-12 col-md-2">Emission Date:</label>
-                                <span class="col-xs-12 col-md-10" t-field="track.event_id.date_end" />
+                                <label class="col-12 col-md-2">Emission Date:</label>
+                                <span class="col-12 col-md-10" t-field="track.event_id.date_end" />
                             </div>                            
                         </div>
                     </div>
