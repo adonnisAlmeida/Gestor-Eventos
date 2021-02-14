@@ -13,6 +13,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/assets.xml',
+        'views/event_views.xml',
         'views/event_templates.xml'
     ]
 }

@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_website_event_menu_user,website.event.menu,website_event.model_website_event_menu,event.group_event_user,1,1,1,1
-
+access_website_menu_user,website.menu,website.model_website_menu,event.group_event_user,1,1,1,1
