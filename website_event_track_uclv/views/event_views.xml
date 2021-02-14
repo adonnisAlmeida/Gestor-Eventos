@@ -50,7 +50,7 @@
                             icon="fa-microphone"
                             context="{'default_date': date_begin}">
                         <field name="track_count" string="Tracks" widget="statinfo"/>
-                    </button>        
+                    </button>
                 </button>
                     
                 <button name="%(website_event_track.event_sponsor_action_from_event)d" position="replace">

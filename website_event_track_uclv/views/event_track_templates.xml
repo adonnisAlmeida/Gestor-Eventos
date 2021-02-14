@@ -121,21 +121,29 @@
                         </div>
                     </div>
                 </div>
-
-                <section class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
-                    <h4>Abstract</h4>
+                <t t-set="active_lang" t-value="list(filter(lambda lg : lg[0] == lang, languages))[0]"/>
+                <section t-if="active_lang[1]=='en'" class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
+                    <h4>Abstract [EN]</h4>
                     <div t-field="track.description" />
                 </section>
-                <section class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
-                    <h4>Abstract</h4>
+                <section t-if="active_lang[1]=='en'" class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
+                    <h4>Resumen [ES]</h4>
+                    <div class="font-italic" t-field="track.description_es" />
+                </section>
+                <section t-if="active_lang[1]=='es'" class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
+                    <h4>Resumen [ES]</h4>
                     <div t-field="track.description_es" />
+                </section>
+                <section t-if="active_lang[1]=='es'" class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
+                    <h4>Abstract [EN]</h4>
+                    <div class="font-italic" t-field="track.description" />
                 </section>
 
                 <t t-if="track.partner_id">
                     <section class="mt64 mt-4 my-2 mx-3 oe_no_empty" >
                         <h4>About The Speaker</h4>
-                        <div class="well mt16">
-                            <div class="mx-3 pt-3 mb-3 d-flex justify-content-between flex-column flex-md-row">
+                        <div class="well bg-200 mt-3 mb24">
+                            <div class="pt-3 pb-3 d-flex justify-content-between flex-column flex-md-row">
                                 <div class="col-sm-2">
                                     <span t-field="track.partner_id.sudo().image_256"
                                         t-options='{"widget": "image", "class": "img-avatar"}'/>
@@ -146,7 +154,7 @@
                                         <span class="fa fa-home mb4" t-if="track.partner_id.institution" > </span>
                                         <span class="mb4" t-if="track.partner_id.institution" t-field="track.partner_id.institution"/>
                                         
-                                        <img height="16px" t-att-src="track.partner_id.country_id.image_url" t-att-alt="'Flag of %s' % track.partner_id.country_id.name" t-att-title="track.partner_id.country_id.name"/>
+                                        <img height="16px" t-if="track.partner_id.country_id" t-att-src="track.partner_id.country_id.image_url" t-att-alt="'Flag of %s' % track.partner_id.country_id.name" t-att-title="track.partner_id.country_id.name"/>
                                     </div>
                                 <em><span t-field="track.partner_id.website_description"/></em>
                                 
