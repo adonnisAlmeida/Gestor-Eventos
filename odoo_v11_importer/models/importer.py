@@ -56,7 +56,8 @@ class Importer(models.TransientModel):
                     'code': d[2]
                 })
                 res_country.update({ d[0]: created.id})
-
+        country_cu = self.env['res.country'].with_context(lang='en_US').search([('name' , '=', 'Cuba')])
+        
         # res_country_state
         res_country_state = {}
         """
@@ -172,7 +173,7 @@ class Importer(models.TransientModel):
                     'zip': d[25],
                     'city': d[26],
                     'state_id': d[27] and res_country_state[d[27]] or False,
-                    'country_id': d[28] and res_country[d[28]] or False,
+                    'country_id': d[28] and res_country[d[28]] or country_cu.id,
                     'email': d[29], 
                     'phone': d[30], 
                     'mobile': d[31], 
@@ -451,7 +452,7 @@ class Importer(models.TransientModel):
         menu_id, website_meta_title, website_meta_description, website_meta_keywords,
         website_registration_ok, website_track_ok, website_track_proposal_ok, website_track_proposal_msg,
         website_track_proposal_template, website_track_proposal_deadline, coordinator, correo, website_introduction_msg,
-        email from event_event where true""")
+        email from event_event where true order by id""")
         
         data = cr.fetchall()
         for d in data:
@@ -720,7 +721,7 @@ class Importer(models.TransientModel):
         cr.execute("""select id from event_track where authenticity_token='';""")
         data = cr.fetchall()
         for d in data:
-            cr.execute("""update event_track set authenticity_token='%s' where id=%s;""" %(uuid.uuid1(), d[0]))
+            cr.execute("""update event_track set authenticity_token='%s' where id=%s;""" %(uuid.uuid4(), d[0]))
 
         cr.execute("""select id, name, active, publish_complete, user_id, user2_id, partner_id, partner_biography,
         stage_id, kanban_state, description, date, language_id, duration, location_id, event_id, color,
@@ -728,7 +729,7 @@ class Importer(models.TransientModel):
         activity_date_deadline, coordinator_notes, author_notes, recommendation, coordinator_notes2, author_notes2,
         recommendation2, revision_status, revision_status2, reviewer_id, reviewer2_id, partner_name,
         partner_email, partner_phone, track_type_id, multiple, authenticity_token
-         from event_track where true;""")
+         from event_track where true order by id;""")
         data = cr.fetchall()
         for d in data:
             exist = self.env['event.track'].with_context(lang='en_US').search([('authenticity_token' , '=', d[39])])
@@ -763,12 +764,12 @@ class Importer(models.TransientModel):
                         'website_meta_keywords': d[21], # TODO: update with tags???
                         'is_published': d[22], 
                         'activity_date_deadline': d[23],  
-                        'coordinator_notes': d[24],  
-                        'author_notes': d[25],  
-                        'recommendation': d[26],  
-                        'coordinator_notes2': d[27],  
-                        'author_notes2': d[28], 
-                        'recommendation2': d[29],  
+                        #'coordinator_notes': d[24],  
+                        #'author_notes': d[25],  
+                        #'recommendation': d[26],  
+                        #'coordinator_notes2': d[27],  
+                        #'author_notes2': d[28], 
+                        #'recommendation2': d[29],  
                         #'revision_status': d[30],  
                         #'revision_status2': d[31],  
                         #'reviewer_id': d[32] and res_users[d[32]] or False, 
