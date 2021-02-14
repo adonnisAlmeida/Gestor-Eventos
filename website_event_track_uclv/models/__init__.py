@@ -3,5 +3,4 @@
 
 from . import event_track
 from . import event
-from . import payment
 from . import res_partner

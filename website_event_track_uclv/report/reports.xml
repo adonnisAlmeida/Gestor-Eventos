@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+    <data noupdate="0">
+        <record id="paperformat_certificate_lowmargin_landscape" model="report.paperformat">
+            <field name="name">Letter paper low margin landscape</field>
+            <field name="default" eval="True"/>
+            <field name="format">Letter</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">80</field>
+        </record>
         <report
             string="Attendee List"
             id="action_report_attendee_list"
@@ -15,7 +30,7 @@
             model="event.registration"
             string="Attendee Certificate"
             report_type="qweb-pdf"
-            attachment="(object.state in ('done','paid')) and ('Attendee Certificate '+(object.name or '').replace('/','')+'.pdf')"
+            attachment=""
             name="website_event_track_uclv.event_registration_report_template_certificate"
             file="website_event_track_uclv.event_registration_report_template_certificate"
             paperformat="paperformat_certificate_lowmargin_landscape"
@@ -26,7 +41,7 @@
             model="event.track"
             string="Track Certificate"
             report_type="qweb-pdf"
-            attachment="(object.stage_id.id in ('3','4')) and ('Track Certificate '+(object.name or '').replace('/','')+'.pdf')"
+            attachment=""
             name="website_event_track_uclv.event_track_report_template_certificate"
             file="website_event_track_uclv.event_track_report_template_certificate"
             paperformat="paperformat_certificate_lowmargin_landscape"
@@ -37,7 +52,7 @@
             model="event.track"
             string="Track Certificate Extra"
             report_type="qweb-pdf"
-            attachment="(object.stage_id.id in ('3','4')) and ('Track Certificate '+(object.name or '').replace('/','')+'.pdf')"
+            attachment=""
             name="website_event_track_uclv.event_track_report_template_certificate2"
             file="website_event_track_uclv.event_track_report_template_certificate2"
             paperformat="paperformat_certificate_lowmargin_landscape"
@@ -48,7 +63,7 @@
             model="event.track"
             string="Track Certificate Speaker"
             report_type="qweb-pdf"
-            attachment="(object.stage_id.id in ('3','4')) and ('Track Certificate '+(object.name or '').replace('/','')+'.pdf')"
+            attachment=""
             name="website_event_track_uclv.event_track_report_template_certificate3"
             file="website_event_track_uclv.event_track_report_template_certificate3"
             paperformat="paperformat_certificate_lowmargin_landscape"
@@ -59,7 +74,7 @@
             model="event.track"
             string="Track Certificate Authors"
             report_type="qweb-pdf"
-            attachment="(object.stage_id.id in ('3','4')) and ('Track Certificate '+(object.name or '').replace('/','')+'.pdf')"
+            attachment=""
             name="website_event_track_uclv.event_track_report_template_certificate4"
             file="website_event_track_uclv.event_track_report_template_certificate4"
             paperformat="paperformat_certificate_lowmargin_landscape"

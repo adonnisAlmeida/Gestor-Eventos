@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="paperformat_certificate_lowmargin_landscape" model="report.paperformat">
-        <field name="name">Letter paper low margin landscape</field>
-        <field name="default" eval="True"/>
-        <field name="format">Letter</field>
-        <field name="page_height">0</field>
-        <field name="page_width">0</field>
-        <field name="orientation">Landscape</field>
-        <field name="margin_top">0</field>
-        <field name="margin_bottom">0</field>
-        <field name="margin_left">0</field>
-        <field name="margin_right">0</field>
-        <field name="header_line" eval="False"/>
-        <field name="header_spacing">0</field>
-        <field name="dpi">80</field>
-    </record>
+    
     <!-- template use to render a Registration Certificate -->
     <template id="event_registration_report_template_certificate">
         <t t-call="web.basic_layout">
@@ -55,21 +41,21 @@
                 <div class="page" style="height:270mm;">
                     <img src="/website_event_track_uclv/static/src/img/cert-bg-att.png" style="position: absolute;z-index: -2; height:270mm; left:0;" />
                     <div class="row" style="display:flex;">
-                        <div class="col-xs-8 col-xs-offset-2 text-right" style="padding-top:4.7in;">
+                        <div class="col-8 offset-2 text-right" style="padding-top:4.7in;">
                             <div class="row" style="margin:0 0 !important;">
-                                <div class="col-xs-12" style="padding:0 50px 0 150px!important;">
+                                <div class="col-12" style="padding:0 50px 0 150px!important;">
                                     <span class="cert-h3 bold">En el evento: </span><span class="cert-h3 bold uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
                                 </div>
                             </div>
                             <div class="row" style="margin:16px 0 !important;">
-                                <div class="col-xs-12" style="padding:0 50px 0 100px!important;">
+                                <div class="col-12" style="padding:0 50px 0 100px!important;">
                                     <span class="cert-h3 bold">A: </span><span class="cert-h3 bold uppercase" t-field="o.name" />
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-2">
-                            <div style="padding-top: 7in; padding-right:25px; float:right">
-                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.authenticity_url, 200, 200)" style="width:2.5in;height:2.5in;"/>
+                        <div class="col-2">
+                            <div style="padding-top: 7.8in; padding-right:45px; float:right">
+                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.authenticity_url, 200, 200)" style="width:2in;height:2in;"/>
                             </div>
                         </div>
                     </div>
