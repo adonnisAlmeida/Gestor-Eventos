@@ -142,7 +142,7 @@
                 <t t-if="track.partner_id">
                     <section class="mt64 mt-4 my-2 mx-3 oe_no_empty" >
                         <h4>About The Speaker</h4>
-                        <div class="well bg-200 mt-3 mb24">
+                        <div class="well bg-200 mt-3 mb-3">
                             <div class="pt-3 pb-3 d-flex justify-content-between flex-column flex-md-row">
                                 <div class="col-sm-2">
                                     <span t-field="track.partner_id.sudo().image_256"

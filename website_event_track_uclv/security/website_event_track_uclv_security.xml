@@ -14,9 +14,19 @@
         <field name="model_id" ref="website_event_track.model_event_track"/>
         <field name="domain_force">[('event_id.user_id','=',user.id)]</field>
         <field name="groups" eval="[(4, ref('event.group_event_user'))]"/>
-        <field name="perm_read" eval="True"/>
+        <field name="perm_read" eval="False"/>
         <field name="perm_write" eval="True"/>        
         <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="event_track_user_read" model="ir.rule">
+        <field name="name">Event Tracks: User Read</field>
+        <field name="model_id" ref="website_event_track.model_event_track"/>
+        <field name="domain_force">['|',('event_id.user_id','=',user.id),('website_published','=',True)]</field>
+        <field name="groups" eval="[(4, ref('event.group_event_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>        
+        <field name="perm_unlink" eval="False"/>
+        <field name="perm_create" eval="False"/>
     </record>
     <record id="event_track_author_manager" model="ir.rule">
         <field name="name">Event Track Authors: Manager</field>

@@ -34,8 +34,7 @@
                 </div>
             </t>
         </xpath>
-    </template>
-
+    </template>   
     <template id="event_details" inherit_id="website_event.event_details" name="Event Header"> <!-- Event cover & specific menu bar plus room to event template-->
         <xpath expr="//t[@t-call='website_event.layout']" position="replace">
             <t t-call="website_event.layout">
@@ -64,18 +63,34 @@
                             <div class="container justify-content-around d-block" style="position:relative;top:-55px;">
                                 <div class="row no-gutters shadow-sm">
                                     <div class="col-lg-12">
-                                        <nav class="navbar navbar-light navbar-expand-md bg-white">
+                                        <nav class="navbar navbar-light navbar-expand bg-white">
                                             <div class="container align-items-baseline">
-                                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#o_wevent_event_submenu" aria-controls="o_wevent_event_submenu" aria-expanded="false" aria-label="Toggle navigation">
+                                                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#o_wevent_event_submenu" aria-controls="o_wevent_event_submenu" aria-expanded="false" aria-label="Toggle navigation">
                                                     <span class="navbar-toggler-icon"></span>
-                                                </button>
+                                                </button> -->
                                                 <div id="o_wevent_event_submenu" class="collapse navbar-collapse">
-                                                    <ul class="navbar-nav w-100" t-att-data-menu_name="editable and 'Event Menu'" t-att-data-content_menu_id="editable and event.menu_id.id">
+                                                    <ul class="navbar-nav w-100 justify-content-around justify-content-md-start" t-att-data-menu_name="editable and 'Event Menu'" t-att-data-content_menu_id="editable and event.menu_id.id">
                                                         <t t-foreach="event.menu_id.child_id" t-as="submenu">
-                                                            <t t-call="website.submenu">
-                                                                <t t-set="item_class" t-value="'nav-item'"/>
-                                                                <t t-set="link_class" t-value="'nav-link'"/>
-                                                            </t>
+                                                            
+                                                            <t t-set="item_class" t-value="'nav-item'"/>
+                                                            <t t-set="link_class" t-value="'nav-link'"/>
+                                                            
+
+                                                            <li t-if="submenu.is_visible and not has_visible_submenu" t-attf-class="#{item_class or ''}">
+                                                                <a t-att-href="submenu.clean_url()"
+                                                                    t-attf-class="#{link_class or ''} #{'active' if submenu.clean_url() and unslug_url(request.httprequest.path) == unslug_url(submenu.clean_url()) else ''}"
+                                                                    role="menuitem"
+                                                                    t-ignore="true"
+                                                                    t-att-target="'_blank' if submenu.new_window else None">
+                                                                    <span t-if="submenu.with_context(lang='en').name=='Introduction'" class="fa fa-2x fa-bullhorn d-md-none" />
+                                                                    <span t-if="submenu.with_context(lang='en').name=='Papers'" class="fa fa-2x fa-file d-md-none" />
+                                                                    <span t-if="submenu.with_context(lang='en').name=='Submit a paper'" class="fa fa-2x fa-upload d-md-none" />
+                                                                    <span t-if="submenu.with_context(lang='en').name=='Agenda'" class="fa fa-2x fa-calendar d-md-none" />
+                                                                    <span t-if="submenu.with_context(lang='en').name=='Community'" class="fa fa-2x fa-users d-md-none" />
+                                                                    <span t-if="submenu.with_context(lang='en').name=='Exhibitors'" class="fa fa-2x fa-slideshare d-md-none" />
+                                                                    <span class="d-none d-md-block" t-field="submenu.name"/>
+                                                                </a>
+                                                            </li>
                                                         </t>
                                                     </ul>
                                                 </div>

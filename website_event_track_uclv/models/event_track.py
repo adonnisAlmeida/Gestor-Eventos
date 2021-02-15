@@ -301,4 +301,45 @@ class Track(models.Model):
         if vals.get('partner_id'):
             self.message_subscribe([vals['partner_id']])
         return res
+
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        new_args = []
+        if not self.env.context.get('website_id'):
+            if self.env.user.has_group('event.group_event_manager'):
+                new_args.append((1, "=", 1))
+            elif self.env.user.has_group('event.group_event_user'):
+                new_args.append(("event_id.user_id", "=", self.env.user.id))
+        
+        for arg in args:
+            new_args.append(arg)
+        return super(Track, self).search(new_args, offset=offset, limit=limit, order=order, count=count)    
+        
+    @api.model
+    def name_search(self, name, args=None, operator='ilike', limit=100):
+        args = args or []
+        recs = self.browse()        
+        if not self.env.context.get('website_id'):
+            if self.env.user.has_group('event.group_event_manager'):
+                args.append((1, "=", 1))
+            elif self.env.user.has_group('event.group_event_user'):
+                args.append(("event_id.user_id", "=", self.env.user.id))
+        if name:
+            recs = self.search([('name', 'ilike', name)] + args, limit=limit)
+        if not recs:
+            recs = self.search([('name', operator, name)] + args, limit=limit)
+        return recs.name_get()
+
+    @api.model
+    def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
+        new_domain = []
+        if not self.env.context.get('website_id'):
+            if self.env.user.has_group('event.group_event_manager'):
+                new_domain.append((1, "=", 1))
+            elif self.env.user.has_group('event.group_event_user'):
+                new_domain.append(("event_id.user_id", "=", self.env.user.id))
+        for arg in domain:
+            new_domain.append(arg)
+        return super(Track, self).read_group(new_domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy)
+
     
