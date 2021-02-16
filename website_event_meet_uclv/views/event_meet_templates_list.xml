@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="event_meet" inherit_id="website_event_meet.event_meet" name="Meeting Rooms">
+    <xpath expr="//t[@t-call='website_event.layout']" position="replace">
+        <t t-call="website_event.event_details">
+            <section class="bg-200">            
+                <div class="container overflow-hidden d-block" style="position:relative; top:-40px;">
+                    <div class="row no-gutters mb-3 shadow-sm">
+                        <div class="col-12 bg-white px-3 pb-0 o_wevent_online pt-5">
+                            <div class="o_wevent_online">
+                                <!-- Drag/Drop Area -->
+                                <div id="oe_structure_website_event_location_1" class="oe_structure"/>
+                                <!-- Content -->
+                                <div class="o_wemeet_container container">
+                                    <div class="row mb-5 mx-0">
+                                        <t t-call="website_event_meet_uclv.community_main"/>                                        
+                                    </div>
+                                </div>
+                                <!-- Drag/Drop Area -->
+                                <div id="oe_structure_website_event_location_2" class="oe_structure mb-5"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </xpath>
+</template>
+
+
+<template id="community_main" name="Meeting Rooms: Main Display">    
+    <div class="col-12 pl-0 pr-0 pr-md-3 mt-3">
+        <h2 class="d-flex flex-row justify-content-between">
+            <span>Join a room</span>
+            <div class="dropdown">
+                <a class="dropdown-toggle o-no-caret btn p-0" title="Languages Menu"
+                    aria-label="Dropdown menu" data-display="static" data-toggle="dropdown" href="#" role="button">
+                    <span t-esc="current_lang.name if current_lang else 'All Languages'"/> ▼</a>
+                <div class="dropdown-menu" role="menu">
+                    <a class="dropdown-item" role="menuitem" t-attf-href="/event/#{slug(event)}/community">All Languages
+                    </a>
+                    <a class="dropdown-item" role="menuitem" t-as="language" t-attf-href="/event/#{slug(event)}/community?lang=#{language.id}" t-esc="language.name" t-foreach="available_languages"/>
+                </div>
+            </div>
+        </h2>
+        <hr class="mt-2 mb-3"/>
+        <p class="mt-">Choose a topic that interests you and start talking with the community. <br/> Don't forget to setup your camera and microphone.</p>
+        <div class="d-flex flex-column justify-content-start align-items-start">
+            <t t-as="meeting_room" t-call="website_event_meet.meeting_room_card" t-foreach="meeting_rooms">
+                <t t-set="meeting_room" t-value="meeting_room"/>
+                <t t-set="opened" t-value="int(meeting_room.id == open_room_id)"/>
+            </t>
+            <div t-if="not meeting_rooms" class="m-auto text-center text-muted">
+                <h3 class="mt8">No Room Open</h3>
+                <p>Create one to get conversations going</p>
+            </div>
+        </div>
+    </div>    
+</template>
+
+
+</odoo>

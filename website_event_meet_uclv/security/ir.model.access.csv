@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+website_event_meet.event_meeting_room_access_user,event.meeting.room.access.user,website_event_meet.model_event_meeting_room,event.group_event_user,1,1,1,1
+website_event_meet.chat_room_access_event_user,chat.room.access.event.user,website_jitsi.model_chat_room,event.group_event_user,1,1,1,1

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    
+    <record id="event_meeting_room_manager" model="ir.rule">
+        <field name="name">Event Meeting Room: Manager</field>
+        <field name="model_id" ref="website_event_meet.model_event_meeting_room"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('event.group_event_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>        
+        <field name="perm_unlink" eval="True"/>
+    </record> 
+    <record id="event_meeting_room_user" model="ir.rule">
+        <field name="name">Event Meeting Room: User</field>
+        <field name="model_id" ref="website_event_meet.model_event_meeting_room"/>
+        <field name="domain_force">[('event_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('event.group_event_user'))]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="True"/>        
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="event_meeting_room_user_read" model="ir.rule">
+        <field name="name">Event Meeting Room: User Read</field>
+        <field name="model_id" ref="website_event_meet.model_event_meeting_room"/>
+        <field name="domain_force">['|',('event_id.user_id','=',user.id),('website_published','=',True)]</field>
+        <field name="groups" eval="[(4, ref('event.group_event_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>        
+        <field name="perm_unlink" eval="False"/>
+        <field name="perm_create" eval="False"/>
+    </record>
+
+</odoo>
