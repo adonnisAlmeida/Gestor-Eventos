@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <template id="portal_my_quotations" inherit_id="sale.portal_my_quotations" name="My Quotations">
+        <xpath expr="//t[@t-if='not quotations']" position="replace">
+            <t t-if="not quotations">
+                <div class="container">
+                    <div class="alert alert-warning mt64 h3" role="alert">
+                        <span class="fa fa-warning" /> There are currently no quotations for your account.
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+    <template id="portal_my_orders" inherit_id="sale.portal_my_orders" name="My Orders">
+        <xpath expr="//t[@t-if='not orders']" position="replace">
+            <t t-if="not orders">
+                <div class="container">
+                    <div class="alert alert-warning mt64 h3" role="alert">
+                        <span class="fa fa-warning" /> There are currently no orders for your account.
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+    <template id="portal_my_invoices" inherit_id="account.portal_my_invoices" name="My Invoices and Payments">
+        <xpath expr="//t[@t-if='not invoices']" position="replace">
+            <t t-if="not invoices">
+                <div class="container">
+                    <div class="alert alert-warning mt64 h3" role="alert">
+                        <span class="fa fa-warning" /> There are currently no invoices and payments for your account.
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+    <!-- 
     <template id="website_sale.continue_shopping" inherit_id="website_sale.cart" customize_show="True" name="Continue Shopping Button">
         <xpath expr="//a[@href='/shop/checkout']" position="before">
             <a href="/event" class="btn btn-default mb32">
@@ -9,7 +43,7 @@
             </a>
         </xpath>
     </template>
-
+    
     <template id="website_sale.cart_lines" name="Shopping Cart Lines">
         <div t-if="not website_sale_order or not website_sale_order.website_order_line" class="js_cart_lines well well-lg">
           Your cart is empty!
@@ -25,10 +59,7 @@
             <tbody>
                 <t t-foreach="website_sale_order.website_order_line" t-as="line">
                     <tr>
-                        <!-- <td t-if="not line.product_id.product_tmpl_id" class='td-img'></td> -->
-                        <!-- <td align="center" t-if="line.product_id.product_tmpl_id" class='td-img'>
-                            <span t-field="line.product_id.image_128" t-options="{'widget': 'image', 'class': 'img-rounded'}" />
-                        </td> -->
+                        
                         <td width="50%" t-if="line.product_id.product_tmpl_id" class='td-product_name'>
                             <div>
                                 <a t-attf-href="/shop/product/#{ slug(line.product_id.product_tmpl_id) }">
@@ -63,7 +94,7 @@
             </t>
         </div>
     </template>
-
+    
     <template id="website_sale.cart" name="Shopping Cart">
         <t t-call="website.layout">
             <div id="wrap">
@@ -78,7 +109,7 @@
                             <div class="row">
                                 <div class="col-md-12 o_website_sale_rightfit">
                                     <h2 class="mb8 mt8">Shopping Cart</h2>
-                                    <div t-if="abandoned_proceed or access_token" class="mt8 mb8 alert alert-info"> <!-- abandoned cart choices -->
+                                    <div t-if="abandoned_proceed or access_token" class="mt8 mb8 alert alert-info"> 
                                         <t t-if="abandoned_proceed">
                                             <p>Your previous cart has already been completed.</p>
                                             <p t-if="website_sale_order">Please proceed your current cart.</p>
@@ -109,6 +140,7 @@
             </div>
         </t>
     </template>
+    
 
     <template id="website_sale.cart_popover" name="Cart Popover">
         <div t-if="not website_sale_order or not website_sale_order.website_order_line" class="well well-lg">
@@ -117,9 +149,7 @@
         <t t-if="website_sale_order and website_sale_order.website_order_line">
             <t t-foreach="website_sale_order.website_order_line" t-as="line">
                 <div class="row mb8 cart_line">
-                    <!-- <div class="col-xs-3">
-                        <span t-field="line.product_id.image_128" t-options="{'widget': 'image', 'class': 'img-rounded'}" />
-                    </div>-->
+                    
                     <div class="col-xs-9">
                         <a t-attf-href="/shop/product/#{ slug(line.product_id.product_tmpl_id) }">
                             <span t-esc="line.product_id.with_context(display_default_code=False).display_name" class="h6" />
@@ -142,7 +172,7 @@
             </div>
         </t>
     </template>
-
+    
     <template id="website_sale.checkout">
         <t t-call="website.layout">
             <t t-set="additional_title">Checkout</t>
@@ -339,26 +369,13 @@
                                         <label class="control-label" for="phone">Phone</label>
                                         <input type="tel" name="phone" class="form-control" t-att-value="'phone' in checkout and checkout['phone']" />
                                     </div>
-                                    <!-- <div class="clearfix" />
-                                    <t t-if="mode == ('new', 'billing')">
-                                        <div t-attf-class="form-group #{error.get('company_name') and 'has-error' or ''} col-md-6">
-                                            <label class="control-label font-weight-normal label-optional" for="company_name">Company Name</label>
-                                            <input type="text" name="company_name" class="form-control" t-att-value="'company_name' in checkout and checkout['company_name']" />
-                                        </div>
-                                        <div t-attf-class="form-group #{error.get('vat') and 'has-error' or ''} col-md-6 div_vat">
-                                            <label class="control-label font-weight-normal label-optional" for="vat">TIN / VAT </label>
-                                            <input type="text" name="vat" class="form-control" t-att-value="'vat' in checkout and checkout['vat']" />
-                                        </div>
-                                    </t> -->
+                                    
                                     <div class="clearfix" />
                                     <div t-attf-class="form-group #{error.get('street') and 'has-error' or ''} col-md-12 div_street">
                                         <label class="control-label" for="street">Street <span class="hidden-xs"> and Number</span></label>
                                         <input type="text" name="street" class="form-control" t-att-value="'street' in checkout and checkout['street']" />
                                     </div>
-                                    <!-- <div t-attf-class="form-group #{error.get('street2') and 'has-error' or ''} col-md-12 div_street2">
-                                        <label class="control-label label-optional" for="street2">Street 2</label>
-                                        <input type="text" name="street2" class="form-control" t-att-value="'street2' in checkout and checkout['street2']" />
-                                    </div> -->
+                                    
                                     <div class="clearfix" />
                                     <t t-set='zip_city' t-value='country and [x for x in country.get_address_fields() if x in ["zip", "city"]] or ["city", "zip"]'/>
                                     <t t-if="'zip' in zip_city and zip_city.index('zip') &lt; zip_city.index('city')">
@@ -405,7 +422,7 @@
                                     <input type="hidden" name="submitted" value="1" />
                                     <input type="hidden" name="partner_id" t-att-value="partner_id or '0'" />
                                     <input type="hidden" name="callback" t-att-value="callback" />
-                                    <!-- Example -->
+                                    
                                     <input type="hidden" name="field_required" t-att-value="mode[1] == 'billing' and 'phone,name' or ''" />
 
                                     <div class="clearfix"/>
@@ -463,7 +480,6 @@
                                     </thead>
                                     <tbody>
                                         <tr t-foreach="website_sale_order.website_order_line" t-as="line">
-                                            <!-- <td class='' colspan="2" t-if="not line.product_id.product_tmpl_id"></td> -->
                                             
                                             <td width="50%" t-if="line.product_id.product_tmpl_id" class='td-product_name'>
                                                 <div>
@@ -666,5 +682,5 @@
                 <div class="oe_structure" />
             </div>
         </t>
-    </template>
+    </template> -->
 </odoo>

@@ -8,85 +8,7 @@
        <xpath expr="//link[last()]" position="after">
             <link rel="stylesheet" type="text/scss" href="/portal_uclv/static/src/scss/portal.scss"/>
         </xpath>
-    </template>       
-    
-    <template id="portal_my_details" inherit_id="portal.portal_my_details">
-        <xpath expr="//form" position="attributes">
-            <attribute name="enctype">multipart/form-data</attribute>
-            <attribute name="class">js_website_submit_form</attribute>            
-        </xpath>
-        <xpath expr="//div[hasclass('col-lg-12')]" position="after">
-            <div class="col-lg-12" id="portal_avatar">
-                <input type="file" class="d-none portal_avatar_upload" name="image_1920" accept="image/*"/>
-                <img class="mb-3 portal_avatar_img" t-att-src="website.image_url(partner, 'image_128')" style="object-fit: cover; border-radius: 50%; width: 128px; height: 128px;"/>
-                <div class="text-left">
-                    <a href="#" class="btn btn-primary portal_avatar_edit" aria-label="Edit">
-                        <i class="fa fa-pencil fa-1g float-sm-none float-md-left" title="Edit"></i>
-                    </a>
-                    <a href="#" title="Clear" aria-label="Clear" class="btn border-primary portal_avatar_clear">
-                        <i class="fa fa-trash-o float-sm-none float-md-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div t-attf-class="form-group #{error.get('title') and 'has-error' or ''} col-xl-6">
-                <label class="col-form-label label-optional" for="name">Title</label>
-                <select name="title" id="title" class="form-control" >
-                    <option value=''> </option>
-                    <t t-foreach='titles' t-as="title2">
-                        <option t-esc='title2.name' t-att-value='title2.id' t-att-selected="title==title2 or partner.title.id==title2.id"/>
-                    </t>
-                </select>
-            </div>
-            <div t-attf-class="form-group #{error.get('gender') and 'has-error' or ''} col-xl-6">
-                <label class="col-form-label" for="gender">Gender</label><br/>
-                <label class="radio-inline"><input type="radio" name="gender" value="m" t-att-checked="partner.gender=='m'"/> Male</label>
-                <label class="radio-inline"><input type="radio" name="gender" value="f" t-att-checked="partner.gender=='f'"/> Female</label>
-                <label class="radio-inline"><input type="radio" name="gender" value="u" t-att-checked="partner.gender=='u'" /> Prefer not say</label>
-            </div>
-        </xpath>  
-        <xpath expr="//input[@name='email']" position="replace">
-            <input type="email" name="email"  t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email" readonly="True"/>
-        </xpath>  
-        <xpath expr="//div[hasclass('row')]/div[8]" position="replace">
-            <div t-attf-class="form-group #{error.get('institution') and 'o_has_error' or ''} col-xl-6">
-                <label class="col-form-label label-optional" for="institution">Institution</label>
-                <input type="text" name="institution" t-attf-class="form-control #{error.get('institution') and 'is-invalid' or ''}" t-att-value="institution or partner.institution"/>
-            </div>
-        </xpath>
-        <xpath expr="//div[hasclass('row')]/div[9]" position="replace">
-            <!-- nothing -->
-        </xpath>
-        <xpath expr="//label[@for='street']" position="replace">
-            <label class="col-form-label label-optional" for="street">Street</label>
-        </xpath>
-        <xpath expr="//label[@for='phone']" position="replace">
-            <label class="col-form-label label-optional" for="phone">Phone</label>
-        </xpath>
-        <xpath expr="//label[@for='city']" position="replace">
-            <label class="col-form-label label-optional" for="city">City</label>
-        </xpath>
-        <xpath expr="//input[@name='redirect']" position="before">
-            <div class="clearfix"/>
-            <div class="container">
-                <div id="portal_bio" t-attf-class="form-group #{error.get('website_description') and 'has-error' or ''} col-sm-12">
-                    <label class="col-form-label label-optional" for="website_description">Biography</label>
-                    <span class="text-muted">(e.g. Works as professor at UCLV)</span>
-                    <textarea name="website_description" class="form-control o_wysiwyg_loader" >
-                        <t t-raw="website_description or partner.website_description" />
-                    </textarea>
-                </div>
-            </div>
-            <div class="container">
-                <div class="checkbox col-sm-12">
-                    <label class="col-form-label label-optional" for="reviewer"><span><b>I want to be reviewer</b></span>
-                        <span class="text-muted"> (Check this option if you want to become reviewer)</span></label>
-                    <input name="reviewer" type="checkbox" class="form-control" t-att-checked="reviewer or partner.reviewer" /> 
-                      
-                    
-                </div>
-            </div>
-        </xpath>
-    </template>
+    </template>      
     
     <template id="portal_table" inherit_id="portal.portal_table" name="My Portal Table">
         <xpath expr="." position="replace" >
@@ -164,10 +86,8 @@
                                 </div>
                             </div>
                         </t>
-                        <t t-else="">
-                            <div class="container">
-                                <t t-raw="0"/>
-                            </div>
+                        <t t-else="">                            
+                            <t t-raw="0"/>
                         </t>
                     </div>
                 </div>
@@ -177,6 +97,138 @@
             <div t-field="user_id.partner_id" t-options='{"widget": "contact", "fields": ["avatar", "email", "phone", "address", "name"]}'/>
             <br/>
             <div class="text-muted text-quote" t-field="user_id.partner_id.website_description"/>
+        </xpath>
+    </template>
+    
+    <template id="portal_my_details" inherit_id="portal.portal_my_details">
+        <xpath expr="//t[@t-call='portal.portal_layout']" position="replace">
+            <t t-call="portal.portal_layout">
+                <t t-set="additional_title">Contact Details</t>
+                <div class="container">
+                    <form action="/my/account" method="post" enctype="multipart/form-data" class="js_website_submit_form">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="row o_portal_details">
+                            <div class="col-lg-10 offset-lg-1">
+                                <div class="row">
+                                    <t t-set="partner_can_edit_vat" t-value="partner.can_edit_vat()"/>
+                                    <div class="col-lg-12">
+                                        <div t-if="error_message" class="alert alert-danger" role="alert">
+                                            <t t-foreach="error_message" t-as="err"><t t-esc="err"/><br /></t>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12" id="portal_avatar">
+                                        <input type="file" class="d-none portal_avatar_upload" name="image_1920" accept="image/*"/>
+                                        <img class="mb-3 portal_avatar_img" t-att-src="website.image_url(partner, 'image_128')" style="object-fit: cover; border-radius: 50%; width: 128px; height: 128px;"/>
+                                        <div class="text-left">
+                                            <a href="#" class="btn btn-primary portal_avatar_edit" aria-label="Edit">
+                                                <i class="fa fa-pencil fa-1g float-sm-none float-md-left" title="Edit"></i>
+                                            </a>
+                                            <a href="#" title="Clear" aria-label="Clear" class="btn border-primary portal_avatar_clear">
+                                                <i class="fa fa-trash-o float-sm-none float-md-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('title') and 'has-error' or ''} col-xl-6">
+                                        <label class="col-form-label label-optional" for="name">Title</label>
+                                        <select name="title" id="title" class="form-control" >
+                                            <option value=''> </option>
+                                            <t t-foreach='titles' t-as="title2">
+                                                <option t-esc='title2.name' t-att-value='title2.id' t-att-selected="title==title2 or partner.title.id==title2.id"/>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('gender') and 'has-error' or ''} col-xl-6">
+                                        <label class="col-form-label" for="gender">Gender</label><br/>
+                                        <label class="radio-inline"><input type="radio" name="gender" value="m" t-att-checked="partner.gender=='m'"/> Male</label>
+                                        <label class="radio-inline"><input type="radio" name="gender" value="f" t-att-checked="partner.gender=='f'"/> Female</label>
+                                        <label class="radio-inline"><input type="radio" name="gender" value="u" t-att-checked="partner.gender=='u'" /> Prefer not say</label>
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('name') and 'o_has_error' or ''} col-xl-6">
+                                        <label class="col-form-label" for="name">Name</label>
+                                        <input type="text" name="name" t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}" t-att-value="name or partner.name" />
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''} col-xl-6">
+                                        <label class="col-form-label" for="email">Email</label>
+                                        <input type="email" name="email"  t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email" readonly="True"/>
+                                    </div>
+
+                                    <div class="clearfix" />
+                                    <div t-attf-class="form-group #{error.get('institution') and 'o_has_error' or ''} col-xl-6">
+                                        <label class="col-form-label label-optional" for="institution">Institution</label>
+                                        <input type="text" name="institution" t-attf-class="form-control #{error.get('institution') and 'is-invalid' or ''}" t-att-value="institution or partner.institution"/>
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('phone') and 'o_has_error' or ''} col-xl-6">
+                                        <label class="col-form-label label-optional" for="phone">Phone</label>
+                                        <input type="tel" name="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="phone or partner.phone" />
+                                    </div>
+
+                                    <div class="clearfix" />
+                                    <div t-attf-class="form-group #{error.get('street') and 'o_has_error' or ''} col-xl-6">
+                                        <label class="col-form-label label-optional" for="street">Street</label>
+                                        <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="street or partner.street"/>
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('city') and 'o_has_error' or ''} col-xl-6">
+                                        <label class="col-form-label label-optional" for="city">City</label>
+                                        <input type="text" name="city" t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}" t-att-value="city or partner.city" />
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('zip') and 'o_has_error' or ''} col-xl-6">
+                                        <label class="col-form-label label-optional" for="zipcode">Zip / Postal Code</label>
+                                        <input type="text" name="zipcode" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}" t-att-value="zipcode or partner.zip" />
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-xl-6">
+                                        <label class="col-form-label" for="country_id">Country</label>
+                                        <select name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
+                                            <option value="">Country...</option>
+                                            <t t-foreach="countries or []" t-as="country">
+                                                <option t-att-value="country.id" t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
+                                                    <t t-esc="country.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('state_id') and 'o_has_error' or ''} col-xl-6">
+                                        <label class="col-form-label label-optional" for="state_id">State / Province</label>
+                                        <select name="state_id" t-attf-class="form-control #{error.get('state_id') and 'is-invalid' or ''}">
+                                            <option value="">select...</option>
+                                            <t t-foreach="states or []" t-as="state">
+                                                <option t-att-value="state.id" style="display:none;" t-att-data-country_id="state.country_id.id" t-att-selected="state.id == partner.state_id.id">
+                                                    <t t-esc="state.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="clearfix"/>
+                                    <div class="container">
+                                        <div id="portal_bio" t-attf-class="form-group #{error.get('website_description') and 'has-error' or ''} col-sm-12">
+                                            <label class="col-form-label label-optional" for="website_description">Biography</label>
+                                            <span class="text-muted">(e.g. Works as professor at UCLV)</span>
+                                            <textarea name="website_description" class="form-control o_wysiwyg_loader" >
+                                                <t t-raw="website_description or partner.website_description" />
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="container">
+                                        <div class="checkbox col-sm-12">
+                                            <label class="col-form-label label-optional" for="reviewer"><span><b>I want to be reviewer</b></span>
+                                                <span class="text-muted"> (Check this option if you want to become reviewer)</span></label>
+                                            <input name="reviewer" type="checkbox" class="form-control" t-att-checked="reviewer or partner.reviewer" /> 
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="redirect" t-att-value="redirect"/>
+                                </div>
+                                <div class="clearfix">
+                                    <button type="submit" class="btn btn-primary float-right mb32 ">
+                                        Confirm
+                                        <span class="fa fa-long-arrow-right" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </t>
         </xpath>
     </template>
 

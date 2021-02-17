@@ -63,7 +63,7 @@ class EventRegistration(models.Model):
 
     event_id = fields.Many2one("event.event", string="Event", required=True)
     pricelist_id = fields.Many2one("product.pricelist", string="Pricelist", required=False)
-    event_ticket_id = fields.Many2one("event.event.ticket", string="Event Ticket", required=True)
+    event_ticket_id = fields.Many2one("event.event.ticket", string="Event Ticket", required=False)
     payment_ids = fields.One2many("event.registration.payment", "event_registration_id", string="Payments")
     payment_count = fields.Integer(compute="get_payment_count")
     country_id = fields.Many2one("res.country", string="Country", required=True, default=_get_default_country)

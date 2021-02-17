@@ -14,7 +14,7 @@ UCLV Online Event's Tickets
     'depends': ['website_event_sale', 'event_sale_uclv'],
     'data': [
         #'views/event_templates.xml',
-        #'views/website_sale_templates.xml',
+        'views/website_sale_templates.xml',
         'security/ir.model.access.csv',
         'security/website_event_sale_security.xml',
     ],

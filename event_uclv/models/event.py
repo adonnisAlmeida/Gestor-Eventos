@@ -120,7 +120,8 @@ class EventRegistration(models.Model):
         for item in self:
             item.url = base_url+'/event/registration/'+str(item.id)
 
-    @api.model
+    #TODO : enable this when sale addon is ready
+    """@api.model
     def create(self, vals):
         if self.search_count([
             ('name', '=', vals.get('name')),
@@ -132,6 +133,6 @@ class EventRegistration(models.Model):
             ]):
             raise ValidationError('Attendee "%s" is already registered for this event. If you want to register it using another ticket, you must cancel its registration first.' % vals.get('name'))
         vals.update({'state': 'draft'})
-        return super(EventRegistration, self).create(vals)
+        return super(EventRegistration, self).create(vals)"""
     
     
