@@ -6,12 +6,13 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                        <field name="state" widget="statusbar" options="{'clickable': '0'}"/>
                     </header>
                     <sheet string="Review">
                         <group>
                             <field name="track_id" required="1"/>
                             <field name="partner_id" string="Reviewer" required="1"/>
+                            <field name="weight" string="Votation weight" required="1"/>
                         </group>
                     </sheet>
                     <div class="oe_chatter">
@@ -30,6 +31,7 @@
                 <tree decoration-muted="expired" decoration-warning="state == 'edit'" decoration-success="state == 'accept'" decoration-danger="state == 'reject'">
                     <field name="track_id"/>
                     <field name="partner_id" string="Reviewer"/>
+                    <field name="weight" string="Votation weight" required="1"/>
                     <field name="state"/>
                     <field name="expired" invisible="1"/>
                 </tree>

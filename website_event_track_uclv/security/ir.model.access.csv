@@ -9,4 +9,6 @@ access_event_track_tag_user,event.track.tag user,website_event_track.model_event
 access_event_track_location_user,event.track.location user,website_event_track.model_event_track_location,event.group_event_user,1,1,1,1
 access_event_sponsor_user,event.sponsor.user,website_event_track.model_event_sponsor,event.group_event_user,1,1,1,1
 access_partner_user,res.partner.user,base.model_res_partner,event.group_event_user,1,1,1,1
+access_reviewer_user,event.reviewer.user,website_event_track_uclv.model_event_reviewer,event.group_event_user,1,1,1,1
+access_reviewer_manager,event.reviewer.manager,website_event_track_uclv.model_event_reviewer,event.group_event_manager,1,1,1,1
 access_partner_manager,res.partner.manager,base.model_res_partner,event.group_event_manager,1,1,1,1

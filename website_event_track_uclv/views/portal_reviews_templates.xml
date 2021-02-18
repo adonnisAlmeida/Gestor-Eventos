@@ -29,8 +29,10 @@
                 <t t-set="title">Reviews</t>
             </t>
             <t t-if="not grouped_reviews">
-                <div class="alert alert-warning mt8" role="alert">
-                    <span class="fa fa-warning" /> You have no papers to review.
+                <div class="container">
+                    <div class="alert alert-warning mt64 h3" role="alert">
+                        <span class="fa fa-warning" /> There are currently no papers to review for your account.
+                    </div>
                 </div>
             </t>
 
@@ -99,7 +101,7 @@
             <div class="card-body">                    
                 <div class="portal_event_review">
                     <div class="mb-4">
-                        <h4><strong>Event</strong></h4>
+                        <h4 id="event" data-anchor="true"><strong>Event</strong></h4>
                         <h4><a t-attf-href="/event/#{review.track_id.event_id.id}"> 
                             <t t-esc="review.track_id.event_id.name"/> 
                             <t t-if="review.track_id.event_id.short_name" t-esc="review.track_id.event_id.short_name"/> 
@@ -110,7 +112,7 @@
                     <div class="row mb-4">
                         <div t-attf-class="col-12 col-lg-12 mb-6 mb-md-0">                                    
                             <div class="d-flex mb-1">
-                                <h4><strong>Title<small class="text-sm text-muted" title="English"> [EN] </small></strong></h4>
+                                <h4 id="title" data-anchor="true"><strong>Title<small class="text-sm text-muted" title="English"> [EN] </small></strong></h4>
                             </div>                                    
                             <h4 class="text-uppercase" t-field="review.track_id.with_context(lang='en_US').name" />                                    
                         </div>
@@ -118,7 +120,7 @@
                     <div class="row mb-4">
                         <div t-attf-class="col-12 col-lg-12 mb-6 mb-md-0">                                    
                             <div class="d-flex mb-1">
-                                <h4><strong>Title<small class="text-sm text-muted" title="Spanish"> [ES]</small></strong></h4>
+                                <h4 id="title_es" data-anchor="true"><strong>Title<small class="text-sm text-muted" title="Spanish"> [ES]</small></strong></h4>
                             </div>                                    
                             <h4 class="text-uppercase" t-field="review.track_id.with_context(lang='es_ES').name" />
                             
@@ -126,7 +128,7 @@
                     </div>
                     <div class="row mb-4" t-if="review.sudo().track_id.tag_ids">
                         <div class="col-12 col-md-6 mb-1">
-                            <h4><strong>Keywords</strong></h4>                            
+                            <h4 id="keywords" data-anchor="true"><strong>Keywords</strong></h4>                            
                             <t t-foreach="review.sudo().track_id.tag_ids" t-as="tag">
                                 <span class="label label-info" t-esc="tag.name" />
                             </t>                            
@@ -134,13 +136,13 @@
                     </div>
                     <div class="row mb-4" t-if="review.track_id.language_id">
                         <div class="col-12 col-md-6 mb-1">
-                            <h4><strong>Language</strong></h4>
-                            <span t-field="review.sudo().track_id.language_id" />
+                            <h4 id="language" data-anchor="true"><strong>Language</strong></h4>
+                            <span t-field="review.sudo().track_id.language_id.name" />
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-12 col-md-6 mb-1">
-                            <h4><strong>Authors</strong></h4>
+                            <h4 id="authors" data-anchor="true"><strong>Authors</strong></h4>
                             <ol>
                                 <li t-foreach='review.sudo().track_id.author_ids' t-as="author">                                            
                                     <div>
@@ -169,7 +171,7 @@
                         <div t-if="review.track_id.description" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
                             <hr class="mb-1"/>
                             <div class="d-flex my-2">
-                                <h4><strong>Abstract<small class="text-sm text-muted" title="English"> [EN]</small></strong></h4>
+                                <h4 id="abstract" data-anchor="true"><strong>Abstract<small class="text-sm text-muted" title="English"> [EN]</small></strong></h4>
                             </div>
                             <div class="py-1 review_description js_comment" >
                                 <t t-raw="review.track_id.description" />
@@ -180,7 +182,7 @@
                         <div t-if="review.track_id.description_es" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
                             <hr class="mb-1"/>
                             <div class="d-flex my-2">
-                                <h4><strong>Abstract<small class="text-sm text-muted" title="Spanish"> [ES]</small></strong></h4>
+                                <h4 id="abstract_es" data-anchor="true"><strong>Abstract<small class="text-sm text-muted" title="Spanish"> [ES]</small></strong></h4>
                             </div>
                             <div class="py-1 review_description js_comment" >
                                 <t t-raw="review.track_id.description_es" />
@@ -191,7 +193,7 @@
                         <div t-if="review.track_id.attachment_ids" t-attf-class="col-12 col-lg-12 o_project_portal_attachments">
                             <hr class="mb-1"/>
                             <div class="d-flex my-2">
-                                <h4><strong>Attachments</strong></h4>
+                                <h4 id="attachments" data-anchor="true"><strong>Attachments</strong></h4>
                             </div>                                
                             <div class="row">
                                 <div t-attf-class="col col-lg-12">
@@ -219,7 +221,7 @@
             <div class="row mt16 o_portal_sale_sidebar">
                 <!-- Sidebar -->
                 <t t-call="portal.portal_record_sidebar">
-                    <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+                    <t t-set="classes" t-value="'col-lg-3 d-print-none'"/>
 
                     <t t-set="title">
                         <h2 class="mb-0"><b>Review</b></h2>
@@ -235,14 +237,26 @@
                                         <a class="btn btn-secondary btn-block o_download_btn" t-att-href="review.track_id.get_portal_url(report_type='pdf', download=True)" title="Download"><i class="fa fa-download"/> Download</a>
                                     </div>
                                     <div class="btn-group flex-grow-1 mb-1">
-                                        <a class="btn btn-secondary btn-block o_print_btn o_portal_invoice_print" t-att-href="review.track_id.get_portal_url(report_type='pdf')" id="print_invoice_report" title="Print" target="_blank"><i class="fa fa-print"/> Print</a>
+                                        <a class="btn btn-secondary btn-block o_print_btn o_portal_review_print" t-att-href="review.track_id.get_portal_url(report_type='pdf')" id="print_review_report" title="Print" target="_blank"><i class="fa fa-print"/> Print</a>
                                     </div>
                                 </div>
                             </li>
 
-                            <!-- <li class="navspy list-group-item pl-0 flex-grow-1" t-ignore="true" role="complementary">
-                                <ul class="nav flex-column bs-sidenav"></ul>
-                            </li> -->
+                            <li class="navspy list-group-item pl-0 flex-grow-1" t-ignore="true" role="complementary">
+                                <ul class="nav flex-column bs-sidenav">
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#event">Event</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#title">Title [EN]</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#title_es">Title [ES]</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#keywords">Keywords</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#language">Language</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#authors">Authors</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#abstract">Abstract [EN]</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#abstract_es">Abstract [ES]</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#attachments">Attachments</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#discussion">Messages</a></li>
+                                </ul>
+                            </li>
+
                             <t t-if="not review.expired and review.state in ['notice', 'read']">                                
                                 <li t-if="review.track_id.event_id.paper_abstract_notification_date" class="list-group-item">
                                     <small><b class="text-muted">This paper should be reviewed before</b></small>
@@ -259,7 +273,7 @@
                                         <img class="rounded-circle mr4 float-left o_portal_contact_img" t-if="not review.track_id.partner_id.image_1024" src="/web/static/src/img/placeholder.png" alt="Contact"/>
                                     </div>
                                     <div class="col pl-0" style="min-width: 150px">
-                                        <span t-field="review.track_id.partner_id" t-options='{"widget": "contact", "fields": ["name", "email"], "no_marker": True}'/>
+                                        <span t-field="review.track_id.partner_id" t-options='{"widget": "contact", "fields": ["name"], "no_marker": True}'/>
                                         <a href="#discussion" class="small"><i class="fa fa-comment"></i> Send message</a>
                                     </div>
                                 </div>
@@ -272,7 +286,7 @@
                                         <img class="rounded-circle mr4 float-left o_portal_contact_img" t-if="not review.track_id.user_id.image_1024" src="/web/static/src/img/placeholder.png" alt="Contact"/>
                                     </div>
                                     <div class="col pl-0" style="min-width: 150px">
-                                        <span t-field="review.track_id.user_id" t-options='{"widget": "contact", "fields": ["name", "email"], "no_marker": True}'/>
+                                        <span t-field="review.track_id.user_id" t-options='{"widget": "contact", "fields": ["name"], "no_marker": True}'/>
                                         <a href="#discussion" class="small"><i class="fa fa-comment"></i> Send message</a>
                                     </div>
                                 </div>
@@ -282,7 +296,7 @@
                 </t>
 
                 <!-- Page content -->
-                <div id="review_content" class="col-12 col-lg justify-content-end">                    
+                <div id="review_content" class="col-12 col-lg-9 justify-content-end">                    
                     <div role="dialog" class="modal fade" id="modalreview">                    
                         <div class="modal-dialog">
                             <form method="POST" class="js_accept_json modal-content js_website_submit_form review_assign_form">
@@ -340,7 +354,7 @@
                     <div class="container mt32">
                         <t t-if="not review.expired and review.track_id.stage_id.can_review" >
                             <div class="col-sm-auto mt8 mb8">
-                                <a role="button" class="btn btn-primary" data-toggle="modal" data-target="#modalreview" href="#"><i class="fa fa-check"/>Make a Review</a>
+                                <a role="button" class="btn btn-primary" data-toggle="modal" data-target="#modalreview" href="#"><i class="fa fa-check"/> Make a Review</a>
                             </div>
                         </t>
                         <h4 t-if="review.state in ('accept','reject','edit')"><strong>You already reviewed this paper</strong></h4>

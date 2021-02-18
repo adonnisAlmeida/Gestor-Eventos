@@ -18,6 +18,7 @@
         'views/assets.xml',
         'views/event_track_templates.xml',
         'views/event_track_review_views.xml',
+        'views/event_reviewer_views.xml',
         'views/event_track_views.xml',
         'views/event_views.xml',
         'views/portal_reviews_templates.xml',

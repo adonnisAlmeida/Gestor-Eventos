@@ -11,6 +11,20 @@ class EventType(models.Model):
 
     website_registration = fields.Boolean('Registration on Website')
 
+
+class EventReviewer(models.Model):
+    _name = 'event.reviewer'
+    _inherit = ['mail.thread','mail.activity.mixin']
+    _description = "Event Reviewer"
+    
+    event_id = fields.Many2one('event.event', string="Event", required=True, ondelete='cascade')
+    partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade', domain=[('email', '!=', '')])
+    weight = fields.Integer(string="Weight", default=10)
+
+    _sql_constraints=[
+        ('event_id_partner_id_unique', 'UNIQUE(event_id, partner_id)', 'An event cannot have twice the same reviewer.')
+    ]
+    
     
 class Event(models.Model):
     _inherit = 'event.event'
@@ -44,6 +58,8 @@ class Event(models.Model):
             month = months[self.paper_abstract_deadline.month]
         
         self.paper_abstract_deadline_month = month
+    
+    reviewer_ids = fields.One2many('event.reviewer', 'event_id', string='Reviewers')
     
     attachment_ids = fields.One2many('ir.attachment', 'res_id', domain=[('res_model', '=', 'event.event')], string='Attachments')
     paper_abstract_deadline = fields.Date(string="Abstracts Deadline")

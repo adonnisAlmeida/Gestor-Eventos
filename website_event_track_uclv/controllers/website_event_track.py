@@ -329,7 +329,8 @@ class UCLVWebsiteEventTrackController(EventTrackController):
             'partner_id': request.env.user.partner_id.id,
             'description': description,
             'description_es': description_es,
-        })
+        })        
+
         i = 1
         for au_id in authors:
             request.env['event.track.author'].sudo().create({
@@ -361,4 +362,17 @@ class UCLVWebsiteEventTrackController(EventTrackController):
             partner = request.env['res.partner'].sudo().search([('email', '=', post['email_from'])])
             if partner:
                 track.sudo().message_subscribe(partner_ids=partner.ids)
+
+        # add the reviewers automatically
+        for reviewer in event.reviewer_ids:
+            request.env['event.track.review'].create({
+                'track_id': track.id,
+                'partner_id': reviewer.partner_id.id,
+                'weight': reviewer.weight,
+                'state': 'notice',
+            })
+        review_stage = request.env.ref('website_event_track.event_track_stage1', raise_if_not_found=False)
+        if len(event.reviewer_ids)>1 and review_stage:
+            track.write({'stage_id': review_stage.id})
+            
         return request.render("website_event_track.event_track_proposal", {'track': track, 'event': event,'countries': countries, 'main_object':event, 'error': error})

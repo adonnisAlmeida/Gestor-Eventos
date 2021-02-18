@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<odoo>
+        <record model="ir.ui.view" id="view_event_reviewer_form">
+            <field name="name">event.reviewer.form</field>
+            <field name="model">event.reviewer</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="Reviewer">
+                        <group>
+                            <field name="event_id" required="1"/>
+                            <field name="partner_id" string="Reviewer" required="1"/>
+                            <field name="weight" required="1"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_event_reviewer_tree">
+            <field name="name">event.reviewer.tree</field>
+            <field name="model">event.reviewer</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="event_id"/>
+                    <field name="partner_id" string="Reviewer"/>
+                    <field name="weight"/> 
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_event_reviewer_search">
+            <field name="name">event.reviewer.search</field>
+            <field name="model">event.reviewer</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="event_id" />
+                    <field name="partner_id" />
+                    <group expand="0" string="Group By">
+                        <filter string="Event" name="groupby_event_id" context="{'group_by': 'event_id'}"/>
+                        <filter string="Reviewer" name="groupby_partner_id" context="{'group_by': 'partner_id'}"/>                        
+                    </group>                    
+                </search>                
+            </field>
+        </record>        
+
+        <record model="ir.actions.act_window" id="action_event_reviewer">
+            <field name="name">Reviewers</field>
+            <field name="res_model">event.reviewer</field>            
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_track_id': active_id, 'default_track_id': active_id}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Add a new reviewer
+                </p><p>
+                Reviewers can help you to review your tracks.
+                </p>
+            </field>
+        </record>
+</odoo>

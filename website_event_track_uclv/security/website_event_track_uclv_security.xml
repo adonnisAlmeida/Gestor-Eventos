@@ -100,4 +100,22 @@
         <field name="perm_write" eval="True"/>        
         <field name="perm_unlink" eval="True"/>
     </record>
+    <record id="event_reviewer_manager" model="ir.rule">
+        <field name="name">Event Reviewer: Manager</field>
+        <field name="model_id" ref="website_event_track_uclv.model_event_reviewer"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('event.group_event_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>        
+        <field name="perm_unlink" eval="True"/>
+    </record> 
+    <record id="event_reviewer_user" model="ir.rule">
+        <field name="name">Event Reviewer`: User</field>
+        <field name="model_id" ref="website_event_track_uclv.model_event_reviewer"/>
+        <field name="domain_force">[('event_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('event.group_event_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>        
+        <field name="perm_unlink" eval="True"/>
+    </record>
 </odoo>

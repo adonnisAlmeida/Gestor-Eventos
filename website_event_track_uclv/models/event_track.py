@@ -138,6 +138,7 @@ class TrackReview(models.Model):
     partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade', domain=[('email', '!=', '')])
     access_token = fields.Char('Invitation Token', default=_default_access_token)
     state = fields.Selection([('notice','Noticed'),('read','Readed'),('accept','Accepted'),('reject','Rejected'),('edit', 'Need changes')], string="State", default="notice", required=True, tracking=True)
+    weight = fields.Integer('Weight', default = 10)
     expired = fields.Boolean(string='Is expired', compute=_compute_expired)
     is_done = fields.Boolean(string='Is Done', realated='track_id.is_done')
 
@@ -178,17 +179,18 @@ class Track(models.Model):
     @api.depends('review_ids', 'review_ids.state')
     def _get_reviews_count(self):
         for item in self:
-            item.reviews_count = len(item.review_ids)
+            item.reviews_count = 0
             item.reviews_accepted_count = 0
             item.reviews_edit_count = 0
             item.reviews_rejected_count = 0
             for review in item.review_ids:
+                item.reviews_count += review.weight
                 if review.state == 'accept':
-                    item.reviews_accepted_count += 1
+                    item.reviews_accepted_count += review.weight
                 if review.state == 'edit':
-                    item.reviews_edit_count += 1
+                    item.reviews_edit_count += review.weight
                 if review.state == 'reject':
-                    item.reviews_rejected_count += 1
+                    item.reviews_rejected_count += review.weight
     
     #Revision Stuffs
     manager_notes = fields.Text('Notes for the Manager')

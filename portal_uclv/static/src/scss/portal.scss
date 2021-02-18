@@ -28,6 +28,10 @@
         background-color: #E9ECEF;        
     }
 }
+.oe_attachments .o_image_small {    
+    width: 62px !important;
+    background-size: cover;
+}
 .portal_navbar {
     .dropdown-toggle {
         border: $border-width solid gray('400');
