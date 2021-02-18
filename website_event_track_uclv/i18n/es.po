@@ -1,29 +1,26 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* website_event_track
 # 	* website_event_track_uclv
+# 	* website_event_track
 #
-# Yerandy <yerandyreyes1985@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0-20201113\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-10 23:46+0000\n"
-"PO-Revision-Date: 2021-02-11 02:52-0500\n"
-"Last-Translator: Yerandy <yerandyreyes1985@gmail.com>\n"
-"Language-Team: English <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2021-02-18 10:01+0000\n"
+"PO-Revision-Date: 2021-02-18 10:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: en_US\n"
-"X-Generator: Lokalize 2.0\n"
 
 #. module: website_event_track
 #: code:addons/website_event_track/models/website.py:0
 #, python-format
 msgid "\"Events App Name\" field is required."
-msgstr "\"Events App Name\" field is required."
+msgstr ""
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_track__wishlist_visitor_count
@@ -49,13 +46,13 @@ msgid "&amp;bull;"
 msgstr ""
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid "&amp;nbsp;"
 msgstr ""
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "&amp;times;"
 msgstr ""
@@ -96,24 +93,19 @@ msgid ""
 "<?xml version=\"1.0\"?>\n"
 "<div>\n"
 "                    <p>\n"
-"                        Dear <t t-esc=\"object.partner_id.name\"/>\n"
+"                        Dear ${object.partner_id.full_name}:\n"
 "                    </p><p>\n"
-"                        We are wondering if you can assist us by reviewing a"
-" paper for the event ${object.track_id.event_id.name}.\n"
+"                        We are wondering if you can assist us by reviewing a paper for event: <h3>${object.track_id.event_id.name}</h3>\n"
 "                    </p>\n"
 "                    <p>\n"
 "                        You can see that paper at:\n"
-"                        <div style=\"margin-top: 16px;\">\n"
-"                            <a href=\"/my/review/${object.id}?access_token=${o"
-"bject.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color:"
-" #FFFFFF; text-decoration: none !important; font-weight: 400;"
-" background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
-"                                View Track\n"
+"                        <div style=\"margin-top: 16px;margin-bottom: 16px;\">\n"
+"                            <a href=\"/my/review/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                                View Paper\n"
 "                            </a>\n"
 "                        </div>\n"
 "                    </p>\n"
-"                    <p>Sincerely, <t t-esc=\"object.track_id.event_id.user_id."
-"name\"/></p>\n"
+"                    <p>Sincerely, ${object.track_id.event_id.user_id.name}</p>\n"
 "                    <p>Manager of Event</p>\n"
 "                </div>\n"
 "            "
@@ -123,27 +115,20 @@ msgstr ""
 "                    <p>\n"
 "                        Estimado/a <t t-esc=\"object.partner_id.name\"/>\n"
 "                    </p><p>\n"
-"                        Nos encantaría su opinión sobre un trabajo del evento"
-" ${object.track_id.event_id.name}.\n"
+"                        Nos encantaría su opinión sobre un trabajo del evento: <h3>${object.track_id.event_id.name}</h3>\n"
 "                    </p>\n"
 "                    <p>\n"
 "                        Puede ver el trabajo en:\n"
 "                        <div style=\"margin-top: 16px;\">\n"
-"                            <a href=\"/my/review/${object.id}?access_token=${o"
-"bject.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color:"
-" #FFFFFF; text-decoration: none !important; font-weight: 400;"
-" background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                            <a href=\"/my/review/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
 "                                Ver Trabajo\n"
 "                            </a>\n"
 "                        </div>\n"
 "                    </p>\n"
-"                    <p>Atentamente, <t t-esc=\"object.track_id.event_id.user_i"
-"d.name\"/></p>\n"
+"                    <p>Atentamente, ${object.track_id.event_id.user_id.name}</p>\n"
 "                    <p>Coordinador del Evento</p>\n"
 "                </div>\n"
 "            "
-
-
 
 #. module: website_event_track_uclv
 #: model:mail.template,body_html:website_event_track_uclv.mail_template_data_track_schedule
@@ -151,23 +136,19 @@ msgid ""
 "<?xml version=\"1.0\"?>\n"
 "<div>\n"
 "    <p>\n"
-"        Dear <t t-esc=\"object.partner_name\"/>\n"
+"        Dear ${object.partner_id.full_name}\n"
 "    </p><p>\n"
-"        We are pleased to inform you that your proposal ${object.name} has"
-" been scheduled for the event ${object.event_id.name}.\n"
+"        We are pleased to inform you that your paper: <h3>${object.name}</h3> has been scheduled for event: <h3>${object.event_id.name}</h3>\n"
 "    </p>\n"
 "    <p>\n"
-"        You will find more details here:\n"
-"        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/track/${object.id}\""
-" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
-" none !important; font-weight: 400; background-color: #003399; border: 0px"
-" solid #003399; border-radius:3px\">\n"
-"                View Track\n"
+"        Now, it's visible to all visitors in our website:\n"
+"        <div style=\"margin-top: 16px;margin-bottom: 16px;\">\n"
+"            <a href=\"/es/event/${object.event_id.id}/track/${object.id}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                Take a look\n"
 "            </a>\n"
 "        </div>\n"
 "    </p>\n"
-"    <p>Sincerely, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
+"    <p>Sincerely, ${object.event_id.user_id.name}</p>\n"
 "    <p>Manager of Event</p>\n"
 "</div>\n"
 "            "
@@ -175,101 +156,19 @@ msgstr ""
 "<?xml version=\"1.0\"?>\n"
 "<div>\n"
 "    <p>\n"
-"        Estimado/a <t t-esc=\"object.partner_name\"/>\n"
+"        Estimado/a ${object.partner_id.full_name}\n"
 "    </p><p>\n"
-"        Nos complace informarle que su propuesta ${object.name} ha sido"
-" programada para el evento ${object.event_id.name}.\n"
+"        Nos complace informarle que su trabajo: <h3>${object.name}</h3>  ha sido programado para el evento: <h3>${object.event_id.name}</h3>\n"
 "    </p>\n"
 "    <p>\n"
-"        Encontrará más detalles aquí:\n"
+"        Ahora, es visible a todos los visitantes en nuestro sitio web:\n"
 "        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/track/${object.id}\""
-" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
-" none !important; font-weight: 400; background-color: #003399; border: 0px"
-" solid #003399; border-radius:3px\">\n"
-"                Ver propuesta\n"
+"            <a href=\"/es/event/${object.event_id.id}/track/${object.id}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                Eche un vistazo\n"
 "            </a>\n"
 "        </div>\n"
 "    </p>\n"
-"    <p>Sinceramente, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
-"    <p>Coordinador del Evento</p>\n"
-"</div>\n"
-"            "
-
-#. module: website_event_track_uclv
-#: model:mail.template,body_html:website_event_track_uclv.mail_template_data_track_review
-msgid ""
-"<?xml version=\"1.0\"?>\n"
-"<div>\n"
-"    <p>\n"
-"        Dear <t t-esc=\"object.partner_name\"/>\n"
-"    </p><p>\n"
-"        We are pleased to inform you that your proposal ${object.name} is"
-" being reviewed by experts for the event ${object.event_id.name}.\n"
-"    </p>\n"
-"    <p>\n"
-"        You will be noticed in short about the result of the review process. "
-"       \n"
-"    </p>\n"
-"    <p>Sincerely, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
-"    <p>Manager of Event</p>\n"
-"</div>\n"
-"            "
-msgstr ""
-"<?xml version=\"1.0\"?>\n"
-"<div>\n"
-"    <p>\n"
-"        Estimado/a <t t-esc=\"object.partner_name\"/>\n"
-"    </p><p>\n"
-"        Nos complace informarle que su propuesta ${object.name} está siendo"
-" revisada por expertos para el evento ${object.event_id.name}.\n"
-"    </p>\n"
-"    <p>\n"
-"        Será informado/a próximamente sobre el resultado del proceso de"
-" revisión.        \n"
-"    </p>\n"
-"    <p>Atentamente, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
-"    <p>Coordinador del Evento</p>\n"
-"</div>\n"
-"            "
-
-#. module: website_event_track_uclv
-#: model:mail.template,body_html:website_event_track_uclv.mail_template_data_track_canceled
-msgid ""
-"<?xml version=\"1.0\"?>\n"
-"<div>\n"
-"    <p>\n"
-"        Dear <t t-esc=\"object.partner_name\"/>\n"
-"    </p><p>\n"
-"        We are sorry to inform you that your proposal ${object.name} has been"
-" canceled for the event ${object.event_id.name}.\n"
-"    </p>\n"
-"    <p>\n"
-"        Good news are that you can still participate as viewer for this"
-" event.\n"
-"        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/register\""
-" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
-" none !important; font-weight: 400; background-color: #003399; border: 0px"
-" solid #003399; border-radius:3px\">\n"
-"                Register as viewer\n"
-"            </a>\n"
-"        </div>\n"
-"    </p>\n"
-"    <p>Sincerely, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
-"    <p>Manager of Event</p>\n"
-"</div>\n"
-"            "
-msgstr ""
-"<?xml version=\"1.0\"?>\n"
-"<div>\n"
-"    <p>\n"
-"        Estimado/a <t t-esc=\"object.partner_name\"/>\n"
-"    </p><p>\n"
-"        Lamentamos informarle que su propuesta ${object.name} ha sido"
-" cancelada para el evento ${object.event_id.name}.\n"
-"    </p>\n"
-"    <p>Atentamente, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
+"    <p>Sinceramente,  ${object.event_id.user_id.name}</p>\n"
 "    <p>Coordinador del Evento</p>\n"
 "</div>\n"
 "            "
@@ -280,24 +179,19 @@ msgid ""
 "<?xml version=\"1.0\"?>\n"
 "<div>\n"
 "    <p>\n"
-"        Dear <t t-esc=\"object.partner_name\"/>\n"
+"        Dear ${object.partner_id.full_name}\n"
 "    </p><p>\n"
-"        We are sorry to inform you that your proposal ${object.name} has been"
-" rejected for the event ${object.event_id.name}.\n"
+"        We are sorry to inform you that your paper abstract: <h3>${object.name}</h3> has been rejected for event: <h3>${object.event_id.name}</h3>\n"
 "    </p>\n"
 "    <p>\n"
-"        Good news are that you can still participate as viewer for this"
-" event.\n"
-"        <div style=\"margin-top: 16px;\">\n"
-"            <a href=\"/event/${object.event_id.id}/register\""
-" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration:"
-" none !important; font-weight: 400; background-color: #003399; border: 0px"
-" solid #003399; border-radius:3px\">\n"
-"                Register as viewer\n"
+"        You will find more details here:\n"
+"        <div style=\"margin-top: 16px;margin-bottom: 16px;\">\n"
+"            <a href=\"/my/paper/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                View Paper\n"
 "            </a>\n"
 "        </div>\n"
 "    </p>\n"
-"    <p>Sincerely, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
+"    <p>Sincerely, ${object.event_id.user_id.name}</p>\n"
 "    <p>Manager of Event</p>\n"
 "</div>\n"
 "            "
@@ -305,12 +199,146 @@ msgstr ""
 "<?xml version=\"1.0\"?>\n"
 "<div>\n"
 "    <p>\n"
-"        Estimado/a <t t-esc=\"object.partner_name\"/>\n"
+"        Estimado/a ${object.partner_id.full_name}\n"
 "    </p><p>\n"
-"        Lamentamos informarle que su propuesta ${object.name} ha sido"
-" rechazada para el evento ${object.event_id.name}.\n"
+"        Lamentamos informarle que su resumen: <h3>${object.name}</h3> ha sido rechazado para el evento: <h3>${object.event_id.name}</h3>\n"
 "    </p>\n"
-"    <p>Atentamente, <t t-esc=\"object.event_id.user_id.name\"/></p>\n"
+"    <p>\n"
+"        Encontrará más detalles aquí:\n"
+"        <div style=\"margin-top: 16px;margin-bottom: 16px;\">\n"
+"            <a href=\"/es/my/paper/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                Ver trabajo\n"
+"            </a>\n"
+"        </div>\n"
+"    </p>\n"
+"    <p>Atentamente, ${object.event_id.user_id.name}</p>\n"
+"    <p>Coordinador del Evento</p>\n"
+"</div>\n"
+"            "
+
+#. module: website_event_track_uclv
+#: model:mail.template,body_html:website_event_track_uclv.mail_template_data_track_canceled
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<div>\n"
+"    <p>\n"
+"        Dear ${object.partner_id.full_name}\n"
+"    </p><p>\n"
+"        We are sorry to inform you that your paper: <h3>${object.name}</h3> has been canceled for event: <h3>${object.event_id.name}</h3>\n"
+"    </p>\n"
+"    <p>\n"
+"        You will find more details here:\n"
+"        <div style=\"margin-top: 16px;margin-bottom: 16px;\">\n"
+"            <a href=\"/my/paper/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                View Paper\n"
+"            </a>\n"
+"        </div>\n"
+"    </p>\n"
+"    <p>Sincerely, ${object.event_id.user_id.name}</p>\n"
+"    <p>Manager of Event</p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<div>\n"
+"    <p>\n"
+"        Estimado/a ${object.partner_id.full_name}\n"
+"    </p><p>\n"
+"        Lamentamos informarle que su trabajo: <h3>${object.name}</h3> ha sido cancelado para el evento: <h3>${object.event_id.name}</h3>\n"
+"    </p>\n"
+"    <p>\n"
+"        Encontrará más detalles aquí:\n"
+"        <div style=\"margin-top: 16px;margin-bottom: 16px;\">\n"
+"            <a href=\"/es/my/paper/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                Ver trabajo\n"
+"            </a>\n"
+"        </div>\n"
+"    </p>\n"
+"    <p>Atentamente, ${object.event_id.user_id.name}</p>\n"
+"    <p>Coordinador del Evento</p>\n"
+"</div>\n"
+"            "
+
+#. module: website_event_track_uclv
+#: model:mail.template,body_html:website_event_track_uclv.mail_template_data_track_accepted
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<div>\n"
+"    <p>\n"
+"        Dear ${object.partner_id.full_name}:\n"
+"    </p>\n"
+"    <p>\n"
+"        We are pleased to inform you that your paper abstract: <h3> ${object.name}</h3> has been accepted for event: <h3>${object.event_id.name}</h3>\n"
+"    </p><p>\n"
+"        You will find more details here:\n"
+"        <div style=\"margin-top: 16px;margin-bottom: 16px;\">\n"
+"            <a href=\"/my/paper/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                View Paper\n"
+"            </a>\n"
+"        </div>\n"
+"    </p>\n"
+"    <p>Sincerely, ${object.event_id.user_id.name}</p>\n"
+"    <p>Manager of Event</p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<div>\n"
+"    <p>\n"
+"        Estimado/a ${object.partner_id.full_name}:\n"
+"    </p>\n"
+"    <p>\n"
+"        Nos complace informarle que su resumen: <h3> ${object.name}</h3> ha sido aceptado para el evento: <h3>${object.event_id.name}</h3>\n"
+"    </p><p>\n"
+"        Entontrará más detalles aquí:\n"
+"        <div style=\"margin-top: 16px;margin-bottom: 16px;\">\n"
+"            <a href=\"/es/my/paper/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                Ver trabajo\n"
+"            </a>\n"
+"        </div>\n"
+"    </p>\n"
+"    <p>Atentamente, ${object.event_id.user_id.name}</p>\n"
+"    <p>Coordinador del evento</p>\n"
+"</div>\n"
+"            "
+
+#. module: website_event_track_uclv
+#: model:mail.template,body_html:website_event_track_uclv.mail_template_data_track_review
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<div>\n"
+"    <p>\n"
+"        Dear ${object.partner_id.full_name}:\n"
+"    </p><p>\n"
+"        We are pleased to inform you that your paper abstract: <h3> ${object.name}</h3> is being reviewed by experts for event: <h3>${object.event_id.name}</h3>\n"
+"    </p><p>\n"
+"         You will find more details here:\n"
+"        <div style=\"margin-top: 16px;margin-bottom: 16px;\">\n"
+"            <a href=\"/my/paper/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                View Paper\n"
+"            </a>\n"
+"        </div>\n"
+"    </p>\n"
+"    <p>Sincerely, ${object.event_id.user_id.name}</p>\n"
+"    <p>Manager of Event</p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<div>\n"
+"    <p>\n"
+"        Estimado/a ${object.partner_id.full_name}:\n"
+"    </p><p>\n"
+"        Nos complace informarle que su resumen: <h3>${object.name}</h3> está siendo revisada por expertos para el evento:  <h3>${object.event_id.name}</h3>\n"
+"    </p><p>\n"
+"         Encontrará más detalles aquí:\n"
+"        <div style=\"margin-top: 16px;margin-bottom: 16px;\">\n"
+"            <a href=\"/es/my/paper/${object.id}?access_token=${object.access_token}\" style=\"padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #003399; border: 0px solid #003399; border-radius:3px\">\n"
+"                Ver trabajo\n"
+"            </a>\n"
+"        </div>\n"
+"    </p>\n"
+"    <p>Atentamente, ${object.event_id.user_id.name}</p>\n"
 "    <p>Coordinador del Evento</p>\n"
 "</div>\n"
 "            "
@@ -321,15 +349,11 @@ msgid ""
 "<?xml version=\"1.0\"?>\n"
 "<div>\n"
 "    Dear ${object.partner_name or ''}<br/>\n"
-"    We are pleased to inform you that your proposal ${object.name} has been"
-" accepted and confirmed for the event ${object.event_id.name}.\n"
+"    We are pleased to inform you that your proposal ${object.name} has been accepted and confirmed for the event ${object.event_id.name}.\n"
 "    <br/>\n"
 "    You will find more details here:\n"
 "    <div style=\"margin: 16px 0px 16px 0px;\">\n"
-"        <a href=\"/event/${object.event_id.id}/track/${object.id}\""
-" style=\"padding: 8px 16px 8px 16px; font-size: 14px; color: #FFFFFF;"
-" text-decoration: none !important; background-color: #875A7B; border: 0px"
-" solid #875A7B; border-radius:3px\">\n"
+"        <a href=\"/event/${object.event_id.id}/track/${object.id}\" style=\"padding: 8px 16px 8px 16px; font-size: 14px; color: #FFFFFF; text-decoration: none !important; background-color: #875A7B; border: 0px solid #875A7B; border-radius:3px\">\n"
 "            View Talk\n"
 "        </a>\n"
 "    </div>\n"
@@ -341,11 +365,35 @@ msgid ""
 "    % endif\n"
 "</div>"
 msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<div>\n"
+"    Estimado/a ${object.partner_name or ''}<br/>\n"
+"    Nos complace informarle que su resumen: ${object.name} ha sido aceptado y confirmado para el evento: ${object.event_id.name}.\n"
+"    <br/>\n"
+"    Encontrará más detalles aquí:\n"
+"    <div style=\"margin: 16px 0px 16px 0px;\">\n"
+"        <a href=\"/es/event/${object.event_id.id}/track/${object.id}\" style=\"padding: 8px 16px 8px 16px; font-size: 14px; color: #FFFFFF; text-decoration: none !important; background-color: #875A7B; border: 0px solid #875A7B; border-radius:3px\">\n"
+"            Ver trabajo\n"
+"        </a>\n"
+"    </div>\n"
+"    <br/><br/>\n"
+"    Thank you,\n"
+"    % if user.signature\n"
+"        <br/>\n"
+"        ${user.signature | safe}\n"
+"    % endif\n"
+"</div>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_template_new
 msgid "<b>Mail</b>:"
 msgstr "<b>Correo</b>:"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
+msgid "<b>Paper</b>"
+msgstr "<b>Trabajo</b>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_template_new
@@ -386,8 +434,7 @@ msgstr "<em class=\"font-weight-normal text-muted\">Trabajos en etapa:</em>"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_reviews
 msgid "<em class=\"font-weight-normal text-muted\">Reviews for event:</em>"
-msgstr ""
-"<em class=\"font-weight-normal text-muted\">Revisiones del evento:</em>"
+msgstr "<em class=\"font-weight-normal text-muted\">Revisiones del evento:</em>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_reviews
@@ -415,16 +462,13 @@ msgid "<i class=\"fa fa-check\"/> Make a Review"
 msgstr "<i class=\"fa fa-check\"/> Haga una Revisión"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
-msgid "<i class=\"fa fa-check\"/>Make a Review"
-msgstr "<i class=\"fa fa-check\"/> Haga una Revisión"
-
-#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "<i class=\"fa fa-comment\"/> Send message"
 msgstr "<i class=\"fa fa-comment\"/> Enviar mensaje"
 
 #. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "<i class=\"fa fa-download\"/> Download"
 msgstr "<i class=\"fa fa-download\"/> Descargar"
@@ -439,49 +483,45 @@ msgstr "<i class=\"fa fa-folder-open\"/> Favoritos"
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
 msgid ""
 "<i class=\"fa fa-info-circle\"/>\n"
-"                                You can add multiple speakers by separating"
-" names, emails and phones with commas."
+"                                You can add multiple speakers by separating names, emails and phones with commas."
 msgstr ""
 "<i class=\"fa fa-info-circle\"/>\n"
-" Puede añadir multiples ponentes separando nombres, correos electrónicos y"
-" teléfonos con comas."
+" Puede añadir multiples ponentes separando nombres, correos electrónicos y teléfonos con comas."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
-"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\""
-" style=\"font-size: 1.5rem\"/>\n"
+"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\" style=\"font-size: 1.5rem\"/>\n"
 "                                        \n"
-"                                        <small class=\"text-muted\""
-">Acceptance notifications until</small>"
+"                                        <small class=\"text-muted\">Acceptance notifications until</small>"
 msgstr ""
-"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\""
-" style=\"font-size: 1.5rem\"/>\n"
+"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\" style=\"font-size: 1.5rem\"/>\n"
 "                                        \n"
-"                                        <small class=\"text-muted\""
-">Notificación de aceptación hasta</small>"
+"                                        <small class=\"text-muted\">Notificación de aceptación hasta</small>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
-"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\""
-" style=\"font-size: 1.5rem\"/>\n"
+"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\" style=\"font-size: 1.5rem\"/>\n"
 "                                        \n"
-"                                        <small class=\"text-muted\">Final"
-" papers submittions until</small>"
+"                                        <small class=\"text-muted\">Final papers submittions until</small>"
 msgstr ""
-"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\""
-" style=\"font-size: 1.5rem\"/>\n"
+"<i class=\"fa fa-long-arrow-down d-block text-muted mx-3 my-2\" style=\"font-size: 1.5rem\"/>\n"
 "                                        \n"
-"                                        <small class=\"text-muted\">Subida de"
-" trabajos finales hasta</small>"
+"                                        <small class=\"text-muted\">Subida de trabajos completos hasta</small>"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 msgid "<i class=\"fa fa-paperclip\"/> Add"
 msgstr "<i class=\"fa fa-paperclip\"/> Añadir"
 
 #. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+msgid "<i class=\"fa fa-pencil\"/> Edit"
+msgstr "<i class=\"fa fa-pencil\"/>Editar"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "<i class=\"fa fa-print\"/> Print"
 msgstr "<i class=\"fa fa-print\"/> Imprimir"
@@ -489,21 +529,17 @@ msgstr "<i class=\"fa fa-print\"/> Imprimir"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "<small class=\"text-muted\">Abstracts submittion until</small>"
-msgstr "<small class=\"text-muted\">Subida de resumenes hasta</small>"
+msgstr "<small class=\"text-muted\">Subida de resúmenes hasta</small>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
-msgid "<small class=\"text-right\">Status:</small>"
-msgstr "<small class=\"text-right\">Estado:</small>"
-
-#. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid ""
 "<small><b class=\"text-muted\">This paper should be reviewed "
 "before</b></small>"
 msgstr ""
-"<small><b class=\"text-muted\">Este trabajo debe ser revisado "
-"antes del </b></small>"
+"<small><b class=\"text-muted\">Este trabajo debe ser revisado antes del "
+"</b></small>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_registration_report_template_certificate
@@ -528,8 +564,8 @@ msgstr "<span class=\"fa fa-ban\"/> Este evento no acepta trabajos."
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "<span class=\"fa fa-clock-o\"/> The submittion deadline is overdue."
 msgstr ""
-"<span class=\"fa fa-clock-o\"/> La fecha límite para la subida de trabajos ya"
-" ha pasado."
+"<span class=\"fa fa-clock-o\"/> La fecha límite para la subida de trabajos "
+"se ha vencido."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
@@ -544,8 +580,7 @@ msgstr "<span class=\"fa fa-hw fa-ban\"> </span> Este certificado es INVÁLIDO"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_authenticity
 msgid "<span class=\"fa fa-hw fa-check\"> </span> This is a valid certificate"
-msgstr ""
-"<span class=\"fa fa-hw fa-check\"> </span> Este es un certificado válido"
+msgstr "<span class=\"fa fa-hw fa-check\"> </span> Este es un certificado válido"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.res_config_settings_view_form
@@ -557,20 +592,32 @@ msgstr ""
 "específicos del sitio web.\" groups=\"website.group_multi_website\"/>"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_reviews
-msgid "<span class=\"fa fa-warning\"/> You have no papers to review."
-msgstr "<span class=\"fa fa-warning\"/> No tiene trabajos para revisar."
-
-#. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_papers
-msgid "<span class=\"fa fa-warning\"/> You have no papers."
-msgstr "<span class=\"fa fa-warning\"/> No tiene trabajos."
+msgid ""
+"<span class=\"fa fa-warning\"/> There are currently no papers for your "
+"account."
+msgstr ""
+"<span class=\"fa fa-warning\"/> Su cuenta no tiene trabajos actualmente."
+
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_reviews
+msgid ""
+"<span class=\"fa fa-warning\"/> There are currently no papers to review for "
+"your account."
+msgstr ""
+"<span class=\"fa fa-warning\"/> Su cuenta no tiene trabajos para revisar actualmente."
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid "<span class=\"ml8 text-muted small\">Uploaded on </span>"
 msgstr "<span class=\"ml8 text-muted small\">\"Subido el "
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_form
+msgid "<span class=\"o_stat_text\">Reviews</span>"
+msgstr "<span class=\"o_stat_text\">Revisiones</span>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_main
@@ -597,14 +644,10 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
 "<span><b>I authorize the publication of this work</b></span><br/>\n"
-"                                                            <span"
-" class=\"text-muted\"> (Uncheck this option if you do not want this work to"
-" be published)</span>"
+"                                                            <span class=\"text-muted\"> (Uncheck this option if you do not want this work to be published)</span>"
 msgstr ""
 "<span><b>Autorizo la publicación del este trabajo</b></span><br/>\n"
-"                                                            <span"
-" class=\"text-muted\"> (Desmarque esta opción si no quiere que este trabajo"
-" sea publicado)</span>"
+"                                                            <span class=\"text-muted\"> (Desmarque esta opción si no quiere que este trabajo sea publicado)</span>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_authenticity
@@ -612,9 +655,8 @@ msgid ""
 "<span><span class=\"fa fa-hw fa-qrcode\"> </span> Ensure you have scanned "
 "the QR code properly!</span>"
 msgstr ""
-"<span><span class=\"fa fa-hw fa-qrcode\"> </span> ¡Asegúrese de haber"
-" escaneado el código QR "
-"correctamente!</span>"
+"<span><span class=\"fa fa-hw fa-qrcode\"> </span> ¡Asegúrese de haber "
+"escaneado el código QR correctamente!</span>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_checkpoint
@@ -641,6 +683,7 @@ msgid "<span>hours</span>"
 msgstr "<span>horas</span>"
 
 #. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "<strong class=\"text-muted\">Manager</strong>"
 msgstr "<strong class=\"text-muted\">Coordinador</strong>"
@@ -651,17 +694,17 @@ msgid "<strong class=\"text-muted\">Owner</strong>"
 msgstr "<strong class=\"text-muted\">Propietario</strong>"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid ""
 "<strong>Abstract<small class=\"text-sm text-muted\" title=\"English\"> "
 "[EN]</small></strong>"
 msgstr ""
-"<strong>Resumen<small class=\"text-sm text-muted\" title=\"English\"> "
+"<strong>Resumen<small class=\"text-sm text-muted\" title=\"Inglés\"> "
 "[EN]</small></strong>"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid ""
 "<strong>Abstract<small class=\"text-sm text-muted\" title=\"Spanish\"> "
@@ -671,13 +714,13 @@ msgstr ""
 "[ES]</small></strong>"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid "<strong>Attachments</strong>"
 msgstr "<strong>Adjuntos</strong>"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid "<strong>Authors</strong>"
 msgstr "<strong>Autores</strong>"
@@ -686,30 +729,18 @@ msgstr "<strong>Autores</strong>"
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
 "<strong>Conferences</strong>. These are standard talks with slides,\n"
-"                                            alocated in slots of 45-60"
-" minutes."
+"                                            alocated in slots of 45-60 minutes."
 msgstr ""
 "<strong>Conferencias</strong>. Son presentaciones con diapositivas,\n"
 "                                            durante 45-60 minutos."
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
-msgid "<strong>Manager</strong>"
-msgstr "<strong>Coordinador</strong>"
-
-#. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.report_attendee_list
 msgid "<strong>Date</strong>"
 msgstr "<strong>Fecha:</strong>"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
-msgid "<strong>Deadline</strong>"
-msgstr "<strong>Fecha límite:</strong>"
-
-#. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid "<strong>Event</strong>"
 msgstr "<strong>Evento</strong>"
@@ -720,13 +751,13 @@ msgid "<strong>Events</strong>"
 msgstr "<strong>Eventos</strong>"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid "<strong>Keywords</strong>"
 msgstr "<strong>Palabras Clave</strong>"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid "<strong>Language</strong>"
 msgstr "<strong>Idioma</strong>"
@@ -735,12 +766,10 @@ msgstr "<strong>Idioma</strong>"
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
 msgid ""
 "<strong>Lightning Talks</strong>. These are 30 minutes talks on many\n"
-"                                    different topics. Most topics are"
-" accepted in lightning talks."
+"                                    different topics. Most topics are accepted in lightning talks."
 msgstr ""
 "<strong>Charlas relámpago </strong>. Son 30 minutos de conversaciones\n"
-"sobre temas muy diferentes. La mayoría de los temas son aceptados en las"
-" charlas relámpago."
+"sobre temas muy diferentes. La mayoría de los temas son aceptados en las charlas relámpago."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_content
@@ -764,8 +793,7 @@ msgid ""
 "<strong>Regular Talks</strong>. These are standard talks with slides,\n"
 "                                    alocated in slots of 60 minutes."
 msgstr ""
-"<strong> Conversaciones regulares </strong>. Son conversaciones estándar con"
-" presentaciones,\n"
+"<strong> Conversaciones regulares </strong>. Son conversaciones estándar con presentaciones,\n"
 "Ubicadas en espacios de 60 minutos."
 
 #. module: website_event_track_uclv
@@ -774,9 +802,8 @@ msgid ""
 "<strong>Scientific Posters</strong>. Only a scientific poster without oral "
 "presentation."
 msgstr ""
-"<strong>Cartel científico</strong>. Solo el cartel científico sin"
-" presentación "
-"oral."
+"<strong>Cartel científico</strong>. Solo el cartel científico sin "
+"presentación oral."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
@@ -795,10 +822,10 @@ msgstr "<strong>¡Esta solicitud ha expirado!</strong>"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.report_attendee_list
 msgid "<strong>Tickets</strong>"
-msgstr "<strong>Tickets</strong>"
+msgstr ""
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid ""
 "<strong>Title<small class=\"text-sm text-muted\" title=\"English\"> [EN] "
@@ -808,7 +835,7 @@ msgstr ""
 "</small></strong>"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid ""
 "<strong>Title<small class=\"text-sm text-muted\" title=\"Spanish\"> "
@@ -823,8 +850,8 @@ msgid ""
 "<strong>Work Presentations</strong>. These are 10-15 minutes presentations "
 "with a round of questions at the end."
 msgstr ""
-"<strong>Ponencias</strong>. Son presentaciones de 10-15 minutos "
-"con una ronda de preguntas al final."
+"<strong>Ponencias</strong>. Son presentaciones de 10-15 minutos con una "
+"ronda de preguntas al final."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
@@ -844,8 +871,7 @@ msgid ""
 " * Red indicates something is preventing the progress of this track\n"
 " * Green indicates the track is ready to be pulled to the next stage"
 msgstr ""
-"Cuando el estado de kanban de una sesión indica que existen situaciones"
-" especiales que producen efectos:\n"
+"Cuando el estado de kanban de una sesión indica que existen situaciones especiales que producen efectos:\n"
 " * El gris es la situación por defecto\n"
 " * El rojo indica que hay algo que impide el progreso de la sesión\n"
 " * El verde indica que la sesión puede pasar a la siguiente etapa"
@@ -856,20 +882,27 @@ msgid "About The Speaker"
 msgstr "Sobre el ponente"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_content
-msgid "Abstract"
-msgstr "Resumen"
-
-#. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "Abstract <small class=\"text-muted\" title=\"English\"> [EN]</small>:"
 msgstr "Resumen <small class=\"text-muted\" title=\"Inglés\"> [EN]</small>:"
 
 #. module: website_event_track_uclv
-#. module: website_event_track
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_content
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
+msgid "Abstract [EN]"
+msgstr "Resumen [EN]"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
+msgid "Abstract [ES]"
+msgstr "Resumen [ES]"
+
+#. module: website_event_track_uclv
 #: model:event.track.stage,name:website_event_track.event_track_stage2
 msgid "Abstract accepted"
-msgstr "Resumen aceptado"
+msgstr "Anunciado"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/controllers/website_event_track.py:0
@@ -905,22 +938,19 @@ msgid "Abstract is too short. Try a larger text."
 msgstr "Resumen demasiado corto. Intente un texto más largo."
 
 #. module: website_event_track_uclv
-#. module: website_event_track
 #: model:event.track.stage,name:website_event_track.event_track_stage4
 msgid "Abstract rejected"
 msgstr "Resumen Rechazado"
 
 #. module: website_event_track_uclv
-#. module: website_event_track
 #: model:event.track.stage,name:website_event_track.event_track_stage1
 msgid "Abstract review"
-msgstr "Resumen en revisión"
+msgstr "Revisión de resumen"
 
 #. module: website_event_track_uclv
-#. module: website_event_track
 #: model:event.track.stage,name:website_event_track.event_track_stage0
 msgid "Abstract submited"
-msgstr "Resumen entregado"
+msgstr "Resumen subido"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
@@ -930,27 +960,27 @@ msgstr "Resumen<small class=\"text-muted\" title=\"Español\"> [ES]</small>:"
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_event__paper_abstract_notification_date
 msgid "Abstracts Acceptance Notification Date"
-msgstr "Fecha de notificación de aceptación de resumenes"
+msgstr "Fecha de notificación de aceptación de resúmenes"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_event__paper_abstract_deadline
 msgid "Abstracts Deadline"
-msgstr "Fecha límite para resumenes"
+msgstr "Fecha límite para resúmenes"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_event__paper_abstract_deadline_month
 msgid "Abstracts Deadline Month"
-msgstr "Mes límite para resumenes"
+msgstr "Mes límite para resúmenes"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_event__paper_abstract_deadline_overdue
 msgid "Abstracts Deadline Overdue"
-msgstr "Fecha límite para resumenes vencida"
+msgstr "Fecha límite para resúmenes vencida"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_form
 msgid "Abstracts reviews ends"
-msgstr "Revisión de resumenes termina"
+msgstr "Revisión de resúmenes termina"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
@@ -995,7 +1025,7 @@ msgstr ""
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_form
 msgid "Accepts abstracts until"
-msgstr "Acepta resumenes hasta"
+msgstr "Acepta resúmenes hasta"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__access_warning
@@ -1004,6 +1034,7 @@ msgstr "Alerta de acceso"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_needaction
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_needaction
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_needaction
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_needaction
 msgid "Action Needed"
@@ -1017,25 +1048,33 @@ msgstr "Activo"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__activity_ids
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__activity_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__activity_ids
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__activity_ids
 msgid "Activities"
 msgstr "Actividades"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__activity_exception_decoration
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__activity_exception_decoration
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__activity_exception_decoration
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr "Decoración de Actividad  de Excepción"
+msgstr "Decoración de Actividad de Excepción"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__activity_state
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__activity_state
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__activity_state
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__activity_state
 msgid "Activity State"
 msgstr "Estado de la actividad"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__activity_type_icon
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__activity_type_icon
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__activity_type_icon
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__activity_type_icon
 msgid "Activity Type Icon"
 msgstr "Ícono de tipo de actvidad"
 
@@ -1043,6 +1082,21 @@ msgstr "Ícono de tipo de actvidad"
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "Add Author"
 msgstr "Añadir Autor"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.actions.act_window,help:website_event_track_uclv.action_event_track_review
+msgid "Add a new review"
+msgstr "Añada una nueva revisión"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.actions.act_window,help:website_event_track_uclv.action_event_track_review_from_track
+msgid "Add a new review to this track"
+msgstr "Añada una nueva revisión a este trabajo"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.actions.act_window,help:website_event_track_uclv.action_event_reviewer
+msgid "Add a new reviewer"
+msgstr "Añada un nuevo revisor"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.actions.act_window,help:website_event_track.event_track_stage_action
@@ -1112,6 +1166,7 @@ msgstr "Todos los tickets"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_event_view_form
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_form
 msgid "Allow Track Proposals"
 msgstr "Permitir Subida de Trabajos"
 
@@ -1119,19 +1174,16 @@ msgstr "Permitir Subida de Trabajos"
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
 "Allow video and audio recording of their\n"
-"                                            presentation, for publishing on"
-" our website."
+"                                            presentation, for publishing on our website."
 msgstr ""
 "Permitir la grabación de video y audio de sus presentaciones \n"
-"                                            para publicarlas en nuestro sitio"
-" web."
+"                                            para publicarlas en nuestro sitio web."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
 msgid ""
 "Allow video and audio recording of their\n"
-"                                    presentation, for publishing on our"
-" website."
+"                                    presentation, for publishing on our website."
 msgstr ""
 "Permitir grabación del audio y vídeo de su presentación, para publicarlo en "
 "nuestro sitio web."
@@ -1153,9 +1205,9 @@ msgid "Always Wishlisted"
 msgstr "Siempre en lista de favoritos"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__amount
-msgid "Amount"
-msgstr "Importe"
+#: model:ir.model.constraint,message:website_event_track_uclv.constraint_event_reviewer_event_id_partner_id_unique
+msgid "An event cannot have twice the same reviewer."
+msgstr "Un evento no puede tener dos veces el mismo revisor."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
@@ -1190,6 +1242,7 @@ msgstr ""
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_attachment_count
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_attachment_count
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_attachment_count
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_attachment_count
 msgid "Attachment Count"
@@ -1198,6 +1251,8 @@ msgstr "Nº de archivos adjuntos"
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_event__attachment_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__attachment_ids
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "Attachments"
 msgstr "Adjuntos"
 
@@ -1212,7 +1267,6 @@ msgid "Attended Date"
 msgstr "Fecha de asistencia"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__event_registration_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__attendee_id
 msgid "Attendee"
 msgstr "Participante"
@@ -1316,6 +1370,8 @@ msgstr "Autoría"
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__author_ids
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_main
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_form
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_res_partner_filter
 msgid "Authors"
@@ -1329,7 +1385,6 @@ msgstr "Los autores no están en un formato válido"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event_track.py:0
-#: model:ir.model.constraint,message:website_event_track_uclv.constraint_event_track_author_track_uniq_partner
 #, python-format
 msgid "Authors can only appear once per paper"
 msgstr "Los autores solo pueden aparecer una vez por trabajo"
@@ -1388,7 +1443,6 @@ msgid "Available Track Tags"
 msgstr "Palabras claves disponibles"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__balance
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.report_attendee_list
 msgid "Balance"
 msgstr "Saldo"
@@ -1462,7 +1516,7 @@ msgstr "Puede ser publicado"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.attendee_list_wizard
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "Cancel"
 msgstr "Cancelar"
@@ -1483,11 +1537,6 @@ msgid "Canceled Stage"
 msgstr "Etapa cancelada"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields.selection,name:website_event_track_uclv.selection__event_registration_payment__payment_type__cash
-msgid "Cash"
-msgstr "Efectivo"
-
-#. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_tag__category_id
 msgid "Category"
 msgstr "Categoría"
@@ -1498,20 +1547,9 @@ msgid "Cerrar"
 msgstr ""
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields.selection,name:website_event_track_uclv.selection__event_registration_payment__payment_type__check
-msgid "Check"
-msgstr "Cheque"
-
-#. module: website_event_track_uclv
 #: model_terms:ir.actions.act_window,help:website_event_track_uclv.action_partner_form
 msgid "Click to add a new partner."
 msgstr "Pulse aquí para añadir un nuevo socio."
-
-#. module: website_event_track_uclv
-#: model_terms:ir.actions.act_window,help:website_event_track_uclv.event_registration_payment_action
-#: model_terms:ir.actions.act_window,help:website_event_track_uclv.event_registration_payment_action_filter
-msgid "Click to create a new payment."
-msgstr "Pulse aquí para crear un nuevo pago."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
@@ -1530,11 +1568,12 @@ msgstr ""
 msgid "Color Index"
 msgstr "Índice de Color"
 
-#. module: website_event_track
+#. modules: website_event_track_uclv, website_event_track
 #: code:addons/website_event_track/controllers/event_track.py:0
+#: code:addons/website_event_track_uclv/controllers/website_event_track.py:0
 #, python-format
 msgid "Coming soon"
-msgstr "No definido"
+msgstr "Pronto"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.tracks_display_cards
@@ -1572,7 +1611,7 @@ msgid "Conference"
 msgstr "Conferencia"
 
 #. module: website_event_track_uclv
-#: model:ir.model,name:website_event_track_uclv.model_res_config_settings
+#: model:ir.model,name:website_event_track.model_res_config_settings
 msgid "Config Settings"
 msgstr "Opciones de configuración"
 
@@ -1617,16 +1656,6 @@ msgid "Contact:"
 msgstr "Contacto:"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__user_id
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__manager_id
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_track_analysis__manager_id
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_attendee_analysis_filter
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_analysis_filter
-msgid "Manager"
-msgstr "Coordinador"
-
-#. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__country_id
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.report_attendee_list
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_res_partner_filter
 msgid "Country"
@@ -1675,7 +1704,7 @@ msgstr "Crear participantes"
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_visitor__create_uid
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_attendee_list_wizard__create_uid
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_create_wizard__create_uid
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__create_uid
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__create_uid
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author__create_uid
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__create_uid
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_type__create_uid
@@ -1693,18 +1722,12 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_visitor__create_date
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_attendee_list_wizard__create_date
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_create_wizard__create_date
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__create_date
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__create_date
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author__create_date
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__create_date
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_type__create_date
 msgid "Created on"
 msgstr "Creado el"
-
-#. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__currency_id
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__currency_id
-msgid "Currency"
-msgstr "Moneda"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_event__current_user
@@ -1724,11 +1747,6 @@ msgstr "Evento actual de la revisión"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_papers
 msgid "Current stage of the paper"
-msgstr "Etapa actual del trabajo"
-
-#. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
-msgid "Current stage of this paper"
 msgstr "Etapa actual del trabajo"
 
 #. module: website_event_track_uclv
@@ -1798,15 +1816,15 @@ msgstr "Diferentes autores no pueden usar la misma dirección de correo"
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor_type__display_name
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_tag_category__display_name
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_visitor__display_name
+#: model:ir.model.fields,field_description:website_event_track.field_res_config_settings__display_name
 #: model:ir.model.fields,field_description:website_event_track.field_website__display_name
 #: model:ir.model.fields,field_description:website_event_track.field_website_event_menu__display_name
 #: model:ir.model.fields,field_description:website_event_track.field_website_menu__display_name
 #: model:ir.model.fields,field_description:website_event_track.field_website_visitor__display_name
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_attendee_list_wizard__display_name
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_event__display_name
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__display_name
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_create_wizard__display_name
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__display_name
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__display_name
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__display_name
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author__display_name
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_location__display_name
@@ -1818,7 +1836,6 @@ msgstr "Diferentes autores no pueden usar la misma dirección de correo"
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__display_name
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_track_analysis__display_name
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_website_event_track_uclv_report_attendee_list__display_name
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_res_config_settings__display_name
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_res_partner__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
@@ -1829,6 +1846,7 @@ msgid "Done"
 msgstr "Finalizado"
 
 #. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "Download"
 msgstr "Descargar"
@@ -1852,6 +1870,11 @@ msgstr "Editar Autor"
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_kanban
 msgid "Edit Track"
 msgstr "Editar trabajo"
+
+#. module: website_event_track_uclv
+#: model:ir.model.constraint,message:website_event_track_uclv.constraint_event_track_location_name_uniq_partner
+msgid "El nombre debe ser único por socio!"
+msgstr ""
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__partner_email
@@ -1903,16 +1926,19 @@ msgstr "Errores"
 #: model:ir.model,name:website_event_track_uclv.model_event_event
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__event_id
 #: model:ir.model.fields,field_description:website_event_track.field_event_track__event_id
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__event_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__event_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__event_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__event_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_track_analysis__event_id
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_sponsor_view_search
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_content
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_search
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_papers
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_reviews
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_attendee_analysis_filter
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_reviewer_search
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_analysis_filter
 #, python-format
 msgid "Event"
@@ -1936,9 +1962,9 @@ msgid "Event Proposals Menus"
 msgstr "Menús de propuestas de eventos"
 
 #. module: website_event_track_uclv
-#: model:ir.model,name:website_event_track_uclv.model_event_registration
-msgid "Event Registration"
-msgstr "Registro de eventos"
+#: model:ir.model,name:website_event_track_uclv.model_event_reviewer
+msgid "Event Reviewer"
+msgstr "Revisor de evento"
 
 #. module: website_event_track_uclv
 #: model:ir.model,name:website_event_track.model_event_sponsor
@@ -1966,11 +1992,6 @@ msgstr "Patrocinadores de evento"
 #: model:ir.model,name:website_event_track_uclv.model_event_type
 msgid "Event Template"
 msgstr "Plantilla de evento"
-
-#. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__event_ticket_id
-msgid "Event Ticket"
-msgstr "Ticket de evento"
 
 #. module: website_event_track_uclv
 #: model:ir.model,name:website_event_track_uclv.model_event_track
@@ -2007,10 +2028,8 @@ msgstr "Categoría de palabra clave"
 #: model:ir.actions.act_window,name:website_event_track_uclv.action_event_track
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_res_partner__event_track_count
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_res_users__event_track_count
-#: model:ir.ui.menu,name:website_event_track.menu_event_track
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_calendar
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_search
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.res_config_settings_view_form
 msgid "Event Tracks"
 msgstr "Trabajos"
 
@@ -2062,15 +2081,16 @@ msgid ""
 "Events without a deadline to accept abstracts can not have a notification "
 "date"
 msgstr ""
-"Los eventos sin fecha límite para aceptar resumenes no pueden tener fecha de"
+"Los eventos sin fecha límite para aceptar resúmenes no pueden tener fecha de"
 " notificación "
 
 #. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid "Expired"
 msgstr "Expirado"
 
-#. modules: website_event_track, website_event_track_uclv
+#. modules: website_event_track_uclv, website_event_track
 #. openerp-web
 #: code:addons/website_event_track/static/src/js/event_track_reminder.js:0
 #: code:addons/website_event_track/static/src/js/event_track_reminder.js:0
@@ -2086,19 +2106,14 @@ msgid "Favorites"
 msgstr "Favoritos"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields.selection,name:website_event_track_uclv.selection__event_registration__gender__f
-msgid "Female"
-msgstr "Femenino"
-
-#. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 msgid "File"
 msgstr "Archivo"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
 msgid "Fill this form to propose your talk."
-msgstr "Rellenar este formulario para proponer su charla."
+msgstr "Rellene este formulario para proponer su trabajo."
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
@@ -2133,6 +2148,7 @@ msgstr "Doblado en Kanban"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_follower_ids
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_follower_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_follower_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_follower_ids
 msgid "Followers"
@@ -2140,6 +2156,7 @@ msgstr "Seguidores"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_channel_ids
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_channel_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_channel_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_channel_ids
 msgid "Followers (Channels)"
@@ -2147,6 +2164,7 @@ msgstr "Seguidores (Canales)"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_partner_ids
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_partner_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_partner_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_partner_ids
 msgid "Followers (Partners)"
@@ -2154,14 +2172,11 @@ msgstr "Seguidores (Contactos)"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__activity_type_icon
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__activity_type_icon
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__activity_type_icon
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_track_review__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
 msgstr "Icono de Font Awesome ej. fa-tasks"
-
-#. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.res_config_settings_view_form
-msgid "Force to follow a review workflow"
-msgstr "Forzar flujo de revisiones"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
@@ -2169,20 +2184,14 @@ msgid "Full Name:"
 msgstr "Nombre completo:"
 
 #. module: website_event_track_uclv
-#. module: website_event_track
 #: model:event.track.stage,name:website_event_track.event_track_stage5
 msgid "Full rejected"
-msgstr "Trabajo completo rechazado"
+msgstr "Trabajo rechazado"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_search
 msgid "Future Activities"
 msgstr "Actividades futuras"
-
-#. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__gender
-msgid "Gender"
-msgstr "Género"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_registration_create_wizard_view
@@ -2197,7 +2206,7 @@ msgstr ""
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.registration_complete
 msgid "Get prepared and"
-msgstr ""
+msgstr "Prepárese y"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
@@ -2225,7 +2234,9 @@ msgstr "Gris"
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_visitor_view_search
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_search
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_attendee_analysis_filter
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_reviewer_search
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_analysis_filter
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_review_search
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_res_partner_filter
 msgid "Group By"
 msgstr "Agrupar por"
@@ -2250,15 +2261,15 @@ msgstr "Inicio"
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor_type__id
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_tag_category__id
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_visitor__id
+#: model:ir.model.fields,field_description:website_event_track.field_res_config_settings__id
 #: model:ir.model.fields,field_description:website_event_track.field_website__id
 #: model:ir.model.fields,field_description:website_event_track.field_website_event_menu__id
 #: model:ir.model.fields,field_description:website_event_track.field_website_menu__id
 #: model:ir.model.fields,field_description:website_event_track.field_website_visitor__id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_attendee_list_wizard__id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_event__id
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_create_wizard__id
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author__id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_location__id
@@ -2270,26 +2281,31 @@ msgstr "Inicio"
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_track_analysis__id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_website_event_track_uclv_report_attendee_list__id
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_res_config_settings__id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_res_partner__id
 msgid "ID"
 msgstr ""
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__activity_exception_icon
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__activity_exception_icon
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__activity_exception_icon
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__activity_exception_icon
 msgid "Icon"
 msgstr "Icono"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__activity_exception_icon
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__activity_exception_icon
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__activity_exception_icon
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_track_review__activity_exception_icon
 msgid "Icon to indicate an exception activity."
 msgstr "Icono para indicar una actividad de excepción."
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__message_needaction
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__message_unread
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__message_needaction
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__message_unread
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__message_needaction
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__message_unread
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track_review__message_needaction
@@ -2300,6 +2316,8 @@ msgstr "Si está marcado hay nuevos mensajes que requieren su atención."
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__message_has_error
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__message_has_sms_error
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__message_has_error
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__message_has_sms_error
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__message_has_error
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__message_has_sms_error
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track_review__message_has_error
@@ -2326,7 +2344,7 @@ msgstr ""
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__image
 msgid "Image"
-msgstr ""
+msgstr "Imagen"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__image_128
@@ -2389,7 +2407,6 @@ msgid "Install Application"
 msgstr ""
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__institution
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.report_attendee_list
 msgid "Institution"
 msgstr "Institución"
@@ -2412,7 +2429,7 @@ msgstr "Introducción"
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__access_token
 msgid "Invitation Token"
-msgstr ""
+msgstr "Token de invitación"
 
 #. module: website_event_track_uclv
 #: model:mail.template,subject:website_event_track_uclv.mail_template_reviewer_invitation
@@ -2437,18 +2454,19 @@ msgstr ""
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_stage__is_done
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__is_done
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__is_done
 msgid "Is Done"
 msgstr "Terminado"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_is_follower
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_is_follower
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_is_follower
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_is_follower
 msgid "Is Follower"
 msgstr "Es un seguidor"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__paid
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__attendee_paid
 msgid "Is Paid?"
 msgstr "¿Está Pagado?"
@@ -2516,23 +2534,25 @@ msgstr "Estado de kanban"
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__tag_ids
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_main
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "Keywords"
 msgstr "Palabras clave"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "Keywords<small class=\"text-muted\" title=\"English\"> [EN]</small>:"
-msgstr ""
-"Palabras clave<small class=\"text-muted\" title=\"Inglés\"> [EN]</small>:"
+msgstr "Palabras clave<small class=\"text-muted\" title=\"Inglés\"> [EN]</small>:"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "Keywords<small class=\"text-muted\" title=\"Spanish\"> [ES]</small>:"
-msgstr ""
-"Palabras clave<small class=\"text-muted\" title=\"Español\"> [ES]</small>:"
+msgstr "Palabras clave<small class=\"text-muted\" title=\"Español\"> [ES]</small>:"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__language_id
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "Language"
 msgstr "Idioma"
 
@@ -2554,15 +2574,15 @@ msgstr "Este idioma no está permitido"
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor_type____last_update
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_tag_category____last_update
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_visitor____last_update
+#: model:ir.model.fields,field_description:website_event_track.field_res_config_settings____last_update
 #: model:ir.model.fields,field_description:website_event_track.field_website____last_update
 #: model:ir.model.fields,field_description:website_event_track.field_website_event_menu____last_update
 #: model:ir.model.fields,field_description:website_event_track.field_website_menu____last_update
 #: model:ir.model.fields,field_description:website_event_track.field_website_visitor____last_update
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_attendee_list_wizard____last_update
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_event____last_update
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration____last_update
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_create_wizard____last_update
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment____last_update
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer____last_update
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track____last_update
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author____last_update
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_location____last_update
@@ -2574,7 +2594,6 @@ msgstr "Este idioma no está permitido"
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis____last_update
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_track_analysis____last_update
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_website_event_track_uclv_report_attendee_list____last_update
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_res_config_settings____last_update
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_res_partner____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
@@ -2590,7 +2609,7 @@ msgstr "Última modificación el"
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_visitor__write_uid
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_attendee_list_wizard__write_uid
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_create_wizard__write_uid
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__write_uid
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__write_uid
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author__write_uid
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__write_uid
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_type__write_uid
@@ -2608,7 +2627,7 @@ msgstr "Última actualización por"
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_visitor__write_date
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_attendee_list_wizard__write_date
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_create_wizard__write_date
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__write_date
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__write_date
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author__write_date
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__write_date
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_type__write_date
@@ -2649,6 +2668,11 @@ msgid "Logo"
 msgstr ""
 
 #. module: website_event_track_uclv
+#: model:ir.model.constraint,message:website_event_track_uclv.constraint_event_track_author_track_uniq_partner
+msgid "Los autores solo pueden aparecer una vez por trabajo"
+msgstr ""
+
+#. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_registration_create_wizard_view
 msgid ""
 "Los participantes generados estarán en estado 'Sin confirmar' y usarán el "
@@ -2672,6 +2696,7 @@ msgstr ""
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_main_attachment_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_main_attachment_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_main_attachment_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_main_attachment_id
 msgid "Main Attachment"
@@ -2696,9 +2721,13 @@ msgid "Make a Review"
 msgstr "Haga una revisión"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields.selection,name:website_event_track_uclv.selection__event_registration__gender__m
-msgid "Male"
-msgstr "Masculino"
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__user_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__manager_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_track_analysis__manager_id
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_attendee_analysis_filter
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_analysis_filter
+msgid "Manager"
+msgstr "Coordinador"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields.selection,name:website_event_track.selection__event_track__priority__1
@@ -2712,6 +2741,7 @@ msgstr "Tipo de Menú"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_has_error
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_has_error
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_has_error
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_has_error
 msgid "Message Delivery error"
@@ -2719,8 +2749,11 @@ msgstr "Error de Envío de Mensaje"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_ids
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_ids
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "Messages"
 msgstr "Mensajes"
 
@@ -2770,6 +2803,7 @@ msgstr "Mis Trabajos"
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_papers
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_reviews
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.report_attendee_list
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_form
 #, python-format
 msgid "Name"
 msgstr "Nombre"
@@ -2782,10 +2816,9 @@ msgstr "Nombre es requerido"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event_track.py:0
-#: model:ir.model.constraint,message:website_event_track_uclv.constraint_event_track_location_name_uniq_partner
 #, python-format
 msgid "Name must be unique by partner!"
-msgstr "El nombre debe ser único por socio!"
+msgstr "El nombre debe ser único por contacto!"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.res_config_settings_view_form
@@ -2832,25 +2865,32 @@ msgid "Newest"
 msgstr "Más reciente"
 
 #. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_review_search
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_search
 msgid "Next"
-msgstr "Próximos"
+msgstr "Siguiente"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__activity_date_deadline
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__activity_date_deadline
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__activity_date_deadline
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr "Siguiente plazo de actividad"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__activity_summary
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__activity_summary
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__activity_summary
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__activity_summary
 msgid "Next Activity Summary"
 msgstr "Resumen de la siguiente actividad"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__activity_type_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__activity_type_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__activity_type_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__activity_type_id
 msgid "Next Activity Type"
 msgstr "Siguiente tipo de actividad"
 
@@ -2948,8 +2988,8 @@ msgstr "Notificado"
 msgid ""
 "Notification date can not be earlier than the deadline to accept abstracts"
 msgstr ""
-"La fecha de notificación no puede ser anterior que la fecha límite para"
-" aceptar resumenes"
+"La fecha de notificación no puede ser anterior que la fecha límite para "
+"aceptar resúmenes"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event.py:0
@@ -2957,11 +2997,12 @@ msgstr ""
 #, python-format
 msgid "Notification date can not be older than event begin date"
 msgstr ""
-"La fecha de notificación no puede ser posterior a la fecha de inicio del"
-" evento"
+"La fecha de notificación no puede ser posterior a la fecha de inicio del "
+"evento"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_needaction_counter
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_needaction_counter
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_needaction_counter
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_needaction_counter
 msgid "Number of Actions"
@@ -2975,6 +3016,7 @@ msgstr "Número de trabajos terminados."
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_has_error_counter
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_has_error_counter
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_has_error_counter
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_has_error_counter
 msgid "Number of errors"
@@ -2982,6 +3024,7 @@ msgstr "Número de errores"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__message_needaction_counter
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__message_needaction_counter
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__message_needaction_counter
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track_review__message_needaction_counter
 msgid "Number of messages which requires an action"
@@ -2989,6 +3032,7 @@ msgstr "Número de mensajes que requieren una acción"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__message_has_error_counter
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__message_has_error_counter
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__message_has_error_counter
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track_review__message_has_error_counter
 msgid "Number of messages with delivery error"
@@ -3008,15 +3052,11 @@ msgstr "Número de trabajos."
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__message_unread_counter
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__message_unread_counter
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__message_unread_counter
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track_review__message_unread_counter
 msgid "Number of unread messages"
 msgstr "Número de mensajes no leidos"
-
-#. module: website_event_track_uclv
-#: model:ir.model.fields.selection,name:website_event_track_uclv.selection__event_registration_payment__payment_type__online
-msgid "Online"
-msgstr "En línea"
 
 #. module: website_event_track_uclv
 #: model:event.track.type,description:website_event_track_uclv.track_type_poster
@@ -3038,7 +3078,6 @@ msgstr "Otros"
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__paid_amount
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_checkpoint
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_registration_search_inherit
 msgid "Paid"
 msgstr "Pagado"
 
@@ -3076,6 +3115,7 @@ msgstr ""
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_visitor__partner_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__partner_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_author__partner_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_location__partner_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__partner_id
@@ -3105,37 +3145,14 @@ msgid "Payment"
 msgstr "Pagos"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__payment_count
-msgid "Payment Count"
-msgstr ""
-
-#. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__paid_date
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__payment_date
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__paid_date
 msgid "Payment Date"
 msgstr "Fecha de pago"
 
 #. module: website_event_track_uclv
-#: code:addons/website_event_track_uclv/models/payment.py:0
-#, python-format
-msgid "Payment date can not be later than now."
-msgstr "La fecha del pago no puede ser mayor que la fecha actual."
-
-#. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_checkpoint
 msgid "Payment:"
 msgstr "Pago:"
-
-#. module: website_event_track_uclv
-#: model:ir.actions.act_window,name:website_event_track_uclv.event_registration_payment_action
-#: model:ir.actions.act_window,name:website_event_track_uclv.event_registration_payment_action_filter
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__payment_ids
-#: model:ir.ui.menu,name:website_event_track_uclv.event_registration_payment_menu
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_registration_payment_list
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_registration_form_inherit
-msgid "Payments"
-msgstr "Pagos"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_res_partner_filter
@@ -3152,8 +3169,8 @@ msgstr "Teléfono"
 #: model_terms:ir.ui.view,arch_db:website_event_track.tracks_display_list
 msgid "Plan your experience by adding your favorites talks to your wishlist"
 msgstr ""
-"Planifique su experiencia añadiendo presentaciones favoritas a su lista lista"
-" de deseos"
+"Planifique su experiencia añadiendo presentaciones favoritas a su lista "
+"lista de deseos"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__access_url
@@ -3176,15 +3193,9 @@ msgid "Previous page"
 msgstr "Pagina anterior"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__final_price
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__attendee_final_price
 msgid "Price"
 msgstr "Precio"
-
-#. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration__pricelist_id
-msgid "Pricelist"
-msgstr "Tarifa"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_attendee_list_wizard__pricelist_ids
@@ -3193,6 +3204,7 @@ msgstr "Tarifas"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.attendee_list_wizard
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "Print"
 msgstr "Imprimir"
@@ -3239,13 +3251,6 @@ msgstr "Rojo"
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.report_attendee_list
 msgid "Ref"
 msgstr "Ref."
-
-#. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__reference
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_registration_form_inherit
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_registration_tree_inherit
-msgid "Reference"
-msgstr "Referencia"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_checkpoint
@@ -3324,15 +3329,21 @@ msgstr "Responsable"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__activity_user_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__activity_user_id
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__activity_user_id
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__activity_user_id
 msgid "Responsible User"
 msgstr "Usuario responsable"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_res_config_settings__event_review_workflow
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.res_config_settings_view_form
-msgid "Review Workflow"
-msgstr "Flujo de revisiones"
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_content
+msgid "Resumen [ES]"
+msgstr ""
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_review_form
+msgid "Review"
+msgstr "Revisión"
 
 #. module: website_event_track_uclv
 #: model:mail.template,subject:website_event_track_uclv.mail_template_data_track_review
@@ -3340,13 +3351,62 @@ msgid "Review of ${object.name}"
 msgstr "Revisión de ${object.name}"
 
 #. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_reviewer_form
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_reviewer_search
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_reviewer_tree
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_review_form
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_review_search
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_review_tree
+msgid "Reviewer"
+msgstr "Revisor"
+
+#. module: website_event_track_uclv
+#: model:ir.actions.act_window,name:website_event_track_uclv.action_event_reviewer
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_event__reviewer_ids
+msgid "Reviewers"
+msgstr "Revisores"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.actions.act_window,help:website_event_track_uclv.action_event_reviewer
+msgid "Reviewers can help you to review your tracks."
+msgstr "Los revisores pueden ayudarle a revisar sus trabajos"
+
+#. module: website_event_track_uclv
+#: model:ir.actions.act_window,name:website_event_track_uclv.action_event_track_review
+#: model:ir.actions.act_window,name:website_event_track_uclv.action_event_track_review_from_track
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__review_ids
+#: model:ir.ui.menu,name:website_event_track_uclv.menu_event_track_review
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_breadcrumbs_reviews
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_home_reviews
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_reviews
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_form
 msgid "Reviews"
 msgstr "Revisiones"
+
+#. module: website_event_track_uclv
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__reviews_accepted_count
+msgid "Reviews Accepted Count"
+msgstr ""
+
+#. module: website_event_track_uclv
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__reviews_count
+msgid "Reviews Count"
+msgstr ""
+
+#. module: website_event_track_uclv
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__reviews_edit_count
+msgid "Reviews Edit Count"
+msgstr ""
+
+#. module: website_event_track_uclv
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__reviews_rejected_count
+msgid "Reviews Rejected Count"
+msgstr ""
+
+#. module: website_event_track_uclv
+#: model_terms:ir.actions.act_window,help:website_event_track_uclv.action_event_track_review
+#: model_terms:ir.actions.act_window,help:website_event_track_uclv.action_event_track_review_from_track
+msgid "Reviews increase quality of tracks."
+msgstr "Las revisiones incrementan la calidad de los trabajos"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor_type__display_ribbon_style
@@ -3372,6 +3432,7 @@ msgstr "Optimizado para SEO"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_has_sms_error
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_has_sms_error
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_has_sms_error
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_has_sms_error
 msgid "SMS Delivery error"
@@ -3394,10 +3455,14 @@ msgid "Schedule some tracks to get started !"
 msgstr "Programe algunas presentaciones para comenzar!"
 
 #. module: website_event_track_uclv
-#. module: website_event_track
 #: model:event.track.stage,name:website_event_track.event_track_stage3
 msgid "Scheduled"
-msgstr "Programado"
+msgstr "Publicado"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_form
+msgid "Scientific Comittee"
+msgstr "Comité científico"
 
 #. module: website_event_track_uclv
 #: model:event.track.type,name:website_event_track_uclv.track_type_poster
@@ -3479,7 +3544,7 @@ msgstr ""
 msgid "Sequence"
 msgstr "Secuencia"
 
-#. modules: website_event_track, website_event_track_uclv
+#. modules: website_event_track_uclv, website_event_track
 #. openerp-web
 #: code:addons/website_event_track/static/src/js/event_track_reminder.js:0
 #: code:addons/website_event_track/static/src/js/event_track_reminder.js:0
@@ -3497,8 +3562,9 @@ msgstr ""
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_event_view_form
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_form
 msgid "Showcase Tracks"
-msgstr ""
+msgstr "Mostrar trabajos"
 
 #. module: website_event_track_uclv
 #: model:event.sponsor.type,name:website_event_track.event_sponsor_type2
@@ -3516,7 +3582,7 @@ msgstr "Ponente"
 msgid "Speaker Country"
 msgstr "País del ponente"
 
-#. modules: website_event_track, website_event_track_uclv
+#. modules: website_event_track_uclv, website_event_track
 #: code:addons/website_event_track/models/event_track.py:0
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__email
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__partner_email
@@ -3569,7 +3635,7 @@ msgstr "Imagen del ponente"
 msgid "Speaker:"
 msgstr "Ponente:"
 
-#. modules: website_event_track, website_event_track_uclv
+#. modules: website_event_track_uclv, website_event_track
 #: code:addons/website_event_track/models/event_track.py:0
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_form
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_res_partner_filter
@@ -3580,7 +3646,7 @@ msgstr "Ponentes"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_tag_form
 msgid "Split"
-msgstr ""
+msgstr "Dividir"
 
 #. module: website_event_track
 #: code:addons/website_event_track/models/event_sponsor.py:0
@@ -3651,8 +3717,7 @@ msgstr "Patrocinadores"
 #: model_terms:ir.actions.act_window,help:website_event_track.event_sponsor_action_from_event
 msgid ""
 "Sponsors might be advertised on you event pages footer.<br>\n"
-"    Exhibitors might have a dedicated page with chat room for people to"
-" connect with them."
+"    Exhibitors might have a dedicated page with chat room for people to connect with them."
 msgstr ""
 
 #. module: website_event_track_uclv
@@ -3694,13 +3759,16 @@ msgstr "Comenzando en"
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__attendee_state
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_reviews
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_attendee_analysis_filter
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_review_search
 #, python-format
 msgid "State"
 msgstr "Estado"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__activity_state
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__activity_state
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__activity_state
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_track_review__activity_state
 msgid ""
 "Status based on activities\n"
 "Overdue: Due date is already passed\n"
@@ -3806,7 +3874,7 @@ msgstr "Este trabajo ya estaba en Favoritos"
 msgid "Talk removed from your Favorites"
 msgstr "Trabajo eliminado de sus Favoritos"
 
-#. modules: website_event_track, website_event_track_uclv
+#. modules: website_event_track_uclv, website_event_track
 #: code:addons/website_event_track/models/event_event.py:0
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_aside
 #, python-format
@@ -3836,12 +3904,21 @@ msgstr "Gracias por su propuesta."
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event.py:0
+#, python-format
+msgid ""
+"The deadline to accept abstracts can not be older than event begin date"
+msgstr ""
+"La fecha límite para aceptar resúmenes no puede ser posterior a la fecha de "
+"inicio del evento"
+
+#. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event.py:0
 #, python-format
-msgid "The deadline to accept abstracts can not be older than event begin date"
+msgid ""
+"The deadline to accept abstracts can not be older than event begin date."
 msgstr ""
-"La fecha límite para aceptar resumenes no puede ser posterior a la fecha de"
-" inicio del evento"
+"La fecha límite para aceptar resúmenes no puede ser posterior a la fecha de "
+"inicio del evento"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event.py:0
@@ -3852,7 +3929,7 @@ msgid ""
 "accept abstracts"
 msgstr ""
 "La fecha límite para subir los trabajos completos no puede ser anterior a la"
-" fecha límite para aceptar resumenes"
+" fecha límite para aceptar resúmenes"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event.py:0
@@ -3861,8 +3938,8 @@ msgstr ""
 msgid ""
 "The deadline tu submit final papers can not be older than event begin date"
 msgstr ""
-"La fecha límite para subir los trabajos completos no puede ser posterior a la"
-" fecha de inicio del evento"
+"La fecha límite para subir los trabajos completos no puede ser posterior a "
+"la fecha de inicio del evento"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__website_url
@@ -3919,15 +3996,25 @@ msgstr ""
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_attendee_list_wizard__ticket_ids
 msgid "Tickets"
-msgstr ""
+msgstr "Entradas"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid ""
 "Timely release of presentation material (slides),\n"
 "                                            for publishing on our website."
-msgstr "Subida a tiempo de los materiales (diapositivas), \n para publicar en el sitio web."
+msgstr ""
+"Subida a tiempo de los materiales (diapositivas), \n"
+" para publicar en el sitio web."
 
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
+msgid ""
+"Timely release of presentation material (slides),\n"
+"                                    for publishing on our website."
+msgstr ""
+"Publicación temporalizada de material (diapositivas), para publicar en "
+"nuestro sitio web."
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/controllers/portal.py:0
@@ -3946,6 +4033,18 @@ msgstr "Título <small class=\"text-muted\" title=\"Inglés\"> [EN]</small>:"
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "Title <small class=\"text-muted\" title=\"Spanish\"> [ES]</small>:"
 msgstr "Título <small class=\"text-muted\" title=\"Español\"> [ES]</small>:"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
+msgid "Title [EN]"
+msgstr "Título [EN]"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
+msgid "Title [ES]"
+msgstr "T'itulo [ES]"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/controllers/website_event_track.py:0
@@ -3979,6 +4078,7 @@ msgstr "Actividades de Hoy"
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_visitor_view_search
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_form
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_analysis_filter
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_review_search
 msgid "Track"
 msgstr "Trabajo"
 
@@ -4003,7 +4103,7 @@ msgstr "Análisis de trabajos"
 #. module: website_event_track_uclv
 #: model:mail.message.subtype,name:website_event_track.mt_track_blocked
 msgid "Track Blocked"
-msgstr "Trabajo bloqueado"
+msgstr "Seguimiento bloqueado"
 
 #. module: website_event_track_uclv
 #: model:ir.actions.report,name:website_event_track_uclv.report_event_track_certificate
@@ -4053,12 +4153,12 @@ msgstr "Nombre del Trabajo:"
 #. module: website_event_track_uclv
 #: model:mail.message.subtype,name:website_event_track.mt_track_ready
 msgid "Track Ready"
-msgstr "Trabajo listo"
+msgstr "Seguimiento listo"
 
 #. module: website_event_track_uclv
 #: model:mail.message.subtype,description:website_event_track.mt_track_ready
 msgid "Track Ready for Next Stage"
-msgstr "Trabajo listo para la siguiente etapa"
+msgstr "Seguimiento listo para la siguiente etapa"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_track_analysis__track_stage_id
@@ -4079,34 +4179,34 @@ msgstr "Etapas de trabajos"
 #: model:ir.actions.act_window,name:website_event_track.event_track_tag_category_action
 #: model:ir.ui.menu,name:website_event_track.event_track_tag_category_menu
 msgid "Track Tag Categories"
-msgstr ""
+msgstr "Categorías de palabras clave"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_tag_category_view_form
 msgid "Track Tag Category"
-msgstr ""
+msgstr "Categoría de palabra clave"
 
 #. module: website_event_track_uclv
 #: model:ir.actions.act_window,name:website_event_track.action_event_track_tag
 #: model:ir.model.fields,field_description:website_event_track.field_event_event__tracks_tag_ids
 #: model:ir.ui.menu,name:website_event_track.menu_event_track_tag
 msgid "Track Tags"
-msgstr "Etiquetas de la sesión"
+msgstr "Palabras clave"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_tag_category_view_list
 msgid "Track Tags Category"
-msgstr ""
+msgstr "Categoría de palabra clave"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__track_type_id
 msgid "Track Type"
-msgstr ""
+msgstr "Tipo de trabajo"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_visitor_view_form
 msgid "Track Visitor"
-msgstr ""
+msgstr "Visitante al trabajo"
 
 #. module: website_event_track_uclv
 #: model:ir.actions.act_window,name:website_event_track.event_track_visitor_action
@@ -4116,7 +4216,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_visitor_view_list
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_visitor_view_search
 msgid "Track Visitors"
-msgstr ""
+msgstr "Visitantes a trabajos"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.actions.act_window,help:website_event_track.event_track_visitor_action
@@ -4133,44 +4233,44 @@ msgstr "Análisis de trabajos"
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_track__is_track_soon
 msgid "Track begins soon"
-msgstr ""
+msgstr "La sesión comienza pronto"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_track__is_track_today
 msgid "Track begins today"
-msgstr ""
+msgstr "La sesión comienza hoy"
 
 #. module: website_event_track_uclv
 #: model:mail.message.subtype,description:website_event_track.mt_track_blocked
 msgid "Track blocked"
-msgstr "Seguimiento bloqueado"
+msgstr "Trabajo bloqueado"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event_track.py:0
 #: code:addons/website_event_track_uclv/models/event_track.py:0
 #, python-format
 msgid "Track date must be between %s and %s"
-msgstr ""
+msgstr "La fecha debe estar entre %s y %s"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__duration
 msgid "Track duration in hours."
-msgstr "Duración del seguimiento en horas."
+msgstr "Duración de la presentación en horas."
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_track__is_track_live
 msgid "Track has started and is ongoing"
-msgstr ""
+msgstr "La presentación ha comenzado"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_track__is_track_done
 msgid "Track is finished"
-msgstr ""
+msgstr "Finalizado"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_track__is_track_upcoming
 msgid "Track is not yet started"
-msgstr ""
+msgstr "La presentación no ha comenzado aun"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_track_tag__track_ids
@@ -4178,18 +4278,19 @@ msgstr ""
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_event__track_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_res_partner__event_track_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_res_users__event_track_ids
+#: model:ir.ui.menu,name:website_event_track.menu_event_track
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_event_view_form
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_graph
 #: model_terms:ir.ui.view,arch_db:website_event_track.website_visitor_view_form
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.res_partner_view_form
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_form
 msgid "Tracks"
-msgstr "Sesiones"
+msgstr "Trabajos"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_type__website_track_proposal
 msgid "Tracks Proposals on Website"
-msgstr "Propuestas de seguimientos en el sitio web"
+msgstr "Propuestas de trabajos en el sitio web"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.actions.act_window,help:website_event_track.action_event_track
@@ -4207,26 +4308,17 @@ msgid "Tracks on Website"
 msgstr "Seguimientos en el sitio web"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_registration_payment__payment_type
-msgid "Type"
-msgstr "Tipo"
-
-#. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__activity_exception_decoration
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__activity_exception_decoration
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__activity_exception_decoration
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_track_review__activity_exception_decoration
 msgid "Type of the exception activity on record."
 msgstr "Tipo de actividad de excepción registrada."
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields.selection,name:website_event_track_uclv.selection__event_registration__gender__u
-msgid "Undefined"
-msgstr "Indefinido"
-
-#. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_checkpoint
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_registration_search_inherit
 msgid "Unpaid"
-msgstr "Impagada"
+msgstr "Sin pagar"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.agenda_main_track
@@ -4236,6 +4328,7 @@ msgstr "No publicado"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_unread
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_unread
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_unread
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_unread
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_search
@@ -4244,20 +4337,21 @@ msgstr "Mensajes sin leer"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__message_unread_counter
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__message_unread_counter
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__message_unread_counter
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr "Nº de mensajes sin leer"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 msgid "Upload"
 msgstr "Cargar"
 
 #. module: website_event_track_uclv
-#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 msgid "Upload new file"
-msgstr ""
+msgstr "Subir un nuevo archivo"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_report_event_attendee_analysis__contact_user_id
@@ -4275,7 +4369,7 @@ msgstr "Usuarios"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_kanban
 msgid "View Track"
-msgstr "Ver sesión"
+msgstr "Ver trabajo"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__website_published
@@ -4291,30 +4385,36 @@ msgstr "Visitante"
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_track__wishlist_visitor_ids
 msgid "Visitor Wishlist"
-msgstr ""
+msgstr "Lista de deseos"
 
 #. module: website_event_track_uclv
 #: model:ir.actions.act_window,name:website_event_track.website_visitor_action_from_track
 msgid "Visitors Wishlist"
-msgstr ""
+msgstr "Lista de deseos"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_review_form
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_review_tree
+msgid "Votation weight"
+msgstr "Peso en la votación"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.actions.act_window,help:website_event_track.website_visitor_action_from_track
 msgid "Wait for visitors to wishlist your tracks"
-msgstr ""
+msgstr "Espere a que los vivitantes marquen la presentación como deseada"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.agenda_main
 #: model_terms:ir.ui.view,arch_db:website_event_track.tracks_main
 msgid "We did not find any track matching your"
-msgstr ""
+msgstr "No hemos encontrado ningún trabajo que corresponda a sus"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "We require speakers to accept an agreement in which they commit to:"
 msgstr ""
-"Requerimos a los ponentes aceptar un acuerdo en el que se comprometen a:"
+"Requerimos que los ponentes acepten un acuerdo en el que se comprometen a:"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_proposal
@@ -4372,6 +4472,7 @@ msgstr "Menú del sitio web"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,field_description:website_event_track.field_event_sponsor__website_message_ids
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__website_message_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track__website_message_ids
 #: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__website_message_ids
 msgid "Website Messages"
@@ -4389,6 +4490,7 @@ msgstr "Visitante del sitio web"
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track.field_event_sponsor__website_message_ids
+#: model:ir.model.fields,help:website_event_track_uclv.field_event_reviewer__website_message_ids
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__website_message_ids
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track_review__website_message_ids
 msgid "Website communication history"
@@ -4415,81 +4517,80 @@ msgid "Website opengraph image"
 msgstr "Imagen del Open Graph del sitio"
 
 #. module: website_event_track_uclv
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_reviewer__weight
+#: model:ir.model.fields,field_description:website_event_track_uclv.field_event_track_review__weight
+msgid "Weight"
+msgstr "Peso"
+
+#. module: website_event_track_uclv
 #: model:ir.model.fields,help:website_event_track_uclv.field_event_track__is_done
 msgid "Whether event is finished"
 msgstr "Si el evento ha terminado"
 
 #. module: website_event_track_uclv
-#: model:ir.model.fields.selection,name:website_event_track_uclv.selection__event_registration_payment__payment_type__transfer
-msgid "Wire Transfer"
-msgstr "Transferencia bancaria"
-
-#. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.view_event_track_form
 msgid "Wishlisted By"
-msgstr ""
+msgstr "Deseado por"
 
 #. module: website_event_track_uclv
 #: model:ir.actions.act_window,name:website_event_track.event_track_action_from_visitor
 #: model:ir.model.fields,field_description:website_event_track.field_website_visitor__event_track_wishlisted_ids
 #: model_terms:ir.ui.view,arch_db:website_event_track.website_visitor_view_kanban
 msgid "Wishlisted Tracks"
-msgstr ""
+msgstr "Trabajos deseados"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_attendee_analysis_filter
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_analysis_filter
 msgid "Without Email"
-msgstr ""
+msgstr "Sin correo"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_attendee_analysis_filter
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_analysis_filter
 msgid "Without User"
-msgstr ""
-
-#. module: website_event_track_uclv
-#: code:addons/website_event_track_uclv/models/event_track.py:0
-#, python-format
-msgid "You are not authorized to change this track"
-msgstr "No está autorizado a cambiar este trabajo"
+msgstr "Sin usuario"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/res_partner.py:0
 #, python-format
 msgid "You can not delete this partner because it was created by other user"
-msgstr ""
+msgstr "No puede eliminar este contacto porque fue creado por otro usuario"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
 msgid "You can track your papers from your Account Page."
-msgstr "Puede rastrear su trabajo desde su Portal"
+msgstr "Puede rastrear sus trabajos desde su Portal"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event_track.py:0
 #, python-format
 msgid ""
 "You must assign an speaker to this track in order to set it in this stage"
-msgstr "Debe asignar un ponente a este trabajo para ponerlo en esta etapa"
+msgstr ""
+"Debe asignarle un ponente a este trabajo para ponerlo en esta etapa"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event_track.py:0
 #, python-format
 msgid "You must assign date to this track in order to set it in this stage"
-msgstr "Debe asignar una fecha a este trabajo para ponerlo en esta etapa"
+msgstr "Debe asignarle una fecha a este trabajo para ponerlo en esta etapa"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event_track.py:0
 #, python-format
-msgid "You must assign location to this track in order to set it in this stage"
-msgstr "Debe asignar una ubicación a este trabajo para ponerlo en esta etapa"
+msgid ""
+"You must assign location to this track in order to set it in this stage"
+msgstr ""
+"Debe asignarle un lugar a este trabajo para ponerlo en esta etapa"
 
 #. module: website_event_track_uclv
 #: code:addons/website_event_track_uclv/models/event_track.py:0
 #, python-format
 msgid ""
 "You must assign reviewers to this track in order to set it in this stage"
-msgstr "Debe asignar revisores a este trabajo para ponerlo en esta etapa"
+msgstr ""
+"Debe asignarle revisores a este trabajo para ponerlo en esta etapa"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.pwa_offline
@@ -4504,7 +4605,7 @@ msgstr "Su recomendación"
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
 msgid "Your recommendation:"
-msgstr "Su recomendaciónÑ"
+msgstr "Su recomendación:"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.tracks_cards_track
@@ -4572,11 +4673,6 @@ msgstr ""
 #. module: website_event_track_uclv
 #: model:ir.model.fields.selection,name:website_event_track_uclv.selection__event_registration_create_wizard__state__error
 msgid "error"
-msgstr ""
-
-#. module: website_event_track_uclv
-#: model:ir.model,name:website_event_track_uclv.model_event_registration_payment
-msgid "event.registration.payment"
 msgstr ""
 
 #. module: website_event_track_uclv
@@ -4650,7 +4746,7 @@ msgstr ""
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.registration_complete
 msgid "register to your favorites talks now."
-msgstr ""
+msgstr "registre sus presentaciones favoritas ahora."
 
 #. module: website_event_track_uclv
 #: model:ir.model,name:website_event_track_uclv.model_report_event_attendee_analysis
@@ -4671,7 +4767,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_event_track.agenda_main
 #: model_terms:ir.ui.view,arch_db:website_event_track.tracks_main
 msgid "search."
-msgstr ""
+msgstr "búsqueda."
 
 #. module: website_event_track_uclv
 #: model:ir.model.fields.selection,name:website_event_track_uclv.selection__event_registration_create_wizard__state__select
@@ -4687,15 +4783,14 @@ msgstr ""
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_content
 msgid "starts in"
-msgstr ""
+msgstr "comienza en"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.event_track_content
 msgid "starts on"
-msgstr ""
+msgstr "comienza el"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track.agenda_main
 msgid "tracks"
 msgstr ""
-

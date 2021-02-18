@@ -1,14 +1,15 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* auth_signup_uclv
+# 	* auth_totp
 # 	* auth_signup
+# 	* auth_signup_uclv
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0-20201113\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-29 06:43+0000\n"
-"PO-Revision-Date: 2021-01-29 06:43+0000\n"
+"POT-Creation-Date: 2021-02-18 02:37+0000\n"
+"PO-Revision-Date: 2021-02-18 02:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:mail.template,subject:auth_signup.set_password_email
 msgid ""
 "${object.create_uid.name} from ${object.company_id.name} invites you to "
@@ -31,7 +32,67 @@ msgstr ""
 msgid "%s connected"
 msgstr "%s conectado"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_field
+msgid "(Disable two-factor authentication)"
+msgstr "(Deshabilitar autenticación de dos factores)"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.auth_totp_form
+msgid ""
+"<i class=\"fa fa-2x fa-mobile pull-left\"/>\n"
+"                        Open the two-factor authentication app on your\n"
+"                        device to obtain a code and verify your identity"
+msgstr ""
+"<i class=\"fa fa-2x fa-mobile pull-left\"/>\n"
+"                        Abra su aplicación de autenticación de dos factores en su \n"
+"                        dispositivo para obtener un código y verificar su identidad"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_field
+msgid ""
+"<i class=\"fa fa-check-circle\"/>\n"
+"                                Two-factor authentication enabled"
+msgstr ""
+"<i class=\"fa fa-check-circle\"/>\n"
+"                                Autenticación de dos factores habilitada"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_field
+msgid ""
+"<i class=\"fa fa-warning\"/>\n"
+"                                Two-factor authentication not enabled"
+msgstr ""
+"<i class=\"fa fa-warning\"/>\n"
+"                                Autenticación de dos factores no habilitada"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_form
+msgid ""
+"<span class=\"alert alert-info\" role=\"status\">\n"
+"                            <i class=\"fa fa-warning\"/>\n"
+"                            Two-factor authentication not enabled\n"
+"                        </span>"
+msgstr ""
+"<span class=\"alert alert-info\" role=\"status\">\n"
+"                            <i class=\"fa fa-warning\"/>\n"
+"                            Autenticación de dos factores no habilitada\n"
+"                        </span>"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_form
+msgid ""
+"<span class=\"text-success\">\n"
+"                            <i class=\"fa fa-check-circle\"/>\n"
+"                            Two-factor authentication enabled\n"
+"                        </span>"
+msgstr ""
+"<span class=\"text-success\">\n"
+"                            <i class=\"fa fa-check-circle\"/>\n"
+"                             Autenticación de dos factores habilitada\n"
+"                        </span>"
+
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_users_view_form
 msgid ""
 "<strong>A password reset has been requested for this user. An email "
@@ -41,7 +102,7 @@ msgstr ""
 "usuario. Se ha enviado un correo electrónico conteniendo el siguiente "
 "enlace:</strong>"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_users_view_form
 msgid ""
 "<strong>An invitation email containing the following subscription link has "
@@ -50,7 +111,7 @@ msgstr ""
 "<strong>Se ha enviado un correo electrónico de invitación conteniendo el "
 "siguiente enlace de suscripción:</strong>"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:mail.template,body_html:auth_signup.mail_template_data_unregistered_users
 msgid ""
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
@@ -108,7 +169,7 @@ msgstr ""
 "                </td>\n"
 "                <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
 "                    <div>\n"
-"                        Estimado/a ${object.name or ''},<br/> <br/>\n"
+"                        Estimado ${object.name or ''},<br/> <br/>\n"
 "                        Agregó los siguientes usuarios a su base de datos pero aún no se han registrado:\n"
 "                        <ul>\n"
 "                            % for invited_user in invited_users:\n"
@@ -133,7 +194,7 @@ msgstr ""
 "</table>\n"
 "            "
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:mail.template,body_html:auth_signup.set_password_email
 msgid ""
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
@@ -306,7 +367,7 @@ msgstr ""
 "</td></tr>\n"
 "</table>"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:mail.template,body_html:auth_signup.reset_password_email
 msgid ""
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
@@ -394,7 +455,7 @@ msgid ""
 "            "
 msgstr ""
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:mail.template,body_html:auth_signup.mail_template_user_signup_account_created
 msgid ""
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
@@ -481,12 +542,23 @@ msgid ""
 "</table>"
 msgstr ""
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_wizard
+msgid ""
+"After scanning the barcode, the app will display a 6-digit code that you\n"
+"                                should enter below. Don't worry if the code changes in the app,\n"
+"                                it stays valid a bit longer."
+msgstr ""
+"Despúes de escanear el código QR, la aplicación mostrará un código de 6 dígitos que\n"
+"                                debes entrar debajo. No se preocupe si el código cambia,\n"
+"                                permanece válido un poco más de tiempo."
+
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.signup
 msgid "Already have an account?"
 msgstr "¿Ya tiene una cuenta?"
 
-#. modules: auth_signup_uclv, auth_signup
+#. modules: auth_signup, auth_signup_uclv
 #: code:addons/auth_signup/controllers/main.py:0
 #: code:addons/auth_signup_uclv/controllers/main.py:0
 #, python-format
@@ -495,7 +567,7 @@ msgstr ""
 "Se ha enviado un correo electrónico con las credenciales para restablecer su"
 " contraseña"
 
-#. modules: auth_signup_uclv, auth_signup
+#. modules: auth_signup, auth_signup_uclv
 #: code:addons/auth_signup/controllers/main.py:0
 #: code:addons/auth_signup_uclv/controllers/main.py:0
 #, python-format
@@ -503,17 +575,28 @@ msgid "Another user is already registered using this email address."
 msgstr ""
 "Otro usuario ya se ha registrado usando esta dirección de correo electrónico"
 
-#. modules: auth_signup_uclv, auth_signup
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.auth_totp_form
+msgid "Authentication Code (6 digits)"
+msgstr "Código de autenticación (6 dígitos)"
+
+#. modules: auth_signup, auth_signup_uclv
 #: code:addons/auth_signup/controllers/main.py:0
 #: code:addons/auth_signup_uclv/controllers/main.py:0
 #, python-format
 msgid "Authentication Failed."
 msgstr "Autenticación fallida."
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.reset_password
 msgid "Back to Login"
 msgstr "Volver al Inicio de sesión"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.auth_totp_form
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_wizard
+msgid "Cancel"
+msgstr "Cancelar"
 
 #. module: auth_signup
 #: code:addons/auth_signup/models/res_users.py:0
@@ -523,74 +606,96 @@ msgstr ""
 "No se puede enviar el correo electrónico: el usuario %s no tiene dirección "
 "de correo electrónico."
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_users_view_form
 msgid "Close"
 msgstr "Cerrar"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model,name:auth_signup.model_res_config_settings
 msgid "Config Settings"
 msgstr "Opciones de configuración"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.reset_password
 msgid "Confirm"
 msgstr "Confirmar"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.fields
 msgid "Confirm Password"
 msgstr "Confirmar contraseña"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields.selection,name:auth_signup.selection__res_users__state__active
 msgid "Confirmed"
 msgstr "Confirmado"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model,name:auth_signup_uclv.model_res_partner
 msgid "Contact"
 msgstr "Contacto"
 
-#. modules: auth_signup_uclv, auth_signup
+#. modules: auth_signup, auth_signup_uclv
 #: code:addons/auth_signup/controllers/main.py:0
 #: code:addons/auth_signup_uclv/controllers/main.py:0
 #, python-format
 msgid "Could not create a new account."
 msgstr "No se ha podido crear una cuenta nueva."
 
-#. modules: auth_signup_uclv, auth_signup
+#. modules: auth_signup, auth_signup_uclv
 #: code:addons/auth_signup/controllers/main.py:0
 #: code:addons/auth_signup_uclv/controllers/main.py:0
 #, python-format
 msgid "Could not reset your password"
 msgstr "No se puede restablecer su contraseña"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_config_settings__auth_signup_uninvited
 msgid "Customer Account"
 msgstr "Cuenta de cliente"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_config_settings_view_form
 msgid "Default Access Rights"
-msgstr "Derecho de aceso por defecto"
+msgstr "Derechos de acceso por defecto"
 
-#. module: auth_signup_uclv
-#: model:ir.model.fields,field_description:auth_signup.field_ir_http__display_name
+#. module: auth_totp
+#: model:ir.actions.server,name:auth_totp.action_disable_totp
+msgid "Disable TOTP on users"
+msgstr "Deshabilitar TOTP en usuarios"
+
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_config_settings__display_name
-#: model:ir.model.fields,field_description:auth_signup.field_res_users__display_name
 #: model:ir.model.fields,field_description:auth_signup_uclv.field_res_partner__display_name
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard__display_name
+#: model:ir.model.fields,field_description:auth_totp.field_ir_http__display_name
+#: model:ir.model.fields,field_description:auth_totp.field_res_users__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.login
 msgid "Don't have an account?"
 msgstr "¿No tiene una cuenta?"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: code:addons/auth_totp/models/res_users.py:0
+#, python-format
+msgid "Enable Two-Factor Authentication"
+msgstr "Habilitar Autenticación de dos factores"
+
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_config_settings__auth_signup_reset_password
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_config_settings_view_form
 msgid "Enable password reset from Login page"
@@ -598,48 +703,60 @@ msgstr ""
 "Habilitar restablecimiento de la contraseña desde la página de inicio de "
 "sesión"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_field
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_wizard
+msgid "Enable two-factor authentication"
+msgstr "Habilitar autenticación de dos factores"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_wizard
+msgid "Enter the 6-digit code from your app"
+msgstr "entre el código de 6 dígitos desde su aplicación"
+
+#. module: auth_totp
 #: model:ir.model.fields.selection,name:auth_signup_uclv.selection__res_partner__gender__f
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "Female"
 msgstr "Femenino"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields.selection,name:auth_signup.selection__res_config_settings__auth_signup_uninvited__b2c
 msgid "Free sign up"
-msgstr "Registro libre"
+msgstr "Registro gratuito"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup_uclv.field_res_partner__full_name
 #: model:ir.model.fields,field_description:auth_signup_uclv.field_res_users__full_name
 msgid "Full name"
 msgstr "Nombre completo"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup_uclv.field_res_partner__gender
 #: model:ir.model.fields,field_description:auth_signup_uclv.field_res_users__gender
 msgid "Gender"
 msgstr "Género"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.res_partner_form_view
 msgid "Gender..."
 msgstr "Género..."
 
-#. module: auth_signup_uclv
-#: model:ir.model,name:auth_signup.model_ir_http
+#. module: auth_totp
+#: model:ir.model,name:auth_totp.model_ir_http
 msgid "HTTP Routing"
 msgstr "Ruta HTTP "
 
-#. module: auth_signup_uclv
-#: model:ir.model.fields,field_description:auth_signup.field_ir_http__id
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_config_settings__id
-#: model:ir.model.fields,field_description:auth_signup.field_res_users__id
 #: model:ir.model.fields,field_description:auth_signup_uclv.field_res_partner__id
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard__id
+#: model:ir.model.fields,field_description:auth_totp.field_ir_http__id
+#: model:ir.model.fields,field_description:auth_totp.field_res_users__id
 msgid "ID"
 msgstr ""
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup_uclv.field_res_partner__institution
 #: model:ir.model.fields,field_description:auth_signup_uclv.field_res_users__institution
 msgid "Institution"
@@ -649,7 +766,13 @@ msgstr "Institución"
 #: code:addons/auth_signup_uclv/controllers/main.py:0
 #, python-format
 msgid "Invalid Email! Please enter a valid email address."
-msgstr "¡Email no válido! Por favor entre una dirección de email válida."
+msgstr "Email no válido! Por favor entre una dirección de email válida."
+
+#. module: auth_totp
+#: code:addons/auth_totp/controllers/home.py:0
+#, python-format
+msgid "Invalid authentication code format."
+msgstr "Formato del código de autenticación no válido."
 
 #. module: auth_signup
 #: code:addons/auth_signup/controllers/main.py:0
@@ -657,75 +780,96 @@ msgstr "¡Email no válido! Por favor entre una dirección de email válida."
 msgid "Invalid signup token"
 msgstr "Palabra de ingreso no válida"
 
-#. module: auth_signup_uclv
-#: model:ir.model.fields,field_description:auth_signup.field_ir_http____last_update
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_config_settings____last_update
-#: model:ir.model.fields,field_description:auth_signup.field_res_users____last_update
 #: model:ir.model.fields,field_description:auth_signup_uclv.field_res_partner____last_update
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard____last_update
+#: model:ir.model.fields,field_description:auth_totp.field_ir_http____last_update
+#: model:ir.model.fields,field_description:auth_totp.field_res_users____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_config_settings_view_form
 msgid "Let your customers log in to see their documents"
 msgstr "Deje que sus clientes inicien sesión para ver sus documentos"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields.selection,name:auth_signup_uclv.selection__res_partner__gender__m
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "Male"
 msgstr "Masculino"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields.selection,name:auth_signup.selection__res_users__state__new
 msgid "Never Connected"
 msgstr "Nunca conectado"
 
-#. modules: auth_signup_uclv, auth_signup
+#. modules: auth_signup, auth_signup_uclv
 #: code:addons/auth_signup/controllers/main.py:0
 #: code:addons/auth_signup_uclv/controllers/main.py:0
 #, python-format
 msgid "No login provided."
 msgstr "No se ha facilitado ningún login"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields.selection,name:auth_signup.selection__res_config_settings__auth_signup_uninvited__b2b
 msgid "On invitation"
 msgstr "Por invitación"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_wizard
+msgid "Or enter the secret code manually:"
+msgstr "O entre el código secreto manualmente"
+
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.fields
 msgid "Password"
 msgstr "Contraseña"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_config_settings_view_form
 msgid "Password Reset"
-msgstr "Reiniciar contraseña"
+msgstr "Restablecer contraseña"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:mail.template,subject:auth_signup.reset_password_email
 msgid "Password reset"
 msgstr "Restablecer contraseña"
 
-#. modules: auth_signup_uclv, auth_signup
+#. modules: auth_signup, auth_signup_uclv
 #: code:addons/auth_signup/controllers/main.py:0
 #: code:addons/auth_signup_uclv/controllers/main.py:0
 #, python-format
 msgid "Passwords do not match; please retype them."
-msgstr "La contraseña no coincide, por favor, vuelva a escribirla."
+msgstr "Las contraseñas no coinciden, por favor vuelva a escribirlas."
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "Prefer not say"
 msgstr "Prefiero no decirlo"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard__qrcode
+msgid "Qrcode"
+msgstr ""
+
+#. module: auth_totp
 #: model:mail.template,subject:auth_signup.mail_template_data_unregistered_users
 msgid "Reminder for unregistered users"
 msgstr "Recordatorio para usuarios no registrados"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.login
 msgid "Reset Password"
 msgstr "Restablecer contraseña"
@@ -737,47 +881,66 @@ msgid "Reset password: invalid username or email"
 msgstr ""
 "Restablecimiento de contraseña: usuario o correo electrónico no válido"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_wizard
+msgid ""
+"Scan the image below with the authenticator app on your phone.<br/>\n"
+"                                If you cannot scan the barcode, here are some alternative options:"
+msgstr ""
+"Escanee la imagen de abajo con la aplicación de autenticación en su teléfono.<br/>\n"
+"                                Si no puede escanear el código QR, aquí tiene algunas opciones:"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_wizard
+msgid "Scan this barcode with your app"
+msgstr "Escanee este código con su aplicación"
+
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard__secret
+msgid "Secret"
+msgstr "Secreto"
+
+#. module: auth_totp
 #: model:ir.actions.server,name:auth_signup.action_send_password_reset_instructions
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_users_view_form
 msgid "Send Password Reset Instructions"
 msgstr "Enviar instrucciones de restablecimiento de contraseña"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_users_view_form
 msgid "Send an Invitation Email"
 msgstr "Enviar un correo de invitación"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.signup
 msgid "Sign up"
 msgstr "Registrarse"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_partner__signup_expiration
 #: model:ir.model.fields,field_description:auth_signup.field_res_users__signup_expiration
 msgid "Signup Expiration"
 msgstr "Expiración del ingreso"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_partner__signup_token
 #: model:ir.model.fields,field_description:auth_signup.field_res_users__signup_token
 msgid "Signup Token"
 msgstr "Palabra de ingreso"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_partner__signup_type
 #: model:ir.model.fields,field_description:auth_signup.field_res_users__signup_type
 msgid "Signup Token Type"
 msgstr "Tipo de la palabra de ingreso"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_partner__signup_valid
 #: model:ir.model.fields,field_description:auth_signup.field_res_users__signup_valid
 msgid "Signup Token is Valid"
 msgstr "La palabra de ingreso es válida"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_partner__signup_url
 #: model:ir.model.fields,field_description:auth_signup.field_res_users__signup_url
 msgid "Signup URL"
@@ -793,13 +956,13 @@ msgstr "El acceso no está permitido a usuarios que no hayan sido invitados"
 #: code:addons/auth_signup/models/res_partner.py:0
 #, python-format
 msgid "Signup token '%s' is no longer valid"
-msgstr "El token de registro '%s' ya no es válido"
+msgstr "La ficha de registro '%s' ya no es válida"
 
 #. module: auth_signup
 #: code:addons/auth_signup/models/res_partner.py:0
 #, python-format
 msgid "Signup token '%s' is not valid"
-msgstr "El token de registro '%s' no es válido"
+msgstr "La ficha de registro '%s' no es válida"
 
 #. module: auth_signup
 #: code:addons/auth_signup/models/res_users.py:0
@@ -811,31 +974,37 @@ msgstr "Registro: plantilla de usuario inválida"
 #: code:addons/auth_signup/models/res_users.py:0
 #, python-format
 msgid "Signup: no login given for new user"
-msgstr "Registro: no se ha proporcionado el nombre de usuario para el nuevo usuario"
+msgstr "Registro: no se ha dado inicio de sesión para el nuevo usuario"
 
 #. module: auth_signup
 #: code:addons/auth_signup/models/res_users.py:0
 #, python-format
 msgid "Signup: no name or partner given for new user"
-msgstr "Registro: no se ha proporcionado el nombre ni socio para el nuevo usuario"
+msgstr "Registro: no se proporciona nombre ni socio para el nuevo usuario"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_users__state
 msgid "Status"
 msgstr "Estado"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.model.fields,field_description:auth_signup.field_res_config_settings__auth_signup_template_user_id
 msgid "Template user for new users created through signup"
 msgstr ""
-"Plantilla de usuario para los nuevos usuarios creados a través del registro"
+"Plantilla de usuario para los nuevos usuarios creados a través del ingreso"
 
-#. modules: auth_signup_uclv, auth_signup
+#. modules: auth_signup, auth_signup_uclv
 #: code:addons/auth_signup/controllers/main.py:0
 #: code:addons/auth_signup_uclv/controllers/main.py:0
 #, python-format
 msgid "The form was not properly filled in."
 msgstr "El formulario no ha sido rellenado correctamente."
+
+#. module: auth_totp
+#: code:addons/auth_totp/models/res_users.py:0
+#, python-format
+msgid "The verification code should only contain numbers"
+msgstr "El código de verificación sólo puede contener números"
 
 #. module: auth_signup
 #: code:addons/auth_signup/models/res_users.py:0
@@ -843,7 +1012,7 @@ msgstr "El formulario no ha sido rellenado correctamente."
 msgid "This is his first connection. Wish him welcome"
 msgstr "Esta es su primera conexión. Deséale la bienvenida"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_config_settings_view_form
 msgid ""
 "To send invitations in B2B mode, open a contact or select several ones in "
@@ -854,83 +1023,176 @@ msgstr ""
 "en la vista modo lista y haz clic en la opción 'Gestión de acceso al Portal'"
 "  del menú desplegable *Acción*."
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_totp.field_res_users__totp_secret
+msgid "Totp Secret"
+msgstr "Secreto TOTP"
+
+#. module: auth_totp
+#: model:ir.model,name:auth_totp.model_auth_totp_wizard
+msgid "Two-Factor Setup Wizard"
+msgstr "Asistente para Autenticación de dos factores"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.auth_totp_form
+msgid "Two-factor Authentication"
+msgstr "Autenticación de dos factores"
+
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_totp.field_res_users__totp_enabled
+msgid "Two-factor authentication"
+msgstr "Autenticación de dos factores"
+
+#. module: auth_totp
+#: code:addons/auth_totp/models/res_users.py:0
+#, python-format
+msgid "Two-factor authentication already enabled"
+msgstr "Autenticación de dos factores ya establecida"
+
+#. module: auth_totp
+#: code:addons/auth_totp/models/res_users.py:0
+#, python-format
+msgid "Two-factor authentication can only be enabled for yourself"
+msgstr "La autenticación de dos factores sólo puede ser habilitada por ustd mismo"
+
+#. module: auth_totp
+#: code:addons/auth_totp/models/res_users.py:0
+#, python-format
+msgid "Two-factor authentication disabled for user(s) %s"
+msgstr "Autenticación de dos factores deshabilitada para los usuarios %s"
+
+#. module: auth_totp
+#: code:addons/auth_totp/models/res_users.py:0
+#, python-format
+msgid "Two-factor authentication is now enabled."
+msgstr "La autenticación de dos factores está ahora habilitada."
+
+#. module: auth_totp
 #: model:ir.model.fields.selection,name:auth_signup_uclv.selection__res_partner__gender__u
 msgid "Undefined"
 msgstr "Indefinido"
 
-#. module: auth_signup_uclv
-#: model:ir.model,name:auth_signup.model_res_users
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard__url
+msgid "Url"
+msgstr "URL"
+
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard__user_id
+msgid "User"
+msgstr "Usuario"
+
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_signup_uclv.field_res_partner__reviewer
+#: model:ir.model.fields,field_description:auth_signup_uclv.field_res_users__reviewer
+msgid "User wants to be reviewer"
+msgstr "El usuario desea ser revisor"
+
+#. module: auth_totp
+#: model:ir.model,name:auth_totp.model_res_users
 msgid "Users"
 msgstr "Usuarios"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model:ir.actions.server,name:auth_signup.ir_cron_auth_signup_send_pending_user_reminder_ir_actions_server
 #: model:ir.cron,cron_name:auth_signup.ir_cron_auth_signup_send_pending_user_reminder
 #: model:ir.cron,name:auth_signup.ir_cron_auth_signup_send_pending_user_reminder
 msgid "Users: Notify About Unregistered Users"
 msgstr "Usuarios: Notificar sobre usuarios no registrados"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: model:ir.model.fields,field_description:auth_totp.field_auth_totp_wizard__code
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_wizard
+msgid "Verification Code"
+msgstr "Código de verificación"
+
+#. module: auth_totp
+#: code:addons/auth_totp/controllers/home.py:0
+#: code:addons/auth_totp/models/res_users.py:0
+#, python-format
+msgid "Verification failed, please double-check the 6-digit code"
+msgstr "La verificación ha fallado, por favor verifique el código de 6 dígitos"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.auth_totp_form
+msgid "Verify"
+msgstr "Verificar"
+
+#. module: auth_totp
 #: model:mail.template,subject:auth_signup.mail_template_user_signup_account_created
 msgid "Welcome to ${object.company_id.name}!"
-msgstr "Bienvenido/a a ${object.company_id.name}!"
+msgstr "Bienvenido a ${object.company_id.name}!"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_field
+msgid "What is this?"
+msgstr "¿Qué es esto?"
 
 #. module: auth_signup
 #: code:addons/auth_signup/models/res_users.py:0
 #, python-format
 msgid "You cannot perform this action on an archived user."
-msgstr "No se puede realizar esta acción con un usuario archivado."
+msgstr "No puede ejecutar esta acción en un usuario archivado."
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "Your Country"
 msgstr "Su país"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.fields
 #: model_terms:ir.ui.view,arch_db:auth_signup.reset_password
 msgid "Your Email"
 msgstr "Su correo electrónico"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "Your Gender"
 msgstr "Su género"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "Your Institution"
 msgstr "Su institución"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.fields
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "Your Name"
 msgstr "Su nombre"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "Your Phone Number"
 msgstr "Su número de teléfono"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "Your Title"
 msgstr "Su título"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_wizard
+msgid "Your two-factor secret:"
+msgstr "Su secreto TOTP:"
+
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "e.g. +5353123456"
 msgstr "p.e. +5353123456"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup.fields
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "e.g. John Doe"
-msgstr "p.e. Juan Pérez"
+msgstr "Por ejemplo, Juan Pérez"
 
-#. module: auth_signup_uclv
+#. module: auth_totp
 #: model_terms:ir.ui.view,arch_db:auth_signup_uclv.fields
 msgid "e.g. UCLV"
 msgstr "p.e. UCLV"
+
+#. module: auth_totp
+#: model_terms:ir.ui.view,arch_db:auth_totp.view_totp_wizard
+msgid "show the code"
+msgstr "mostrar el código"

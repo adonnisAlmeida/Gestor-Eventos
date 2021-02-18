@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* event_uclv
 # 	* event
+# 	* event_uclv
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0-20201113\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-28 00:44+0000\n"
-"PO-Revision-Date: 2021-01-28 00:44+0000\n"
+"POT-Creation-Date: 2021-02-18 02:07+0000\n"
+"PO-Revision-Date: 2021-02-18 02:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:event.field_res_partner__event_count
 #: model:ir.model.fields,field_description:event.field_res_users__event_count
 msgid "# Events"
-msgstr "No. Eventos"
+msgstr "# Eventos"
 
 #. module: event_uclv
 #: model:mail.template,subject:event.event_reminder
@@ -37,7 +37,7 @@ msgstr ""
 #: model:ir.actions.report,print_report_name:event.report_event_registration_badge
 msgid ""
 "'Registration Event - %s' % (object.name or 'Attendee').replace('/','')"
-msgstr "'Registro en Evento %s' % (object.name or 'Attendee').replace('/','')"
+msgstr "'Registro en evento %s' % (object.name or 'Participante').replace('/','')"
 
 #. module: event_uclv
 #: model:ir.actions.report,print_report_name:event_uclv.report_event_registration_badge_portrait
@@ -52,7 +52,6 @@ msgid ""
 msgstr ""
 "<br/>\n"
 "                                            <span class=\"text-muted\">Transmita sus sesiones online a través de la integración con Youtube</span>"
-
 
 #. module: event_uclv
 #: model_terms:ir.ui.view,arch_db:event.res_config_settings_view_form
@@ -644,7 +643,7 @@ msgstr "Actividades"
 #: model:ir.model.fields,field_description:event.field_event_event__activity_exception_decoration
 #: model:ir.model.fields,field_description:event.field_event_registration__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr "Decoración de Actividad con Excepción"
+msgstr "Decoración de Actividad  de Excepción"
 
 #. module: event_uclv
 #: model:ir.model.fields,field_description:event.field_event_event__activity_state
@@ -670,7 +669,7 @@ msgid ""
 " proposal form, etc."
 msgstr ""
 "Agregue un menú de navegación a las páginas web de su evento con "
-"trabajos, agenda y un formulario de propuesta de trabajo, etc."
+"programación, pistas, un formulario de propuesta de seguimiento, etc."
 
 #. module: event_uclv
 #: model_terms:ir.actions.act_window,help:event.action_event_view
@@ -829,7 +828,7 @@ msgstr "Código de barras"
 msgid "Before the event"
 msgstr "Antes del evento"
 
-#. modules: event_uclv, event
+#. modules: event, event_uclv
 #: code:addons/event/models/event_stage.py:0
 #: model:event.stage,legend_blocked:event.event_stage_announced
 #: model:event.stage,legend_blocked:event.event_stage_booked
@@ -839,7 +838,7 @@ msgstr "Antes del evento"
 #: model:ir.model.fields.selection,name:event.selection__event_event__kanban_state__blocked
 #, python-format
 msgid "Blocked"
-msgstr "Bloqueado"
+msgstr "Bloqueada"
 
 #. module: event_uclv
 #: model:event.stage,name:event.event_stage_booked
@@ -957,11 +956,6 @@ msgstr "Confirmado"
 #: model:ir.model,name:event.model_res_partner
 msgid "Contact"
 msgstr "Contacto"
-
-#. module: event_uclv
-#: model:ir.model.fields,field_description:event_uclv.field_event_event__user_id
-msgid "Manager"
-msgstr "Coordinador"
 
 #. module: event_uclv
 #: model:ir.model.fields,field_description:event.field_event_event__country_id
@@ -1620,7 +1614,7 @@ msgstr "Inmediatamente"
 msgid "Imprima esta página en un papel A4"
 msgstr ""
 
-#. modules: event_uclv, event
+#. modules: event, event_uclv
 #: code:addons/event/models/event_stage.py:0
 #: model:event.stage,legend_normal:event.event_stage_announced
 #: model:event.stage,legend_normal:event.event_stage_booked
@@ -1851,9 +1845,9 @@ msgid "Manage &amp; publish a schedule with tracks"
 msgstr "Administrar &amp; publicar un horario con presentaciones"
 
 #. module: event_uclv
-#: model:res.groups,name:event.group_event_manager
+#: model:ir.model.fields,field_description:event_uclv.field_event_event__user_id
 msgid "Manager"
-msgstr "Administrador"
+msgstr "Coornidador"
 
 #. module: event_uclv
 #: model_terms:ir.ui.view,arch_db:event.view_event_registration_tree
@@ -2008,11 +2002,6 @@ msgid "Now that your event is ready, click here to move it to another stage."
 msgstr "Ahora que tu evento está listo, pulse aquí para moverlo a otra etapa."
 
 #. module: event_uclv
-#: model:ir.model.fields,field_description:event_uclv.field_event_event__number
-msgid "Number"
-msgstr "Número"
-
-#. module: event_uclv
 #: model:ir.model.fields,field_description:event.field_event_event__message_needaction_counter
 #: model:ir.model.fields,field_description:event.field_event_registration__message_needaction_counter
 msgid "Number of Actions"
@@ -2146,7 +2135,7 @@ msgstr ""
 msgid "Quiz on Tracks"
 msgstr "Exámenes en las presentaciones"
 
-#. modules: event_uclv, event
+#. modules: event, event_uclv
 #: code:addons/event/models/event_stage.py:0
 #: model:event.stage,legend_done:event.event_stage_announced
 #: model:event.stage,legend_done:event.event_stage_booked
@@ -2170,7 +2159,7 @@ msgstr "¿Listo para <b>organizar eventos</b> en pocos minutos? ¡Comencemos!"
 msgid "Red Kanban Label"
 msgstr "Etiqueta Kanban roja"
 
-#. modules: event_uclv, event
+#. modules: event, event_uclv
 #: code:addons/event/models/event_event.py:0
 #: code:addons/event/models/event_ticket.py:0
 #: code:addons/event/models/event_ticket.py:0
@@ -2365,6 +2354,7 @@ msgstr "Enviado"
 #: model:ir.model.fields,field_description:event.field_event_tag__sequence
 #: model:ir.model.fields,field_description:event.field_event_tag_category__sequence
 #: model:ir.model.fields,field_description:event.field_event_type__sequence
+#: model:ir.model.fields,field_description:event_uclv.field_event_event__number
 msgid "Sequence"
 msgstr "Secuencia"
 
@@ -2773,8 +2763,11 @@ msgid ""
 "When will your event take place? <b>Select</b> the start and end dates "
 "<b>and click Apply</b>."
 msgstr ""
-"¿Cuádo tendrá lugar su evento? <b>Seleccione</b> la fecha de inicio y fin "
-"<b>y pulse Aplicar</b>."
+
+#. module: event_uclv
+#: model:ir.model.fields,help:event.field_event_event__is_ongoing
+msgid "Whether event has begun"
+msgstr ""
 
 #. module: event_uclv
 #: model_terms:ir.ui.view,arch_db:event.event_stage_view_form
