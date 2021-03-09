@@ -14,10 +14,17 @@ try:
 except ImportError:
     qrcode = None
 
+
 class EventEvent(models.Model):
     """Event"""
     _name = "event.event"
     _inherit = ['event.event', 'image.mixin'] 
+
+    
+
+    parent_id = fields.Many2one('event.event', string="Parent Event", domain="[('is_meta_event', '=', True)]")
+    children_ids = fields.One2many('event.event', 'parent_id', string="Children Events")
+    is_meta_event = fields.Boolean(string="Is Meta Event", default=False)    
 
     short_name = fields.Char(
         string='Event Short Name', translate=True, required=False,
@@ -26,7 +33,7 @@ class EventEvent(models.Model):
         string='Event Sub Name', translate=True, required=False,
         readonly=False)
     number = fields.Char("Number")
-    user_id = fields.Many2one('res.users', string='Manager', required=True)    
+    user_id = fields.Many2one('res.users', string='Manager', required=True)
     
     @api.depends('name', 'short_name', 'subname', 'date_begin', 'date_end')
     def name_get(self):
@@ -54,7 +61,7 @@ class EventEvent(models.Model):
             if self.env.user.has_group('event.group_event_manager'):
                 new_args.append((1, "=", 1))
             elif self.env.user.has_group('event.group_event_user'):
-                new_args.append(("user_id", "=", self.env.user.id))
+                new_args+=['|', '&', ("user_id", "=", self.env.user.id),('is_meta_event','=', True),('is_published','=', True)]
         
         for arg in args:
             new_args.append(arg)
@@ -68,7 +75,7 @@ class EventEvent(models.Model):
             if self.env.user.has_group('event.group_event_manager'):
                 args.append((1, "=", 1))
             elif self.env.user.has_group('event.group_event_user'):
-                args.append(("user_id", "=", self.env.user.id))
+                args+=['|', '&', ("user_id", "=", self.env.user.id),('is_meta_event','=', True),('is_published','=', True)]
         if name:
             recs = self.search(['|','|', ('name', 'ilike', name),('short_name', 'ilike', name), ('subname', 'ilike', name)] + args, limit=limit)
         if not recs:

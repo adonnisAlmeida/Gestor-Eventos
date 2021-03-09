@@ -6,8 +6,14 @@
         <field name="priority" eval="5"/>
         <field name="inherit_id" ref="website_event.event_event_view_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="inside">
+                <label for="parent_id" class="oe_edit_only"/>
+                <h3><field name="parent_id" /></h3>
+            </xpath>
             <xpath expr="//div[@name='event_menu_configuration']" position="replace">
                 <div name="event_menu_configuration" groups="event.group_event_user">
+                    <label for="is_meta_event" string="Meta Event"/>
+                    <field name="is_meta_event"/>
                     <label for="website_menu" string="Website Submenu"/>
                     <field name="website_menu"/>
                     <label for="community_menu" string="Community" invisible="1"/>

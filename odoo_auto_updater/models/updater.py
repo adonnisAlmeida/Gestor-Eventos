@@ -79,7 +79,7 @@ class Updater(models.TransientModel):
                                 install_modules = mods.split(',')
                         manifest.close()
                     except:
-                        raise exceptions.Warning("Cna not determine version of the update package")
+                        raise exceptions.Warning("Can not determine version of the update package")
                     
                     # verificar la version del sistema
                     installed_version = '0.0.0'

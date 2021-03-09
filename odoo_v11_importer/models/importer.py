@@ -213,7 +213,7 @@ class Importer(models.TransientModel):
                 })
                 res_partner.update({d[0]: created.id})
         
-        self.env.cr.commit()
+            self.env.cr.commit()
         
         # res_users
         res_users = {}
@@ -279,7 +279,7 @@ class Importer(models.TransientModel):
                 if d[17]:
                     self.env.cr.execute("INSERT INTO res_users_log(create_uid, create_date, write_uid, write_date) VALUES (%s, '%s', %s, '%s');" %(created.id, d[17], created.id, d[17]))
 
-        self.env.cr.commit()
+            self.env.cr.commit()
         
         # event_stage
         event_stage = {}
@@ -561,6 +561,7 @@ class Importer(models.TransientModel):
                         'value': src_t[1],
                         'state': src_t[2]
                     })
+            self.env.cr.commit()
         
         # event_allowed_language_rel
         cr.execute("""select event_event_id, res_lang_id from event_allowed_language_rel where true""")
@@ -625,6 +626,7 @@ class Importer(models.TransientModel):
                 event_track_tag.update({d[0]: created.id})
                 
                 # TODO: check the posibility of language related tags
+            self.env.cr.commit()
 
         # event_track_location
         event_track_location = {}
@@ -820,6 +822,7 @@ class Importer(models.TransientModel):
                             'value': src_t[1],
                             'state': src_t[2]
                         })
+            self.env.cr.commit()
 
                     
 
@@ -832,7 +835,8 @@ class Importer(models.TransientModel):
                 count = self.env.cr.fetchall()
                 if not count[0][0]:
                     self.env.cr.execute("insert into event_track_event_track_tag_rel(event_track_tag_id, event_track_id) VALUES (%s, %s);" %(event_track_tag[d[0]], event_track[d[1]]))
-        
+                    self.env.cr.commit()
+
         # event_track_res_partner_rel
         cr.execute("""select event_track_id, res_partner_id from event_track_res_partner_rel where true""")
         data = cr.fetchall()
@@ -843,6 +847,7 @@ class Importer(models.TransientModel):
                 if not count[0][0]:
                     et = self.env['event.track'].browse(event_track[d[0]])
                     self.env.cr.execute("insert into event_track_author(track_id, partner_id, sequence) VALUES (%s, %s, %s);" %(event_track[d[0]], res_partner[d[1]], len(et.author_ids)))
+                    self.env.cr.commit()
         
   
 

@@ -9,6 +9,15 @@ class Event(models.Model):
     _order = 'number asc, id asc'
     _inherit = ['event.event', 'website.seo.metadata', 'website.published.mixin']
 
+    @api.depends('children_ids', 'children_ids.is_published')
+    def get_published_subevents_count(self):
+        for item in self:
+            item.published_subevents_count = 0
+            for child in item.children_ids:
+                if child.is_published:
+                    item.published_subevents_count += 1
+    published_subevents_count = fields.Integer(compute=get_published_subevents_count, store=True)
+                    
     def _create_menu(self, sequence, name, url, xml_id, menu_type=False):
         """ If url: create a website menu. Menu leads directly to the URL that
         should be a valid route. If xml_id: create a new page, take its url back

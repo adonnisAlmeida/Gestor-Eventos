@@ -70,9 +70,12 @@ class UCLVWebsiteEventController(WebsiteEventController):
 
         # search domains
         domain_search = {'website_specific': website.website_domain()}
-
+        
+        
         if searches['search']:
-            domain_search['search'] = [('name', 'ilike', searches['search'])]
+            domain_search['search'] = ['|','|',('name', 'ilike', searches['search']),('short_name', 'ilike', searches['search']),('parent_id.name', 'ilike', searches['search'])]
+        else:
+            domain_search["children"] = [("parent_id", "=", False)]
 
         search_tags = self._extract_searched_event_tags(searches)
         if search_tags:
@@ -132,7 +135,7 @@ class UCLVWebsiteEventController(WebsiteEventController):
             'country_id': ("all", _("All Countries"))
         })
 
-        step = 12  # Number of events per page
+        step = 24  # Number of events per page
         event_count = Event.search_count(dom_without("none"))
         pager = website.pager(
             url="/event",
