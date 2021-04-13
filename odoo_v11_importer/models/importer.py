@@ -8,7 +8,7 @@ import uuid
 
 
 class Importer(models.TransientModel):
-    _name = 'event.v11.importer'
+    _name = 'v13.importer'
 
     def _get_databases(self):
         result = []

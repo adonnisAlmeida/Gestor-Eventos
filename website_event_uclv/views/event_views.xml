@@ -20,6 +20,13 @@
                     <field name="community_menu" invisible="1"/>
                 </div>
             </xpath>
+            <xpath expr="//notebook/page[last()]" position="before">
+                <page string="Introduction" name="intro">
+                    <group>                            
+                        <field name="description" nolabel="1"/>
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
 </odoo>
