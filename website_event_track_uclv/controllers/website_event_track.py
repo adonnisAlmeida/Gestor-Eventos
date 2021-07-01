@@ -364,8 +364,8 @@ class UCLVWebsiteEventTrackController(EventTrackController):
                 track.sudo().message_subscribe(partner_ids=partner.ids)
 
         # add the reviewers automatically
-        for reviewer in event.reviewer_ids:
-            request.env['event.track.review'].create({
+        for reviewer in event.sudo().reviewer_ids:
+            request.env['event.track.review'].sudo().create({
                 'track_id': track.id,
                 'partner_id': reviewer.partner_id.id,
                 'weight': reviewer.weight,

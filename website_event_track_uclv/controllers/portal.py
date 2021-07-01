@@ -86,15 +86,15 @@ class PortalController(CustomerPortal):
 
         # extends filterby criteria with event the customer has access to
         domain = self.get_domain_my_papers(request.env.user)
-        event_ids = request.env['event.track'].search(domain).mapped('event_id.id')
-        events = request.env['event.event'].search([('website_published','=',True),('id', 'in', event_ids)])
+        event_ids = request.env['event.track'].sudo().search(domain).mapped('event_id.id')
+        events = request.env['event.event'].sudo().search([('website_published','=',True),('id', 'in', event_ids)])
         for event in events:
             searchbar_filters.update({
                 str(event.id): {'label': event.name, 'domain': [('event_id', '=', event.id)]}
             })
 
         # extends filterby criteria with event (criteria name is the event id)
-        event_groups = request.env['event.track'].read_group([('event_id', 'in', events.ids)],
+        event_groups = request.env['event.track'].sudo().read_group([('event_id', 'in', events.ids)],
                                                                 ['event_id'], ['event_id'])
         for group in event_groups:
             ev_id = group['event_id'][0] if group['event_id'] else False
@@ -134,7 +134,7 @@ class PortalController(CustomerPortal):
             domain += search_domain
 
         # paper count
-        paper_count = request.env['event.track'].search_count(domain)
+        paper_count = request.env['event.track'].sudo().search_count(domain)
         # pager
         pager = portal_pager(
             url="/my/papers",
@@ -149,7 +149,7 @@ class PortalController(CustomerPortal):
         elif groupby == 'stage':
             order = "stage_id, %s" % order  # force sort on stage first to group by stage in view
 
-        papers = request.env['event.track'].search(domain, order=order, limit=self._items_per_page, offset=pager['offset'])
+        papers = request.env['event.track'].sudo().search(domain, order=order, limit=self._items_per_page, offset=pager['offset'])
         request.session['my_paper_history'] = papers.ids[:100]
 
         if groupby == 'event':
