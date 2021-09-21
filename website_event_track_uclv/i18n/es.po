@@ -612,7 +612,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
 msgid "<span class=\"ml8 text-muted small\">Uploaded on </span>"
-msgstr "<span class=\"ml8 text-muted small\">\"Subido el "
+msgstr "<span class=\"ml8 text-muted small\">Subido el </span>"
 
 #. module: website_event_track_uclv
 #: model_terms:ir.ui.view,arch_db:website_event_track_uclv.view_event_track_form
@@ -4794,3 +4794,14 @@ msgstr "comienza el"
 #: model_terms:ir.ui.view,arch_db:website_event_track.agenda_main
 msgid "tracks"
 msgstr ""
+
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
+msgid ""
+"Attachments<small class=\"text-muted\" title=\"Attachments\"> Use "
+"attachments to upload presentations, diagrams, full text paper, etc</small>:"
+msgstr ""
+"Adjuntos<small class=\"text-muted\" title=\"Adjuntos\"> Use los adjuntos "
+"para subir presentaciones, diagramas, el texto del trabajo completo, "
+"etc</small>:"

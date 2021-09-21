@@ -16,6 +16,18 @@ from odoo.exceptions import AccessError
 
 
 class CheckpointController(Controller):
+    @http.route(['''/event/updatelogo'''], type='http', auth="user", website=True)
+    def event_updatelogo(self,**kw):
+        user = request.env.user
+        group = request.env.ref("event.group_event_manager")
+        if group not in user.groups_id:
+            raise Forbidden()
+        events = request.env['event.event'].sudo().search([])
+        for event in events:
+            event.write({'image_1920': request.env.user.company_id.logo})
+        
+        return request.redirect('/events')
+
     @http.route(['''/event/checkpoint/<int:reg_id>'''], type='http', auth="user", website=True)
     def event_checkpoint(self, reg_id, **kw):
         user = request.env.user

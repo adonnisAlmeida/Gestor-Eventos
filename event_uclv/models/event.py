@@ -97,10 +97,11 @@ class EventEvent(models.Model):
     @api.model
     def create(self, vals):
         if not vals.get('image_1920', False):
-            img_path = get_module_resource('event_uclv', 'static/src/img', 'default-event.png')
-            with open(img_path, 'rb') as f:
-                image = f.read()
-            vals['image_1920'] = base64.b64encode(image)
+            vals['image_1920'] = self.env.user.company_id.logo
+            #img_path = get_module_resource('event_uclv', 'static/src/img', 'default-event.png')
+            #with open(img_path, 'rb') as f:
+            #    image = f.read()
+            #vals['image_1920'] = base64.b64encode(image)
         return super(EventEvent, self).create(vals)
 
     @api.depends('event_ticket_ids.sale_available')

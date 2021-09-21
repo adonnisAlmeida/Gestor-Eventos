@@ -363,6 +363,18 @@ class UCLVWebsiteEventTrackController(EventTrackController):
             if partner:
                 track.sudo().message_subscribe(partner_ids=partner.ids)
 
+        for c_file in request.httprequest.files.getlist('file'):
+            data = c_file.read()
+            import base64
+            request.env['ir.attachment'].sudo().create({
+                        'name': c_file.filename,
+                        'datas': base64.b64encode(data),
+                        #'datas_fname': c_file.filename,
+                        'public': False,
+                        'res_model': 'event.track',
+                        'res_id': track.id
+                    })
+                    
         # add the reviewers automatically
         for reviewer in event.sudo().reviewer_ids:
             request.env['event.track.review'].sudo().create({
@@ -374,5 +386,7 @@ class UCLVWebsiteEventTrackController(EventTrackController):
         review_stage = request.env.ref('website_event_track.event_track_stage1', raise_if_not_found=False)
         if len(event.reviewer_ids)>1 and review_stage:
             track.write({'stage_id': review_stage.id})
-            
+
+        
+
         return request.render("website_event_track.event_track_proposal", {'track': track, 'event': event,'countries': countries, 'main_object':event, 'error': error})

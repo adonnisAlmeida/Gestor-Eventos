@@ -190,7 +190,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div t-if="paper.attachment_ids" t-attf-class="col-12 col-lg-12 o_project_portal_attachments">
+                        <div t-attf-class="col-12 col-lg-12 o_project_portal_attachments">
                             <hr class="mb-1"/>
                             <div class="d-flex my-2">
                                 <h4 id="attachments" data-anchor="true"><strong>Attachments</strong></h4>
@@ -203,6 +203,7 @@
                                             <div class='oe_attachment_name text-truncate'><t t-esc='attachment.name'/> </div>&amp;nbsp;
                                             <div class="ml8 text-muted small" t-esc="str(int(round(attachment.file_size/1024)))+' KiB'"/>
                                             <span class="ml8 text-muted small">Uploaded on </span><span class="ml8 text-muted small" t-field="attachment.create_date" t-options='{"widget": "datetime"}'/>
+                                            <!-- <button type="button" class="btn btn-danger js_delete_attachment fa fa-trash-o" aria-label="Delete Attachment" title="Delete Attachment"></button> -->
                                         </a>
                                     </ul>
                                 </div>
@@ -245,7 +246,7 @@
     <template id="portal_my_paper" name="My Paper"  inherit_id="portal.portal_sidebar" primary="True">
         <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
             <div class="row mt16 o_portal_sale_sidebar">
-                <t t-set="title" t-value
+                <t t-set="title" t-value="" />
                 <!-- Sidebar -->
                 <t t-call="portal.portal_record_sidebar">
                     <t t-set="classes" t-value="'col-lg-3 d-print-none'"/>
