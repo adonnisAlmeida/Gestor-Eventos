@@ -31,6 +31,7 @@
         'wizard/attendee_list_wizard_view.xml',
         'wizard/attendee_create_wizard_view.xml',
         'report/event_registration_certificate_templates.xml',
+        'report/event_track_templates.xml',
         'report/event_track_certificate_templates.xml',
         'report/event_track_certificate_templates2.xml',
         'report/event_track_certificate_templates3.xml',

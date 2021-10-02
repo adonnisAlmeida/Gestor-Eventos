@@ -100,7 +100,7 @@
             </div>
             <div class="card-body">                    
                 <div class="portal_event_review">
-                    <div class="mb-4">
+                    <div class="mb32">
                         <h4 id="event" data-anchor="true"><strong>Event</strong></h4>
                         <h4><a t-attf-href="/event/#{review.track_id.event_id.id}"> 
                             <t t-esc="review.track_id.event_id.name"/> 
@@ -109,38 +109,30 @@
                         </a></h4>
                     </div>
 
-                    <div class="row mb-4">
+                    <div class="row mb32">
                         <div t-attf-class="col-12 col-lg-12 mb-6 mb-md-0">                                    
                             <div class="d-flex mb-1">
                                 <h4 id="title" data-anchor="true"><strong>Title<small class="text-sm text-muted" title="English"> [EN] </small></strong></h4>
                             </div>                                    
-                            <h4 class="text-uppercase" t-field="review.track_id.with_context(lang='en_US').name" />                                    
+                            <h4 t-field="review.track_id.with_context(lang='en_US').name" />                                    
                         </div>
                     </div>
-                    <div class="row mb-4">
+                    <div class="row mb32">
                         <div t-attf-class="col-12 col-lg-12 mb-6 mb-md-0">                                    
                             <div class="d-flex mb-1">
                                 <h4 id="title_es" data-anchor="true"><strong>Title<small class="text-sm text-muted" title="Spanish"> [ES]</small></strong></h4>
                             </div>                                    
-                            <h4 class="text-uppercase" t-field="review.track_id.with_context(lang='es_ES').name" />
+                            <h4 t-field="review.track_id.with_context(lang='es_ES').name" />
                             
                         </div>
-                    </div>
-                    <div class="row mb-4" t-if="review.sudo().track_id.tag_ids">
+                    </div>                    
+                    <div class="row mb32" t-if="review.track_id.language_id">
                         <div class="col-12 col-md-6 mb-1">
-                            <h4 id="keywords" data-anchor="true"><strong>Keywords</strong></h4>                            
-                            <t t-foreach="review.sudo().track_id.tag_ids" t-as="tag">
-                                <span class="label label-info" t-esc="tag.name" />
-                            </t>                            
-                        </div>
-                    </div>
-                    <div class="row mb-4" t-if="review.track_id.language_id">
-                        <div class="col-12 col-md-6 mb-1">
-                            <h4 id="language" data-anchor="true"><strong>Language</strong></h4>
+                            <h4 id="language" data-anchor="true"><strong>Main Language</strong></h4>
                             <span t-field="review.sudo().track_id.language_id.name" />
                         </div>
                     </div>
-                    <div class="row mb-4">
+                    <div class="row mb32">
                         <div class="col-12 col-md-6 mb-1">
                             <h4 id="authors" data-anchor="true"><strong>Authors</strong></h4>
                             <ol>
@@ -167,8 +159,8 @@
                             </ol>
                         </div>
                     </div>
-                    <div class="row" t-if="review.track_id.description">
-                        <div t-if="review.track_id.description" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
+                    <div class="row mb32" t-if="review.track_id.description">
+                        <div t-if="review.track_id.description" t-attf-class="col-12 col-lg-12 mb32 mb-md-0">
                             <hr class="mb-1"/>
                             <div class="d-flex my-2">
                                 <h4 id="abstract" data-anchor="true"><strong>Abstract<small class="text-sm text-muted" title="English"> [EN]</small></strong></h4>
@@ -178,8 +170,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" t-if="review.track_id.description_es">
-                        <div t-if="review.track_id.description_es" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
+                    <div class="row mb32" t-if="review.track_id.description_es">
+                        <div t-if="review.track_id.description_es" t-attf-class="col-12 col-lg-12 mb32 mb-md-0">
                             <hr class="mb-1"/>
                             <div class="d-flex my-2">
                                 <h4 id="abstract_es" data-anchor="true"><strong>Abstract<small class="text-sm text-muted" title="Spanish"> [ES]</small></strong></h4>
@@ -189,7 +181,70 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb32" t-if="review.sudo().track_id.tag_ids">
+                        <div class="col-12 col-md-6 mb-1">
+                            <h4 id="keywords" data-anchor="true"><strong>Keywords</strong></h4>                            
+                            <t t-foreach="review.sudo().track_id.tag_ids" t-as="tag">
+                                <span class="label label-info" t-esc="tag.name" />
+                            </t>                            
+                        </div>
+                    </div>
+                    <div class="row mb32">
+                        <div t-attf-class="col-12 col-lg-12 mb32 mb-md-0">
+                            <hr class="mb-1"/>
+                            <div class="d-flex my-2">
+                                <h4 id="introduction" data-anchor="true"><strong>Introduction</strong></h4>
+                            </div>
+                            <div class="py-1 review_introduction js_comment" >
+                                <t t-raw="review.track_id.introduction" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb32">
+                        <div t-attf-class="col-12 col-lg-12 mb32 mb-md-0">
+                            <hr class="mb-1"/>
+                            <div class="d-flex my-2">
+                                <h4 id="methodology" data-anchor="true"><strong>Methodology</strong></h4>
+                            </div>
+                            <div class="py-1 review_methodology js_comment" >
+                                <t t-raw="review.track_id.methodology" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb32">
+                        <div t-attf-class="col-12 col-lg-12 mb32 mb-md-0">
+                            <hr class="mb-1"/>
+                            <div class="d-flex my-2">
+                                <h4 id="results" data-anchor="true"><strong>Results &amp; Discussion</strong></h4>
+                            </div>
+                            <div class="py-1 review_results js_comment" >
+                                <t t-raw="review.track_id.results" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb32">
+                        <div t-attf-class="col-12 col-lg-12 mb32 mb-md-0">
+                            <hr class="mb-1"/>
+                            <div class="d-flex my-2">
+                                <h4 id="conclussions" data-anchor="true"><strong>Conclussions</strong></h4>
+                            </div>
+                            <div class="py-1 review_conclussions js_comment" >
+                                <t t-raw="review.track_id.conclussions" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb32">
+                        <div t-attf-class="col-12 col-lg-12 mb32 mb-md-0">
+                            <hr class="mb-1"/>
+                            <div class="d-flex my-2">
+                                <h4 id="bibliographic" data-anchor="true"><strong>Bibliographic References</strong></h4>
+                            </div>
+                            <div class="py-1 review_bibliographic js_comment" >
+                                <t t-raw="review.track_id.bibliographic" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb32">
                         <div t-if="review.track_id.attachment_ids" t-attf-class="col-12 col-lg-12 o_project_portal_attachments">
                             <hr class="mb-1"/>
                             <div class="d-flex my-2">
@@ -247,11 +302,16 @@
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#event">Event</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#title">Title [EN]</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#title_es">Title [ES]</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#keywords">Keywords</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#language">Language</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#language">Main Language</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#authors">Authors</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#abstract">Abstract [EN]</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#abstract_es">Abstract [ES]</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#keywords">Keywords</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#introduction">Introduction</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#methodology">Methodology</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#results">Results &amp; Discussion</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#conclussions">Conclussions</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#bibliographic">Bibliographic References</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#attachments">Attachments</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#discussion">Messages</a></li>
                                 </ul>

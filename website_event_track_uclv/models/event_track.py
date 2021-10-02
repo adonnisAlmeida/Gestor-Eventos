@@ -6,6 +6,7 @@ from odoo.tools.translate import _, html_translate
 from odoo.addons.http_routing.models.ir_http import slug
 from odoo import SUPERUSER_ID
 import uuid
+import json
 
 
 class TrackTag(models.Model):
@@ -140,7 +141,7 @@ class TrackReview(models.Model):
     state = fields.Selection([('notice','Noticed'),('read','Readed'),('accept','Accepted'),('reject','Rejected'),('edit', 'Need changes')], string="State", default="notice", required=True, tracking=True)
     weight = fields.Integer('Weight', default = 10)
     expired = fields.Boolean(string='Is expired', compute=_compute_expired)
-    is_done = fields.Boolean(string='Is Done', realated='track_id.is_done')
+    is_done = fields.Boolean(string='Is Done', related='track_id.is_done')
 
     @api.model
     def create(self, vals):        
@@ -157,6 +158,31 @@ class Track(models.Model):
     _name = "event.track"    
     _inherit = ['event.track', 'portal.mixin', 'mail.thread', 'mail.activity.mixin', 'website.seo.metadata', 'website.published.mixin']
     
+    def _compute_access_url(self):
+        super(Track, self)._compute_access_url()
+        for track in self:
+            track.access_url = '/my/paper/%s' % track.id
+
+    def authors_json(self):
+        authors=[]
+        this_authors = self.env['event.track.author'].search([('track_id', '=', self.id)], order='sequence asc')
+        for au in this_authors:
+            authors.append({
+                'author_id': au.partner_id.id,
+                'author_editable': au.partner_id.id != self.partner_id.id,
+                'author_name': au.partner_id.name,
+                'author_email': au.partner_id.email, 
+                'author_country_name': au.partner_id.country_id.name,
+                'author_institution': au.partner_id.institution,
+                'author_country_image': au.partner_id.country_id.image_url,
+                'author_country_id': au.partner_id.country_id.id, 
+            })
+        return json.dumps(authors)
+
+
+    def _get_report_base_filename(self):
+        return self.name
+
     def _track_template(self, changes):
         res = super(Track, self)._track_template(changes)
         track = self[0]
@@ -227,8 +253,8 @@ class Track(models.Model):
     partner_institution = fields.Char('Speaker Institution', readonly=True, related='partner_id.institution')
     authenticity_url = fields.Char("Authenticity URL", compute="get_urls")
     authenticity_token = fields.Char("Authenticity Token")    
-    description = fields.Html(translate=False, sanitize_attributes=False, sanitize_form=False)
-    description_es = fields.Html(translate=False, sanitize_attributes=False, sanitize_form=False)
+    description = fields.Html(string="Abstract [EN]", translate=False, sanitize_attributes=False, sanitize_form=False)
+    description_es = fields.Html(string="Abstract [ES]",translate=False, sanitize_attributes=False, sanitize_form=False)
     is_done = fields.Boolean('Is Done', related="event_id.is_done", store=True)
 
     tag_ids = fields.Many2many('event.track.tag', string='Keywords')
@@ -244,7 +270,19 @@ class Track(models.Model):
     language_id = fields.Many2one("res.lang", "Language")
     duration = fields.Float('Duration', default=0.25)
     image = fields.Binary('Image', related='partner_id.image_512', store=True, attachment=True)
-    
+
+
+    introduction = fields.Html(string="Introduction")
+    methodology = fields.Html(string="Methodology")
+    results = fields.Html(string="Results and Discussion")
+    conclussions = fields.Html(string="Conclussions")
+    bibliographic = fields.Html(string="Bibliographic References")
+
+    def keywords_list(self):
+        names = []
+        names+= [tag.name for tag in self.sudo().tag_ids]
+        return ', '.join(names)
+
     def build_uuids(self):
         regs = self.search([('authenticity_token', '=', False)])
         for reg in regs:

@@ -162,7 +162,7 @@ class UCLVWebsiteEventTrackController(EventTrackController):
             return request.render("website_event_track.event_track_proposal", {'event': event, 'countries': countries, 'main_object': event, 'error': error})
 
         
-        language_id = post.get('language_id', False)        
+        language_id = post.get('language_id', False)
         if not language_id:
             error.update({'language_id': _('Language is required')})
         else:
@@ -171,7 +171,7 @@ class UCLVWebsiteEventTrackController(EventTrackController):
                 if language_id not in event.allowed_language_ids.mapped('id'):
                     error.update({'language_id': _('Language not allowed')})
             except ValueError:
-                error.update({'language_id': _('Language not allowed')})              
+                error.update({'language_id': _('Language not allowed')})
             
         
         track_name =  post.get('track_name', '')        
@@ -354,7 +354,7 @@ class UCLVWebsiteEventTrackController(EventTrackController):
                     'src': track_name,
                     'value': track_name_es, 
                     'state': 'translated'
-                })        
+                })
 
         if request.env.user != request.website.user_id:
             track.sudo().message_subscribe(partner_ids=request.env.user.partner_id.ids)

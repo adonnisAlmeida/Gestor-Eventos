@@ -46,8 +46,14 @@ class Event(models.Model):
         overdue = False
         if self.paper_abstract_deadline:
             if self.paper_abstract_deadline < fields.Date.today():
-                overdue = True
+                overdue = True                
         self.paper_abstract_deadline_overdue = overdue
+
+        overdue = False
+        if self.paper_final_deadline:
+            if self.paper_final_deadline < fields.Date.today():
+                overdue = True
+        self.paper_final_deadline_overdue = overdue
     
     def _get_month(self):
         months = {1: _('jan'), 2: _('feb'), 3: _('mar'), 4: _('apr'),
@@ -65,6 +71,7 @@ class Event(models.Model):
     paper_abstract_deadline = fields.Date(string="Abstracts Deadline")
     paper_abstract_deadline_month = fields.Char(string="Abstracts Deadline Month", compute='_get_month')
     paper_abstract_deadline_overdue = fields.Boolean(string="Abstracts Deadline Overdue", compute='_get_overdue')
+    paper_final_deadline_overdue = fields.Boolean(string="Final Deadline Overdue", compute='_get_overdue')
 
     paper_abstract_notification_date = fields.Date(string="Abstracts Acceptance Notification Date")
     paper_final_deadline = fields.Date(string="Final Papers Deadline")
