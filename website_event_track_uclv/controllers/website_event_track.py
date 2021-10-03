@@ -372,7 +372,7 @@ class UCLVWebsiteEventTrackController(EventTrackController):
                         #'datas_fname': c_file.filename,
                         'public': False,
                         'res_model': 'event.track',
-                        'res_id': track.id
+                        'res_id': track.id                        
                     })
                     
         # add the reviewers automatically
