@@ -534,3 +534,14 @@ class PortalController(CustomerPortal):
                 'registration': reg
             })
 
+    @http.route(['''/build_access_tokens'''], type='http', auth="user", website=True)
+    def build_access_tokens(self, **kw):
+        user = request.env.user
+        group = request.env.ref("event.group_event_manager")
+        if group not in user.groups_id:
+            raise Forbidden()
+        
+        att = request.env['ir.attachment'].search([('res_model', '=', 'event.track'),('access_token','=', False),('public','=',False)])
+        att.generate_access_token()
+
+        return request.redirect('/events')
