@@ -8,6 +8,18 @@ from odoo import SUPERUSER_ID
 import uuid
 
 
+class IrAttachment(models.Model):
+    _inherit = 'ir.attachment'
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if 'access_token' not in vals and vals.get('res_model', False) == 'event.track':
+                vals['access_token'] = self._generate_access_token()
+        res_ids = super(IrAttachment, self).create(vals_list)
+        return res_ids
+
+        
 class TrackTag(models.Model):
     _name = "event.track.tag"
     _inherit = 'event.track.tag'
