@@ -11,25 +11,25 @@
             </filter>
         </field>
     </record>
-    <record model="ir.ui.view" id="view_event_registration_form_inherit">
+    <!-- <record model="ir.ui.view" id="view_event_registration_form_inherit">
         <field name="name">event.registration.form.inherit</field>
         <field name="model">event.registration</field>
         <field name="inherit_id" ref="event.view_event_registration_form"/>
         <field name="arch" type="xml">
-            <!-- <xpath expr="//sheet/group" position='before'>
+            <xpath expr="//sheet/group" position='before'>
                 <div class="oe_button_box" name="button_box">
                     <button class="oe_stat_button" type="action" context="{'search_default_event_registration_id': active_id}" name="%(event_registration_payment_action)d" icon="fa-money">
                         <field string="Payments" name="payment_count" widget="statinfo" />
                     </button>
                 </div>
-            </xpath> -->
+            </xpath>
             <xpath expr="//sheet/group" position='after'>
                 <notebook groups="event_uclv.group_event_accountant">
                     <page string="Payments">
                         <field name="payment_ids">
                             <tree string="Payments" editable="bottom">
                                 <field name="payment_date"/>
-                                <!-- <field name="event_registration_id" /> -->
+                                <field name="event_registration_id" />
                                 <field name="currency_id" invisible="1"/>
                                 <field name="amount"/>
                                 <field name="payment_type" />
@@ -66,7 +66,7 @@
                 <field name="paid_date"/>
             </field>
         </field>
-    </record>
+    </record> -->
     
     <!-- <record id="event_sale.view_event_registration_ticket_form" model="ir.ui.view">
             <field name="name">event.registration.form.inherit</field>
