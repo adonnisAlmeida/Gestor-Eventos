@@ -175,9 +175,20 @@ class Track(models.Model):
             else:
                 item.multiple = False
     
+    @api.depends('review_ids', 'review_ids.state')
     def _get_reviews_count(self):
         for item in self:
             item.reviews_count = len(item.review_ids)
+            item.reviews_accepted_count = 0
+            item.reviews_edit_count = 0
+            item.reviews_rejected_count = 0
+            for review in item.review_ids:
+                if review.state == 'accept':
+                    item.reviews_accepted_count += 1
+                if review.state == 'edit':
+                    item.reviews_edit_count += 1
+                if review.state == 'reject':
+                    item.reviews_rejected_count += 1
     
     #Revision Stuffs
     manager_notes = fields.Text('Notes for the Manager')
@@ -189,8 +200,13 @@ class Track(models.Model):
         [('acceptwc', "Accepted With Changes"), ('acceptednc', "Accepted Without Changes"), ('rejected', "Rejected")],
         'Recommendation')
 
+
     review_ids = fields.One2many('event.track.review', 'track_id', string='Reviews', tracking=True)
-    reviews_count = fields.Integer(compute=_get_reviews_count)
+    reviews_count = fields.Integer(compute=_get_reviews_count, store=True)
+    reviews_accepted_count = fields.Integer(compute=_get_reviews_count, store=True)
+    reviews_edit_count = fields.Integer(compute=_get_reviews_count, store=True)
+    reviews_rejected_count = fields.Integer(compute=_get_reviews_count, store=True)
+
     address_id = fields.Many2one('res.partner', "Address", related="event_id.address_id", readonly=True)
     multiple = fields.Boolean("Multiple", compute="_get_multiple", store=True)
     track_type_id = fields.Many2one('event.track.type', "Track Type")

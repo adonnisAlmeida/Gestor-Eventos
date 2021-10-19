@@ -96,6 +96,18 @@ class EventEvent(models.Model):
             vals['image_1920'] = base64.b64encode(image)
         return super(EventEvent, self).create(vals)
 
+    @api.depends('event_ticket_ids.sale_available')
+    def _compute_event_registrations_sold_out(self):
+        for event in self:
+            if event.seats_limited and not event.seats_available and event.seats_max:
+                event.event_registrations_sold_out = True
+            elif event.event_ticket_ids:
+                event.event_registrations_sold_out = not any(
+                    ticket.seats_available > 0 if ticket.seats_limited else True for ticket in event.event_ticket_ids
+                )
+            else:
+                event.event_registrations_sold_out = False
+
 
 class EventRegistration(models.Model):
     _inherit = 'event.registration'

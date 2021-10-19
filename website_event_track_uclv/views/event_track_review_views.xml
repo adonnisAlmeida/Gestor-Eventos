@@ -27,10 +27,11 @@
             <field name="name">event.track.review.tree</field>
             <field name="model">event.track.review</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-muted="expired" decoration-warning="state == 'edit'" decoration-success="state == 'accept'" decoration-danger="state == 'reject'">
                     <field name="track_id"/>
                     <field name="partner_id" string="Reviewer"/>
                     <field name="state"/>
+                    <field name="expired" invisible="1"/>
                 </tree>
             </field>
         </record>

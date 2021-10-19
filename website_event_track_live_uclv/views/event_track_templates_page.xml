@@ -4,8 +4,8 @@
 <!-- MAIN: REMOVE HEADER/FOOTER IF WIDESCREEN -->
 <template id="event_track_main" inherit_id="website_event_track_uclv.event_track_main">
     <xpath expr="//t[@t-call='website_event.event_details']" position="before">
-        <t t-set="no_header" t-value="option_widescreen"/>
-        <t t-set="no_footer" t-value="option_widescreen"/>
+        <t t-set="no_header" t-value="False"/>
+        <t t-set="no_footer" t-value="False"/>
     </xpath>
 </template>
 

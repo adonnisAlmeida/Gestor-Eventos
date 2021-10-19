@@ -42,9 +42,17 @@
                 <button name="%(website_event_track.website_visitor_action_from_track)d" position="before">
                     <button name="%(website_event_track_uclv.action_event_track_review_from_track)d"
                             type="action"
-                            class="oe_stat_button"
-                            icon="fa-eye">
-                        <field name="reviews_count" string="Reviews" widget="statinfo"/>
+                            class="oe_stat_button">
+                        <i class="fa fa-fw o_button_icon fa-eye"/>
+                        <div class="o_stat_info">
+                            <field class="text-success" name="reviews_accepted_count"/> /
+                            <field class="text-warning" name="reviews_edit_count"/> /
+                            <field class="text-danger" name="reviews_rejected_count"/> /
+                            <field name="reviews_count"/>
+                            <span class="o_stat_text">Reviews</span>
+                        </div>    
+                            
+                        
                     </button>
                 </button>
                 <field name="user_id" position="replace" >
@@ -82,19 +90,6 @@
                 <xpath expr="//notebook/page[@name='description']" position="after">
                     <page string="Description [ES]" >
                         <field name="description_es" />
-                    </page>
-                    <page string="Reviews" name="reviews">
-                        <field name="review_ids">
-                            <tree editable = "bottom">
-                                <field name="partner_id" />
-                                <field name="state" />
-                            </tree>
-                            <form>
-                                <group>
-                                    <field name="partner_id" />
-                                </group>
-                            </form>
-                        </field>
                     </page>
                 </xpath>
             </field>
