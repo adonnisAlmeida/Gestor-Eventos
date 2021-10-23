@@ -15,13 +15,13 @@
                         </group>
                         <div class="alert alert-success info_icon " role="alert" states="done">
                             <div class="row">
-                                <div class="col-xs-1"><span class="fa fa-3x fa-check fa-lg"/></div>
+                                <div class="col-xs-1"><span class="fa fa-3x fa-check fa-lg" title="OK"/></div>
                                 <div class="col-xs-11">Sistema actualizado correctamente.</div>
                             </div>
                         </div>
                         <div class="alert alert-danger info_icon" role="alert" states="restart">
                             <div class="row">
-                                <div class="col-xs-1"><span class="fa fa-3x fa-warning fa-lg"/></div>
+                                <div class="col-xs-1"><span class="fa fa-3x fa-warning fa-lg" title="Warning"/></div>
                                 <div class="col-xs-11"><h4>Es necesario reiniciar el servicio para terminar la actualización.</h4></div>
                             </div>
                         </div>

@@ -189,7 +189,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="attachments_row">
                         <div t-attf-class="col-12 col-lg-12 o_project_portal_attachments">
                             <hr class="mb-1"/>
                             <div class="d-flex my-2">
@@ -208,12 +208,12 @@
                                     </ul>
                                 </div>
                                 <div class="col mt16 mb16">
-                                    <a class="btn btn-xs btn-primary" data-toggle="modal" data-target=".modal_file_upload" href="#"><i class="fa fa-paperclip"/> Add</a>
+                                    <a class="btn btn-xs btn-primary btn-upload" data-toggle="modal" data-target=".modal_file_upload" href="#"><i class="fa fa-paperclip"/> Add</a>
                                     
                                     <div class="modal fade modal_file_upload" role="form" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <form method="POST" enctype="multipart/form-data" class="js_accept_json modal-content js_website_submit_form">
-                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                <input type="hidden" id="csrf_token" name="csrf_token" t-att-value="request.csrf_token()"/>
                                                 <input type="hidden" name="review_id" class="review_review_id" t-att-value="paper.id"/>
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
@@ -238,6 +238,22 @@
                             
                         </div>
                     </div>
+                    <div class="row" id="presentation_row">
+                        <div t-attf-class="col-12 col-lg-12">
+                            <hr class="mb-1"/>
+                            <div class="d-flex my-2">
+                                <h4 id="presentation" data-anchor="true"><strong>Presentation</strong></h4>
+                            </div>                                
+                            <div class="row">
+                                <div t-attf-class="col col-lg-12" id="presentation_details">
+                                    <h6><strong>Mode:</strong> <span t-field="paper.track_type_id.name" /></h6> 
+                                    <h6><strong>Date:</strong> <span t-field="paper.with_context(tz=paper.event_id.date_tz).date" t-options='{"format":"MMMM dd, Y h:m a", "hide_seconds":"True"}'> </span></h6>
+                                    <h6><strong>Location:</strong> <span t-field="paper.location_id.name" /></h6>
+                                    <h6><strong>Duration:</strong> <span t-field="paper.duration" t-options='{"widget": "duration", "unit": "hour", "round": "minute"}'/></h6>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div> 
         </div>
@@ -256,7 +272,7 @@
                     </t>
                     <t t-set="entries">
                         <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
-                            <li class="list-group-item flex-grow-1">
+                            <!-- <li class="list-group-item flex-grow-1">
                                 <a t-if="not paper.is_done and paper.stage_id.can_edit" role="button" class="btn btn-primary btn-block mb8" data-toggle="modal" data-target="#modaledit" href="#">
                                     <i class="fa fa-pencil"/> Edit
                                 </a>
@@ -268,7 +284,7 @@
                                         <a class="btn btn-secondary btn-block o_print_btn o_portal_paper_print" t-att-href="paper.get_portal_url(report_type='pdf')" id="print_paper_report" title="Print" target="_blank"><i class="fa fa-print"/> Print</a>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
 
                             <li class="navspy list-group-item pl-0 flex-grow-1" t-ignore="true" role="complementary">
                                 <ul class="nav flex-column bs-sidenav">
@@ -281,6 +297,7 @@
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#abstract">Abstract [EN]</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#abstract_es">Abstract [ES]</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#attachments">Attachments</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#presentation">Presentation</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#discussion">Messages</a></li>
                                 </ul>
                             </li>
@@ -322,13 +339,13 @@
                     </div>
                     
                     <!-- bottom actions -->
-                    <div class="container mt32">
+                    <!-- <div class="container mt32">
                         <t t-if="not paper.is_done and paper.stage_id.can_edit" >
                             <div class="col-sm-auto mt8 mb8">
                                 <a role="button" class="btn btn-primary" data-toggle="modal" data-target="#modaledit" href="#"><i class="fa fa-pencil"/> Edit</a>
                             </div>
                         </t>
-                    </div>  
+                    </div>  --> 
                     <div class="container mt32">
                         <h4><strong>Message and communication history</strong></h4>
                         <t t-call="portal.message_thread">

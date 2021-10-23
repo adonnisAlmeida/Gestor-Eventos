@@ -100,8 +100,11 @@ class TrackStage(models.Model):
 
 class TrackType(models.Model):
     _name = 'event.track.type'
+    _description = 'Track Type'
+
     name = fields.Char('Name', required=True, translate=True)
     description = fields.Char('Description', translate=True)
+    is_paper = fields.Boolean('Is paper', default=True)
 
 
 class TrackLocation(models.Model):
@@ -119,6 +122,7 @@ class TrackLocation(models.Model):
 
 class TrackAuthor(models.Model):
     _name = 'event.track.author'
+    _description = 'Track Author'
 
     track_id = fields.Many2one('event.track', string="Track", required=True, ondelete='cascade')
     partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade')
@@ -152,7 +156,7 @@ class TrackReview(models.Model):
     state = fields.Selection([('notice','Noticed'),('read','Readed'),('accept','Accepted'),('reject','Rejected'),('edit', 'Need changes')], string="State", default="notice", required=True, tracking=True)
     weight = fields.Integer('Weight', default = 10)
     expired = fields.Boolean(string='Is expired', compute=_compute_expired)
-    is_done = fields.Boolean(string='Is Done', realated='track_id.is_done')
+    is_done = fields.Boolean(string='Is Done', related='track_id.is_done')
 
     @api.model
     def create(self, vals):        

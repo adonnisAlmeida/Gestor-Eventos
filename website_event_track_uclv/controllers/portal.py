@@ -5,6 +5,7 @@ import babel
 import collections
 import datetime
 import pytz
+import uuid
 
 from odoo import fields, http
 from collections import OrderedDict
@@ -12,7 +13,7 @@ from odoo.http import request, route
 from odoo.tools.translate import _
 from odoo.tools import html_escape as escape, html2plaintext, consteq
 from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager
-from werkzeug.exceptions import NotFound, Forbidden
+from werkzeug.exceptions import NotFound, Forbidden, InternalServerError
 from odoo.exceptions import AccessError, MissingError
 from odoo.osv.expression import OR
 from odoo.tools import groupby as groupbyelem
@@ -193,14 +194,13 @@ class PortalController(CustomerPortal):
                 raise Forbidden()
         
         if not prop:
-            raise NotFound()
+            raise NotFound()        
 
         for c_file in request.httprequest.files.getlist('file'):
-            data = c_file.read()
-            import base64
+            data = c_file.read()            
             request.env['ir.attachment'].sudo().create({
                         'name': c_file.filename,
-                        'datas': base64.b64encode(data),                        
+                        'raw': data,
                         'public': False,
                         'res_model': 'event.track',
                         'res_id': prop.id
@@ -208,12 +208,7 @@ class PortalController(CustomerPortal):
 
         return request.render(
             "website_event_track_uclv.portal_my_paper", {
-                'paper': prop,
-                #'user_activity': opp.activity_ids.filtered(lambda activity: activity.user_id == request.env.user)[:1],
-                #'stages': request.env['crm.stage'].search([('probability', '!=', '100')], order='sequence desc'),
-                #'activity_types': request.env['mail.activity.type'].sudo().search([]),
-                #'states': request.env['res.country.state'].sudo().search([]),
-                #'countries': request.env['res.country'].sudo().search([]),
+                'paper': prop                
             })
 
     @http.route(['/my/reviews', '/my/reviews/page/<int:page>'], type='http', auth="user", website=True)

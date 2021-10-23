@@ -10,6 +10,7 @@
 """,
     'depends': ['event_sale', 'base_uclv'],
     'data': [
+        'security/ir.model.access.csv',
         #'views/event_registration_payment_views.xml',
         'views/event_ticket_views.xml',
         'views/event_views.xml',

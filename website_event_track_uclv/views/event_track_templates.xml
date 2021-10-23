@@ -19,6 +19,7 @@
                                     <!-- Drag/Drop Area -->
                                     <div id="oe_structure_wesession_track_index_2" class="oe_structure"/>
                                 </div>
+                                
                                 <div class="col-lg-4 bg-secondary shadow-sm d-print-none">
                                     <div class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Practical Info</h6>
@@ -57,7 +58,7 @@
                                         </div>
                                         
                                     </div>
-                                    <div class="o_wevent_sidebar_block">
+                                    <div t-if='track.author_ids' class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Authors</h6>
                                         <t t-foreach='track.author_ids' t-as="author" >
                                             <div class="mt4">
@@ -66,7 +67,7 @@
                                             </div>
                                         </t>
                                     </div>
-                                    <div class="o_wevent_sidebar_block">
+                                    <div t-if='track.tag_ids' class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Keywords</h6>
                                         <t t-foreach='track.tag_ids' t-as="tag" >
                                             <div class="mt4">
@@ -77,6 +78,7 @@
                                             </div>
                                         </t>
                                     </div>
+                                    
                                     <!-- <div class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Documents</h6>
                                         <a t-if="track.stage_id.id in (3, 4)" target="_blank" t-att-href="'/tracks/certificate/%s?%s' % (track.id, keep_query())" title="Download certificate">
@@ -123,19 +125,19 @@
                 </div>
                 <t t-set="active_lang" t-value="list(filter(lambda lg : lg[0] == lang, languages))[0]"/>
                 <section t-if="active_lang[1]=='en'" class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
-                    <h4>Abstract [EN]</h4>
+                    <h4 t-if="track.track_type_id and track.track_type_id.is_paper">Abstract </h4>
                     <div t-field="track.description" />
                 </section>
                 <section t-if="active_lang[1]=='en'" class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
-                    <h4>Resumen [ES]</h4>
+                    <h4 t-if="track.track_type_id and track.track_type_id.is_paper">Resumen</h4>
                     <div class="font-italic" t-field="track.description_es" />
                 </section>
                 <section t-if="active_lang[1]=='es'" class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
-                    <h4>Resumen [ES]</h4>
+                    <h4 t-if="track.track_type_id and track.track_type_id.is_paper">Resumen</h4>
                     <div t-field="track.description_es" />
                 </section>
                 <section t-if="active_lang[1]=='es'" class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
-                    <h4>Abstract [EN]</h4>
+                    <h4 t-if="track.track_type_id and track.track_type_id.is_paper">Abstract </h4>
                     <div class="font-italic" t-field="track.description" />
                 </section>
 

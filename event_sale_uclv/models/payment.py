@@ -8,6 +8,7 @@ from odoo.exceptions import ValidationError
 
 class EventRegistrationPayment(models.Model):
     _name = 'event.registration.payment'
+    _description = "Registration Payment"
     _order = 'payment_date desc'
 
     def _get_default_date(self):

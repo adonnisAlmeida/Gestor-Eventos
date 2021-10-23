@@ -5,6 +5,7 @@ from odoo import api, fields, models, tools
 
 class ReportEventAttendeeAnalysis(models.Model):
     _name = 'report.event.attendee.analysis'
+    _description = "Attendee Analysis"
     _auto = False
 
     event_name = fields.Char(string="Main Event", readonly=True, translate=True)

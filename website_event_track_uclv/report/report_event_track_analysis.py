@@ -5,6 +5,7 @@ from odoo import api, fields, models, tools
 
 class ReportEventTrackAnalysis(models.Model):
     _name = 'report.event.track.analysis'
+    _description = "Track Analysis"
     _auto = False
 
     event_name = fields.Char(string="Main Event", readonly=True, translate=True)

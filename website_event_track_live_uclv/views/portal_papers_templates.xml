@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_paper_content" inherit_id="website_event_track_uclv.portal_my_paper_content">
+        <xpath expr="//a[hasclass('btn-upload')]" position="replace">           
+            <div id="fileuploader">Upload a file</div>
+        </xpath>    
+        
+        <xpath expr="//div[@id='presentation_details']" position="inside">
+                                            
+            <h6><strong>Video:</strong></h6>   
+            <div id="videoplayer" t-if="paper.avideo_url" class="embed-responsive embed-responsive-16by9 mt-16">
+                <object width="640" height="360">
+                    <param name="movie" t-attf-value="#{paper.avideo_base_domain}/videoEmbed/#{paper.avideo_url}?modestbranding=0&amp;showinfo=0&amp;&amp;controls=1&amp;t=0&amp;objectFit=" />
+                    <param name="allowFullScreen" value="true" />
+                    <param name="allowscriptaccess" value="always" />
+                    <embed t-attf-src="#{paper.avideo_base_domain}videoEmbed/#{paper.avideo_url}?modestbranding=0&amp;showinfo=0&amp;&amp;controls=1&amp;t=0&amp;objectFit=" allowscriptaccess="always" allowfullscreen="true" width="640" height="360" />
+                </object>
+            </div>
+            <div id="videoencoder" t-if="paper.avideo_url" class="alert alert-info d-none">
+                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Your video is being encoded. It will be available soon.
+            </div>
+            
+            <div id="videouploader" class="mt-16">Upload a video</div>
+                        
+            
+        </xpath> 
+             
+    </template>    
+</odoo>

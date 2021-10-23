@@ -42,8 +42,8 @@
                 <button name="%(website_event_track.website_visitor_action_from_track)d" position="before">
                     <button name="%(website_event_track_uclv.action_event_track_review_from_track)d"
                             type="action"
-                            class="oe_stat_button">
-                        <i class="fa fa-fw o_button_icon fa-eye"/>
+                            class="oe_stat_button" icon="fa-eye">
+                        
                         <div class="o_stat_info">
                             <field class="text-success" name="reviews_accepted_count"/> /
                             <field class="text-warning" name="reviews_edit_count"/> /
@@ -108,7 +108,53 @@
                 </p>
             </field>
         </record>
-   
+
+        <record model="ir.ui.view" id="view_event_track_type_form">
+            <field name="name">Event Track Type</field>
+            <field name="model">event.track.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name" />
+                        <field name="description" />
+                        <field name="is_paper" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_event_location_tree">
+            <field name="name">Event Track Types</field>
+            <field name="model">event.track.type</field>            
+            <field name="arch" type="xml">
+                <tree>                    
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="is_paper" />                    
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_event_track_type">
+            <field name="name">Event Track Types</field>
+            <field name="res_model">event.track.type</field>            
+            <field name="view_mode">tree,form</field>            
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Add a new track type
+                </p><p>
+                Track types define can be a talk, a round table, a meeting, etc.
+                </p>
+            </field>
+        </record>
+        
+        <menuitem
+            id="menu_event_track_type"
+            name="Track Types"
+            action="action_event_track_type"
+            parent="event.menu_event_configuration"
+            sequence="13"
+            groups="event.group_event_user"/>
+
         <menuitem
             id="website_event_track.menu_event_track"
             name="Tracks"

@@ -14,8 +14,12 @@
         'website_event_track_uclv',
         'website_event_track_live',
     ],
-    'data': [        
-        'views/event_track_templates_page.xml',       
+    'data': [
+        'views/assets.xml',
+        'views/res_config_settings.xml',
+        'views/event_track_templates_page.xml',
+        'views/event_track_templates_list.xml',
+        'views/portal_papers_templates.xml',
     ],    
     'application': False,
     'installable': True,

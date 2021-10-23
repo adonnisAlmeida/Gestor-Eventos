@@ -4,7 +4,8 @@ from odoo.tools import float_utils
 
 class AttendeeListReport(models.AbstractModel):
     _name = 'report.website_event_track_uclv.report_attendee_list'
-
+    _description = "Attendee List Report"
+    
     @api.model
     def get_attendees(self, event_ids, ticket_ids, pricelist_ids, only_unpaid):
         domain = [('state', '!=', 'cancel')]

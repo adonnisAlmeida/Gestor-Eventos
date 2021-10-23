@@ -1,0 +1,109 @@
+.ajax-file-upload-statusbar {
+	
+	margin-top: 10px;
+	width: 100% !important;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	padding: 5px 5px 15px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.ajax-file-upload-filename {
+	width: 300px;
+	height: auto;
+	margin: 0 5px 5px 0px;
+}
+.ajax-file-upload-filesize {
+	width: 50px;
+	height: auto;
+	margin: 0 5px 5px 0px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.ajax-file-upload-progress {
+	margin: 5px 10px 5px 0px;
+	position: relative;
+	width:80%;
+	border: 1px solid #ddd;
+	padding: 1px;
+	border-radius: 3px;
+	display: inline-block;
+	color: #FFFFFF;
+}
+.ajax-file-upload-bar {
+	
+	height: 20px;
+	border-radius: 3px;
+	
+
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    color: #FFFFFF;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #01524B;
+    transition: width 0.6s ease;
+
+	background-image: linear-gradient(
+45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+
+	animation: progress-bar-stripes 1s linear infinite;
+}
+.ajax-file-upload-percent {
+	position: absolute;
+	display: inline-block;
+	top: 3px;
+	left: 48%;
+}
+.ajax-file-upload-red {
+	color: #FFFFFF;
+    background-color: #dc3545;    
+	display: inline-block;
+    font-weight: 400;    
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;    
+    border: 1px solid #dc3545;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.ajax-file-upload-green {
+	color: #FFFFFF;
+    background-color: #28a745;
+	display: inline-block;
+    font-weight: 400;    
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;    
+    border: 1px solid #28a745;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.ajax-upload-dragdrop {
+	border: 2px dotted rgba(0, 0, 0, 0.125);;
+	width: 100% !important;
+	color: #DADCE3;
+	text-align: left;
+	vertical-align: middle;
+	padding: 10px;
+}
+.state-hover {
+	border: 2px solid #A5A5C7;
+}
+.ajax-file-upload-container {
+	margin: 20px 0px 20px 0px;
+}

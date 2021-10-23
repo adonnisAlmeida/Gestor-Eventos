@@ -15,70 +15,37 @@
             <field name="header_line" eval="False"/>
             <field name="header_spacing">0</field>
             <field name="dpi">80</field>
+        </record>        
+        <record id="action_report_attendee_list" model="ir.actions.report">
+            <field name="name">Attendee List</field>
+            <field name="model">attendee.list.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">website_event_track_uclv.report_attendee_list</field>
+            <field name="report_file">website_event_track_uclv.report_attendee_list</field>
+            <field name="print_report_name">'Attendee List - %s' % (object.name).replace('/','')</field>
+            <field name="binding_model_id" ref="model_event_event"/>
+            <field name="binding_type">report</field>
+        </record>        
+        <record id="report_event_registration_certificate" model="ir.actions.report">
+            <field name="name">Attendee Certificate</field>
+            <field name="model">event.registration</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">website_event_track_uclv.event_registration_report_template_certificate</field>
+            <field name="report_file">website_event_track_uclv.event_registration_report_template_certificate</field>
+            <field name="print_report_name">'Attendee Certificate - %s' % (object.name).replace('/','')</field>
+            <field name="binding_model_id" ref="model_event_track"/>
+            <field name="binding_type">report</field>
         </record>
-        <report
-            string="Attendee List"
-            id="action_report_attendee_list"
-            model="attendee.list.report"
-            report_type="qweb-pdf"
-            name="website_event_track_uclv.report_attendee_list"
-            file="website_event_track_uclv.report_attendee_list"
-            print_report_name="Attendee List"
-        />
-        <report
-            id="report_event_registration_certificate"
-            model="event.registration"
-            string="Attendee Certificate"
-            report_type="qweb-pdf"
-            attachment=""
-            name="website_event_track_uclv.event_registration_report_template_certificate"
-            file="website_event_track_uclv.event_registration_report_template_certificate"
-            paperformat="paperformat_certificate_lowmargin_landscape"
-            print_report_name="'Attendee Certificate - %s' % (object.name).replace('/','')"
-        />
-        <report
-            id="report_event_track_certificate"
-            model="event.track"
-            string="Track Certificate"
-            report_type="qweb-pdf"
-            attachment=""
-            name="website_event_track_uclv.event_track_report_template_certificate"
-            file="website_event_track_uclv.event_track_report_template_certificate"
-            paperformat="paperformat_certificate_lowmargin_landscape"
-            print_report_name="'Track Certificate - %s' % (object.name).replace('/','')"
-        />
-        <report
-            id="report_event_track_certificate2"
-            model="event.track"
-            string="Track Certificate Extra"
-            report_type="qweb-pdf"
-            attachment=""
-            name="website_event_track_uclv.event_track_report_template_certificate2"
-            file="website_event_track_uclv.event_track_report_template_certificate2"
-            paperformat="paperformat_certificate_lowmargin_landscape"
-            print_report_name="'Track Certificate Extra- %s' % (object.name).replace('/','')"
-        />
-        <report
-            id="report_event_track_certificate3"
-            model="event.track"
-            string="Track Certificate Speaker"
-            report_type="qweb-pdf"
-            attachment=""
-            name="website_event_track_uclv.event_track_report_template_certificate3"
-            file="website_event_track_uclv.event_track_report_template_certificate3"
-            paperformat="paperformat_certificate_lowmargin_landscape"
-            print_report_name="'Track Certificate Speaker- %s' % (object.name).replace('/','')"
-        />
-        <report
-            id="report_event_track_certificate4"
-            model="event.track"
-            string="Track Certificate Authors"
-            report_type="qweb-pdf"
-            attachment=""
-            name="website_event_track_uclv.event_track_report_template_certificate4"
-            file="website_event_track_uclv.event_track_report_template_certificate4"
-            paperformat="paperformat_certificate_lowmargin_landscape"
-            print_report_name="'Track Certificate Authors- %s' % (object.name).replace('/','')"
-        />
+             
+        <record id="report_event_track_certificate" model="ir.actions.report">
+            <field name="name">Track Certificate</field>
+            <field name="model">event.track</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">website_event_track_uclv.event_track_report_template_certificate</field>
+            <field name="report_file">website_event_track_uclv.event_track_report_template_certificate</field>
+            <field name="print_report_name">'Track Certificate - %s' % (object.name).replace('/','')</field>
+            <field name="binding_model_id" ref="model_event_track"/>
+            <field name="binding_type">report</field>
+        </record>
     </data>
 </odoo>

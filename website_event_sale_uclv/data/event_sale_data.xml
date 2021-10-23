@@ -2,7 +2,7 @@
 <odoo>
     <data noupdate="1">
         <record id="list1" model="product.pricelist">
-            <field name="name">International Pricelist</field>
+            <field name="name">International Pricelist (USD)</field>
             <field name="sequence">1</field>
             <field name="currency_id" ref="base.USD" />
             <field name="selectable" eval="True"/>
@@ -28,6 +28,7 @@
     <data noupdate="0">
         <record id="product_product_event_guest" model="product.product">
             <field name="list_price">0.0</field>
+            <field name="default_code">EVENT_GUEST</field>
             <field name="event_ok" eval="True"/>
             <field name="standard_price">0.0</field>
             <field name="uom_id" ref="uom.product_uom_unit"/>
@@ -38,6 +39,7 @@
         </record>
         <record id="product_product_event_staff" model="product.product">
             <field name="list_price">0.0</field>
+            <field name="default_code">EVENT_STAFF</field>
             <field name="event_ok" eval="True"/>
             <field name="standard_price">0.0</field>
             <field name="uom_id" ref="uom.product_uom_unit"/>
@@ -48,6 +50,7 @@
         </record>
         <record id="product_product_event_delegate" model="product.product">
             <field name="list_price">6000.0</field>
+            <field name="default_code">EVENT_DELEGATE</field>
             <field name="event_ok" eval="True"/>
             <field name="standard_price">6000.0</field>
             <field name="uom_id" ref="uom.product_uom_unit"/>
@@ -58,7 +61,6 @@
             <field name="description_sale"><![CDATA[
                 <div><span class="fa fa-certificate fa-hw text-info" /> Includes participation certificate</div>
                 <div><span class="fa fa-certificate fa-hw text-info" /> Includes paper certificate if proceed</div>
-                <div><span class="fa fa-certificate fa-hw text-info" /> NOT Includes hotel</div>
                 ]]></field>
         </record>
             <record id="product_product_event_delegate_usd" model="product.pricelist.item">
@@ -102,9 +104,67 @@
                 <field name="pricelist_id" ref="list2"/>
             </record>
 
+               
+        <record id="product_product_event_course" model="product.product">
+            <field name="list_price">960</field>
+            <field name="event_ok" eval="True"/>
+            <field name="default_code">EVENT_COURSE</field>
+            <field name="standard_price">960.0</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+            <field name="name">Course</field>            
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="type">service</field>
+            <field name="description_sale"><![CDATA[
+                <div><span class="fa fa-certificate fa-hw text-info" /> Includes participation certificate</div>
+                ]]></field>
+        </record>
+            <record id="product_product_event_course_usd" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_course"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">40</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list1"/>
+            </record>
+            <record id="product_product_event_course_usd_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_course"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">32</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
+                <field name="pricelist_id" ref="list1"/>
+            </record>
+            <record id="product_product_event_course_cup" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_course"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">960</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list2"/>
+            </record>
+            <record id="product_product_event_course_cup_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_course"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">768</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
+                <field name="pricelist_id" ref="list2"/>
+            </record> 
+
+
         <record id="product_product_event_virtual_paper" model="product.product">
             <field name="list_price">1920.0</field>
             <field name="event_ok" eval="True"/>
+            <field name="default_code">EVENT_VIRTUAL_PAPER</field>
             <field name="standard_price">1920.0</field>
             <field name="uom_id" ref="uom.product_uom_unit"/>
             <field name="uom_po_id" ref="uom.product_uom_unit"/>
@@ -121,221 +181,266 @@
                 <field name="min_quantity">1</field>
                 <field name="applied_on">1_product</field>
                 <field name="compute_price">fixed</field>
+                <field name="fixed_price">80</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list1"/>
+            </record>
+            <record id="product_product_event_virtual_paper_usd_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual_paper"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
                 <field name="fixed_price">64</field>
-                <field name="date_start" eval="DateTime(2021, 1, 1).strftime('%Y-%m-%d 00:00:00')" />
-                <field name="date_end" eval="DateTime(2021, 10, 15).strftime('%Y-%m-%d 23:59:59')" />
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
                 <field name="pricelist_id" ref="list1"/>
             </record>
-
-        <record id="product_product_event_evn" model="product.product">
-            <field name="list_price">40.0</field>
-            <field name="event_ok" eval="True"/>
-            <field name="standard_price">40.0</field>
-            <field name="uom_id" ref="uom.product_uom_unit"/>
-            <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <field name="name">Extranjero virtual sin trabajo</field>            
-            <field name="categ_id" ref="product.product_category_all"/>
-            <field name="type">service</field>
-            <field name="description_sale"><![CDATA[
-                <div class="text-danger"><span class="fa fa-certificate fa-hw" /> Includes participation certificate</div>
-                <div class="text-danger"><span class="fa fa-hotel fa-hw" /> Does NOT include hotel</div>]]></field>
-        </record>
-            <record id="product_product_event_evn_discount" model="product.pricelist.item">
-                <field name="product_tmpl_id" ref="product_product_event_evn"/>
+            <record id="product_product_event_virtual_paper_cup" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual_paper"/>
                 <field name="min_quantity">1</field>
                 <field name="applied_on">1_product</field>
                 <field name="compute_price">fixed</field>
-                <field name="fixed_price">32</field>
-                <field name="date_start" eval="DateTime(2021, 1, 1).strftime('%Y-%m-%d 00:00:00')" />
-                <field name="date_end" eval="DateTime(2021, 10, 15).strftime('%Y-%m-%d 23:59:59')" />
-                <field name="pricelist_id" ref="list1"/>
+                <field name="fixed_price">500</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list2"/>
             </record>
-
-        <record id="product_product_event_eep" model="product.product">
-            <field name="list_price">125.0</field>
-            <field name="event_ok" eval="True"/>
-            <field name="standard_price">125.0</field>
-            <field name="uom_id" ref="uom.product_uom_unit"/>
-            <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <field name="name">Estudiante extranjero presencial</field>            
-            <field name="categ_id" ref="product.product_category_all"/>
-            <field name="type">service</field>
-            <field name="description_sale"><![CDATA[
-                <div><span class="fa fa-warning fa-hw text-warning" /> In order to buy this ticket you need to probe you are an student by presenting an accreditation from your universitary institution. If you can not demonstrate you are a graduate student, you must pay the difference with normal ticket in cash at the moment of accreditation</div>
-                <div><span class="fa fa-certificate fa-hw text-info" /> Includes participation certificate</div>
-               ]]></field>
-        </record>
-            <record id="product_product_event_eep_discount" model="product.pricelist.item">
-                <field name="product_tmpl_id" ref="product_product_event_eep"/>
-                <field name="min_quantity">1</field>
-                <field name="applied_on">1_product</field>
-                <field name="compute_price">fixed</field>
-                <field name="fixed_price">100</field>
-                <field name="date_start" eval="DateTime(2021, 1, 1).strftime('%Y-%m-%d 00:00:00')" />
-                <field name="date_end" eval="DateTime(2021, 10, 15).strftime('%Y-%m-%d 23:59:59')" />
-                <field name="pricelist_id" ref="list1"/>
-            </record>
-
-        <record id="product_product_event_eev" model="product.product">
-            <field name="list_price">60.0</field>
-            <field name="event_ok" eval="True"/>
-            <field name="standard_price">60.0</field>
-            <field name="uom_id" ref="uom.product_uom_unit"/>
-            <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <field name="name">Estudiante extranjero virtual con trabajo</field>            
-            <field name="categ_id" ref="product.product_category_all"/>
-            <field name="type">service</field>
-            <field name="description_sale"><![CDATA[
-                <div><span class="fa fa-warning fa-hw text-warning" /> In order to buy this ticket you need to probe you are an undergraduate student by presenting an accreditation from your universitary institution. If you can not demonstrate you are an undergraduate student, you must pay the difference with DELEGATE ticket in cash at the moment of accreditation</div>
-                <div><span class="fa fa-certificate fa-hw text-info" /> Includes participation certificate</div>
-                <div><span class="fa fa-slideshare fa-hw text-info" /> Access to work sessions</div>
-                <div><span class="fa fa-flag-o fa-hw text-info" /> Access to opening and closing ceremonies</div>
-                <div class="text-danger"><span class="fa fa-hotel fa-hw" /> Does NOT include hotel</div>]]></field>
-        </record>
-            <record id="product_product_event_eev_discount" model="product.pricelist.item">
-                <field name="product_tmpl_id" ref="product_product_event_eev"/>
-                <field name="min_quantity">1</field>
-                <field name="applied_on">1_product</field>
-                <field name="compute_price">fixed</field>
-                <field name="fixed_price">48</field>
-                <field name="date_start" eval="DateTime(2021, 1, 1).strftime('%Y-%m-%d 00:00:00')" />
-                <field name="date_end" eval="DateTime(2021, 10, 15).strftime('%Y-%m-%d 23:59:59')" />
-                <field name="pricelist_id" ref="list1"/>
-            </record>
-
-        <record id="product_product_event_eevn" model="product.product">
-            <field name="list_price">30.0</field>
-            <field name="event_ok" eval="True"/>
-            <field name="standard_price">30.0</field>
-            <field name="uom_id" ref="uom.product_uom_unit"/>
-            <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <field name="name">Estudiante extranjero virtual sin trabajo</field>            
-            <field name="categ_id" ref="product.product_category_all"/>
-            <field name="type">service</field>
-            <field name="description_sale"><![CDATA[
-                <div><span class="fa fa-send fa-hw text-info" /> Includes participation certificate by email</div> 
-                <div><span class="fa fa-user fa-hw text-info" /> Another person you choose may act as speaker of your track</div>
-                <div class="text-danger"><span class="fa fa-hotel fa-hw" /> Does NOT include hotel</div>]]></field>
-        </record>
-            <record id="product_product_event_eevn_discount" model="product.pricelist.item">
-                <field name="product_tmpl_id" ref="product_product_event_eevn"/>
-                <field name="min_quantity">1</field>
-                <field name="applied_on">1_product</field>
-                <field name="compute_price">fixed</field>
-                <field name="fixed_price">24</field>
-                <field name="date_start" eval="DateTime(2021, 1, 1).strftime('%Y-%m-%d 00:00:00')" />
-                <field name="date_end" eval="DateTime(2021, 10, 15).strftime('%Y-%m-%d 23:59:59')" />
-                <field name="pricelist_id" ref="list1"/>
-            </record>
-
-
-        <!-- cuba -->
-        <record id="product_product_event_cv" model="product.product">
-            <field name="list_price">500.0</field>
-            <field name="event_ok" eval="True"/>
-            <field name="standard_price">500.0</field>
-            <field name="uom_id" ref="uom.product_uom_unit"/>
-            <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <field name="name">Delegado cubano virtual</field>            
-            <field name="categ_id" ref="product.product_category_all"/>
-            <field name="type">service</field>
-            <field name="description_sale"><![CDATA[
-                <div><span class="fa fa-map-marker fa-hw text-info" /> Includes a location to present a product or service</div>
-                <div><span class="fa fa-briefcase fa-hw text-info" /> You must bring your own stand and materials</div>
-                <div><span class="fa fa-certificate fa-hw text-info" /> Includes participation certificate</div>
-                <div><span class="fa fa-group fa-hw text-info" /> Access to associated expo</div>
-                <div class="text-danger"><span class="fa fa-hotel fa-hw" /> Does NOT include hotel</div>]]></field>
-        </record>
-            <record id="product_product_event_cv_discount" model="product.pricelist.item">
-                <field name="product_tmpl_id" ref="product_product_event_cv"/>
+            <record id="product_product_event_virtual_paper_cup_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual_paper"/>
                 <field name="min_quantity">1</field>
                 <field name="applied_on">1_product</field>
                 <field name="compute_price">fixed</field>
                 <field name="fixed_price">400</field>
-                <field name="date_start" eval="DateTime(2021, 1, 1).strftime('%Y-%m-%d 00:00:00')" />
-                <field name="date_end" eval="DateTime(2021, 10, 15).strftime('%Y-%m-%d 23:59:59')" />
-                <field name="pricelist_id" ref="list2"/>
-            </record>  
-        
-        <record id="product_product_event_cvn" model="product.product">
-            <field name="list_price">300.0</field>
-            <field name="event_ok" eval="True"/>
-            <field name="standard_price">300.0</field>
-            <field name="uom_id" ref="uom.product_uom_unit"/>
-            <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <field name="name">Participante cubano virtual</field>            
-            <field name="categ_id" ref="product.product_category_all"/>
-            <field name="type">service</field>
-            <field name="description_sale"><![CDATA[
-                <div><span class="fa fa-certificate fa-hw text-info" /> Includes participation certificate</div>
-                <div><span class="fa fa-slideshare fa-hw text-info" /> Access to work sessions</div>
-                <div><span class="fa fa-hotel fa-hw text-info" /> Includes single hotel room</div>]]></field>
-        </record>
-            <record id="product_product_event_cvn_discount" model="product.pricelist.item">
-                <field name="product_tmpl_id" ref="product_product_event_cvn"/>
-                <field name="min_quantity">1</field>
-                <field name="applied_on">1_product</field>
-                <field name="compute_price">fixed</field>
-                <field name="fixed_price">240</field>
-                <field name="date_start" eval="DateTime(2021, 1, 1).strftime('%Y-%m-%d 00:00:00')" />
-                <field name="date_end" eval="DateTime(2021, 10, 15).strftime('%Y-%m-%d 23:59:59')" />              
-                <field name="pricelist_id" ref="list2"/>
-            </record>
-        
-        <record id="product_product_event_ecv" model="product.product">
-            <field name="list_price">200.0</field>
-            <field name="event_ok" eval="True"/>
-            <field name="standard_price">200.0</field>
-            <field name="uom_id" ref="uom.product_uom_unit"/>
-            <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <field name="name">Estudiante cubano virtual</field>            
-            <field name="categ_id" ref="product.product_category_all"/>
-            <field name="type">service</field>
-            <field name="description_sale"><![CDATA[
-                <div><span class="fa fa-certificate fa-hw text-info" /> Includes participation certificate</div>
-                <div><span class="fa fa-slideshare fa-hw text-info" /> Access to work sessions</div>
-                <div><span class="fa fa-hotel fa-hw text-info" /> Includes double (shared) hotel room</div>]]></field>
-        </record>
-            <record id="product_product_event_ecv_discount" model="product.pricelist.item">
-                <field name="product_tmpl_id" ref="product_product_event_ecv"/>
-                <field name="min_quantity">1</field>
-                <field name="applied_on">1_product</field>
-                <field name="compute_price">fixed</field>
-                <field name="fixed_price">160</field>
-                <field name="date_start" eval="DateTime(2021, 1, 1).strftime('%Y-%m-%d 00:00:00')" />
-                <field name="date_end" eval="DateTime(2021, 10, 15).strftime('%Y-%m-%d 23:59:59')" />
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
                 <field name="pricelist_id" ref="list2"/>
             </record>
 
-
-        <record id="product_product_event_course" model="product.product">
-            <field name="list_price">40</field>
+        <record id="product_product_event_virtual" model="product.product">
+            <field name="list_price">960.0</field>
             <field name="event_ok" eval="True"/>
-            <field name="standard_price">40.0</field>
+            <field name="default_code">EVENT_VIRTUAL</field>
+            <field name="standard_price">960.0</field>
             <field name="uom_id" ref="uom.product_uom_unit"/>
             <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <field name="name">Curso</field>            
+            <field name="name">Virtual Delegate</field>            
             <field name="categ_id" ref="product.product_category_all"/>
             <field name="type">service</field>
             <field name="description_sale"><![CDATA[
-                <div><span class="fa fa-certificate fa-hw text-info" /> Includes participation certificate</div>
-                <div><span class="fa fa-slideshare fa-hw text-info" /> Access to work sessions</div>
-                <div><span class="fa fa-bus fa-hw text-info" /> Includes bus travel from Santa Clara on June 25th at 6:00 am</div>
-                <div><span class="fa fa-glass fa-hw text-info" /> Includes a day pass in hotel areas on June 25th</div>
-                <div><span class="fa fa-bus fa-hw text-info" /> Includes bus travel to Santa Clara on June 25th at 5:00 pm</bus>]]></field>
+                <div class="text-danger"><span class="fa fa-certificate fa-hw" /> Includes participation certificate</div>
+                ]]></field>
         </record>
-            <record id="product_product_event_course_discount" model="product.pricelist.item">
-                <field name="product_tmpl_id" ref="product_product_event_course"/>
+            <record id="product_product_event_virtual_usd" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">40</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list1"/>
+            </record>
+            <record id="product_product_event_virtual_usd_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual"/>
                 <field name="min_quantity">1</field>
                 <field name="applied_on">1_product</field>
                 <field name="compute_price">fixed</field>
                 <field name="fixed_price">32</field>
-                <field name="date_start" eval="DateTime(2021, 1, 1).strftime('%Y-%m-%d 00:00:00')" />
-                <field name="date_end" eval="DateTime(2021, 10, 15).strftime('%Y-%m-%d 23:59:59')" />
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
                 <field name="pricelist_id" ref="list1"/>
-            </record>  
-        
-            
+            </record>
+            <record id="product_product_event_virtual_cup" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">300</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list2"/>
+            </record>
+            <record id="product_product_event_virtual_cup_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">240</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
+                <field name="pricelist_id" ref="list2"/>
+            </record>
+
+        <!-- Students -->
+        <record id="product_product_event_delegate_st" model="product.product">
+            <field name="list_price">3000.0</field>
+            <field name="event_ok" eval="True"/>
+            <field name="default_code">EVENT_DELEGATE_STUDENT</field>
+            <field name="standard_price">3000.0</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+            <field name="name">Delegate (for Students)</field>            
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="type">service</field>
+            <field name="description_sale"><![CDATA[
+                <div><span class="fa fa-certificate fa-hw text-info" /> Includes participation certificate</div>
+                <div><span class="fa fa-certificate fa-hw text-info" /> Includes paper certificate if proceed</div>
+            ]]></field>
+        </record>
+            <record id="product_product_event_delegate_st_usd" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_delegate_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">125</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list1"/>
+            </record>
+            <record id="product_product_event_delegate_st_usd_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_delegate_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">100</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
+                <field name="pricelist_id" ref="list1"/>
+            </record>
+            <record id="product_product_event_delegate_st_cup" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_delegate_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">250</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list2"/>
+            </record>
+            <record id="product_product_event_delegate_st_cup_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_delegate_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">200</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
+                <field name="pricelist_id" ref="list2"/>
+            </record>
+
+
+        <record id="product_product_event_virtual_paper_st" model="product.product">
+            <field name="list_price">1440.0</field>
+            <field name="event_ok" eval="True"/>
+            <field name="default_code">EVENT_VIRTUAL_PAPER_STUDENT</field>
+            <field name="standard_price">1440.0</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+            <field name="name">Virtual delegate + Paper (for Students)</field>            
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="type">service</field>
+            <field name="description_sale"><![CDATA[
+                <div><span class="fa fa-certificate fa-hw text-info" /> Includes participation certificate</div>
+                <div><span class="fa fa-certificate fa-hw text-info" /> Includes paper certificate</div>
+                ]]></field>
+        </record>
+            <record id="product_product_event_virtual_paper_st_usd" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual_paper_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">60</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list1"/>
+            </record>
+            <record id="product_product_event_virtual_paper_st_usd_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual_paper_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">48</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
+                <field name="pricelist_id" ref="list1"/>
+            </record>
+            <record id="product_product_event_virtual_paper_st_cup" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual_paper_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">200</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list2"/>
+            </record>
+            <record id="product_product_event_virtual_paper_st_cup_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual_paper_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">160</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
+                <field name="pricelist_id" ref="list2"/>
+            </record>
+
+
+        <record id="product_product_event_virtual_st" model="product.product">
+            <field name="list_price">720.0</field>
+            <field name="event_ok" eval="True"/>
+            <field name="default_code">EVENT_VIRTUAL_STUDENT</field>
+            <field name="standard_price">720.0</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+            <field name="name">Virtual Delegate (for Students)</field>            
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="type">service</field>
+            <field name="description_sale"><![CDATA[
+                <div class="text-danger"><span class="fa fa-certificate fa-hw" /> Includes participation certificate</div>
+                ]]></field>
+        </record>
+            <record id="product_product_event_virtual_st_usd" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">30</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list1"/>
+            </record>
+            <record id="product_product_event_virtual_st_usd_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">24</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
+                <field name="pricelist_id" ref="list1"/>
+            </record>
+            <record id="product_product_event_virtual_st_cup" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">200</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="False" />
+                <field name="pricelist_id" ref="list2"/>
+            </record>
+            <record id="product_product_event_virtual_st_cup_discount" model="product.pricelist.item">
+                <field name="product_tmpl_id" ref="product_product_event_virtual_st"/>
+                <field name="min_quantity">1</field>
+                <field name="applied_on">1_product</field>
+                <field name="compute_price">fixed</field>
+                <field name="fixed_price">160</field>
+                <field name="date_start" eval="False" />
+                <field name="date_end" eval="DateTime(2021, 10, 16).strftime('%Y-%m-%d 03:59:59')" />
+                <field name="pricelist_id" ref="list2"/>
+            </record>
 
         <!-- 
         <record id="event_0101_ticket_00" model="event.event.ticket">
@@ -347,183 +452,7 @@
             <field name="seats_max">20</field>
             <field name="allowed_pricelist_ids" eval="[(4, ref('list2'))]"/>
         </record>
-        <record id="event_0101_ticket_000" model="event.event.ticket">
-            <field name="name">Staff</field>
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_000"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">0.0</field>
-            <field name="seats_max">20</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('list2'))]"/>
-        </record>
-        <record id="event_0101_ticket_0000" model="event.event.ticket">
-            <field name="name">Delegado CUP</field>
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_0000"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">350.0</field>
-            <field name="seats_max">20</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('list2'))]"/>
-        </record>
-        <record id="event_0101_ticket_1" model="event.event.ticket">
-            <field name="name">Delegate</field>
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_1"/>
-            <field name="requires_approved_track_to_buy" eval="True" />
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">300.0</field>
-            <field name="seats_max">200</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('list1'))]"/>
-        </record>
-        <record id="event_0101_ticket_3" model="event.event.ticket">
-            <field name="name">Graduate student</field>
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_3"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">250.0</field>
-            <field name="seats_max">50</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('list1'))]"/>
-        </record>
-        <record id="event_0101_ticket_4" model="event.event.ticket">
-            <field name="name">Undergraduate student</field>
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_4"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">175.0</field>
-            <field name="seats_max">50</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('list1'))]"/>
-        </record>
-        <record id="event_0101_ticket_5" model="event.event.ticket">
-            <field name="name">Non-presential delegate</field>
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_5"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">150.0</field>
-            <field name="seats_max">5000</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('list1'))]"/>
-        </record>
-        <record id="event_0101_ticket_6" model="event.event.ticket">
-            <field name="name">Commercial expositor</field>
-            <field name="requires_approved_track_to_buy" eval="False" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_6"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">200.0</field>
-            <field name="seats_max">5000</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('list1'))]"/>
-        </record>
-        <record id="event_0101_ticket_2" model="event.event.ticket">
-            <field name="name">Companion</field>
-            <field name="requires_other_ticket_to_buy" eval="True" />
-            <field name="required_ticket_ids" eval="[(4, ref('event_sale_uclv.event_0101_ticket_1')),(4, ref('event_sale_uclv.event_0101_ticket_3')),(4, ref('event_sale_uclv.event_0101_ticket_4'))]" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_2"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">150.0</field>
-            <field name="seats_max">200</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('list1'))]"/>
-        </record>
-
-        <record id="event_0101_ticket_7" model="event.event.ticket">
-            <field name="name">Delegate + Single Room</field>
-            <field name="requires_approved_track_to_buy" eval="True" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_7"/>
-            <field name="deadline" eval="DateTime(2019, 6, 22).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">500.0</field>
-            <field name="seats_max">500</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('product.list0'))]" />
-        </record>
-        <record id="event_0101_ticket_8" model="event.event.ticket">
-            <field name="name">Delegate + Double Room</field>
-            <field name="requires_approved_track_to_buy" eval="True" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_8"/>
-            <field name="deadline" eval="DateTime(2019, 6, 22).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">450.0</field>
-            <field name="seats_max">500</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('product.list0'))]" />
-        </record>
-        <record id="event_0101_ticket_9" model="event.event.ticket">
-            <field name="name">Delegate + June 25th Day Pass with Bus</field>
-            <field name="requires_approved_track_to_buy" eval="True" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_9"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">100.0</field>
-            <field name="seats_max">500</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('product.list0'))]" />
-        </record>
-        <record id="event_0101_ticket_10" model="event.event.ticket">
-            <field name="name">Delegate + June 26th Day Pass with Bus</field>
-            <field name="requires_approved_track_to_buy" eval="True" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_10"/>
-            <field name="deadline" eval="DateTime(2019, 6, 24).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">100.0</field>
-            <field name="seats_max">500</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('product.list0'))]" />
-        </record>
-        <record id="event_0101_ticket_11" model="event.event.ticket">
-            <field name="name">Delegate + June 25th Day Pass without Bus</field>
-            <field name="requires_approved_track_to_buy" eval="True" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_11"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">70.0</field>
-            <field name="seats_max">500</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('product.list0'))]" />
-        </record>
-        <record id="event_0101_ticket_12" model="event.event.ticket">
-            <field name="name">Delegate + June 26th Day Pass without Bus</field>
-            <field name="requires_approved_track_to_buy" eval="True" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_12"/>
-            <field name="deadline" eval="DateTime(2019, 6, 24).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">70.0</field>
-            <field name="seats_max">500</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('product.list0'))]" />
-        </record>
-        <record id="event_0101_ticket_13" model="event.event.ticket">
-            <field name="name">Delegate + June 25th Day Pass with Bus + June 26th Day Pass with Bus</field>
-            <field name="requires_approved_track_to_buy" eval="True" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_13"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">200.0</field>
-            <field name="seats_max">500</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('product.list0'))]" />
-        </record>
-        <record id="event_0101_ticket_14" model="event.event.ticket">
-            <field name="name">Delegate + June 25th Day Pass without Bus + June 26th Day Pass without Bus</field>
-            <field name="requires_approved_track_to_buy" eval="True" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_14"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">140.0</field>
-            <field name="seats_max">500</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('product.list0'))]" />
-        </record>
-        <record id="event_0101_ticket_15" model="event.event.ticket">
-            <field name="name">Delegate + June 25th Day Pass with Bus + June 26th Day Pass without Bus</field>
-            <field name="requires_approved_track_to_buy" eval="True" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_15"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">170.0</field>
-            <field name="seats_max">500</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('product.list0'))]" />
-        </record>
-        <record id="event_0101_ticket_16" model="event.event.ticket">
-            <field name="name">Delegate + June 25th Day Pass without Bus + June 26th Day Pass with Bus</field>
-            <field name="requires_approved_track_to_buy" eval="True" />
-            <field name="event_id" ref="uclv_events.event_0101"/>
-            <field name="product_id" ref="product_product_event_16"/>
-            <field name="deadline" eval="DateTime(2019, 6, 23).strftime('%Y-%m-%d 23:59:59')"/>
-            <field name="price">170.0</field>
-            <field name="seats_max">500</field>
-            <field name="allowed_pricelist_ids" eval="[(4, ref('product.list0'))]" />
-        </record>
+        
         -->
 
         

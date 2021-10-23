@@ -8,8 +8,9 @@ import uuid
 
 
 class Importer(models.TransientModel):
-    _name = 'v13.importer'
-
+    _name = 'event.v11.importer'
+    _description = 'V11 Importer'
+    
     def _get_databases(self):
         result = []
         username = config['db_user']
@@ -29,8 +30,8 @@ class Importer(models.TransientModel):
             if item.src_db:
                 item.src_filestore = config.filestore(item.src_db)
 
-    src_db = fields.Selection(_get_databases, 'Source Database', required=True, size=64)
-    src_filestore = fields.Char('Source Filestore', required=True, size=1024)
+    src_db = fields.Selection(_get_databases, 'Source Database', required=True)
+    src_filestore = fields.Char('Source Filestore', required=True)
     
     state = fields.Selection([('import', 'Import'), ('done', 'Done')], string="State", default='import')
 

@@ -3,7 +3,7 @@
     <data>
         <record id="manual_importer_wizard_view" model="ir.ui.view">
             <field name="name">manual.importer.wizard.form</field>
-            <field name="model">v13.importer</field>
+            <field name="model">event.v11.importer</field>
             <field name="arch" type="xml">
                 <form string="Importación manual">
                     <field name="state" invisible="1"/>
@@ -16,7 +16,7 @@
                     </group>
                     <div class="alert alert-success info_icon " role="alert" states="done">
                         <div class="row">
-                            <div class="col-xs-1"><span class="fa fa-3x fa-check fa-lg"/></div>
+                            <div class="col-xs-1"><span class="fa fa-3x fa-check fa-lg" title="OK"/></div>
                             <div class="col-xs-11">Datos importados correctamente.</div>
                         </div>
                     </div>                       
@@ -33,7 +33,7 @@
         <record id="action_manual_importer_wizard" model="ir.actions.act_window">
             <field name="name">Importar</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">v13.importer</field>
+            <field name="res_model">event.v11.importer</field>
             <field name="view_id" ref="manual_importer_wizard_view"/>
             <field name="view_mode">form</field>
             <field name="target">new</field>

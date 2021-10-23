@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.event.avideo</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="66"/>
+        <field name="inherit_id" ref="event.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='manage_tracks']" position="after"> 
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <div class="o_setting_right_pane">
+                        <label for="avideo_base_domain" string="AVideo base domain"/>
+                        <field name="avideo_base_domain"/>
+                    </div>
+                
+                    <div class="o_setting_right_pane">
+                        <label for="avideo_user" string="AVideo user"/>
+                        <field name="avideo_user"/>
+                    </div>
+                
+                    <div class="o_setting_right_pane">
+                        <label for="avideo_password" string="AVideo password"/>
+                        <field name="avideo_password"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="event_track_view_form" model="ir.ui.view">
+        <field name="name">event.track.view.form.inherit.live.avideo</field>
+        <field name="model">event.track</field>
+        <field name="inherit_id" ref="website_event_track_live.event_track_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_youtube_replay']" position="after">
+                <field name="avideo_full_url" widget="url"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
