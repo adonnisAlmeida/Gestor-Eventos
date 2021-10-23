@@ -20,6 +20,7 @@ class UCLVAuthSignupHome(AuthSignupHome):
     def web_auth_signup(self, *args, **kw):
         qcontext = self.get_auth_signup_qcontext()
         qcontext.update({'countries': request.env['res.country'].sudo().search([])})
+        qcontext.update({'states': request.env['res.country.state'].sudo().search([])})
         qcontext.update({'titles': request.env['res.partner.title'].sudo().search([])})
         if not qcontext.get('token') and not qcontext.get('signup_enabled'):
             raise werkzeug.exceptions.NotFound()
@@ -54,6 +55,7 @@ class UCLVAuthSignupHome(AuthSignupHome):
     def web_auth_reset_password(self, *args, **kw):
         qcontext = self.get_auth_signup_qcontext()
         qcontext.update({'countries': request.env['res.country'].sudo().search([])})
+        qcontext.update({'states': request.env['res.country.state'].sudo().search([])})
         qcontext.update({'titles': request.env['res.partner.title'].sudo().search([])})
         
         if not qcontext.get('token') and not qcontext.get('reset_password_enabled'):

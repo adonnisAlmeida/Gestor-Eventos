@@ -279,8 +279,15 @@ class Track(models.Model):
 
         if not vals.get('authenticity_token', False):
             vals.update({'authenticity_token': uuid.uuid4()})
+
+        #assign auto reviewers                
+        created = super(Track, self).create(vals)
         
-        return super(Track, self).create(vals)
+        for reviewer in created.event_id.reviewer_ids:
+            if created.partner_id.state_id in reviewer.auto_partner_country_state.mapped('id'):
+                self.env['event.track.review'].create({'track_id':created.id, 'partner_id': reviewer.partner_id.id, 'weight': reviewers.weight})
+        
+        return created
 
         
     def write(self, vals):
