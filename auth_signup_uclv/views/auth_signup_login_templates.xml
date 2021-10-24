@@ -80,9 +80,9 @@
                     </t>
                 </select>
             </div>
-           <div t-if="not only_passwords" class="form-group">
+           <div t-if="not only_passwords" class="form-group field-state-id">
                 <label class="control-label" for="state_id">Your State / Province</label>
-                <select name="state_id" class="form-control">
+                <select name="state_id" class="form-control" t-att-readonly="'readonly' if only_passwords else None">
                     <option value=""></option>
                     <t t-foreach="states" t-as="state">
                         <option t-att-value="state.id" style="display:none;" t-att-data-country_id="state.country_id.id">
