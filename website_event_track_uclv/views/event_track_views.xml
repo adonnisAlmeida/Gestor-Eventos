@@ -60,7 +60,7 @@
                 </field>               
 
                 <field name="color" position="after">
-                    <field name="publish_complete" readonly="True"/>
+                    <field name="publish_complete" />
                     <field name="is_done" invisible="True"/>
                 </field>
                 <field name="location_id" position="replace">
