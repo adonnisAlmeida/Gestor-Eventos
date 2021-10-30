@@ -14,6 +14,8 @@ UCVL mods to auth_signup module
         'base_uclv', 'auth_signup'
     ],
     'data': [
+        'data/res.country.state.csv',
+        'views/auth_signup_assets.xml',
         'views/res_partner_views.xml',
         'views/auth_signup_login_templates.xml',
     ],

@@ -74,7 +74,7 @@
                     </page>
                     <page string="Scientific Comittee" name="reviwers">
                         <field name="reviewer_ids"> 
-                            <tree editable="bottom">
+                            <tree>
                                 <field name="partner_id" string="Name" />
                                 <field name="weight" />
                             </tree>
@@ -83,6 +83,7 @@
                                     <group>
                                         <field name="partner_id" string="Name" />
                                         <field name="weight" />
+                                        <field name="auto_partner_country_state" widget="many2many_tags"/>
                                     </group>
                                 </sheet>
                             </form>

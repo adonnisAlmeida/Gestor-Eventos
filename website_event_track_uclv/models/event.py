@@ -20,6 +20,10 @@ class EventReviewer(models.Model):
     event_id = fields.Many2one('event.event', string="Event", required=True, ondelete='cascade')
     partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade', domain=[('email', '!=', '')])
     weight = fields.Integer(string="Weight", default=10)
+    
+    auto_partner_country_state = fields.Many2many("res.country.state", string="States")
+    auto_partner_institution = fields.Char("Institutions")
+    auto_track_keyword = fields.Many2many("event.track.tag", "Keywords")
 
     _sql_constraints=[
         ('event_id_partner_id_unique', 'UNIQUE(event_id, partner_id)', 'An event cannot have twice the same reviewer.')
