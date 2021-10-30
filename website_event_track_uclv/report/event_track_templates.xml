@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+    <!-- template use to render a Track Certificate -->
+    <template id="event_track_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">                
+                <t t-call="website_event_track_uclv.event_track_report_document" />
+            </t>
+        </t>
+    </template>
+    
+    <template id="event_track_report_document">
+        <t t-call="web.external_layout">
+            <style>
+                .page
+                {
+                    font-family: 'Liberation Serif' !important;
+                    font-size: 19pt;
+                    margin-left: 1.18in;
+                    margin-right: 1.18in;
+                }
+                .h1
+                {
+                    font-size: 16pt;
+                    text-align: center;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+                .h2
+                {
+                    font-size: 16pt;
+                    text-align: center;
+                    font-weight: bold;
+                    margin-top: 36pt;
+                }
+                .h3
+                {
+                    font-size: 14pt;
+                    font-weight: bold;
+                }
+                .h4 .h5 .h6
+                {
+                    font-size: 13pt !important;
+                    font-weight: bold;
+                }                
+                .content
+                {
+                    font-size: 12pt !important;
+                    font-weight: normal;
+                }
+                .content>h1,h2,h3,h4,h5,h6
+                {
+                    font-size: 12pt;
+                    font-weight: bold;
+                }
+                .content>p
+                {
+                    line-height:1.15;
+                    text-align: justify;
+                    text-justify: inter-word;
+                }
+                .translated
+                {
+                    font-style: italic;
+                }
+                section
+                {
+                   margin-top: 24pt; 
+                }
+                ol
+                {
+                    margin-left:24pt;
+                }
+                
+            </style>
+            <t t-set="paper" t-value="o" />
+                <div class="page">                    
+                    <h1 class="h1">
+                        <t t-esc="paper.event_id.name"/> 
+                        <t t-if="paper.event_id.short_name" t-esc="paper.event_id.short_name"/> 
+                        <t t-if="paper.event_id.subname" t-esc="paper.event_id.subname"/>
+                    </h1>                    
+                    <h2 class="h2" t-field="paper.with_context(lang='es_ES').name" />                    
+                    <h2 class="h2 translated" t-field="paper.with_context(lang='en_US').name" />
+
+                    <section>
+                        <h3 class="h3">Autores</h3>
+                        <ol class="content">
+                                <li t-foreach='paper.sudo().author_ids' t-as="author">                                            
+                                    <div>
+                                        <t t-if="author.partner_id == paper.sudo().partner_id">
+                                            <b><span t-field="author.partner_id.name" /></b>
+                                        </t>
+                                        <t t-else="">
+                                            <span t-field="author.partner_id.name" />
+                                        </t>
+                                    </div>
+                                    <div>
+                                        <t t-esc="author.partner_id.email" />
+                                    </div>
+                                    <div>
+                                        <span t-if="author.partner_id.institution" t-field="author.partner_id.institution" />
+                                        <span t-if="author.partner_id.country_id">
+                                            <span t-field="author.partner_id.country_id.name" />
+                                        </span>
+                                    </div>
+                                </li>
+                            </ol>
+                    </section>
+                    
+                    <section>
+                        <h3 class="h3">Resumen</h3>
+                        <div class="content" t-field="paper.description_es" />
+                    </section>
+
+                    <section>
+                        <h3 class="h3">Palabras clave</h3>
+                        <div class="content">
+                            <t t-foreach="paper.sudo().tag_ids" t-as="tag">
+                                <span t-esc="tag.name" />
+                            </t>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="h3 translated">Abstract</h3>
+                        <div class="content translated" t-field="paper.description" />
+                    </section>
+
+                    <section>
+                        <h3 class="h3 translated">Keywords</h3>
+                        <div class="content translated">
+                            <t t-foreach="paper.sudo().tag_ids" t-as="tag">
+                                <span t-esc="tag.name" />
+                            </t>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="h3">1. Introducción</h3>
+                        <div class="content" t-field="paper.introduction" />
+                    </section>
+
+                    <section>
+                        <h3 class="h3">2. Metodología</h3>
+                        <div class="content" t-field="paper.methodology" />
+                    </section>
+
+                    <section>
+                        <h3 class="h3">3. Resultados y discusión</h3>
+                        <div class="content" t-field="paper.results" />
+                    </section>
+
+                    <section>
+                        <h3 class="h3">4. Conclusiones</h3>
+                        <div class="content" t-field="paper.conclussions" />
+                    </section>
+
+                    <section>
+                        <h3 class="h3">5. Referencias Bibliográficas</h3>
+                        <div class="content" t-field="paper.bibliographic" />
+                    </section>
+                </div>
+            
+        </t>
+    </template>
+</odoo>

@@ -1,5 +1,16 @@
 <?xml version="1.0"?>
 <odoo>
+        <record model="ir.ui.view" id="event_track_stage_view_form_inherit">
+            <field name="name">Track Stage</field>
+            <field name="model">event.track.stage</field>
+            <field name="inherit_id" ref="website_event_track.event_track_stage_view_form" />
+            <field name="arch" type="xml">
+                <field name="is_done" position="after" >
+                    <field name="can_edit"/>
+                </field>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="view_event_location_form">
             <field name="name">Event Locations</field>
             <field name="model">event.track.location</field>
@@ -87,9 +98,22 @@
                         </field>
                     </page>
                 </xpath>
-                <xpath expr="//notebook/page[@name='description']" position="after">
-                    <page string="Description [ES]" >
-                        <field name="description_es" />
+                <xpath expr="//notebook/page[@name='description']" position="replace">
+                    <page name="description" string="Content" >
+                        <group>
+                            <field name="description" string="Abstract [English]" />
+                            <field name="description_es" />
+                            
+                            <field name="introduction" />
+                            
+                            <field name="methodology" />
+                            
+                            <field name="results" />
+                        
+                            <field name="conclussions" />
+                            
+                            <field name="bibliographic" />
+                        </group>
                     </page>
                 </xpath>
             </field>
