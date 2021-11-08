@@ -439,7 +439,7 @@
                                 </div>
                                 <div t-if="not paper.is_done" class="col mt16 mb16">
                                     <label class="control-label" for="file">Upload a file</label>
-                                    <input class="form-control form-control-lg" type="file" name="file" />
+                                    <input class="form-control form-control-lg" type="file" name="file" />                                    
                                 </div>
                             </div>                            
                         </div>

@@ -365,10 +365,11 @@ class UCLVWebsiteEventTrackController(EventTrackController):
 
         for c_file in request.httprequest.files.getlist('file'):
             data = c_file.read()
-            import base64
-            request.env['ir.attachment'].sudo().create({
+            
+            if data:
+                request.env['ir.attachment'].sudo().create({
                         'name': c_file.filename,
-                        'datas': base64.b64encode(data),
+                        'raw': data,
                         #'datas_fname': c_file.filename,
                         'public': False,
                         'res_model': 'event.track',

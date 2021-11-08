@@ -193,6 +193,7 @@ class PortalController(CustomerPortal):
             prop = request.env['event.track'].sudo().browse(track_id)
             if prop.partner_id != request.env.user.partner_id:
                 raise Forbidden()
+        
         if not prop:
             raise NotFound()
 

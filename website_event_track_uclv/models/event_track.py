@@ -17,7 +17,7 @@ class IrAttachment(models.Model):
         for vals in vals_list:
             if 'access_token' not in vals and vals.get('res_model', False) == 'event.track':
                 vals['access_token'] = self._generate_access_token()
-        res_ids = super(IrAttachment, self).create(vals_list)
+        res_ids = super().create(vals_list)
         return res_ids
 
         

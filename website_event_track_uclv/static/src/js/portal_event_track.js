@@ -52,7 +52,7 @@ publicWidget.registry.portalEventTrack = publicWidget.Widget.extend({
                                     <span class="small fa fa-home mr-1 text-secondary"></span>
                                     <span class="text-muted small text-truncate mr-1">`+au.author_institution+`</span>
                                     <span>
-                                        <img height="12px" src="`+au.author_country_image+`" alt="Flag of `+au.author_country_name+`" title="`+au.author_country_name+`"/>
+                                        <img height="12px" src="`+au.awuthor_country_image+`" alt="Flag of `+au.author_country_name+`" title="`+au.author_country_name+`"/>
                                     </span>
                                 </div>                    
                             </div>

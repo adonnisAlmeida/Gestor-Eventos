@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="portal_my_paper_content" inherit_id="website_event_track_uclv.portal_my_paper_content">
-        <xpath expr="//a[hasclass('btn-upload')]" position="replace">           
+        <xpath expr="//input[@name='file']" position="replace">           
             <div id="fileuploader">Upload a file</div>
         </xpath>    
         
-        <xpath expr="//div[@id='presentation_details']" position="inside">
+        <!-- <xpath expr="//div[@id='presentation_details']" position="inside">
                                             
             <h6><strong>Video:</strong></h6>   
             <div id="videoplayer" t-if="paper.avideo_url" class="embed-responsive embed-responsive-16by9 mt-16">
@@ -23,7 +23,7 @@
             <div id="videouploader" class="mt-16">Upload a video</div>
                         
             
-        </xpath> 
+        </xpath> --> 
              
     </template>    
 </odoo>
