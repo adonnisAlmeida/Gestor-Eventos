@@ -419,7 +419,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mb32">
+                    <div class="row" id="attachments_row">
                         <div t-attf-class="col-12 col-lg-12 o_portal_attachments">
                             <!-- <hr class="mb-1"/> -->
                             <div class="d-flex my-2">
@@ -442,6 +442,22 @@
                                     <input class="form-control form-control-lg" type="file" name="file" />                                    
                                 </div>
                             </div>                            
+                        </div>
+                    </div>
+                    <div class="row" id="presentation_row">
+                        <div t-attf-class="col-12 col-lg-12">
+                            <hr class="mb-1"/>
+                            <div class="d-flex my-2">
+                                <h4 id="presentation" data-anchor="true"><strong>Presentation</strong></h4>
+                            </div>                                
+                            <div class="row">
+                                <div t-attf-class="col col-lg-12" id="presentation_details">
+                                    <h6><strong>Mode:</strong> <span t-field="paper.track_type_id.name" /></h6> 
+                                    <h6><strong>Date:</strong> <span t-field="paper.with_context(tz=paper.event_id.date_tz).date" t-options='{"format":"MMMM dd, Y h:m a", "hide_seconds":"True"}'> </span></h6>
+                                    <h6><strong>Location:</strong> <span t-field="paper.location_id.name" /></h6>
+                                    <h6><strong>Duration:</strong> <span t-field="paper.duration" t-options='{"widget": "duration", "unit": "hour", "round": "minute"}'/></h6>  
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -501,6 +517,7 @@
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#conclussions">Conclussions</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#bibliographic">Bibliographic References</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#attachments">Attachments</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#presentation">Presentation</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#discussion">Messages</a></li>
                                 </ul>
                             </li>
