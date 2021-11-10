@@ -6,7 +6,6 @@ from odoo.tools.translate import _, html_translate
 from odoo.addons.http_routing.models.ir_http import slug
 from odoo import SUPERUSER_ID
 import uuid
-import json
 
 
 class IrAttachment(models.Model):
@@ -17,7 +16,7 @@ class IrAttachment(models.Model):
         for vals in vals_list:
             if 'access_token' not in vals and vals.get('res_model', False) == 'event.track':
                 vals['access_token'] = self._generate_access_token()
-        res_ids = super().create(vals_list)
+        res_ids = super(IrAttachment, self).create(vals_list)
         return res_ids
 
         
@@ -56,19 +55,7 @@ class TrackTag(models.Model):
         for it in delete_list:
             it.unlink()
                 
-
-class IrAttachment(models.Model):
-    _inherit = 'ir.attachment'
-
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            if 'access_token' not in vals and vals.get('res_model', False) == 'event.track':
-                vals['access_token'] = self._generate_access_token()
-        res_ids = super(IrAttachment, self).create(vals_list)
-        return res_ids
-
-
+    
 class TrackStage(models.Model):
     _name = 'event.track.stage'
     _inherit = 'event.track.stage'
@@ -186,31 +173,6 @@ class Track(models.Model):
     _name = "event.track"    
     _inherit = ['event.track', 'portal.mixin', 'mail.thread', 'mail.activity.mixin', 'website.seo.metadata', 'website.published.mixin']
     
-    def _compute_access_url(self):
-        super(Track, self)._compute_access_url()
-        for track in self:
-            track.access_url = '/my/paper/%s' % track.id
-
-    def authors_json(self):
-        authors=[]
-        this_authors = self.env['event.track.author'].search([('track_id', '=', self.id)], order='sequence asc')
-        for au in this_authors:
-            authors.append({
-                'author_id': au.partner_id.id,
-                'author_editable': au.partner_id.id != self.partner_id.id,
-                'author_name': au.partner_id.name,
-                'author_email': au.partner_id.email, 
-                'author_country_name': au.partner_id.country_id.name,
-                'author_institution': au.partner_id.institution,
-                'author_country_image': au.partner_id.country_id.image_url,
-                'author_country_id': au.partner_id.country_id.id, 
-            })
-        return json.dumps(authors)
-
-
-    def _get_report_base_filename(self):
-        return self.name
-
     def _track_template(self, changes):
         res = super(Track, self)._track_template(changes)
         track = self[0]
@@ -281,8 +243,8 @@ class Track(models.Model):
     partner_institution = fields.Char('Speaker Institution', readonly=True, related='partner_id.institution')
     authenticity_url = fields.Char("Authenticity URL", compute="get_urls")
     authenticity_token = fields.Char("Authenticity Token")    
-    description = fields.Html(string="Abstract [EN]", translate=False, sanitize_attributes=False, sanitize_form=False)
-    description_es = fields.Html(string="Abstract [ES]",translate=False, sanitize_attributes=False, sanitize_form=False)
+    description = fields.Html(translate=False, sanitize_attributes=False, sanitize_form=False)
+    description_es = fields.Html(translate=False, sanitize_attributes=False, sanitize_form=False)
     is_done = fields.Boolean('Is Done', related="event_id.is_done", store=True)
 
     tag_ids = fields.Many2many('event.track.tag', string='Keywords')
@@ -298,19 +260,7 @@ class Track(models.Model):
     language_id = fields.Many2one("res.lang", "Language")
     duration = fields.Float('Duration', default=0.25)
     image = fields.Binary('Image', related='partner_id.image_512', store=True, attachment=True)
-
-
-    introduction = fields.Html(string="Introduction")
-    methodology = fields.Html(string="Methodology")
-    results = fields.Html(string="Results and Discussion")
-    conclussions = fields.Html(string="Conclussions")
-    bibliographic = fields.Html(string="Bibliographic References")
-
-    def keywords_list(self):
-        names = []
-        names+= [tag.name for tag in self.sudo().tag_ids]
-        return ', '.join(names)
-
+    
     def build_uuids(self):
         regs = self.search([('authenticity_token', '=', False)])
         for reg in regs:
@@ -345,15 +295,8 @@ class Track(models.Model):
 
         if not vals.get('authenticity_token', False):
             vals.update({'authenticity_token': uuid.uuid4()})
-
-        #assign auto reviewers                
-        created = super(Track, self).create(vals)
         
-        for reviewer in created.event_id.reviewer_ids:
-            if created.partner_id.state_id in reviewer.auto_partner_country_state.mapped('id'):
-                self.env['event.track.review'].create({'track_id':created.id, 'partner_id': reviewer.partner_id.id, 'weight': reviewers.weight})
-        
-        return created
+        return super(Track, self).create(vals)
 
         
     def write(self, vals):

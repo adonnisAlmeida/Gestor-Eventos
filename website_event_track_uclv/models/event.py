@@ -20,10 +20,6 @@ class EventReviewer(models.Model):
     event_id = fields.Many2one('event.event', string="Event", required=True, ondelete='cascade')
     partner_id = fields.Many2one('res.partner', string="Partner", required=True, ondelete='cascade', domain=[('email', '!=', '')])
     weight = fields.Integer(string="Weight", default=10)
-    
-    auto_partner_country_state = fields.Many2many("res.country.state", string="States")
-    auto_partner_institution = fields.Char("Institutions")
-    auto_track_keyword = fields.Many2many("event.track.tag", "Keywords")
 
     _sql_constraints=[
         ('event_id_partner_id_unique', 'UNIQUE(event_id, partner_id)', 'An event cannot have twice the same reviewer.')
@@ -50,14 +46,8 @@ class Event(models.Model):
         overdue = False
         if self.paper_abstract_deadline:
             if self.paper_abstract_deadline < fields.Date.today():
-                overdue = True                
-        self.paper_abstract_deadline_overdue = overdue
-
-        overdue = False
-        if self.paper_final_deadline:
-            if self.paper_final_deadline < fields.Date.today():
                 overdue = True
-        self.paper_final_deadline_overdue = overdue
+        self.paper_abstract_deadline_overdue = overdue
     
     def _get_month(self):
         months = {1: _('jan'), 2: _('feb'), 3: _('mar'), 4: _('apr'),
@@ -75,7 +65,6 @@ class Event(models.Model):
     paper_abstract_deadline = fields.Date(string="Abstracts Deadline")
     paper_abstract_deadline_month = fields.Char(string="Abstracts Deadline Month", compute='_get_month')
     paper_abstract_deadline_overdue = fields.Boolean(string="Abstracts Deadline Overdue", compute='_get_overdue')
-    paper_final_deadline_overdue = fields.Boolean(string="Final Deadline Overdue", compute='_get_overdue')
 
     paper_abstract_notification_date = fields.Date(string="Abstracts Acceptance Notification Date")
     paper_final_deadline = fields.Date(string="Final Papers Deadline")
