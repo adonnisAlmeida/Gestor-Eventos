@@ -10,12 +10,7 @@ publicWidget.registry.portalEventTrack = publicWidget.Widget.extend({
      */
     
     start: function () {        
-        $('.js_tweet, .js_comment').sharetrack({});
-
-        $("#fileuploader").uploadFile({
-            url:"http://hayageek.com/examples/jquery/ajax-multiple-file-upload/upload.php",
-            fileName:"myfile"
-        });
+        $('.js_tweet, .js_comment').sharetrack({});        
         return this._super.apply(this, arguments);
     },   
 });

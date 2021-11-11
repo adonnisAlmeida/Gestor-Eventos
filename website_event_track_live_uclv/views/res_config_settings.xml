@@ -34,6 +34,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='is_youtube_replay']" position="after">
                 <field name="avideo_full_url" widget="url"/>
+                <field name="avideo_url" string="AVideo ID"/>
             </xpath>
         </field>
     </record>

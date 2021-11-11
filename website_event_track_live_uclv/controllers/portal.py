@@ -13,7 +13,7 @@ from odoo.http import request, route
 from odoo.tools.translate import _
 from odoo.tools import html_escape as escape, html2plaintext, consteq
 from odoo.addons.website_event_track_uclv.controllers.portal import PortalController as TrackPortalController
-from werkzeug.exceptions import NotFound, Forbidden, InternalServerError
+from werkzeug.exceptions import NotFound, Forbidden, InternalServerError, BadGateway
 from odoo.exceptions import AccessError, MissingError
 from odoo.osv.expression import OR
 from odoo.tools import groupby as groupbyelem
@@ -43,11 +43,14 @@ class PortalController(TrackPortalController):
         from requests_toolbelt.multipart import encoder
 
         Params = request.env['ir.config_parameter'].sudo()
-        avideo_base_domain = Params.get_param('avideo.base.domain')
+        avideo_base_domain = Params.get_param('avideo.base.domain','')
+        if avideo_base_domain[:-1] != '/':
+            avideo_base_domain +='/'
+            
         url = avideo_base_domain + 'plugin/MobileManager/upload.php?user='
-        avideo_user = Params.get_param('avideo.user')
+        avideo_user = Params.get_param('avideo.user','')
         url += avideo_user
-        avideo_password = Params.get_param('avideo.password')
+        avideo_password = Params.get_param('avideo.password','')
         url += '&pass=' + avideo_password
 
         session = requests.Session()
@@ -58,24 +61,35 @@ class PortalController(TrackPortalController):
                 'title': prop.with_context(lang="en_US").name[:128]
             })
             headers = {"Prefer": "respond-async", "Content-Type": form.content_type}
+            
             response = session.post(url, headers=headers, data=form)
+            if response:
+                try:
+                    import json
+                    response = json.loads(response.text)
+                    print(response)
+                    if not response['error']:
+                        # delete old video
+                        if prop.avideo_url:
+                            try:
+                                old_video_id = prop.avideo_url.split('/')[0]
+                                url = avideo_base_domain + 'objects/videoDelete.json.php?user='
+                                url += avideo_user
+                                url += '&pass=' + avideo_password
+                                session.post(url, headers=False, data={'id': old_video_id})
+                            except:
+                                pass
+                        
+                        prop.write({'avideo_url': str(response['videos_id'])+'/'+prop.with_context(lang="en_US").name[:128]})
             
-            import json
-            response = json.loads(response.text)
-            if not response['error']:
-                # delete old video
-                if prop.avideo_url:
-                    try:
-                        old_video_id = prop.avideo_url.split('/')[0]
-                        url = avideo_base_domain + 'objects/videoDelete.json.php?user='
-                        url += avideo_user
-                        url += '&pass=' + avideo_password
-                        session.post(url, headers=False, data={'id': old_video_id})
-                    except:
-                        pass
-                
-                prop.write({'avideo_url': str(response['videos_id'])+'/'+prop.with_context(lang="en_US").name[:128]})
-            
+                except:
+                    print('Response from encoder not in json')                    
+                    raise InternalServerError()
+
+            else:
+                print('no response from encoder')
+                raise BadGateway() 
+              
         session.close()
 
         for c_file in request.httprequest.files.getlist('file'):

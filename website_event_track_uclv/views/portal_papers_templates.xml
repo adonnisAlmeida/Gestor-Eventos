@@ -249,7 +249,21 @@
                                     <h6><strong>Mode:</strong> <span t-field="paper.track_type_id.name" /></h6> 
                                     <h6><strong>Date:</strong> <span t-field="paper.with_context(tz=paper.event_id.date_tz).date" t-options='{"format":"MMMM dd, Y h:m a", "hide_seconds":"True"}'> </span></h6>
                                     <h6><strong>Location:</strong> <span t-field="paper.location_id.name" /></h6>
-                                    <h6><strong>Duration:</strong> <span t-field="paper.duration" t-options='{"widget": "duration", "unit": "hour", "round": "minute"}'/></h6>  
+                                    <h6><strong>Duration:</strong> <span t-field="paper.duration" t-options='{"widget": "duration", "unit": "hour", "round": "minute"}'/></h6>
+                                    <h6><strong>Poster:</strong> </h6> 
+                                    <div class="col-lg-12" id="track_poster">
+                                        <input type="file" class="d-none track_poster_upload" name="website_image" accept="image/*"/>
+                                        <img class="mb-3 track_poster_img" t-att-src="website.image_url(paper, 'website_image')" style="object-fit: cover; border-radius: 5%; width: 256px;"/>
+                                        <div class="text-left">
+                                            <a href="#" class="btn btn-primary track_poster_edit" aria-label="Edit">
+                                                <i class="fa fa-pencil fa-1g float-sm-none float-md-left" title="Edit"></i>
+                                            </a>
+                                            <a href="#" title="Clear" aria-label="Clear" class="btn border-primary track_poster_clear">
+                                                <i class="fa fa-trash-o float-sm-none float-md-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -327,11 +341,7 @@
                 </t>
                 
                 <!-- Page content -->
-                <div id="paper_content" class="col-12 col-lg-9 justify-content-end"> 
-                    <!-- main content -->
-                    <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}" id="portal_paper_content">
-                        <!-- <div t-call="website_event_track_uclv.portal_my_paper_content"/> -->
-                    </div>
+                <div id="paper_content" class="col-12 col-lg-9 justify-content-end">                                       
                 
                    <!-- main content -->
                     <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}" id="portal_paper_content">

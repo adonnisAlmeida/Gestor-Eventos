@@ -7,6 +7,7 @@
             <script type="text/javascript" src="/website_event_track_uclv/static/src/js/portal_event_track.js"/>
             <script type="text/javascript" src="/website_event_track_uclv/static/src/js/contentshare.js"/>            
             <script type="text/javascript" src="/website_event_track_uclv/static/src/js/website_event_track.js"/>
+            <script type="text/javascript" src="/website_event_track_uclv/static/src/js/portal_event_track_poster.js"/>
         </xpath>
         <xpath expr="//link[last()]" position="after">
             <link rel="stylesheet" type="text/scss" href="/website_event_track_uclv/static/src/scss/website_event_track.scss"/>
