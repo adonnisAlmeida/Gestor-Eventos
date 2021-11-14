@@ -46,7 +46,7 @@ class PortalController(TrackPortalController):
         avideo_base_domain = Params.get_param('avideo.base.domain','')
         if avideo_base_domain[:-1] != '/':
             avideo_base_domain +='/'
-            
+
         url = avideo_base_domain + 'plugin/MobileManager/upload.php?user='
         avideo_user = Params.get_param('avideo.user','')
         url += avideo_user
@@ -60,30 +60,31 @@ class PortalController(TrackPortalController):
                 'description': prop.description[:256], 
                 'title': prop.with_context(lang="en_US").name[:128]
             })
-            headers = {"Prefer": "respond-async", "Content-Type": form.content_type}
+            headers = {"Prefer": "respond-wait", "Content-Type": form.content_type}
             
             response = session.post(url, headers=headers, data=form)
+            print(str(response.status_code) +' '+response.text)
             if response:
                 try:
-                    import json
-                    response = json.loads(response.text)
-                    print(response)
+                    
+                    response = response.json()
+                    
                     if not response['error']:
                         # delete old video
-                        if prop.avideo_url:
-                            try:
-                                old_video_id = prop.avideo_url.split('/')[0]
-                                url = avideo_base_domain + 'objects/videoDelete.json.php?user='
-                                url += avideo_user
-                                url += '&pass=' + avideo_password
-                                session.post(url, headers=False, data={'id': old_video_id})
-                            except:
-                                pass
+                        #if prop.avideo_url:
+                        #    try:
+                        #        old_video_id = prop.avideo_url.split('/')[0]
+                        #        url = avideo_base_domain + 'objects/videoDelete.json.php?user='
+                        #        url += avideo_user
+                        #        url += '&pass=' + avideo_password
+                        #        session.post(url, headers=False, data={'id': old_video_id})
+                        #    except:
+                        #        pass
                         
                         prop.write({'avideo_url': str(response['videos_id'])+'/'+prop.with_context(lang="en_US").name[:128]})
             
                 except:
-                    print('Response from encoder not in json')                    
+                    print('Response from encoder not in json')
                     raise InternalServerError()
 
             else:

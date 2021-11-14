@@ -38,18 +38,18 @@
             </style>
             <t t-foreach="docs" t-as="o">
                     <div class="page" style="height:270mm;">
-                        <img t-if="o.track_type_id.with_context({'lang': 'es_ES'}).name !='Conferencia'" src="/website_event_track_uclv/static/src/img/cert-bg-track.png" style="position: absolute;z-index: -2; height:270mm; left:0;" />
-                        <img t-if="o.track_type_id.with_context({'lang': 'es_ES'}).name =='Conferencia'" src="/website_event_track_uclv/static/src/img/cert-bg-conf.png" style="position: absolute;z-index: -2; height:270mm; left:0;" />
-                        <div class="row">
-                            <div class="col-8 offset-2 text-right" style="padding-top:4.3in;">
-                                <div class="row" style="margin:0 0 !important;">
+                        <img src="/website_event_track_uclv/static/src/img/cert-bg-track.png" style="position: absolute;z-index: -2; height:270mm; left:0;" />
+                        
+                        <div style="margin-top:3in;">
+                            <div style="position:absolute;top:3in;">
+                                <!-- <div class="row" style="margin:0 0 !important;">
                                     <div class="col-12" style="padding:0 50px 0 100px!important;">
                                         <span class="cert-h3 bold">En el evento: </span><span class="cert-h3 bold uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="row" style="margin:0 0 !important;">
                                     <div class="col-12" style="padding:16px 50px 0 50px!important;">
-                                        <span class="cert-h3 bold">A: </span><span class="cert-h3 bold uppercase" t-esc="o.partner_id.with_context({'lang': 'es_ES'}).full_name" />
+                                        <span class="cert-h3 bold"></span><span class="cert-h3 bold uppercase" t-esc="o.partner_id.with_context({'lang': 'es_ES'}).full_name" />
                                     </div>
                                 </div>
                                 <div class="row" style="margin:16px 0 !important;">
@@ -79,7 +79,7 @@
                             </div>
                             <div class="col-2">
                                 <div style="padding-top: 7.8in; padding-right:45px; float:right">
-                                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.authenticity_url, 200, 200)" style="width:2in;height:2in;"/>
+                                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.authenticity_url, 200, 200)" style="width:3cm;height:3cm;"/>
                                 </div>
                             </div>
                         </div>

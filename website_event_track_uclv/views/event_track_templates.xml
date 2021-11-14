@@ -81,12 +81,9 @@
                                     
                                     <div class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Documents</h6>
-                                        <!-- <a t-if="track.stage_id.id in (3, 4)" target="_blank" t-att-href="'/tracks/certificate/%s?%s' % (track.id, keep_query())" title="Download certificate">
+                                        <a t-if="track.stage_id.id in (3, 4)" target="_blank" t-att-href="'/tracks/certificate/%s?%s' % (track.id, keep_query())" title="Download certificate">
                                             <span class="fa fa-print"/> Track certificate
                                         </a>
-                                        <div t-if="len(track.attachment_ids) == 0 and track.stage_id.id not in (3, 4)" class="text-center text-muted">
-                                            No documents to show...
-                                        </div> -->
                                         <t t-foreach='track.sudo().attachment_ids' t-as="att">
                                             <t t-if="att.public">
                                                 <div style="display:flex;">

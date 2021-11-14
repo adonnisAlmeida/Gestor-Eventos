@@ -415,7 +415,7 @@ class PortalController(CustomerPortal):
             
         # print report as sudo, since it require access to taxes, payment term, ... and portal
         # does not have those access rights.
-        pdf = request.env.ref('event.report_event_registration_badge').sudo().render_qweb_pdf([registration_sudo.id])[0]
+        pdf = request.env.ref('event.report_event_registration_badge').sudo()._render_qweb_pdf([registration_sudo.id])[0]
         pdfhttpheaders = [
             ('Content-Type', 'application/pdf'),
             ('Content-Length', len(pdf)),
@@ -433,7 +433,7 @@ class PortalController(CustomerPortal):
             raise Forbidden()
             
         # does not have those access rights.
-        pdf = request.env.ref('website_event_track_uclv.report_event_registration_certificate').sudo().render_qweb_pdf([registration_sudo.id])[0]
+        pdf = request.env.ref('website_event_track_uclv.report_event_registration_certificate').sudo()._render_qweb_pdf([registration_sudo.id])[0]
         pdfhttpheaders = [
             ('Content-Type', 'application/pdf'),
             ('Content-Length', len(pdf)),
@@ -540,3 +540,21 @@ class PortalController(CustomerPortal):
         att.generate_access_token()
 
         return request.redirect('/events')
+
+    @http.route(['/my/tracks/certificate/<int:track_id>', '/tracks/certificate/<int:track_id>'], type='http', auth="user", website=True)
+    def portal_my_track_certificate_report(self, track_id, access_token=None, **kw):
+        try:
+            track_sudo = self._document_check_access('event.track', track_id, access_token=access_token)
+        except AccessError:
+            return request.redirect('/my')
+        
+        if track_sudo.stage_id.id not in (3, 4):
+            raise NotFound()
+            
+        # does not have those access rights.
+        pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate').sudo()._render_qweb_pdf([track_sudo.id])[0]
+        pdfhttpheaders = [
+            ('Content-Type', 'application/pdf'),
+            ('Content-Length', len(pdf)),
+        ]
+        return request.make_response(pdf, headers=pdfhttpheaders)
