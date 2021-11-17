@@ -365,15 +365,14 @@ class UCLVWebsiteEventTrackController(EventTrackController):
 
         for c_file in request.httprequest.files.getlist('file'):
             data = c_file.read()
-            import base64
-            request.env['ir.attachment'].sudo().create({
-                        'name': c_file.filename,
-                        'datas': base64.b64encode(data),
-                        #'datas_fname': c_file.filename,
-                        'public': False,
-                        'res_model': 'event.track',
-                        'res_id': track.id
-                    })
+            if data and c_file.filename:
+                request.env['ir.attachment'].sudo().create({
+                            'name': c_file.filename,
+                            'raw': data,
+                            'public': False,
+                            'res_model': 'event.track',
+                            'res_id': track.id
+                        })
                     
         # add the reviewers automatically
         for reviewer in event.sudo().reviewer_ids:

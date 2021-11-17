@@ -81,9 +81,12 @@
                                     
                                     <div class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Documents</h6>
-                                        <a t-if="track.stage_id.id in (3, 4)" target="_blank" t-att-href="'/tracks/certificate/%s?%s' % (track.id, keep_query())" title="Download certificate">
-                                            <span class="fa fa-print"/> Track certificate
-                                        </a>
+                                        <t t-if="track.stage_id.is_done and (track.event_id.is_ongoing or track.event_id.is_done)" style="display:flex;">
+                                            <div class="o_image" style="width:22px; height:22px;" data-mimetype="application/pdf"/>
+                                            <a class="text" target="_blank" t-att-href="'/tracks/certificate_authors/%s?%s' % (track.id, keep_query())" title="Download certificate">
+                                                <span>Track certificate</span>
+                                            </a>
+                                        </t>
                                         <t t-foreach='track.sudo().attachment_ids' t-as="att">
                                             <t t-if="att.public">
                                                 <div style="display:flex;">
@@ -172,7 +175,15 @@
                         </div>
                     </section>
                 </t>
+                <section class="mt64 mt-4 my-2 mx-3 oe_no_empty" >
+                    <h4>Discussion</h4>
+                    <t t-call="portal.message_thread">
+                        <t t-set="object" t-value="track"/>
+                        <t t-set="chatter_mode" t-value="'json'"/>
+                    </t>
+                </section>
 
+                
                 
             </div>
         </div>
