@@ -175,10 +175,10 @@
                         </div>
                     </section>
                 </t>
-                <section class="mt64 mt-4 my-2 mx-3 oe_no_empty" >
+                <section t-if="track.track_chat_id" class="mt64 mt-4 my-2 mx-3 oe_no_empty" >
                     <h4>Discussion</h4>
                     <t t-call="portal.message_thread">
-                        <t t-set="object" t-value="track"/>
+                        <t t-set="object" t-value="track.track_chat_id"/>
                         <t t-set="chatter_mode" t-value="'json'"/>
                     </t>
                 </section>

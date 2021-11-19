@@ -12,18 +12,18 @@
                 }
                 .cert-h2
                 {
-                    font-size: 0.9cm; 
+                    font-size: 0.6cm; 
                     font-weight: bold; 
                     font-family:'AvantGarde'!important;
                 }
                 .cert-h3
                 {
-                    font-size: 0.65cm;
+                    font-size: 0.5cm;
                     font-family:'AvantGarde'!important;
                 }
                 .cert-h4
                 {
-                    font-size: 0.55cm;
+                    font-size: 0.45cm;
                     font-family:'AvantGarde'!important;
                 }
                 .bold
@@ -38,13 +38,18 @@
                 .bg-green{
                         color:white; 
                         background-color:#009933;
-                        padding: 2mm 5mm;                        
+                        padding: 2mm 5mm;
                     }
                 .bg-blue{
                         color:white; 
                         background-color:#003399;
-                        padding: 2mm 5mm;                        
+                        padding: 2mm 5mm;
                     }
+                .bg-gray{
+                    color:white; 
+                    background-color:#808080;
+                    padding: 2mm 5mm;
+                }
                 .rounded
                 {
                     border-radius:15px !important;
@@ -65,13 +70,21 @@
                         <div style="display:block;margin:0 !important; position:absolute; top:60mm; left:90mm;width:190mm; ">
                             <center><span class="cert-h3 bold uppercase bg-green rounded">A LA PONENCIA</span></center>
                             <center class="cert-h4 mt-4 uppercase"  t-esc="o.with_context({'lang': 'es_ES'}).name"/>
-                            <center class="mt-4"><span class="cert-h4 bold uppercase bg-blue rounded">AUTORES</span></center>                    
+                            <center t-if="len(o.author_ids)>1" class="mt-4"><span class="cert-h4 bold uppercase bg-blue rounded">DE LOS AUTORES</span></center>
+                            <center t-if="len(o.author_ids)==1" class="mt-4"><span class="cert-h4 bold uppercase bg-blue rounded">DEL AUTOR</span></center>
                             <center class="cert-h4 mt-4 uppercase">
                                 <t t-foreach="o.author_ids" t-as="author">
                                     <span t-esc="author.partner_id.with_context({'lang': 'es_ES'}).full_name" />
                                 </t>
                             </center>
-                            <center class="cert-h3 mt-4 bold uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
+                            <center class="mt-4"><span class="cert-h4 bold uppercase bg-gray rounded">POR SU PARTICIPACIÓN EN</span></center>
+                            <center class="cert-h4 mt-4 bold uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
+                            <center class="mt-4" style="max-height:80px;">
+                                <t t-foreach="o.event_id.sponsor_ids" t-as="sponsor">
+                                    <span t-field="sponsor.image_128"
+                                    t-options='{"widget": "image", "class": "img img-fluid"}'/>
+                                </t>
+                            </center>
                         </div>
 
                         

@@ -247,6 +247,7 @@ class Track(models.Model):
     description = fields.Html(translate=False, sanitize_attributes=False, sanitize_form=False)
     description_es = fields.Html(translate=False, sanitize_attributes=False, sanitize_form=False)
     is_done = fields.Boolean('Is Done', related="event_id.is_done", store=True)
+    track_chat_id = fields.Many2one('event.track.chat', 'Chat')
 
     tag_ids = fields.Many2many('event.track.tag', string='Keywords')
     kanban_state = fields.Selection([
@@ -296,9 +297,9 @@ class Track(models.Model):
 
         if not vals.get('authenticity_token', False):
             vals.update({'authenticity_token': uuid.uuid4()})
-        
+        chat = self.env['event.track.chat'].create({})
+        vals.update({'track_chat_id': chat.id})
         return super(Track, self).create(vals)
-
         
     def write(self, vals):
         if 'stage_id' in vals and 'kanban_state' not in vals:
@@ -377,4 +378,13 @@ class Track(models.Model):
             new_domain.append(arg)
         return super(Track, self).read_group(new_domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy)
 
-    
+    def unlink(self):
+        self.track_chat_id.unlink()
+        return super(Track, self).unlink()        
+
+class TrackChat(models.Model):
+    _name = "event.track.chat"    
+    _inherit = ['mail.thread']
+
+    _description = "Paper Public Chat"
+      
