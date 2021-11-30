@@ -288,11 +288,11 @@
                         <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
                             <li class="list-group-item flex-grow-1">
                                                                  
-                                <a t-if="paper.stage_id.is_done and (paper.event_id.is_ongoing or paper.event_id.is_done)" class="btn btn-secondary btn-block o_download_btn"
+                                <a t-if="paper.stage_id.is_done and (paper.event_id.is_ongoing or paper.event_id.is_done) and paper.can_download_certificate" class="btn btn-secondary btn-block o_download_btn"
                                      target="_blank" t-att-href="'/tracks/certificate_speaker/%s?%s' % (paper.id, keep_query())" title="Download certificate">
                                     <i class="fa fa-print"/> Speaker Certificate
                                 </a>
-                                <a t-if="paper.stage_id.is_done and (paper.event_id.is_ongoing or paper.event_id.is_done)" class="btn btn-secondary btn-block o_download_btn"
+                                <a t-if="paper.stage_id.is_done and (paper.event_id.is_ongoing or paper.event_id.is_done) and paper.can_download_certificate" class="btn btn-secondary btn-block o_download_btn"
                                      target="_blank" t-att-href="'/tracks/certificate_authors/%s?%s' % (paper.id, keep_query())" title="Download certificate">
                                     <i class="fa fa-print"/> Authors Certificate
                                 </a>

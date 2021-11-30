@@ -548,7 +548,7 @@ class PortalController(CustomerPortal):
         except AccessError:
             return request.redirect('/my')
         
-        if not (track_sudo.stage_id.is_done and (track_sudo.event_id.is_ongoing or track_sudo.event_id.is_done)):
+        if not (track_sudo.stage_id.is_done and (track_sudo.event_id.is_ongoing or track_sudo.event_id.is_done) and track_sudo.can_download_certificate):
             raise NotFound()            
         
         pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate').sudo()._render_qweb_pdf([track_sudo.id])[0]
@@ -565,13 +565,13 @@ class PortalController(CustomerPortal):
         except AccessError:
             return request.redirect('/my')
         
-        if not (track_sudo.stage_id.is_done and (track_sudo.event_id.is_ongoing or track_sudo.event_id.is_done)):
+        if not (track_sudo.stage_id.is_done and (track_sudo.event_id.is_ongoing or track_sudo.event_id.is_done) and track_sudo.can_download_certificate):
             raise NotFound()    
             
         
-        pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate_authors').sudo()._render_qweb_html([track_sudo.id])[0]
+        pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate_authors').sudo()._render_qweb_pdf([track_sudo.id])[0]
         pdfhttpheaders = [
-            #('Content-Type', 'application/pdf'),
+            ('Content-Type', 'application/pdf'),
             ('Content-Length', len(pdf)),
         ]
         return request.make_response(pdf, headers=pdfhttpheaders)

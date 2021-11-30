@@ -60,7 +60,7 @@
                                     </div>
                                     <div t-if='track.author_ids' class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Authors</h6>
-                                        <t t-foreach='track.author_ids' t-as="author" >
+                                        <t t-foreach='track.author_ids.sorted("sequence")' t-as="author" >
                                             <div class="mt4">
                                                 <span class="fa fa-user fa-fw" /> 
                                                 <span class="text-capitalize" t-field="author.sudo().partner_id.full_name"/>
@@ -81,12 +81,12 @@
                                     
                                     <div class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Documents</h6>
-                                        <t t-if="track.stage_id.is_done and (track.event_id.is_ongoing or track.event_id.is_done)" style="display:flex;">
+                                        <!-- <t t-if="track.stage_id.is_done and (track.event_id.is_ongoing or track.event_id.is_done) and track.can_download_certificate" style="display:flex;">
                                             <div class="o_image" style="width:22px; height:22px;" data-mimetype="application/pdf"/>
                                             <a class="text" target="_blank" t-att-href="'/tracks/certificate_authors/%s?%s' % (track.id, keep_query())" title="Download certificate">
                                                 <span>Track certificate</span>
                                             </a>
-                                        </t>
+                                        </t> -->
                                         <t t-foreach='track.sudo().attachment_ids' t-as="att">
                                             <t t-if="att.public">
                                                 <div style="display:flex;">

@@ -247,6 +247,7 @@ class Track(models.Model):
     description = fields.Html(translate=False, sanitize_attributes=False, sanitize_form=False)
     description_es = fields.Html(translate=False, sanitize_attributes=False, sanitize_form=False)
     is_done = fields.Boolean('Is Done', related="event_id.is_done", store=True)
+    can_download_certificate = fields.Boolean('Can Download Certificate', default=False)
     track_chat_id = fields.Many2one('event.track.chat', 'Chat')
 
     tag_ids = fields.Many2many('event.track.tag', string='Keywords')
@@ -300,6 +301,9 @@ class Track(models.Model):
         chat = self.env['event.track.chat'].create({})
         vals.update({'track_chat_id': chat.id})
         return super(Track, self).create(vals)
+
+    def authors_str(self):
+       return ', '.join([author.with_context({'lang': 'es_ES'}).partner_id.full_name for author in self.author_ids.sorted('sequence')])
         
     def write(self, vals):
         if 'stage_id' in vals and 'kanban_state' not in vals:

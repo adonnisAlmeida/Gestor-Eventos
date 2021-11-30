@@ -70,6 +70,7 @@
                 <field name="tag_ids" position="after">                    
                     <field name="language_id" />
                     <field name="track_type_id" />
+                    <field name="can_download_certificate" />
                 </field>                
                 <xpath expr="//notebook/page[@name='speakers']" position="after">
                     <page string="Authors" >
