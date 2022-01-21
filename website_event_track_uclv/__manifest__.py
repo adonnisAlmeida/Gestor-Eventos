@@ -35,5 +35,6 @@
         'report/event_track_certificate_authors_templates.xml',
         'report/reports.xml',
         'report/attendee_list_templates.xml',
+        'data/event_certificate_data.xml',
     ]
 }

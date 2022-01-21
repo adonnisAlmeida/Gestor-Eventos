@@ -182,6 +182,8 @@
             <field name="auto_delete" eval="True"/>
         </record>
 
+        
+
         <record id="website_event_track.event_track_stage0" model="event.track.stage">
             <field name="name">Abstract submited</field>
             <field name="sequence">1</field>

@@ -5,6 +5,7 @@
     <template id="event_registration_report_template_certificate">
         <t t-call="web.basic_layout">
             <style>
+                
                 .cert-h1
                 {
                     font-size: 2.3cm;
@@ -12,13 +13,18 @@
                 }
                 .cert-h2
                 {
-                    font-size: 1cm; 
+                    font-size: 0.6cm; 
                     font-weight: bold; 
                     font-family:'AvantGarde'!important;
                 }
                 .cert-h3
                 {
-                    font-size: 0.7cm;
+                    font-size: 0.5cm;
+                    font-family:'AvantGarde'!important;
+                }
+                .cert-h4
+                {
+                    font-size: 0.45cm;
                     font-family:'AvantGarde'!important;
                 }
                 .bold
@@ -33,30 +39,64 @@
                 .bg-green{
                         color:white; 
                         background-color:#009933;
-                        padding: 10px 20px;
-                        z-index:1;
+                        padding: 1mm 5mm;
                     }
+                .bg-blue{
+                        color:white; 
+                        background-color:#003399;
+                        padding: 1mm 5mm;
+                    }
+                .bg-gray{
+                    color:white; 
+                    background-color:#808080;
+                    padding: 1mm 5mm;
+                }
+                .rounded
+                {
+                    border-radius:15px !important;
+                }
+                .page{
+                    height: 8.86in;
+                    width: 11.45in;
+                    background: url('/website_event_track_uclv/static/src/img/cert-bg-attendee-clean.png');
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;                    
+                    top: 0;
+                    margin-left: -14px;
+                }
+                .img-64
+                {
+                    height:64px;
+                    max-height:64px;
+                    width:64px;
+                    max-width:64px;
+                }
+                .mt-4
+                {margin-top:3mm!important}
+                .mt-6
+                {margin-top:5mm!important}
             </style>
             <t t-foreach="docs" t-as="o">
-                <div class="page" style="height:270mm;">
-                    <img src="/website_event_track_uclv/static/src/img/cert-bg-att.png" style="position: absolute;z-index: -2; height:270mm; left:0;" />
-                    <div class="row" style="display:flex;">
-                        <div class="col-8 offset-2 text-right" style="padding-top:4.7in;">
-                            <div class="row" style="margin:0 0 !important;">
-                                <div class="col-12" style="padding:0 50px 0 150px!important;">
-                                    <span class="cert-h3 bold">En el evento: </span><span class="cert-h3 bold uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
-                                </div>
-                            </div>
-                            <div class="row" style="margin:16px 0 !important;">
-                                <div class="col-12" style="padding:0 50px 0 100px!important;">
-                                    <span class="cert-h3 bold">A: </span><span class="cert-h3 bold uppercase" t-field="o.name" />
-                                </div>
-                            </div>
+                <div class="page">
+                    <div class="row" style="height:8.86in !important">
+                        <div class="col-3">
+                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.authenticity_url, 200, 200)" style="width:5cm;height:5cm;display:block;margin:0 !important; position:relative; top:152mm; left:13mm;"/>
                         </div>
-                        <div class="col-2">
-                            <div style="padding-top: 7.8in; padding-right:45px; float:right">
-                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.authenticity_url, 200, 200)" style="width:2in;height:2in;"/>
+                        <div class="col-9">
+                            <div style="display:block;padding:0 10mm !important; position:relative; top:60mm;">
+                                <center><span class="cert-h3 bold uppercase bg-green rounded">AL PARTICIPANTE</span></center>
+                                <center class="cert-h3 mt-4 uppercase"  t-esc="o.with_context({'lang': 'es_ES'}).name"/>
+                                
+                                <center class="mt-4"><span class="cert-h3 bold uppercase bg-gray rounded">POR SU PARTICIPACIÓN EN</span></center>
+                                <center class="cert-h3 mt-4 bold uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
+                                <center class="mt-6">
+                                    <t t-foreach="o.event_id.sponsor_ids.sorted('sequence')" t-as="sponsor">
+                                        <span t-field="sponsor.image_256"
+                                        t-options='{"widget": "image", "class": "img img-fluid img-64"}'/>
+                                    </t>
+                                </center>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

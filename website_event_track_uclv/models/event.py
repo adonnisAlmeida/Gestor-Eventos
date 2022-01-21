@@ -154,3 +154,33 @@ class Event(models.Model):
                 if pfdl < padl:
                     raise exceptions.Warning(_("The deadline tu submit final papers can not be earlier than the deadline to accept abstracts"))
         return super(Event, self).write(vals)
+
+
+class EventRegistration(models.Model):
+    _inherit = "event.registration"
+
+    def action_send_badge_email(self):
+        """ Open a window to compose an email, with the template - 'event_attendee_certificate'
+            message loaded by default
+        """
+        self.ensure_one()
+        template = self.env.ref('website_event_track_uclv.event_registration_mail_template_certificate')
+        compose_form = self.env.ref('mail.email_compose_message_wizard_form')
+        ctx = dict(
+            default_model='event.registration',
+            default_res_id=self.id,
+            default_use_template=bool(template),
+            default_template_id=template.id,
+            default_composition_mode='comment',
+            custom_layout="mail.mail_notification_light",
+        )
+        return {
+            'name': _('Compose Email'),
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'res_model': 'mail.compose.message',
+            'views': [(compose_form.id, 'form')],
+            'view_id': compose_form.id,
+            'target': 'new',
+            'context': ctx,
+        }
