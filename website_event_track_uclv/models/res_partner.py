@@ -39,10 +39,11 @@ class ResPartner(models.Model):
         return action
     
     def unlink(self):
-        if self.create_uid.id == self.env.user.id or self.env.user.id == SUPERUSER_ID:
-            return super(ResPartner, self).unlink()
-        else:
-            raise exceptions.Warning(_("You can not delete this partner because it was created by other user"))
+        for item in self:
+            if item.create_uid.id != self.env.user.id and self.env.user.id != SUPERUSER_ID and not self.env.user.has_group('event.group_event_manager'):
+                raise exceptions.Warning(_("You can not delete this partner because it was created by other user"))
+        return super(ResPartner, self).unlink()
+            
 
     def split(self):
         """splits into single partners"""
