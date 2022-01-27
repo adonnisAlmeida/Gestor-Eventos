@@ -47,13 +47,13 @@ class Event(models.Model):
         else:
             if self.env['res.lang'].search([('iso_code','=','es_ES'),('active','=',True)]):
                 translation.create({
-                    'name': 'website.menu,name',
-                    'res_id':  website_menu.id,
-                    'lang': 'es_ES',
-                    'type': 'model',
-                    'state': 'translated',
-                    'value': t.get(translation.src, translation.value)
-                })
+                'name': 'website.menu,name',
+                'res_id':  website_menu.id,
+                'lang': 'es_ES',
+                'type': 'model',
+                'state': 'translated',
+                'value': t.get(translation.src, translation.value)
+            })
 
         if menu_type:
             self.env['website.event.menu'].create({
