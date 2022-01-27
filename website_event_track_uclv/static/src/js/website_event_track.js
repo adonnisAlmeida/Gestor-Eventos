@@ -180,7 +180,7 @@ publicWidget.registry.websiteEventTrack = publicWidget.Widget.extend({
             url:"http://hayageek.com/examples/jquery/ajax-multiple-file-upload/upload.php",
             fileName:"myfile"
         });
-             
+        
         return this._super.apply(this, arguments);
     },
     createUUID: function()

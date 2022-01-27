@@ -60,7 +60,7 @@
                                     </div>
                                     <div t-if='track.author_ids' class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Authors</h6>
-                                        <t t-foreach='track.author_ids' t-as="author" >
+                                        <t t-foreach='track.author_ids.sorted("sequence")' t-as="author" >
                                             <div class="mt4">
                                                 <span class="fa fa-user fa-fw" /> 
                                                 <span class="text-capitalize" t-field="author.sudo().partner_id.full_name"/>
@@ -79,25 +79,26 @@
                                         </t>
                                     </div>
                                     
-                                    <!-- <div class="o_wevent_sidebar_block">
+                                    <div class="o_wevent_sidebar_block">
                                         <h6 class="o_wevent_sidebar_title">Documents</h6>
-                                        <a t-if="track.stage_id.id in (3, 4)" target="_blank" t-att-href="'/tracks/certificate/%s?%s' % (track.id, keep_query())" title="Download certificate">
-                                            <span class="fa fa-print"/> Track certificate
-                                        </a>
-                                        <div t-if="len(track.attachment_ids) == 0 and track.stage_id.id not in (3, 4)" class="text-center text-muted">
-                                            No documents to show...
-                                        </div>
+                                        <!-- <t t-if="track.stage_id.is_done and (track.event_id.is_ongoing or track.event_id.is_done) and track.can_download_certificate" style="display:flex;">
+                                            <div class="o_image" style="width:22px; height:22px;" data-mimetype="application/pdf"/>
+                                            <a class="text" target="_blank" t-att-href="'/tracks/certificate_authors/%s?%s' % (track.id, keep_query())" title="Download certificate">
+                                                <span>Track certificate</span>
+                                            </a>
+                                        </t> -->
                                         <t t-foreach='track.sudo().attachment_ids' t-as="att">
-                                            <div style="display:flex;">
-                                                <div class="o_image" style="width:22px; height:22px;" t-att-data-mimetype="att.mimetype"/>
-                                                <a t-attf-href="/web/content/#{att.id}?download=true">
-                                                    <span t-field="att.name"/> 
-                                                </a>
-                                            </div>
+                                            <t t-if="att.public">
+                                                <div style="display:flex;">
+                                                    <div class="o_image" style="width:22px; height:22px;" t-att-data-mimetype="att.mimetype"/>
+                                                    <a t-attf-href="/web/content/#{att.id}?download=true" class="text">
+                                                        <span t-field="att.name"/> 
+                                                    </a>
+                                                </div>
+                                            </t>
                                         </t>
-                                    </div> -->
+                                    </div>
                                 </div>
-                            <!-- </div> -->
                         </div>
                     </div>
                 </section>
@@ -110,9 +111,11 @@
             
             <div class="o_wesession_track_main_description overflow-auto">
                 <div class="mx-3 pt-3 mb-3 d-flex justify-content-between flex-column flex-md-row">
+                    
                     <div class="d-flex flex-column">
                         <span class="h3 mb-0 text-uppercase" t-esc="track.name"/>                        
                     </div>
+                    
                     <div class="o_we_track_action_buttons d-flex justify-content-md-end align-items-center flex-wrap">
                         <div class="o_we_track_reminder_button my-1">
                             <div t-if="option_track_wishlist and not track.is_track_done"
@@ -123,6 +126,13 @@
                         </div>
                     </div>
                 </div>
+                <t t-if="track.website_image">
+                    <div class="flex-grow-1">
+                        <div class="d-flex align-items-center justify-content-center">                                 
+                            <span t-field="track.website_image" t-options='{"widget": "image", "class": "img-responsive"}'/>
+                        </div> 
+                    </div>                        
+                </t>
                 <t t-set="active_lang" t-value="list(filter(lambda lg : lg[0] == lang, languages))[0]"/>
                 <section t-if="active_lang[1]=='en'" class="mt64 mt-4 my-2 mx-3 oe_no_empty" >             
                     <h4 t-if="track.track_type_id and track.track_type_id.is_paper">Abstract </h4>
@@ -165,7 +175,15 @@
                         </div>
                     </section>
                 </t>
+                <section t-if="track.track_chat_id" class="mt64 mt-4 my-2 mx-3 oe_no_empty" >
+                    <h4>Discussion</h4>
+                    <t t-call="portal.message_thread">
+                        <t t-set="object" t-value="track.track_chat_id"/>
+                        <t t-set="chatter_mode" t-value="'json'"/>
+                    </t>
+                </section>
 
+                
                 
             </div>
         </div>

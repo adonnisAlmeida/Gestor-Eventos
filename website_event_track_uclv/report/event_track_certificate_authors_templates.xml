@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>    
     <!-- template use to render a Track Certificate -->
-    <template id="event_track_report_template_certificate">
+    <template id="event_track_report_template_certificate_authors">
         <t t-call="web.basic_layout">
             <style>
-
+                
                 .cert-h1
                 {
                     font-size: 2.3cm;
@@ -12,19 +12,18 @@
                 }
                 .cert-h2
                 {
-                    font-size: 1cm; 
+                    font-size: 0.6cm; 
                     font-weight: bold; 
                     font-family:'AvantGarde'!important;
                 }
                 .cert-h3
                 {
-                    font-size: 0.7cm;
+                    font-size: 0.5cm;
                     font-family:'AvantGarde'!important;
                 }
                 .cert-h4
                 {
                     font-size: 0.45cm;
-                    line-heught:0.45cm;
                     font-family:'AvantGarde'!important;
                 }
                 .bold
@@ -84,10 +83,15 @@
                             </div>
                             <div class="col-9">
                                 <div style="display:block;padding:0 10mm !important; position:relative; top:60mm;">
-                                    <center><span class="cert-h4 bold uppercase bg-green rounded">AL PONENTE</span></center>
-                                    <center class="cert-h4 mt-4 uppercase"  t-esc="o.partner_id.with_context({'lang': 'es_ES'}).full_name"/>
-                                    <center class="mt-4"><span class="cert-h4 bold uppercase bg-blue rounded">POR SU TRABAJO</span></center>
+                                    <center><span class="cert-h4 bold uppercase bg-green rounded">A LA PONENCIA</span></center>
                                     <center class="cert-h4 mt-4 uppercase"  t-esc="o.with_context({'lang': 'es_ES'}).name"/>
+                                    <center t-if="len(o.author_ids)>1" class="mt-4"><span class="cert-h4 bold uppercase bg-blue rounded">DE LOS AUTORES</span></center>
+                                    <center t-if="len(o.author_ids)==1" class="mt-4"><span class="cert-h4 bold uppercase bg-blue rounded">DEL AUTOR</span></center>
+                                    <center class="cert-h4 mt-4 uppercase">
+                                        
+                                        <span t-esc="o.authors_str()" />
+                                        
+                                    </center>
                                     <center class="mt-4"><span class="cert-h4 bold uppercase bg-gray rounded">POR SU PARTICIPACIÓN EN</span></center>
                                     <center class="cert-h4 mt-4 bold uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
                                     <center class="mt-6">
@@ -96,7 +100,7 @@
                                             t-options='{"widget": "image", "class": "img img-fluid img-64"}'/>
                                         </t>
                                     </center>
-                                </div>                               
+                                </div>
                                 
                             </div>
                         </div>

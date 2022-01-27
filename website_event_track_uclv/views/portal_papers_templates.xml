@@ -98,117 +98,9 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <div class="">
-                    <t t-set="fixed" t-value="paper.is_done or not paper.stage_id.can_edit or paper.event_id.paper_final_deadline_overdue" />
-                    <div class="alert alert-danger" role="alert" t-if="error and error.get('global','')" t-esc="error and error.get('global','')" />
-                    <div class="alert alert-info" role="alert" t-if="info and info.get('global','')" t-esc="info and info.get('global','')" />
-                    <div class="alert alert-success" role="alert" t-if="success and success.get('global','')" t-esc="success and success.get('global','')" />
-                    <!-- modal to create authors-->
-                    <div class="modal fade" id="modal_add_author" role="dialog">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header align-items-center">
-                                    <h4 class="modal-title">Add Author</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&amp;times;</span></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form id="add_author_form" method="post" action="#">
-                                        <div class="form-group row">
-                                            <label class="col-sm-12 col-form-label" for="author_name">Full Name:</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control form-control-lg" name="author_name" required="True" placeholder="Insert author's full name" />
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-12 col-form-label" for="author_email">Email:</label>
-                                            <div class="col-sm-12">
-                                                <input type="email" class="form-control form-control-lg" name="author_email" required="True" placeholder="Insert author's email address" />
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-12 col-form-label label-optional" for="author_institution">Institution:</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control form-control-lg" name="author_institution" placeholder="Insert author's institution name" />
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-12 col-form-label" for="author_country_id">Country:</label>
-                                            <div class="col-sm-12">
-                                                <select name="author_country_id" id="author_country_id" class="form-control form-control-lg" required="required" placeholder="Select">
-                                                    <t t-foreach='countries' t-as="country">
-                                                        <option t-esc='country.name' t-att-value='country.id' t-att-data-url="country.image_url" t-att-selected="country.id == paper.partner_id.country_id.id"/>
-                                                    </t>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary js_add_author_modal_cancel">Cancel</button>
-                                    <button type="button" class="btn btn-primary js_add_author_modal_save">Save</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- modal to edit authors-->
-                    <div class="modal fade" id="modal_edit_author" role="dialog">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header align-items-center">
-                                    <h4 class="modal-title">Edit Author</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&amp;times;</span></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form id="edit_author_form" method="post" action="#">
-                                        <input type="hidden" name="author_id"/>
-                                        <div class="form-group row">
-                                            <label class="col-sm-12 col-form-label" for="author_name">Full Name:</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control form-control-lg" name="author_name" required="True" placeholder="Insert author's full name" />
-                                                <div class="invalid-feedback" name="author_name_error_feedback"></div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-12 col-form-label" for="author_email">Email:</label>
-                                            <div class="col-sm-12">
-                                                <input type="email" class="form-control form-control-lg" name="author_email" required="True" placeholder="Insert author's email address" />
-                                                <div class="invalid-feedback" name="author_email_error_feedback"></div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-12 col-form-label label-optional" for="author_institution">Institution:</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control form-control-lg" name="author_institution" placeholder="Insert author's institution name" />
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-12 col-form-label" for="author_country_id">Country:</label>
-                                            <div class="col-sm-12">
-                                                <select name="author_country_id" id="author_country_id" class="form-control form-control-lg" required="required" placeholder="Select">
-                                                    <t t-foreach='countries' t-as="country">
-                                                        <option t-esc='country.name' t-att-data-url="country.image_url" t-att-value='country.id'/>
-                                                    </t>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary js_edit_author_modal_cancel">Cancel</button>
-                                    <button type="button" class="btn btn-primary js_edit_author_modal_save">Save</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <form method="POST" enctype="multipart/form-data" class="js_website_submit_form" id="paper_form"> 
-                    <div class="mb32">
+            <div class="card-body">                    
+                <div class="portal_event_paper">
+                    <div class="mb-4">
                         <h4 id="event" data-anchor="true"><strong>Event</strong></h4>
                         <h4><a t-attf-href="/event/#{paper.event_id.id}"> 
                             <t t-esc="paper.event_id.name"/> 
@@ -216,214 +108,92 @@
                             <t t-if="paper.event_id.subname" t-esc="paper.event_id.subname"/>
                         </a></h4>
                     </div>
-                    <div class="row mb32">
+
+                    <div class="row mb-4">
                         <div t-attf-class="col-12 col-lg-12 mb-6 mb-md-0">                                    
                             <div class="d-flex mb-1">
                                 <h4 id="title" data-anchor="true"><strong>Title<small class="text-sm text-muted" title="English"> [EN] </small></strong></h4>
                             </div>                                    
-                            <h4 t-if="fixed" t-field="paper.with_context(lang='en_US').name" />
-                            <input t-else="" type="text" t-attf-class="form-control form-control-lg #{error.get('name') and 'is-invalid' or ''}"  name="name" required="True" placeholder="Insert paper title here (in English)" t-att-value="post and post.get('name', '') or paper.with_context(lang='en_US').name" />
-                            <div t-if="error and error.get('name')" class="small text-danger mt-1" t-esc="error.get('name')" />  
+                            <h4 class="text-uppercase" t-field="paper.with_context(lang='en_US').name" />                                    
                         </div>
                     </div>
-                    <div class="row mb32">
+                    <div class="row mb-4">
                         <div t-attf-class="col-12 col-lg-12 mb-6 mb-md-0">                                    
                             <div class="d-flex mb-1">
                                 <h4 id="title_es" data-anchor="true"><strong>Title<small class="text-sm text-muted" title="Spanish"> [ES]</small></strong></h4>
                             </div>                                    
-                            <h4 t-if="fixed" t-field="paper.with_context(lang='es_ES').name" />
-                            <input t-else="" type="text" t-attf-class="form-control form-control-lg #{error.get('name_es') and 'is-invalid' or ''}"  name="name_es" required="True" placeholder="Insert paper title here (in Spanish)" t-att-value="post and post.get('name_es', '') or paper.with_context(lang='es_ES').name" />
-                            <div t-if="error and error.get('name_es')" class="small text-danger mt-1" t-esc="error.get('name_es')" /> 
-                        </div>
-                    </div>
-                    <div class="form-group row mb32" t-if="paper.language_id">
-                        <h4 class="col-12" id="language" data-anchor="true"><strong>Main Language</strong></h4>
-                        <div class="col-12">
-                            <t t-set="post_lang_id" t-value="post and int(post.get('language_id', '0')) or int(paper.language_id.id)" />
+                            <h4 class="text-uppercase" t-field="paper.with_context(lang='es_ES').name" />
                             
-                            <h4 t-if="fixed" t-field="paper.language_id.name" />
-                            <select t-else="" t-attf-class="form-control form-control-lg #{error.get('language_id') and 'is-invalid' or ''}" name="language_id">
-                                <t t-foreach='paper.event_id.allowed_language_ids' t-as="lang2">
-                                    <option t-esc='lang2.name' t-att-value='lang2.id' t-att-selected="lang2.id == post_lang_id" />
-                                </t>
-                            </select>                                                            
-                            <div t-if="error and error.get('language_id')" class="small text-danger mt-1" t-esc="error.get('language_id')" />
                         </div>
                     </div>
-                    <div class="row mb32">
-                        <div class="col-12 mb-1">
-                            <h4 id="_authors" data-anchor="true"><strong>Authors</strong></h4>                            
-                            <span class="text-info fa fa-info" /> <span class="text-muted">You can drag up and down in order to sort authoring relevance</span>
-                            <input type="hidden" name="authors" id="authors" t-att-value='post and post.get("authors", authors ) or authors' />
-                            <div>
-                                <ol t-if="fixed">
-                                    <li t-foreach='paper.author_ids' t-as="author">                                            
-                                        <div>
-                                            <t t-if="author.partner_id == paper.partner_id">
-                                                <b><span itemprop="name" t-field="author.partner_id.name" /></b>
-                                            </t>
-                                            <t t-else="">
-                                                <span itemprop="name" t-field="author.partner_id.name" />
-                                            </t>
-                                        </div>
-                                        <div>
-                                            <span class="fa fa-envelope text-info" /> <a t-attf-href="mailto:{{author.partner_id.email}}"><t t-esc="author.partner_id.email" /></a>
-                                        </div>
-                                        <div>
-                                            <span class="fa fa-home text-info"/> <span t-if="author.partner_id.institution" itemprop="institution" t-field="author.partner_id.institution" />
-                                            <span t-if="author.partner_id.country_id">
-                                                <img height="16px" t-att-src="author.partner_id.country_id.image_url" t-att-alt="'Flag of %s' % author.partner_id.country_id.name" t-att-title="author.partner_id.country_id.name"/>
-                                                <span t-field="author.partner_id.country_id.name" />
-                                            </span>
-                                        </div>
-                                    </li>
-                                </ol>
-                                <t t-else="">
-                                    <ol id="authors_list" class="list-unstyled ui-sortable">
-                                        
-                                    </ol>
-                                    <div t-if="error and error.get('authors')" class="small text-danger mt-1" t-esc="error.get('authors')" />
-                                    <button t-if="not paper.is_done and paper.stage_id.can_edit" class="js_add_author btn btn-secondary">Add Author</button>
-                                </t>
-                            </div>
+                    <div class="row mb-4" t-if="paper.sudo().tag_ids">
+                        <div class="col-12 col-md-6 mb-1">
+                            <h4 id="keywords" data-anchor="true"><strong>Keywords</strong></h4>                            
+                            <t t-foreach="paper.sudo().tag_ids" t-as="tag">
+                                <span class="label label-info" t-esc="tag.name" />
+                            </t>                            
                         </div>
                     </div>
-                    <div class="row mb32" t-if="paper.description">
+                    <div class="row mb-4" t-if="paper.language_id">
+                        <div class="col-12 col-md-6 mb-1">
+                            <h4 id="language" data-anchor="true"><strong>Language</strong></h4>
+                            <span t-field="paper.sudo().language_id.name" />
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-12 col-md-6 mb-1">
+                            <h4 id="authors" data-anchor="true"><strong>Authors</strong></h4>
+                            <ol>
+                                <li t-foreach='paper.sudo().author_ids' t-as="author">                                            
+                                    <div>
+                                        <t t-if="author.partner_id == paper.sudo().partner_id">
+                                            <b><span  itemprop="name" t-field="author.partner_id.name" /></b>
+                                        </t>
+                                        <t t-else="">
+                                            <span itemprop="name" t-field="author.partner_id.name" />
+                                        </t>
+                                    </div>
+                                    <div>
+                                        <span class="fa fa-envelope text-info" /> <a t-attf-href="mailto:{{author.partner_id.email}}"><t t-esc="author.partner_id.email" /></a>
+                                    </div>
+                                    <div>
+                                        <span class="fa fa-home text-info"/> <span t-if="author.partner_id.institution" itemprop="institution" t-field="author.partner_id.institution" />
+                                        <span t-if="author.partner_id.country_id">
+                                            <img height="16px" t-att-src="author.partner_id.country_id.image_url" t-att-alt="'Flag of %s' % author.partner_id.country_id.name" t-att-title="author.partner_id.country_id.name"/>
+                                            <span t-field="author.partner_id.country_id.name" />
+                                        </span>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="row" t-if="paper.description">
                         <div t-if="paper.description" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
-                            <!-- <hr class="mb-1"/> -->
+                            <hr class="mb-1"/>
                             <div class="d-flex my-2">
                                 <h4 id="abstract" data-anchor="true"><strong>Abstract<small class="text-sm text-muted" title="English"> [EN]</small></strong></h4>
                             </div>
                             <div class="py-1 paper_description js_comment" >
-                                <t t-if="fixed" t-raw="paper.description" />
-                                <textarea t-else="" t-attf-class="form-control form-control-lg o_wysiwyg_loader" name="description" required="True" >
-                                    <t t-esc="post and post.get('description', '') or paper.description" />
-                                </textarea>
-                                <div t-if="error and error.get('description')" class="small text-danger mt-1" t-esc="error.get('description')" />
+                                <t t-raw="paper.description" />
                             </div>
                         </div>
                     </div>
-                    <div class="row mb32" t-if="paper.description_es">
+                    <div class="row" t-if="paper.description_es">
                         <div t-if="paper.description_es" t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
-                            <!-- <hr class="mb-1"/> -->
+                            <hr class="mb-1"/>
                             <div class="d-flex my-2">
                                 <h4 id="abstract_es" data-anchor="true"><strong>Abstract<small class="text-sm text-muted" title="Spanish"> [ES]</small></strong></h4>
                             </div>
                             <div class="py-1 paper_description js_comment" >
-                                <t t-if="fixed" t-raw="paper.description_es" />
-                                <textarea t-else="" t-attf-class="form-control form-control-lg o_wysiwyg_loader" name="description_es" required="True" >
-                                    <t t-esc="post and post.get('description_es', '') or paper.description_es" />
-                                </textarea>
-                                <div t-if="error and error.get('description_es')" class="small text-danger mt-1" t-esc="error.get('description_es')" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb32" t-if="paper.sudo().tag_ids">
-                        <!-- <hr class="mb-1"/> -->
-                        <div class="col-12 mb-1">
-                            <h4 id="keywords" data-anchor="true"><strong>Keywords</strong></h4>
-                            <t t-if="fixed">
-                                <t  t-foreach="paper.sudo().tag_ids" t-as="tag">
-                                    <span class="badge badge-pill badge-primary" t-esc="tag.name" />
-                                </t>
-                            </t>
-                            <t t-else="">
-                                <input type="text" t-attf-class="form-control form-control-lg #{error.get('keywords') and 'is-invalid' or ''}"  name="keywords" required="True" placeholder="Comma separated keywords" t-att-value="post and post.get('keywords', '') or paper.keywords_list()" />
-                                <div t-if="error and error.get('keywords')" class="small text-danger mt-1" t-esc="error.get('keywords')" />
-                            </t>
-                        </div>
-                    </div>
-                    <div class="row mb32">
-                        <div t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
-                            <!-- <hr class="mb-1"/> -->
-                            <div class="d-flex my-2">
-                                <h4 id="introduction" data-anchor="true"><strong>Introduction</strong></h4>
-                            </div>
-                            <div class="py-1 paper_introduction js_comment" >
-                                <t t-if="fixed" t-raw="paper.introduction" />
-                                <textarea t-else="" t-attf-class="form-control form-control-lg o_wysiwyg_loader" name="introduction" required="True" >
-                                    <t t-esc="post and post.get('introduction', '') or paper.introduction" />
-                                </textarea>
-                                <div t-if="warning and warning.get('introduction')" class="small text-warning mt-1" t-esc="warning.get('introduction')" />
-                                <div t-if="warning and warning.get('introduction') and not fixed and paper.event_id.paper_final_deadline" class="small text-warning mt-1" > You can fix this issue until <t t-esc="paper.event_id.paper_final_deadline" /> </div>
-                                <div t-if="error and error.get('introduction')" class="small text-danger mt-1" t-esc="error.get('introduction')" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb32">
-                        <div t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
-                            <!-- <hr class="mb-1"/> -->
-                            <div class="d-flex my-2">
-                                <h4 id="methodology" data-anchor="true"><strong>Methodology</strong></h4>
-                            </div>
-                            <div class="py-1 paper_methodology js_comment" >
-                                <t t-if="fixed" t-raw="paper.methodology" />
-                                <textarea t-else="" t-attf-class="form-control form-control-lg o_wysiwyg_loader" name="methodology" required="True" >
-                                    <t t-esc="post and post.get('methodology', '') or paper.methodology" />
-                                </textarea>
-                                <div t-if="warning and warning.get('methodology')" class="small text-warning mt-1" t-esc="warning.get('methodology')" />
-                                <div t-if="warning and warning.get('methodology') and not fixed and paper.event_id.paper_final_deadline" class="small text-warning mt-1" > You can fix this issue until <t t-esc="paper.event_id.paper_final_deadline" /> </div>
-                                <div t-if="error and error.get('methodology')" class="small text-danger mt-1" t-esc="error.get('methodology')" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb32">
-                        <div t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
-                            <!-- <hr class="mb-1"/> -->
-                            <div class="d-flex my-2">
-                                <h4 id="results" data-anchor="true"><strong>Results &amp; Discussion</strong></h4>
-                            </div>
-                            <div class="py-1 paper_results js_comment" >
-                                <t t-if="fixed" t-raw="paper.results" />
-                                <textarea t-else="" t-attf-class="form-control form-control-lg o_wysiwyg_loader" name="results" required="True" >
-                                    <t t-esc="post and post.get('results', '') or paper.results" />
-                                </textarea>
-                                <div t-if="warning and warning.get('results')" class="small text-warning mt-1" t-esc="warning.get('results')" />
-                                <div t-if="warning and warning.get('results') and not fixed and paper.event_id.paper_final_deadline" class="small text-warning mt-1" > You can fix this issue until <t t-esc="paper.event_id.paper_final_deadline" /> </div>
-                                <div t-if="error and error.get('results')" class="small text-danger mt-1" t-esc="error.get('results')" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb32">
-                        <div t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
-                            <!-- <hr class="mb-1"/> -->
-                            <div class="d-flex my-2">
-                                <h4 id="conclussions" data-anchor="true"><strong>Conclussions</strong></h4>
-                            </div>
-                            <div class="py-1 paper_conclussions js_comment" >
-                                <t t-if="fixed" t-raw="paper.conclussions" />
-                                
-                                <textarea t-else="" t-attf-class="form-control form-control-lg o_wysiwyg_loader" name="conclussions" required="True" >
-                                    <t t-esc="post and post.get('conclussions', '') or paper.conclussions" />
-                                </textarea>
-                                <div t-if="warning and warning.get('conclussions')" class="small text-warning mt-1" t-esc="warning.get('conclussions')" />
-                                <div t-if="warning and warning.get('conclussions') and not fixed and paper.event_id.paper_final_deadline" class="small text-warning mt-1" > You can fix this issue until <t t-esc="paper.event_id.paper_final_deadline" /> </div>
-                                <div t-if="error and error.get('conclussions')" class="small text-danger mt-1" t-esc="error.get('conclussions')" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb32">
-                        <div t-attf-class="col-12 col-lg-12 mb-4 mb-md-0">
-                            <!-- <hr class="mb-1"/> -->
-                            <div class="d-flex my-2">
-                                <h4 id="bibliographic" data-anchor="true"><strong>Bibliographic References</strong></h4>
-                            </div>
-                            <div class="py-1 paper_bibliographic js_comment" >
-                                <t t-if="fixed" t-raw="paper.bibliographic" />                                
-                                <textarea t-else="" t-attf-class="form-control form-control-lg o_wysiwyg_loader" name="bibliographic" required="True" >
-                                    <t t-esc="paper.bibliographic" />
-                                </textarea>
-                                <div t-if="warning and warning.get('bibliographic')" class="small text-warning mt-1" t-esc="warning.get('bibliographic')" />   
-                                <div t-if="warning and warning.get('bibliographic') and not fixed and not paper.event_id.paper_final_deadline" class="small text-warning mt-1" > You can fix this issue until <t t-esc="paper.event_id.paper_final_deadline" /> </div>
-                                <div t-if="error and error.get('bibliographic')" class="small text-danger mt-1" t-esc="error.get('bibliographic')" />
+                                <t t-raw="paper.description_es" />
                             </div>
                         </div>
                     </div>
                     <div class="row" id="attachments_row">
-                        <div t-attf-class="col-12 col-lg-12 o_portal_attachments">
-                            <!-- <hr class="mb-1"/> -->
+                        <div t-attf-class="col-12 col-lg-12 o_project_portal_attachments">
+                            <hr class="mb-1"/>
                             <div class="d-flex my-2">
-                                <h4 id="attachments" data-anchor="true"><strong>Attachments</strong></h4>
+                                <h4 id="attachments" data-anchor="true"><strong>Attachments or Poster</strong></h4>
                             </div>                                
                             <div class="row">
                                 <div t-attf-class="col col-lg-12">
@@ -437,11 +207,35 @@
                                         </a>
                                     </ul>
                                 </div>
-                                <div t-if="not paper.is_done" class="col mt16 mb16">
-                                    <label class="control-label" for="file">Upload a file</label>
-                                    <input class="form-control form-control-lg" type="file" name="file" />                                    
+                                <div class="col mt16 mb16">
+                                    <a class="btn btn-xs btn-primary btn-upload" data-toggle="modal" data-target=".modal_file_upload" href="#"><i class="fa fa-paperclip"/> Add</a>
+                                    
+                                    <div class="modal fade modal_file_upload" role="form" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <form method="POST" enctype="multipart/form-data" class="js_accept_json modal-content js_website_submit_form">
+                                                <input type="hidden" id="csrf_token" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                <input type="hidden" name="review_id" class="review_review_id" t-att-value="paper.id"/>
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+                                                    <h4 class="modal-title">Upload new file</h4>
+                                                </div>
+                                                <div class="modal-body" id="sign-dialog">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="new_file">File</label>
+                                                        <input class="form-control" type="file" name="file" />
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button t-attf-class="btn btn-xs btn-primary">Upload</button>
+                                                    <button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>                            
+                            </div>
+
+                            
                         </div>
                     </div>
                     <div class="row" id="presentation_row">
@@ -455,26 +249,33 @@
                                     <h6><strong>Mode:</strong> <span t-field="paper.track_type_id.name" /></h6> 
                                     <h6><strong>Date:</strong> <span t-field="paper.with_context(tz=paper.event_id.date_tz).date" t-options='{"format":"MMMM dd, Y h:m a", "hide_seconds":"True"}'> </span></h6>
                                     <h6><strong>Location:</strong> <span t-field="paper.location_id.name" /></h6>
-                                    <h6><strong>Duration:</strong> <span t-field="paper.duration" t-options='{"widget": "duration", "unit": "hour", "round": "minute"}'/></h6>  
+                                    <h6><strong>Duration:</strong> <span t-field="paper.duration" t-options='{"widget": "duration", "unit": "hour", "round": "minute"}'/></h6>
+                                    <h6><strong>Poster:</strong> </h6> 
+                                    <div class="col-lg-12" id="track_poster">
+                                        <input type="file" class="d-none track_poster_upload" name="website_image" accept="image/*"/>
+                                        <img class="mb-3 track_poster_img" t-att-src="website.image_url(paper, 'website_image')" style="object-fit: cover; width: 100%;"/>
+                                        <div class="text-left">
+                                            <!-- <a href="#" class="btn btn-primary track_poster_edit" aria-label="Edit">
+                                                <i class="fa fa-pencil fa-1g float-sm-none float-md-left" title="Edit"></i>
+                                            </a>
+                                            <a href="#" title="Clear" aria-label="Clear" class="btn border-primary track_poster_clear">
+                                                <i class="fa fa-trash-o float-sm-none float-md-right"></i>
+                                            </a> -->
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div t-attf-class="col-12 col-lg-12">
-                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                            <button t-if="not paper.is_done" type="submit" t-attf-class="btn btn-xs btn-primary js_submit"><i class="fa fa-save"/> Save changes</button>
-                        </div>
-                    </div>
-                    </form>
-                </div>                                        
-            </div>            
+                </div>
+            </div> 
         </div>
     </template>
 
     <template id="portal_my_paper" name="My Paper"  inherit_id="portal.portal_sidebar" primary="True">
         <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
-            <div class="row mt16 o_portal_sale_sidebar portal_event_track">
+            <div class="row mt16 o_portal_sale_sidebar">
                 <t t-set="title" t-value="" />
                 <!-- Sidebar -->
                 <t t-call="portal.portal_record_sidebar">
@@ -486,11 +287,19 @@
                     <t t-set="entries">
                         <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
                             <li class="list-group-item flex-grow-1">
-                                <button t-if="not paper.is_done" class="btn btn-primary btn-block mb8 js_submit">
-                                    <i class="fa fa-save"/> Save Changes
-                                </button>
+                                                                 
+                                <a t-if="paper.stage_id.is_done and (paper.event_id.is_ongoing or paper.event_id.is_done) and paper.can_download_certificate" class="btn btn-secondary btn-block o_download_btn"
+                                     target="_blank" t-att-href="'/tracks/certificate_speaker/%s?%s' % (paper.id, keep_query())" title="Download certificate">
+                                    <i class="fa fa-print"/> Speaker Certificate
+                                </a>
+                                <a t-if="paper.stage_id.is_done and (paper.event_id.is_ongoing or paper.event_id.is_done) and paper.can_download_certificate" class="btn btn-secondary btn-block o_download_btn"
+                                     target="_blank" t-att-href="'/tracks/certificate_authors/%s?%s' % (paper.id, keep_query())" title="Download certificate">
+                                    <i class="fa fa-print"/> Authors Certificate
+                                </a>
                                 
-
+                                <!-- <a t-if="not paper.is_done and paper.stage_id.can_edit" role="button" class="btn btn-primary btn-block mb8" data-toggle="modal" data-target="#modaledit" href="#">
+                                    <i class="fa fa-pencil"/> Edit
+                                </a>
                                 <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
                                     <div class="btn-group flex-grow-1 mr-1 mb-1">
                                         <a class="btn btn-secondary btn-block o_download_btn" t-att-href="paper.get_portal_url(report_type='pdf', download=True)" title="Download"><i class="fa fa-download"/> Download</a>
@@ -498,7 +307,7 @@
                                     <div class="btn-group flex-grow-1 mb-1">
                                         <a class="btn btn-secondary btn-block o_print_btn o_portal_paper_print" t-att-href="paper.get_portal_url(report_type='pdf')" id="print_paper_report" title="Print" target="_blank"><i class="fa fa-print"/> Print</a>
                                     </div>
-                                </div>
+                                </div> -->
                             </li>
 
                             <li class="navspy list-group-item pl-0 flex-grow-1" t-ignore="true" role="complementary">
@@ -506,16 +315,11 @@
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#event">Event</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#title">Title [EN]</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#title_es">Title [ES]</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#language">Main Language</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#_authors">Authors</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#keywords">Keywords</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#language">Language</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#authors">Authors</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#abstract">Abstract [EN]</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#abstract_es">Abstract [ES]</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#keywords">Keywords</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#introduction">Introduction</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#methodology">Methodology</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#results">Results &amp; Discussion</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#conclussions">Conclussions</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#bibliographic">Bibliographic References</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#attachments">Attachments</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#presentation">Presentation</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#discussion">Messages</a></li>
@@ -547,23 +351,21 @@
                 </t>
                 
                 <!-- Page content -->
-                <div id="paper_content" class="col-12 col-lg-9 justify-content-end">                
+                <div id="paper_content" class="col-12 col-lg-9 justify-content-end">                                       
+                
                    <!-- main content -->
-                    
                     <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}" id="portal_paper_content">
                         <div t-call="website_event_track_uclv.portal_my_paper_content"/>
                     </div>
                     
                     <!-- bottom actions -->
-                    <div class="container mt32">
+                    <!-- <div class="container mt32">
                         <t t-if="not paper.is_done and paper.stage_id.can_edit" >
                             <div class="col-sm-auto mt8 mb8">
-                                <!-- 
-                                -->
+                                <a role="button" class="btn btn-primary" data-toggle="modal" data-target="#modaledit" href="#"><i class="fa fa-pencil"/> Edit</a>
                             </div>
                         </t>
-                    </div>
-                    
+                    </div>  --> 
                     <div class="container mt32">
                         <h4><strong>Message and communication history</strong></h4>
                         <t t-call="portal.message_thread">
