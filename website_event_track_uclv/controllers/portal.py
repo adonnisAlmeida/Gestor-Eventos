@@ -13,7 +13,7 @@ from odoo.http import request, route
 from odoo.tools.translate import _
 from odoo.tools import html_escape as escape, html2plaintext, consteq
 from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager
-from werkzeug.exceptions import NotFound, Forbidden
+from werkzeug.exceptions import NotFound, Forbidden, InternalServerError
 from odoo.exceptions import AccessError, MissingError
 from odoo.osv.expression import OR
 from odoo.tools import groupby as groupbyelem
@@ -200,7 +200,7 @@ class PortalController(CustomerPortal):
             data = c_file.read()
             request.env['ir.attachment'].sudo().create({
                         'name': c_file.filename,
-                        'raw': data,                        
+                        'raw': data,
                         'public': False,
                         'res_model': 'event.track',
                         'res_id': prop.id
@@ -208,8 +208,8 @@ class PortalController(CustomerPortal):
 
         return request.render(
             "website_event_track_uclv.portal_my_paper", {
-                'paper': prop,
-               })
+                'paper': prop                
+            })
 
     @http.route(['/my/reviews', '/my/reviews/page/<int:page>'], type='http', auth="user", website=True)
     def portal_my_reviews(self, page=1, date_begin=None, date_end=None, sortby=None, filterby=None, search=None, search_in='content', groupby=None, **kw):
@@ -415,7 +415,7 @@ class PortalController(CustomerPortal):
             
         # print report as sudo, since it require access to taxes, payment term, ... and portal
         # does not have those access rights.
-        pdf = request.env.ref('event.report_event_registration_badge').sudo().render_qweb_pdf([registration_sudo.id])[0]
+        pdf = request.env.ref('event.report_event_registration_badge').sudo()._render_qweb_pdf([registration_sudo.id])[0]
         pdfhttpheaders = [
             ('Content-Type', 'application/pdf'),
             ('Content-Length', len(pdf)),
@@ -433,7 +433,7 @@ class PortalController(CustomerPortal):
             raise Forbidden()
             
         # does not have those access rights.
-        pdf = request.env.ref('website_event_track_uclv.report_event_registration_certificate').sudo().render_qweb_pdf([registration_sudo.id])[0]
+        pdf = request.env.ref('website_event_track_uclv.report_event_registration_certificate').sudo()._render_qweb_pdf([registration_sudo.id])[0]
         pdfhttpheaders = [
             ('Content-Type', 'application/pdf'),
             ('Content-Length', len(pdf)),
@@ -529,48 +529,49 @@ class PortalController(CustomerPortal):
                 'registration': reg
             })
 
-@http.route(['''/build_access_tokens'''], type='http', auth="user", website=True)
-def build_access_tokens(self, **kw):
-    user = request.env.user
-    group = request.env.ref("event.group_event_manager")
-    if group not in user.groups_id:
-        raise Forbidden()
-    
-    att = request.env['ir.attachment'].search([('res_model', '=', 'event.track'),('access_token','=', False),('public','=',False)])
-    att.generate_access_token()
-    return request.redirect('/events')
-
-@http.route(['/my/tracks/certificate_speaker/<int:track_id>', '/tracks/certificate_speaker/<int:track_id>'], type='http', auth="user", website=True)
-def portal_my_track_certificate_speaker_report(self, track_id, access_token=None, **kw):
-    try:
-        track_sudo = self._document_check_access('event.track', track_id, access_token=access_token)
-    except AccessError:
-        return request.redirect('/my')
-    
-    if not (track_sudo.stage_id.is_done and (track_sudo.event_id.is_ongoing or track_sudo.event_id.is_done) and track_sudo.can_download_certificate):
-        raise NotFound()            
-    
-    pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate').sudo()._render_qweb_pdf([track_sudo.id])[0]
-    pdfhttpheaders = [
-        ('Content-Type', 'application/pdf'),
-        ('Content-Length', len(pdf)),
-    ]
-    return request.make_response(pdf, headers=pdfhttpheaders)
-
-@http.route(['/my/tracks/certificate_authors/<int:track_id>', '/tracks/certificate_authors/<int:track_id>'], type='http', auth="user", website=True)
-def portal_my_track_certificate_authors_report(self, track_id, access_token=None, **kw):
-    try:
-        track_sudo = self._document_check_access('event.track', track_id, access_token=access_token)
-    except AccessError:
-        return request.redirect('/my')
-    
-    if not (track_sudo.stage_id.is_done and (track_sudo.event_id.is_ongoing or track_sudo.event_id.is_done) and track_sudo.can_download_certificate):
-        raise NotFound()    
+    @http.route(['''/build_access_tokens'''], type='http', auth="user", website=True)
+    def build_access_tokens(self, **kw):
+        user = request.env.user
+        group = request.env.ref("event.group_event_manager")
+        if group not in user.groups_id:
+            raise Forbidden()
         
-    
-    pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate_authors').sudo()._render_qweb_pdf([track_sudo.id])[0]
-    pdfhttpheaders = [
-        ('Content-Type', 'application/pdf'),
-        ('Content-Length', len(pdf)),
-    ]
-    return request.make_response(pdf, headers=pdfhttpheaders)
+        att = request.env['ir.attachment'].search([('res_model', '=', 'event.track'),('access_token','=', False),('public','=',False)])
+        att.generate_access_token()
+
+        return request.redirect('/events')
+
+    @http.route(['/my/tracks/certificate_speaker/<int:track_id>', '/tracks/certificate_speaker/<int:track_id>'], type='http', auth="user", website=True)
+    def portal_my_track_certificate_speaker_report(self, track_id, access_token=None, **kw):
+        try:
+            track_sudo = self._document_check_access('event.track', track_id, access_token=access_token)
+        except AccessError:
+            return request.redirect('/my')
+        
+        if not (track_sudo.stage_id.is_done and (track_sudo.event_id.is_ongoing or track_sudo.event_id.is_done) and track_sudo.can_download_certificate):
+            raise NotFound()            
+        
+        pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate').sudo()._render_qweb_pdf([track_sudo.id])[0]
+        pdfhttpheaders = [
+            ('Content-Type', 'application/pdf'),
+            ('Content-Length', len(pdf)),
+        ]
+        return request.make_response(pdf, headers=pdfhttpheaders)
+
+    @http.route(['/my/tracks/certificate_authors/<int:track_id>', '/tracks/certificate_authors/<int:track_id>'], type='http', auth="user", website=True)
+    def portal_my_track_certificate_authors_report(self, track_id, access_token=None, **kw):
+        try:
+            track_sudo = self._document_check_access('event.track', track_id, access_token=access_token)
+        except AccessError:
+            return request.redirect('/my')
+        
+        if not (track_sudo.stage_id.is_done and (track_sudo.event_id.is_ongoing or track_sudo.event_id.is_done) and track_sudo.can_download_certificate):
+            raise NotFound()    
+            
+        
+        pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate_authors').sudo()._render_qweb_pdf([track_sudo.id])[0]
+        pdfhttpheaders = [
+            ('Content-Type', 'application/pdf'),
+            ('Content-Length', len(pdf)),
+        ]
+        return request.make_response(pdf, headers=pdfhttpheaders)

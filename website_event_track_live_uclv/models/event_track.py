@@ -9,10 +9,12 @@ class Track(models.Model):
     
     def _avideo_base_domain(self):
         if self.avideo_url:
-            self.avideo_base_domain = self.env['ir.config_parameter'].sudo().get_param('avideo.base.domain', 'https://video-convencion.uclv.cu')
+            self.avideo_base_domain = self.env['ir.config_parameter'].sudo().get_param('avideo.base.domain')
+            if self.avideo_base_domain[:-1] != '/':
+                self.avideo_base_domain +='/'
             self.avideo_full_url = self.avideo_base_domain +'video/'+self.avideo_url
         else:
-            self.avideo_base_domain = ""
+            self.avideo_base_domain = "/"
             self.avideo_full_url = ""
 
     avideo_base_domain = fields.Char('AVideo URL', compute="_avideo_base_domain")

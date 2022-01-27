@@ -20,7 +20,7 @@ class ResConfigSettings(models.TransientModel):
         res = super(ResConfigSettings, self).get_values()
         Params = self.env['ir.config_parameter'].sudo()
         res.update({
-            'avideo_base_domain': '%s/' % Params.get_param('avideo.base.domain', default='https://video-convencion.uclv.cu'),
+            'avideo_base_domain': '%s' % Params.get_param('avideo.base.domain', default='https://video-convencion.uclv.cu'),
             'avideo_user': '%s' % Params.get_param('avideo.user', default='admin'),
             'avideo_password': '%s' % Params.get_param('avideo.password', default='2eb4f990fe8fdf3c847e4b8cc44461bb'),
         })

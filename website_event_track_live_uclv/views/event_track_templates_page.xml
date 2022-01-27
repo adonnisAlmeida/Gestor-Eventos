@@ -17,10 +17,6 @@
     </xpath> -->
     <!-- Add video -->
     <xpath expr="//div[@name='o_wesession_track_main']//div" position="before">
-        <!-- <div t-if="track.is_track_soon">Soon</div>
-        <div t-if="track.is_track_live">Now</div>
-        <div t-if="track.is_track_done">Done</div>
-        <div t-if="track.is_track_today">Today</div> -->
         <t t-set="show_youtube_frame" t-value="track.youtube_video_url and (track.is_youtube_replay or track.is_track_soon or track.is_track_live or track.is_track_done)" />
         <t t-set="show_avideo_frame" t-value="track.avideo_url and (track.is_track_soon or track.is_track_live or track.is_track_done)" />
         <div t-if="show_youtube_frame" class="flex-grow-1 o_wevent_event_track_live"
@@ -43,12 +39,18 @@
         </div>
 
         <div t-if="show_avideo_frame and not show_youtube_frame" class="embed-responsive embed-responsive-16by9">
-            <object width="640" height="360">
+            <iframe width="640" height="360" style="max-width: 100%;max-height: 100%; border:none;"
+                t-attf-src="#{track.avideo_base_domain}vEmbed/#{track.avideo_url.split('/')[0]}"
+                frameborder="0" allowfullscreen="allowfullscreen" 
+                scrolling="no" videoLengthInSeconds="{videoLengthInSeconds}">
+                iFrame is not supported!</iframe>
+
+            <!-- <object width="640" height="360">
                 <param name="movie" t-attf-value="#{track.avideo_base_domain}videoEmbed/#{track.avideo_url}?modestbranding=0&amp;showinfo=0&amp;controls=1&amp;t=0&amp;objectFit=1" />
                 <param name="allowFullScreen" value="true" />
                 <param name="allowscriptaccess" value="always" />
                 <embed t-attf-src="#{track.avideo_base_domain}videoEmbed/#{track.avideo_url}?modestbranding=0&amp;showinfo=0&amp;controls=1&amp;t=0&amp;objectFit=1" allowscriptaccess="always" allowfullscreen="true" width="640" height="360" />
-            </object>
+            </object> -->
         </div> 
     </xpath>
 </template>

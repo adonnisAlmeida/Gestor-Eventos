@@ -20,7 +20,7 @@ class IrAttachment(models.Model):
         res_ids = super(IrAttachment, self).create(vals_list)
         return res_ids
 
-
+        
 class TrackTag(models.Model):
     _name = "event.track.tag"
     _inherit = 'event.track.tag'
@@ -157,7 +157,7 @@ class TrackReview(models.Model):
     state = fields.Selection([('notice','Noticed'),('read','Readed'),('accept','Accepted'),('reject','Rejected'),('edit', 'Need changes')], string="State", default="notice", required=True, tracking=True)
     weight = fields.Integer('Weight', default = 10)
     expired = fields.Boolean(string='Is expired', compute=_compute_expired)
-    is_done = fields.Boolean(string='Is Done', realated='track_id.is_done')
+    is_done = fields.Boolean(string='Is Done', related='track_id.is_done')
 
     @api.model
     def create(self, vals):        
@@ -304,7 +304,7 @@ class Track(models.Model):
 
     def authors_str(self):
        return ', '.join([author.with_context({'lang': 'es_ES'}).partner_id.full_name for author in self.author_ids.sorted('sequence')])
-
+        
     def write(self, vals):
         if 'stage_id' in vals and 'kanban_state' not in vals:
             vals['kanban_state'] = 'normal'        
@@ -384,10 +384,11 @@ class Track(models.Model):
 
     def unlink(self):
         self.track_chat_id.unlink()
-        return super(Track, self).unlink()
+        return super(Track, self).unlink()        
 
 class TrackChat(models.Model):
     _name = "event.track.chat"    
     _inherit = ['mail.thread']
 
     _description = "Paper Public Chat"
+      

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="event_registration_mail_template_certificate" model="mail.template">
+            <field name="name">Event: Attendee Certificate</field>
+            <field name="model_id" ref="event.model_event_registration"/>
+            <field name="subject">Your attendee certificate for ${object.event_id.name}</field>
+            <field name="email_from">${(object.event_id.organizer_id.email_formatted or object.event_id.user_id.email_formatted or '') | safe}</field>
+            <field name="email_to">${(object.email and '"%s" &lt;%s&gt;' % (object.name, object.email) or object.partner_id.email_formatted or '') | safe}</field>
+            <field name="body_html" type="html">
+<div>
+    Dear ${object.name},<br/>
+    
+    Here is your attendee certificate for the event ${object.event_id.name}.<br/>   
+    <br/><br/>
+    Thank you,
+    % if object.event_id.user_id.signature:
+        <br />
+        ${object.event_id.user_id.signature | safe}
+    % endif
+</div></field>
+            <field name="report_template" ref="report_event_registration_certificate"/>
+            <field name="report_name">certificate_for_${(object.event_id.name or '').replace('/','_')}</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

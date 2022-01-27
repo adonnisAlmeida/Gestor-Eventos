@@ -78,8 +78,8 @@ class UCLVWebsiteEventTrackController(EventTrackController):
 
         # search on tags
         search_tags = self._get_search_tags(searches['tags'])
-        if not search_tags and tag:  # backward compatibility
-            search_tags = tag
+        #if not search_tags and tag:  # backward compatibility
+        #    search_tags = tag
         if search_tags:
             # Example: You filter on age: 10-12 and activity: football.
             # Doing it this way allows to only get events who are tagged "age: 10-12" AND "activity: football".
