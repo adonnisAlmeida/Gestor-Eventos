@@ -302,7 +302,7 @@ class UCLVWebsiteEventTrackController(EventTrackController):
                         au.update({'error':{'author_country_id':_('Country is invalid')}})
                         author_errors = True
                     else:
-                        author = request.env['res.partner'].sudo().search([('email', '=', au_email), ('name', '=', au_name), ('country_id', '=', au_country_id)])
+                        author = request.env['res.partner'].sudo().search([('email', '=', au_email), ('name', '=', au_name), ('country_id', '=', au_country_id)], limit=1)
                         if not author:
                             author = request.env['res.partner'].sudo().create({'name': au_name, 'email': au_email, 'institution': au_institution, 'country_id': au_country_id})
                         
