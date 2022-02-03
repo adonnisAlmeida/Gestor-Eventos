@@ -88,6 +88,12 @@
                             </form>
                         </field>
                     </page>
+                    <page string="Certificates" name="certificates">                        
+                        <group>
+                            <field name="isbn" string="ISBN" />
+                            
+                        </group>
+                    </page>
                 </xpath>
            </field>
         </record>

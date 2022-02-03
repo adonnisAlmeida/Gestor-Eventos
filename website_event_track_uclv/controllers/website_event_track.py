@@ -149,6 +149,15 @@ class UCLVWebsiteEventTrackController(EventTrackController):
             'user_event_manager': request.env.user.has_group('event.group_event_user'),
         }
 
+    @http.route(['/buildchats'], type='http', auth="public", website=True)
+    def event_track_build_chat(self, **kw):
+        tracks = request.env['event.track'].sudo().search([('track_chat_id','=',False)])
+        for track in tracks:
+            chat = request.env['event.track.chat'].sudo().create({})
+            track.write({'track_chat_id': chat.id})
+        
+        return request.redirect('/event')
+
     @http.route(['/event/<model("event.event"):event>/track_proposal'], type='http', auth="user", methods=['GET', 'POST'], website=True)
     def event_track_proposal(self, event, **post):        
         if not event.can_access_from_current_website():

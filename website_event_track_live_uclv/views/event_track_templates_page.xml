@@ -44,13 +44,8 @@
                 frameborder="0" allowfullscreen="allowfullscreen" 
                 scrolling="no" videoLengthInSeconds="{videoLengthInSeconds}">
                 iFrame is not supported!</iframe>
-
-            <!-- <object width="640" height="360">
-                <param name="movie" t-attf-value="#{track.avideo_base_domain}videoEmbed/#{track.avideo_url}?modestbranding=0&amp;showinfo=0&amp;controls=1&amp;t=0&amp;objectFit=1" />
-                <param name="allowFullScreen" value="true" />
-                <param name="allowscriptaccess" value="always" />
-                <embed t-attf-src="#{track.avideo_base_domain}videoEmbed/#{track.avideo_url}?modestbranding=0&amp;showinfo=0&amp;controls=1&amp;t=0&amp;objectFit=1" allowscriptaccess="always" allowfullscreen="true" width="640" height="360" />
-            </object> -->
+            
+            
         </div> 
     </xpath>
 </template>

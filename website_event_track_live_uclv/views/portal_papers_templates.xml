@@ -9,12 +9,17 @@
                                             
             <h6><strong>Video:</strong></h6>   
             <div id="videoplayer" t-if="paper.avideo_url" class="embed-responsive embed-responsive-16by9 mt-16">
-                <object width="640" height="360">
+                <!--<object width="640" height="360">
                     <param name="movie" t-attf-value="#{paper.avideo_base_domain}/videoEmbed/#{paper.avideo_url}?modestbranding=0&amp;showinfo=0&amp;&amp;controls=1&amp;t=0&amp;objectFit=" />
                     <param name="allowFullScreen" value="true" />
                     <param name="allowscriptaccess" value="always" />
                     <embed t-attf-src="#{paper.avideo_base_domain}videoEmbed/#{paper.avideo_url}?modestbranding=0&amp;showinfo=0&amp;&amp;controls=1&amp;t=0&amp;objectFit=" allowscriptaccess="always" allowfullscreen="true" width="640" height="360" />
-                </object>
+                </object> -->
+                <iframe width="640" height="360" style="max-width: 100%;max-height: 100%; border:none;" 
+                    t-attf-src="#{paper.avideo_base_domain}vEmbed/#{paper.avideo_url}"
+                    frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay" scrolling="no" 
+                    videoLengthInSeconds="{videoLengthInSeconds}">iFrame is not supported!</iframe>
+                
             </div>
             <div id="videoencoder" t-if="paper.avideo_url" class="alert alert-info d-none">
                 <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Your video is being encoded. It will be available soon.

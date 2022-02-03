@@ -17,7 +17,7 @@ publicWidget.registry.portalEventTrack = publicWidget.Widget.extend({
             fileName:"file",
             showFileSize: true,
             showFileCounter: false,
-            maxFileSize: 20*1024*1024,
+            maxFileSize: 200*1024*1024,
             showDone: true,
             showStatusAfterSuccess: true,
             showProgress: true,

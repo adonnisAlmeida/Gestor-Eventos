@@ -41,6 +41,15 @@ class Event(models.Model):
 
     website_registration = fields.Boolean('Registration on Website', compute='_compute_website_registration', inverse='_set_website_menu')
     website_registration_ok = fields.Boolean('Registration on Website')
+
+    isbn = fields.Char(string="ISBN")
+
+    def isbn_get(self):        
+        if self.isbn:
+            return self.isbn
+        if self.parent_id:
+            return self.parent_id.isbn_get()
+        return ''
            
     def _get_overdue(self):
         overdue = False
