@@ -541,8 +541,8 @@ class PortalController(CustomerPortal):
 
         return request.redirect('/events')
 
-    @http.route(['/my/tracks/certificate_speaker/<int:track_id>', '/tracks/certificate_speaker/<int:track_id>'], type='http', auth="user", website=True)
-    def portal_my_track_certificate_speaker_report(self, track_id, access_token=None, **kw):
+    @http.route(['/my/tracks/certificate_participation/<int:track_id>', '/tracks/certificate_participation/<int:track_id>'], type='http', auth="user", website=True)
+    def portal_my_track_certificate_participation_report(self, track_id, access_token=None, **kw):
         try:
             track_sudo = self._document_check_access('event.track', track_id, access_token=access_token)
         except AccessError:
@@ -551,15 +551,15 @@ class PortalController(CustomerPortal):
         if not (track_sudo.stage_id.is_done and (track_sudo.event_id.is_ongoing or track_sudo.event_id.is_done) and track_sudo.can_download_certificate):
             raise NotFound()            
         
-        pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate').sudo()._render_qweb_pdf([track_sudo.id])[0]
+        pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate_participation').sudo()._render_qweb_pdf([track_sudo.id])[0]
         pdfhttpheaders = [
             ('Content-Type', 'application/pdf'),
             ('Content-Length', len(pdf)),
         ]
         return request.make_response(pdf, headers=pdfhttpheaders)
 
-    @http.route(['/my/tracks/certificate_authors/<int:track_id>', '/tracks/certificate_authors/<int:track_id>'], type='http', auth="user", website=True)
-    def portal_my_track_certificate_authors_report(self, track_id, access_token=None, **kw):
+    @http.route(['/my/tracks/certificate/<int:track_id>', '/tracks/certificate/<int:track_id>'], type='http', auth="user", website=True)
+    def portal_my_track_certificate_report(self, track_id, access_token=None, **kw):
         try:
             track_sudo = self._document_check_access('event.track', track_id, access_token=access_token)
         except AccessError:
@@ -569,7 +569,7 @@ class PortalController(CustomerPortal):
             raise NotFound()    
             
         
-        pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate_authors').sudo()._render_qweb_pdf([track_sudo.id])[0]
+        pdf = request.env.ref('website_event_track_uclv.report_event_track_certificate').sudo()._render_qweb_pdf([track_sudo.id])[0]
         pdfhttpheaders = [
             ('Content-Type', 'application/pdf'),
             ('Content-Length', len(pdf)),

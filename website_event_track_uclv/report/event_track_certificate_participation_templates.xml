@@ -2,7 +2,7 @@
 <odoo>
     
     <!-- template use to render a Registration Certificate -->
-    <template id="event_registration_report_template_certificate">
+    <template id="event_track_report_template_certificate_participation">
         <t t-call="web.basic_layout">
             <style>                
                 .cert-h4
@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-9">
                             <div style="display:block;padding:0 10mm 0 0 !important; position:relative; top:86.5mm;">
-                                <center class="cert-h4 uppercase"  t-esc="o.with_context({'lang': 'es_ES'}).name"/>                                
+                                <center class="cert-h4 uppercase"  t-esc="o.with_context({'lang': 'es_ES'}).partner_id.name"/>                                
                             </div>
                             
                         </div>

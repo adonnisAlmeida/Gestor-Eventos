@@ -3,35 +3,18 @@
     <!-- template use to render a Track Certificate -->
     <template id="event_track_report_template_certificate">
         <t t-call="web.basic_layout">
-            <style>
-
-                .cert-h1
-                {
-                    font-size: 2.3cm;
-                    font-family:'AvantGarde'!important;
-                }
-                .cert-h2
-                {
-                    font-size: 0.6cm; 
-                    font-weight: bold; 
-                    font-family:'AvantGarde'!important;
-                }
-                .cert-h3
-                {
-                    font-size: 0.5cm;
-                    font-family:'AvantGarde'!important;
-                }
+            <style>                            
                 .cert-h4
                 {
-                    font-size: 0.45cm;
-                    line-heught:0.45cm;
-                    font-family:'AvantGarde'!important;
+                    font-size: 0.49cm;
+                    line-height:0.49cm;
+                    color: #243d5b;
                 }
-                .cert-h4
+                .cert-h5
                 {
-                    font-size: 0.45cm;
-                    line-heught:0.45cm;
-                    font-family:'AvantGarde'!important;
+                    font-size: 0.3cm;
+                    line-height:0.3cm;
+                    color: #243d5b;
                 }
                 .bold
                 {
@@ -42,25 +25,7 @@
                     text-transform:uppercase; 
                 }
                 .green{color:#009933;}
-                .bg-green{
-                        color:white; 
-                        background-color:#009933;
-                        padding: 1mm 5mm;
-                    }
-                .bg-blue{
-                        color:white; 
-                        background-color:#003399;
-                        padding: 1mm 5mm;
-                    }
-                .bg-gray{
-                    color:white; 
-                    background-color:#808080;
-                    padding: 1mm 5mm;
-                }
-                .rounded
-                {
-                    border-radius:15px !important;
-                }
+                
                 .page{
                     height: 8.86in;
                     width: 11.45in;
@@ -79,30 +44,35 @@
                 }
                 .mt-4
                 {margin-top:3mm!important}
-                .mt-6
-                {margin-top:5mm!important}
+                .mt-32
+                {margin-top:10mm!important}
             </style>
             <t t-foreach="docs" t-as="o">
                     <div class="page">
                         <div class="row" style="height:8.86in !important">
                             <div class="col-3">
                                 <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.authenticity_url, 200, 200)" style="width:5cm;height:5cm;display:block;margin:0 !important; position:relative; top:152mm; left:13mm;"/>
+                                <center t-if="o.event_id.isbn_get()" style="width:5cm;display:block;margin:0 !important; position:relative; top:162mm; left:13mm;">
+                                    <span class="cert-h5">ISBN: </span><span class="cert-h5" t-esc="o.event_id.isbn_get()"/>
+                                </center>
                             </div>
                             <div class="col-9">
-                                <div style="display:block;padding:0 10mm !important; position:relative; top:60mm;">
-                                    <center><span class="cert-h4 bold uppercase bg-green rounded">AL PONENTE</span></center>
-                                    <center class="cert-h4 mt-4 uppercase"  t-esc="o.partner_id.with_context({'lang': 'es_ES'}).full_name"/>
-                                    <center class="mt-4"><span class="cert-h4 bold uppercase bg-blue rounded">POR SU TRABAJO</span></center>
+                                <div style="display:block;padding:0 10mm 0 0 !important; position:relative; top:56.5mm;">
+                                    <center class="mt-4"><span class="cert-h4 bold">A la ponencia:</span></center>
                                     <center class="cert-h4 mt-4 uppercase"  t-esc="o.with_context({'lang': 'es_ES'}).name"/>
-                                    <center class="mt-4"><span class="cert-h4 bold uppercase bg-gray rounded">POR SU PARTICIPACIÓN EN</span></center>
-                                    <center class="cert-h4 mt-4 bold uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
-                                    <center class="mt-6">
-                                        <t t-foreach="o.event_id.sponsor_ids.sorted('sequence')" t-as="sponsor">
-                                            <span t-field="sponsor.image_256"
-                                            t-options='{"widget": "image", "class": "img img-fluid img-64"}'/>
-                                        </t>
+                                </div>    
+                                <div style="display:block;padding:0 10mm 0 0 !important; position:relative; top:73.5mm;">    
+                                    <center t-if="len(o.author_ids)==1"><span class="cert-h4 bold">Del autor:</span></center>
+                                    <center t-if="len(o.author_ids)>1" class="mt-4"><span class="cert-h4 bold">De los autores:</span></center>
+                                    <center class="cert-h4 mt-4 uppercase">
+                                        <span t-esc="o.authors_str()" />
                                     </center>
-                                </div>                               
+                                    <center class="mt-32"><span class="cert-h4 bold">Por su participación en el:</span></center>
+                                    <center t-if="o.event_id.parent_id" class="cert-h4 mt-4 uppercase" t-esc="o.event_id.parent_id.with_context({'lang': 'es_ES'}).name" />
+                                    <center t-else="" class="cert-h4 mt-4 uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
+                                    <center t-if="o.event_id.parent_id" class="mt-32"><span class="cert-h4 bold">En el:</span></center>
+                                    <center t-if="o.event_id.parent_id" class="cert-h4 mt-4 uppercase" t-esc="o.event_id.with_context({'lang': 'es_ES'}).name" />
+                                </div>
                                 
                             </div>
                         </div>
