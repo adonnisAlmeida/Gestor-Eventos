@@ -24,24 +24,25 @@ class EventRegistration(models.Model):
 
     @api.depends('payment_ids', 'payment_ids.amount', 'payment_ids.payment_date', 'event_ticket_id', 'event_ticket_id.product_id', 'event_ticket_id.product_id.price')
     def get_balance(self):
-        amount = 0
-        payment_ids = self.env['event.registration.payment'].search([('event_registration_id', '=', self.id)], order="payment_date asc")
-        self.paid = False
-        self.paid_date = False
-        self.final_price = self.event_ticket_id.product_id.price
-        
-        if self.event_ticket_id:
-            if not self.event_ticket_id.price:
-                self.paid = True
+        for item in self:
+            amount = 0
+            payment_ids = self.env['event.registration.payment'].search([('event_registration_id', '=', self.id)], order="payment_date asc")
+            item.paid = False
+            item.paid_date = False
+            item.final_price = item.event_ticket_id.product_id.price
+            
+            if item.event_ticket_id:
+                if not item.event_ticket_id.price:
+                    item.paid = True
 
-        for payment in payment_ids:            
-            amount += payment.amount
-            if amount >= self.event_ticket_id.product_id.with_context(date=payment.payment_date).price:
-                self.paid = True
-                self.paid_date = payment.payment_date
-                self.final_price = self.event_ticket_id.product_id.with_context(date=payment.payment_date).price
+            for payment in payment_ids:            
+                amount += payment.amount
+                if amount >= item.event_ticket_id.product_id.with_context(date=payment.payment_date).price:
+                    item.paid = True
+                    item.paid_date = payment.payment_date
+                    item.final_price = item.event_ticket_id.product_id.with_context(date=payment.payment_date).price
 
-        self.balance = self.final_price - amount
+            item.balance = item.final_price - amount
     
     def _get_default_country(self):
         return self.env.ref('base.cu').id
