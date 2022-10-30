@@ -250,6 +250,7 @@ class Track(models.Model):
     manager_notes = fields.Text('Notes for the Manager')
     author_notes = fields.Text('Notes for the Author')
     recommendation = fields.Selection([('acceptwc', "Accepted With Changes"), ('acceptednc', "Accepted Without Changes"),  ('rejected', "Rejected")], 'Recommendation')
+    modality = fields.Selection([('conferencia', "Conferencia"), ('ponencia_oral', "Ponencia Oral"),  ('poster', "Póster")], 'Modality')
     manager_notes2 = fields.Text('Notes for the Manager')
     author_notes2 = fields.Text('Notes for the Author')
     recommendation2 = fields.Selection(

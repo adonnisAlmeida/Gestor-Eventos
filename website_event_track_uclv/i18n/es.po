@@ -4974,3 +4974,53 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_event_track.agenda_main
 msgid "tracks"
 msgstr ""
+
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
+msgid ""
+"Attachments<small class=\"text-muted\" title=\"Attachments\"> Use "
+"attachments to upload presentations, diagrams, full text paper, etc</small>:"
+msgstr ""
+"Adjuntos<small class=\"text-muted\" title=\"Adjuntos\"> Use los adjuntos "
+"para subir presentaciones, diagramas, el texto del trabajo completo, "
+"etc</small>:"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper_content
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review_content
+msgid "<strong>Modality</strong>"
+msgstr "<strong>Modalidad</strong>"
+
+#. module: website_event_track_uclv
+#: code:addons/website_event_track_uclv/controllers/website_event_track.py:0
+#: code:addons/website_event_track_uclv/controllers/website_event_track.py:0
+#, python-format
+msgid "Abstract is too long. Try a shorter text."
+msgstr "Resumen demasiado largo. Intente un texto más corto."
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
+msgid "Modality:"
+msgstr "Modalidad:"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
+msgid "Conference"
+msgstr "Conferencia"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
+msgid "Oral Presentation"
+msgstr "Ponencia Oral"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.event_track_proposal
+msgid "Poster"
+msgstr "Póster"
+
+#. module: website_event_track_uclv
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_paper
+#: model_terms:ir.ui.view,arch_db:website_event_track_uclv.portal_my_review
+msgid "Modality"
+msgstr "Modalidad"

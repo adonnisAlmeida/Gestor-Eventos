@@ -199,6 +199,8 @@ class UCLVWebsiteEventTrackController(EventTrackController):
                 description_text = description_text.replace('  ', ' ')            
                 if len(description_text.split(' ')) < 50:
                     error.update({'description': _('Abstract is too short. Try a larger text.')})
+                elif len(description_text.split(' ')) > 250:
+                    error.update({'description_es': _('Abstract is too long. Try a shorter text.')})
                 elif detect(description_text) != 'en':
                     error.update({'description': _('Abstract is not in English.')})
             except:
@@ -213,6 +215,8 @@ class UCLVWebsiteEventTrackController(EventTrackController):
                 description_es_text = description_es_text.replace('  ', ' ') 
                 if len(description_es_text.split(' ')) < 50:
                     error.update({'description_es': _('Abstract is too short. Try a larger text.')})
+                elif len(description_es_text.split(' ')) > 250:
+                    error.update({'description_es': _('Abstract is too long. Try a shorter text.')})
                 elif detect(description_es_text) != 'es':
                     error.update({'description_es': _('Abstract is not in Spanish.')})
             except:
@@ -314,6 +318,8 @@ class UCLVWebsiteEventTrackController(EventTrackController):
         
         if error:
             return request.render("website_event_track.event_track_proposal", {'error': error, 'post': post, 'event': event,'countries': countries, 'main_object': event})
+        
+        modality = post.get('modality', False) 
 
         track = request.env['event.track'].sudo().create({
             'name': track_name,
@@ -329,6 +335,7 @@ class UCLVWebsiteEventTrackController(EventTrackController):
             'partner_id': request.env.user.partner_id.id,
             'description': description,
             'description_es': description_es,
+            'modality': modality,
         })        
 
         i = 1

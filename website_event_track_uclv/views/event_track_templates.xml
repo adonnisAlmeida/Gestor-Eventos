@@ -462,6 +462,16 @@
                                                             <div t-if="error and error.get('track_name_es')" class="invalid-feedback" t-esc="error.get('track_name_es')" />
                                                         </div>
                                                     </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-12 col-form-label" for="modality">Modality:</label>
+                                                        <div class="col-sm-12">
+                                                            <select t-attf-class="form-control form-control-lg" name="modality">
+                                                                <option value='conferencia'>Conference</option>
+                                                                <option value='ponencia_oral'>Oral Presentation</option>
+                                                                <option value='poster'>Póster</option>
+                                                            </select>   
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group row">                                                        
                                                         <label class="col-sm-12 col-form-label">Authors:</label>
                                                         <input type="hidden" name="authors" id="authors" t-att-value='post and post.get("authors", "[{\"author_id\": 0}]" ) or "[{\"author_id\": 0}]"' />

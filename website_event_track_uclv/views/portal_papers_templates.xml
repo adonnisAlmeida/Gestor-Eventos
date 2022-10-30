@@ -231,9 +231,24 @@
                             <div class="d-flex mb-1">
                                 <h4 id="title_es" data-anchor="true"><strong>Title<small class="text-sm text-muted" title="Spanish"> [ES]</small></strong></h4>
                             </div>                                    
-                            <h4 t-if="fixed" t-field="paper.with_context(lang='es_ES').name" />
-                            <input t-else="" type="text" t-attf-class="form-control form-control-lg #{error.get('name_es') and 'is-invalid' or ''}"  name="name_es" required="True" placeholder="Insert paper title here (in Spanish)" t-att-value="post and post.get('name_es', '') or paper.with_context(lang='es_ES').name" />
-                            <div t-if="error and error.get('name_es')" class="small text-danger mt-1" t-esc="error.get('name_es')" /> 
+                            <h4 class="text-uppercase" t-field="paper.with_context(lang='es_ES').name" />
+                            
+                        </div>
+                    </div>
+                    <div class="row mb-4" t-if="paper.sudo().modality">
+                        <div class="col-12 col-md-6 mb-1">
+                            <h4 id="modality" data-anchor="true">
+                                <strong>Modality</strong>
+                            </h4>
+                            <h4 class="text-uppercase" t-field="paper.sudo().modality" />
+                        </div>
+                    </div>
+                    <div class="row mb-4" t-if="paper.sudo().tag_ids">
+                        <div class="col-12 col-md-6 mb-1">
+                            <h4 id="keywords" data-anchor="true"><strong>Keywords</strong></h4>                            
+                            <t t-foreach="paper.sudo().tag_ids" t-as="tag">
+                                <span class="label label-info" t-esc="tag.name" />
+                            </t>                            
                         </div>
                     </div>
                     <div class="form-group row mb32" t-if="paper.language_id">
@@ -486,11 +501,30 @@
                     <t t-set="entries">
                         <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
                             <li class="list-group-item flex-grow-1">
-                                <button t-if="not paper.is_done" class="btn btn-primary btn-block mb8 js_submit">
-                                    <i class="fa fa-save"/> Save Changes
-                                </button>
-                                
-
+                                <a t-if="not paper.is_done and paper.stage_id.can_edit" role="button" class="btn btn-primary btn-block mb8" data-toggle="modal" data-target=".modaledit" href="#">
+                                    <i class="fa fa-pencil"/> Edit
+                                </a>
+                                <div class="modal fade modaledit" id="modaledit" role="form" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <form method="POST" enctype="multipart/form-data" class="js_accept_json modal-content js_website_submit_form">
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <input type="hidden" name="review_id" class="review_review_id" t-att-value="paper.id"/>
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+                                                <h4 class="modal-title">Update Paper</h4>
+                                            </div>
+                                            <div class="modal-body" id="sign-dialog2">
+                                                <div class="form-group">
+                                                    sdfsdfsdfsdfsdf
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <!-- <button t-attf-class="btn btn-xs btn-primary">Upload</button> -->
+                                                <button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
                                     <div class="btn-group flex-grow-1 mr-1 mb-1">
                                         <a class="btn btn-secondary btn-block o_download_btn" t-att-href="paper.get_portal_url(report_type='pdf', download=True)" title="Download"><i class="fa fa-download"/> Download</a>
@@ -506,8 +540,10 @@
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#event">Event</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#title">Title [EN]</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#title_es">Title [ES]</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#language">Main Language</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#_authors">Authors</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#modality">Modality</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#keywords">Keywords</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#language">Language</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#authors">Authors</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#abstract">Abstract [EN]</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#abstract_es">Abstract [ES]</a></li>
                                     <li class="nav-item"><a class="nav-link" style="max-width: 200px;" href="#keywords">Keywords</a></li>
